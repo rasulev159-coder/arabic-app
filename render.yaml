@@ -13,7 +13,6 @@ services:
 
   - type: web
     name: arabic-backend
-    plan: starter
     runtime: node
     buildCommand: |
       npm install -g pnpm@8 &&
@@ -53,7 +52,6 @@ services:
 
   - type: web
     name: arabic-frontend
-    plan: starter
     runtime: static
     buildCommand: |
       npm install -g pnpm@8 &&
