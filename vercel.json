@@ -4,6 +4,12 @@
   "installCommand": "npm install -g pnpm@8 && pnpm install && pnpm --filter=backend exec prisma generate",
   "buildCommand": "pnpm --filter=frontend build",
   "outputDirectory": "apps/frontend/dist",
+  "functions": {
+    "api/**/*.ts": {
+      "includeFiles": "apps/backend/**,packages/shared/**",
+      "maxDuration": 30
+    }
+  },
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api" }
   ]
