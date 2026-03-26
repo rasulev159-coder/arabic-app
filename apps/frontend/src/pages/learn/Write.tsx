@@ -3,6 +3,7 @@ import { Link }             from 'react-router-dom';
 import { useTranslation }   from 'react-i18next';
 import { useAuthStore }     from '../../store/authStore';
 import { useSaveSession }   from '../../hooks/useProgress';
+import { useLeaveWarning }  from '../../hooks/useLeaveWarning';
 import { Button }           from '../../components/ui/Button';
 import { LETTERS, ArabicLetter, getLetterName } from '@arabic/shared';
 
@@ -15,6 +16,7 @@ export function WritePage() {
   const { mutate: save } = useSaveSession();
 
   const [phase, setPhase]   = useState<'start'|'session'|'result'>('start');
+  useLeaveWarning(phase === 'session');
   const [queue, setQueue]   = useState<ArabicLetter[]>([]);
   const [current, setCurrent] = useState<ArabicLetter|null>(null);
   const [compared, setCompared] = useState(false);

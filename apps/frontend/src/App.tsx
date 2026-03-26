@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, Link } from 'react-router-dom';
 import { useAuthStore }       from './store/authStore';
 import { AchievementToast }   from './components/ui/AchievementToast';
 import { AppLayout }          from './components/layout/AppLayout';
@@ -35,6 +35,22 @@ function SplashScreen() {
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+function NotFoundPage() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-6 px-4">
+      <p className="font-scheherazade text-6xl text-gold">٤٠٤</p>
+      <h1 className="font-cinzel text-xl tracking-widest text-[#f0e6cc]">Page not found</h1>
+      <p className="text-[#9a8a6a] text-sm text-center">The page you're looking for doesn't exist.</p>
+      <Link to="/dashboard"
+        className="font-cinzel text-xs tracking-widest uppercase px-8 py-3 rounded-full border
+                   border-gold-dim text-gold-light bg-[rgba(201,168,76,0.08)]
+                   hover:bg-[rgba(201,168,76,0.15)] transition-all">
+        ← Go to Dashboard
+      </Link>
     </div>
   );
 }
@@ -90,7 +106,7 @@ export default function App() {
           <Route path="/admin"             element={<AdminPage />} />
         </Route>
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

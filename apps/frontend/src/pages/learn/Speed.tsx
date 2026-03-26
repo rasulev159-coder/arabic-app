@@ -4,6 +4,7 @@ import { motion, AnimatePresence }  from 'framer-motion';
 import { useTranslation }  from 'react-i18next';
 import { useAuthStore }    from '../../store/authStore';
 import { useSaveSession }  from '../../hooks/useProgress';
+import { useLeaveWarning } from '../../hooks/useLeaveWarning';
 import { SessionResult }   from '../../components/learn/SessionResult';
 import { Button }          from '../../components/ui/Button';
 import { LETTERS, ArabicLetter, getLetterName } from '@arabic/shared';
@@ -26,6 +27,7 @@ export function SpeedPage() {
   const { mutate: saveSession } = useSaveSession();
 
   const [phase, setPhase]   = useState<'start' | 'session' | 'result'>('start');
+  useLeaveWarning(phase === 'session');
   const [queue, setQueue]   = useState<ArabicLetter[]>([]);
   const [current, setCurrent] = useState<ArabicLetter | null>(null);
   const [options, setOptions] = useState<ArabicLetter[]>([]);

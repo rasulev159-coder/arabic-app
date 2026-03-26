@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation }  from 'react-i18next';
 import { useAuthStore }    from '../../store/authStore';
 import { useSaveSession }  from '../../hooks/useProgress';
+import { useLeaveWarning } from '../../hooks/useLeaveWarning';
 import { SessionResult }   from '../../components/learn/SessionResult';
 import { Button }          from '../../components/ui/Button';
 import { LETTERS, ArabicLetter, getLetterName, LetterGroup } from '@arabic/shared';
@@ -36,7 +37,7 @@ interface Question {
   answer: string;
 }
 
-function buildQuestion(letter: ArabicLetter, groupCodes: string[], lang: any): Question {
+function buildQuestion(letter: ArabicLetter, groupCodes: string[], lang: any, t: any): Question {
   const r = Math.random();
   const pos = POSITIONS[Math.floor(Math.random() * POSITIONS.length)];
   const wrongCodes = shuffle(groupCodes.filter(c => c !== letter.code));
@@ -44,31 +45,30 @@ function buildQuestion(letter: ArabicLetter, groupCodes: string[], lang: any): Q
     ? [...wrongCodes, ...shuffle(LETTERS.map(l=>l.code).filter(c=>c!==letter.code&&!wrongCodes.includes(c)))]
     : wrongCodes;
   const opts4 = shuffle([letter.code, ...padded.slice(0, 3)]);
-  const posLabels: Record<Pos, string> = { iso:'изолированная', ini:'нач. слова', med:'сер. слова', fin:'кон. слова' };
+  const posLabels: Record<Pos, string> = { iso: t('quiz.pos.iso'), ini: t('quiz.pos.ini'), med: t('quiz.pos.med'), fin: t('quiz.pos.fin') };
 
-  if (r < 0.33) { // iso: show glyph → pick name
+  if (r < 0.33) {
     return {
-      type: 'iso', badge: 'Изолированная', badgeCls: 'text-gold border-gold-dim bg-[rgba(201,168,76,0.08)]',
-      label: 'Как называется эта буква?',
+      type: 'iso', badge: t('quiz.iso_form'), badgeCls: 'text-gold border-gold-dim bg-[rgba(201,168,76,0.08)]',
+      label: t('quiz.what_letter'),
       prompt: { kind:'arabic', value: letter.iso },
       options: opts4.map(c => { const l=LETTERS.find(x=>x.code===c)!; return { code:c, display:{ kind:'text', value:getLetterName(l,lang) } }; }),
       answer: letter.code,
     };
   }
-  if (r < 0.66) { // pos: show form in position → pick name
+  if (r < 0.66) {
     return {
       type: 'pos', badge: posLabels[pos], badgeCls: 'text-[#8ab4ff] border-[rgba(100,160,255,0.2)] bg-[rgba(100,160,255,0.06)]',
-      label: 'Как называется эта буква?',
+      label: t('quiz.what_letter'),
       prompt: { kind:'arabic', value: letter[pos] },
       posTag: posLabels[pos],
       options: opts4.map(c => { const l=LETTERS.find(x=>x.code===c)!; return { code:c, display:{ kind:'text', value:getLetterName(l,lang) } }; }),
       answer: letter.code,
     };
   }
-  // name: show name → pick form
   return {
-    type: 'name', badge: `Угадай форму (${posLabels[pos]})`, badgeCls: 'text-[#c8a0ff] border-[rgba(180,120,255,0.2)] bg-[rgba(180,120,255,0.06)]',
-    label: 'Выбери правильную форму буквы',
+    type: 'name', badge: `${t('quiz.guess_form')} (${posLabels[pos]})`, badgeCls: 'text-[#c8a0ff] border-[rgba(180,120,255,0.2)] bg-[rgba(180,120,255,0.06)]',
+    label: t('quiz.pick_form'),
     prompt: { kind:'text', value: getLetterName(letter, lang) },
     options: opts4.map(c => { const l=LETTERS.find(x=>x.code===c)!; return { code:c, display:{ kind:'arabic', value:l[pos] } }; }),
     answer: letter.code,
@@ -84,6 +84,7 @@ export function QuizPage() {
   const { mutate: save } = useSaveSession();
 
   const [phase, setPhase]   = useState<'start'|'session'|'result'>('start');
+  useLeaveWarning(phase === 'session');
   const [groupIdx, setGroupIdx] = useState(0);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [qi, setQi]         = useState(0);
@@ -97,7 +98,7 @@ export function QuizPage() {
     const letters = shuffle(
       [...g.codes, ...g.codes, ...g.codes].map(c=>LETTERS.find(l=>l.code===c)!).filter(Boolean)
     ).slice(0, QUIZ_LEN);
-    const qs = letters.map(l => buildQuestion(l, g.codes, lang));
+    const qs = letters.map(l => buildQuestion(l, g.codes, lang, t));
     setQuestions(qs); setQi(0); setScore(0); setAnswered(null); setResults([]);
     startTime.current = Date.now(); setPhase('session');
   };
@@ -132,7 +133,7 @@ export function QuizPage() {
           <button key={g.id} onClick={() => setGroupIdx(i)}
             className={`font-cinzel text-[0.6rem] tracking-widest uppercase px-3 py-1.5 rounded-full border transition-all
               ${groupIdx === i ? 'border-gold-dim text-gold bg-[rgba(201,168,76,0.1)]' : 'border-[rgba(201,168,76,0.1)] text-[#9a8a6a] hover:text-gold'}`}>
-            {g.label}
+            {g.id === 'mix' ? t('groups.mix') : g.label}
           </button>
         ))}
       </div>
@@ -214,7 +215,7 @@ export function QuizPage() {
         className={`font-cinzel text-xs tracking-widest uppercase px-8 py-3 rounded-full border transition-all
           ${answered ? 'border-gold-dim text-gold-light bg-[rgba(201,168,76,0.08)] hover:bg-[rgba(201,168,76,0.15)]'
                      : 'border-transparent text-[#3a2d10] cursor-default'}`}>
-        {qi+1 >= QUIZ_LEN ? 'Завершить' : 'Следующий →'}
+        {qi+1 >= QUIZ_LEN ? t('result.title_good', { defaultValue: '✓' }) : t('next', { ns: 'common', defaultValue: '→' })}
       </button>
     </div>
   );

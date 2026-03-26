@@ -7,6 +7,7 @@ import { motion, AnimatePresence }        from 'framer-motion';
 import { useTranslation }                 from 'react-i18next';
 import { useAuthStore }                   from '../../store/authStore';
 import { useSaveSession }                 from '../../hooks/useProgress';
+import { useLeaveWarning }               from '../../hooks/useLeaveWarning';
 import { SessionResult }                  from '../../components/learn/SessionResult';
 import { Button }                         from '../../components/ui/Button';
 import { LETTERS, ArabicLetter, getLetterName } from '@arabic/shared';
@@ -23,6 +24,7 @@ export function LightningPage() {
   const { mutate: save } = useSaveSession();
 
   const [phase, setPhase]   = useState<'start'|'session'|'result'>('start');
+  useLeaveWarning(phase === 'session');
   const [queue, setQueue]   = useState<ArabicLetter[]>([]);
   const [current, setCurrent] = useState<ArabicLetter|null>(null);
   const [options, setOptions] = useState<ArabicLetter[]>([]);
@@ -157,6 +159,7 @@ export function MemoryPage() {
   type Card = { id: string; letterCode: string; kind: 'letter'|'name'; matched: boolean; flipped: boolean };
 
   const [phase, setPhase] = useState<'start'|'level-select'|'session'|'result'>('start');
+  useLeaveWarning(phase === 'session');
   const [memoryLevel, setMemoryLevel] = useState(0);
   const [levelLetters, setLevelLetters] = useState<ArabicLetter[]>([]);
   const [cards, setCards] = useState<Card[]>([]);
@@ -327,6 +330,7 @@ export function ListenPage() {
   const { mutate: save } = useSaveSession();
 
   const [phase, setPhase] = useState<'start'|'session'|'result'>('start');
+  useLeaveWarning(phase === 'session');
   const [queue, setQueue] = useState<ArabicLetter[]>([]);
   const [current, setCurrent] = useState<ArabicLetter|null>(null);
   const [options, setOptions] = useState<ArabicLetter[]>([]);
@@ -464,6 +468,7 @@ export function FindPage() {
   const { mutate: save } = useSaveSession();
 
   const [phase, setPhase]   = useState<'start'|'session'|'result'>('start');
+  useLeaveWarning(phase === 'session');
   const [target, setTarget] = useState<ArabicLetter|null>(null);
   const [targetForm, setTargetForm] = useState<string>('');
   const [row, setRow]       = useState<{letter: ArabicLetter; form: string}[]>([]);
