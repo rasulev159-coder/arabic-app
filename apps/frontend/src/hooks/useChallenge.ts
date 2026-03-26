@@ -4,7 +4,7 @@ import { api }                          from '../lib/api';
 import { useAuthStore }                 from '../store/authStore';
 import { ChallengeDto, WsEvent, ChallengeResultDto } from '@arabic/shared';
 
-const WS_BASE = import.meta.env.VITE_WS_URL ?? 'ws://localhost:4000';
+const WS_BASE = import.meta.env.VITE_WS_URL ?? `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}`;
 
 export function useChallenge(token: string) {
   return useQuery<ChallengeDto>({
