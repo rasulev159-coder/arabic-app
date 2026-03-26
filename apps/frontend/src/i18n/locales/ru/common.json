@@ -1,0 +1,43 @@
+{
+  "app_name": "Арабский алфавит",
+  "nav": {
+    "dashboard":    "Главная",
+    "alphabet":     "Алфавит",
+    "progress":     "Прогресс",
+    "achievements": "Достижения",
+    "leaderboard":  "Рейтинг",
+    "settings":     "Настройки"
+  },
+  "auth": {
+    "login":           "Войти",
+    "register":        "Регистрация",
+    "logout":          "Выйти",
+    "email":           "Email",
+    "password":        "Пароль",
+    "name":            "Имя",
+    "or_google":       "или войти через Google",
+    "no_account":      "Нет аккаунта?",
+    "have_account":    "Уже есть аккаунт?"
+  },
+  "levels": {
+    "beginner": "Новичок",
+    "student":  "Ученик",
+    "expert":   "Знаток",
+    "master":   "Мастер"
+  },
+  "streak": "дней подряд",
+  "letters_known": "Букв выучено",
+  "share":  "Поделиться",
+  "copy_link": "Скопировать ссылку",
+  "challenge_friend": "Вызвать друга",
+  "loading": "Загрузка...",
+  "error":   "Ошибка",
+  "retry":   "Повторить",
+  "close":   "Закрыть",
+  "save":    "Сохранить",
+  "cancel":  "Отмена",
+  "next":    "Следующий →",
+  "start":   "Начать",
+  "restart": "Начать заново",
+  "finish":  "Завершить"
+}

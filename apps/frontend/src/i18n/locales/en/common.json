@@ -1,0 +1,43 @@
+{
+  "app_name": "Arabic Alphabet",
+  "nav": {
+    "dashboard":    "Home",
+    "alphabet":     "Alphabet",
+    "progress":     "Progress",
+    "achievements": "Achievements",
+    "leaderboard":  "Leaderboard",
+    "settings":     "Settings"
+  },
+  "auth": {
+    "login":        "Log In",
+    "register":     "Sign Up",
+    "logout":       "Log Out",
+    "email":        "Email",
+    "password":     "Password",
+    "name":         "Name",
+    "or_google":    "or sign in with Google",
+    "no_account":   "No account?",
+    "have_account": "Already have an account?"
+  },
+  "levels": {
+    "beginner": "Beginner",
+    "student":  "Student",
+    "expert":   "Expert",
+    "master":   "Master"
+  },
+  "streak": "day streak",
+  "letters_known": "Letters learned",
+  "share": "Share",
+  "copy_link": "Copy link",
+  "challenge_friend": "Challenge a friend",
+  "loading": "Loading...",
+  "error": "Error",
+  "retry": "Retry",
+  "close": "Close",
+  "save": "Save",
+  "cancel": "Cancel",
+  "next": "Next →",
+  "start": "Start",
+  "restart": "Start Over",
+  "finish": "Finish"
+}

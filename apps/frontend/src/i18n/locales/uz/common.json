@@ -1,0 +1,43 @@
+{
+  "app_name": "Arab alifbosi",
+  "nav": {
+    "dashboard":    "Bosh sahifa",
+    "alphabet":     "Alifbo",
+    "progress":     "Natijalar",
+    "achievements": "Yutuqlar",
+    "leaderboard":  "Reyting",
+    "settings":     "Sozlamalar"
+  },
+  "auth": {
+    "login":        "Kirish",
+    "register":     "Ro'yxatdan o'tish",
+    "logout":       "Chiqish",
+    "email":        "Email",
+    "password":     "Parol",
+    "name":         "Ism",
+    "or_google":    "yoki Google orqali kirish",
+    "no_account":   "Hisobingiz yo'qmi?",
+    "have_account": "Hisobingiz bormi?"
+  },
+  "levels": {
+    "beginner": "Yangi boshlovchi",
+    "student":  "O'quvchi",
+    "expert":   "Bilimdon",
+    "master":   "Usta"
+  },
+  "streak": "kun ketma-ket",
+  "letters_known": "O'rganilgan harflar",
+  "share": "Ulashish",
+  "copy_link": "Havolani nusxalash",
+  "challenge_friend": "Do'stni chaqirish",
+  "loading": "Yuklanmoqda...",
+  "error": "Xato",
+  "retry": "Qayta urinish",
+  "close": "Yopish",
+  "save": "Saqlash",
+  "cancel": "Bekor qilish",
+  "next": "Keyingi →",
+  "start": "Boshlash",
+  "restart": "Qayta boshlash",
+  "finish": "Tugatish"
+}

@@ -1,0 +1,99 @@
+{
+  "modes": {
+    "flashcard": "Flashcards",
+    "quiz":      "Quiz",
+    "speed":     "Speed",
+    "lightning": "Lightning",
+    "memory":    "Memory",
+    "listen":    "Listen",
+    "find":      "Find Letter",
+    "write":     "Write"
+  },
+  "flashcard": {
+    "title":         "Flashcards",
+    "subtitle":      "28 letters of the Arabic alphabet",
+    "hint_reveal":   "Space — reveal",
+    "hint_know":     "→ Know it",
+    "hint_dontknow": "← Don't know",
+    "show_answer":   "Show Answer",
+    "know":          "✓ Know it",
+    "dont_know":     "✗ Don't know",
+    "known_of":      "Learned: {{known}} / {{total}}",
+    "remaining":     "Remaining: {{n}}",
+    "attempts":      "Attempts: {{n}}",
+    "card_of":       "Card {{current}} of {{total}}"
+  },
+  "quiz": {
+    "title":       "Quiz",
+    "question_of": "Question {{n}} of {{total}}",
+    "correct":     "✓ Correct!",
+    "wrong":       "✗ Correct answer: {{name}}",
+    "iso_form":    "Isolated form",
+    "in_word":     "In a word",
+    "guess_form":  "Guess the form",
+    "what_letter": "What is this letter called?",
+    "pick_form":   "Pick the correct form",
+    "pos": {
+      "iso": "isolated",
+      "ini": "word beginning",
+      "med": "word middle",
+      "fin": "word end"
+    }
+  },
+  "speed": {
+    "title":    "Speed Mode",
+    "subtitle": "Answer as many questions as you can in 60 seconds",
+    "time_left":"Left: {{n}}s",
+    "score":    "Score: {{n}}"
+  },
+  "lightning": {
+    "title":    "Lightning Mode",
+    "subtitle": "No hints — choose immediately",
+    "avg_time": "Avg time: {{n}}s"
+  },
+  "memory": {
+    "title":    "Memory",
+    "subtitle": "Find all pairs: letter + name",
+    "pairs":    "Pairs found: {{found}} / {{total}}",
+    "time":     "Time: {{t}}"
+  },
+  "listen": {
+    "title":    "Listen",
+    "subtitle": "Hear the name — choose the letter",
+    "play":     "▶ Play again"
+  },
+  "find": {
+    "title":    "Find the Letter",
+    "subtitle": "Find and tap the letter in the row",
+    "task":     "Find: "
+  },
+  "write": {
+    "title":    "Write",
+    "subtitle": "Draw the letter and compare with the template",
+    "clear":    "Clear",
+    "compare":  "Compare",
+    "try_again":"Try Again"
+  },
+  "result": {
+    "title_perfect": "Excellent! 🌟",
+    "title_great":   "Great!",
+    "title_good":    "Good!",
+    "title_keep":    "Keep going!",
+    "score":         "{{score}} of {{total}}",
+    "attempts":      "{{n}} attempts",
+    "time":          "{{t}}",
+    "accuracy":      "Accuracy: {{n}}%"
+  },
+  "groups": {
+    "btt": "ب ت ث — dots",
+    "jch": "ج ح خ — group",
+    "dz":  "د ذ — Dal/Dhal",
+    "rz":  "ر ز — Ra/Zay",
+    "ss":  "س ش — Sin/Shin",
+    "sd":  "ص ض — Sad/Dad",
+    "tz":  "ط ظ — Ta/Zha",
+    "ag":  "ع غ — Ayn/Ghain",
+    "fq":  "ف ق — Fa/Qaf",
+    "mix": "Mixed"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "arabic-alphabet",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@8.0.0",
+  "scripts": {
+    "dev":           "pnpm --parallel --filter=./apps/* dev",
+    "build":         "pnpm --filter=./packages/* build && pnpm --filter=./apps/* build",
+    "test":          "pnpm --recursive test",
+    "test:backend":  "pnpm --filter=backend test",
+    "test:shared":   "pnpm --filter=@arabic/shared test",
+    "db:migrate":    "pnpm --filter=backend prisma migrate dev",
+    "db:deploy":     "pnpm --filter=backend prisma migrate deploy",
+    "db:seed":       "pnpm --filter=backend prisma db seed",
+    "db:studio":     "pnpm --filter=backend prisma studio",
+    "db:reset":      "pnpm --filter=backend prisma migrate reset"
+  },
+  "workspaces": ["packages/*", "apps/*"]
+}

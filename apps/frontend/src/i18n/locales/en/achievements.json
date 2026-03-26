@@ -1,0 +1,21 @@
+{
+  "title": "Achievements",
+  "unlocked_at": "Unlocked {{date}}",
+  "locked": "Locked",
+  "new_achievement": "New Achievement!",
+  "keys": {
+    "first_letter":        "First Step",
+    "first_10":            "First 10",
+    "all_letters":         "Alphabet Master",
+    "speed_3min":          "Speedster",
+    "perfect_quiz":        "Perfect Quiz",
+    "streak_3":            "3 Day Streak",
+    "streak_7":            "One Week",
+    "streak_30":           "One Month",
+    "lightning_master":    "Lightning",
+    "memory_5min":         "Memory",
+    "night_owl":           "Night Owl",
+    "early_bird":          "Early Bird",
+    "first_challenge_win": "Winner"
+  }
+}

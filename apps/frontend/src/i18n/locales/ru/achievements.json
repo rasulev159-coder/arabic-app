@@ -1,0 +1,21 @@
+{
+  "title": "Достижения",
+  "unlocked_at": "Получено {{date}}",
+  "locked": "Не получено",
+  "new_achievement": "Новое достижение!",
+  "keys": {
+    "first_letter":        "Первый шаг",
+    "first_10":            "Первые 10",
+    "all_letters":         "Мастер алфавита",
+    "speed_3min":          "Скоростной",
+    "perfect_quiz":        "Идеальный квиз",
+    "streak_3":            "3 дня подряд",
+    "streak_7":            "Неделя",
+    "streak_30":           "Месяц",
+    "lightning_master":    "Молния",
+    "memory_5min":         "Память",
+    "night_owl":           "Ночная сова",
+    "early_bird":          "Ранняя пташка",
+    "first_challenge_win": "Победитель"
+  }
+}

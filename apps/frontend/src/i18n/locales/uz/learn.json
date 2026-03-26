@@ -1,0 +1,99 @@
+{
+  "modes": {
+    "flashcard": "Kartochkalar",
+    "quiz":      "Viktorina",
+    "speed":     "Tezlik",
+    "lightning": "Chaqmoq",
+    "memory":    "Xotira",
+    "listen":    "Eshitish",
+    "find":      "Harfni topish",
+    "write":     "Yozish"
+  },
+  "flashcard": {
+    "title":         "Flesh-kartochkalar",
+    "subtitle":      "Arab alifbosining 28 harfi",
+    "hint_reveal":   "Bo'shliq — ochish",
+    "hint_know":     "→ Bilaman",
+    "hint_dontknow": "← Bilmayman",
+    "show_answer":   "Javobni ko'rsatish",
+    "know":          "✓ Bilaman",
+    "dont_know":     "✗ Bilmayman",
+    "known_of":      "O'rganildi: {{known}} / {{total}}",
+    "remaining":     "Qoldi: {{n}}",
+    "attempts":      "Urinishlar: {{n}}",
+    "card_of":       "Kartochka {{current}} / {{total}}"
+  },
+  "quiz": {
+    "title":       "Viktorina",
+    "question_of": "Savol {{n}} / {{total}}",
+    "correct":     "✓ To'g'ri!",
+    "wrong":       "✗ To'g'ri javob: {{name}}",
+    "iso_form":    "Alohida shakl",
+    "in_word":     "So'zda",
+    "guess_form":  "Shaklni toping",
+    "what_letter": "Bu harf qanday nomlanadi?",
+    "pick_form":   "To'g'ri shaklni tanlang",
+    "pos": {
+      "iso": "alohida",
+      "ini": "so'z boshi",
+      "med": "so'z o'rtasi",
+      "fin": "so'z oxiri"
+    }
+  },
+  "speed": {
+    "title":    "Tezlik rejimi",
+    "subtitle": "60 soniyada iloji boricha ko'proq savolga javob bering",
+    "time_left":"Qoldi: {{n}}s",
+    "score":    "Ball: {{n}}"
+  },
+  "lightning": {
+    "title":    "Chaqmoq rejimi",
+    "subtitle": "Maslaхatsiz — darhol javob bering",
+    "avg_time": "O'rtacha vaqt: {{n}}s"
+  },
+  "memory": {
+    "title":    "Xotira",
+    "subtitle": "Barcha juftliklarni toping: harf + nom",
+    "pairs":    "Juftliklar: {{found}} / {{total}}",
+    "time":     "Vaqt: {{t}}"
+  },
+  "listen": {
+    "title":    "Eshitish",
+    "subtitle": "Nomini eshiting — harfni tanlang",
+    "play":     "▶ Qayta eshitish"
+  },
+  "find": {
+    "title":    "Harfni toping",
+    "subtitle": "Qatordagi harfni toping va bosing",
+    "task":     "Toping: "
+  },
+  "write": {
+    "title":    "Yozish",
+    "subtitle": "Harfni chizing va namuna bilan solishtiring",
+    "clear":    "Tozalash",
+    "compare":  "Solishtirish",
+    "try_again":"Qayta urinish"
+  },
+  "result": {
+    "title_perfect": "Ajoyib! 🌟",
+    "title_great":   "Zo'r!",
+    "title_good":    "Yaxshi!",
+    "title_keep":    "Davom eting!",
+    "score":         "{{score}} / {{total}}",
+    "attempts":      "{{n}} ta urinish",
+    "time":          "{{t}}",
+    "accuracy":      "Aniqlik: {{n}}%"
+  },
+  "groups": {
+    "btt": "ب ت ث — nuqtalar",
+    "jch": "ج ح خ — guruh",
+    "dz":  "د ذ — Dol/Zol",
+    "rz":  "ر ز — Ra/Zay",
+    "ss":  "س ش — Sin/Shin",
+    "sd":  "ص ض — Sod/Zod",
+    "tz":  "ط ظ — To/Zo",
+    "ag":  "ع غ — Ayn/Gayn",
+    "fq":  "ف ق — Fa/Qof",
+    "mix": "Barchasi"
+  }
+}

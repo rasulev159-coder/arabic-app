@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  avatar       String?
+  passwordHash String?
+  googleId     String?  @unique
+  language     String   @default("ru")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  progress           LetterProgress[]
+  sessions           StudySession[]
+  achievements       UserAchievement[]
+  streak             Streak?
+  records            SpeedRecord[]
+  challengesSent     Challenge[]       @relation("Challenger")
+  challengesReceived Challenge[]       @relation("Opponent")
+
+  @@map("users")
+}
+
+model LetterProgress {
+  id           String    @id @default(cuid())
+  userId       String
+  letterCode   String
+  known        Boolean   @default(false)
+  attempts     Int       @default(0)
+  correctCount Int       @default(0)
+  lastSeen     DateTime?
+  masteredAt   DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, letterCode])
+  @@map("letter_progress")
+}
+
+model StudySession {
+  id          String   @id @default(cuid())
+  userId      String
+  mode        String
+  score       Int
+  totalQ      Int
+  durationSec Int
+  date        DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("study_sessions")
+}
+
+model Streak {
+  userId       String   @id
+  current      Int      @default(0)
+  longest      Int      @default(0)
+  lastActivity DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("streaks")
+}
+
+model Achievement {
+  id        String @id @default(cuid())
+  key       String @unique
+  nameRu    String
+  nameUz    String
+  nameEn    String
+  descRu    String
+  descUz    String
+  descEn    String
+  icon      String
+  condition Json
+
+  userAchievements UserAchievement[]
+
+  @@map("achievements")
+}
+
+model UserAchievement {
+  userId        String
+  achievementId String
+  unlockedAt    DateTime @default(now())
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement Achievement @relation(fields: [achievementId], references: [id])
+
+  @@id([userId, achievementId])
+  @@map("user_achievements")
+}
+
+model SpeedRecord {
+  id          String   @id @default(cuid())
+  userId      String
+  mode        String
+  score       Int
+  durationSec Int
+  date        DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("speed_records")
+}
+
+model Challenge {
+  id              String    @id @default(cuid())
+  challengerId    String
+  opponentId      String?
+  shareToken      String    @unique @default(cuid())
+  mode            String
+  seed            Int       @default(0)
+  challengerScore Int?
+  opponentScore   Int?
+  status          String    @default("pending")
+  expiresAt       DateTime
+  createdAt       DateTime  @default(now())
+
+  challenger User  @relation("Challenger", fields: [challengerId], references: [id])
+  opponent   User? @relation("Opponent", fields: [opponentId], references: [id])
+
+  @@map("challenges")
+}

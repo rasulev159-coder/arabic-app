@@ -1,0 +1,9 @@
+export { AlphabetPage }     from './AllPages';
+export { ProgressPage }     from './AllPages';
+export { AchievementsPage } from './AllPages';
+export { LeaderboardPage }  from './AllPages';
+export { SettingsPage }     from './AllPages';
+export { ChallengePage }    from './AllPages';
+export { DashboardPage }    from './Dashboard';
+export { LandingPage }      from './Landing';
+export { LoginPage }        from './Login';

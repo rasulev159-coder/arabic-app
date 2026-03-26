@@ -1,0 +1,19 @@
+version: '3.9'
+
+# Override: local dev — only run infra in Docker, code runs locally
+# Use: docker-compose up -d postgres redis  (then pnpm dev locally)
+services:
+  postgres:
+    ports:
+      - "5432:5432"
+
+  redis:
+    ports:
+      - "6379:6379"
+
+  # Disable backend/frontend in dev — run locally via pnpm dev
+  backend:
+    profiles: ["prod"]
+
+  frontend:
+    profiles: ["prod"]

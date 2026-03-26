@@ -1,0 +1,76 @@
+databases:
+  - name: arabic-db
+    plan: free
+    databaseName: arabic_alphabet
+    user: arabic
+
+services:
+  - type: redis
+    name: arabic-redis
+    plan: free
+    maxmemoryPolicy: allkeys-lru
+    ipAllowList: []
+
+  - type: web
+    name: arabic-backend
+    plan: free
+    runtime: node
+    buildCommand: |
+      npm install -g pnpm@8 &&
+      pnpm install &&
+      pnpm --filter=backend exec prisma generate &&
+      pnpm --filter=backend build
+    startCommand: |
+      cd apps/backend &&
+      npx prisma migrate deploy &&
+      npx prisma db seed &&
+      node -r tsconfig-paths/register ../../dist/index.js
+    rootDir: .
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: arabic-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: arabic-redis
+          type: redis
+          property: connectionString
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: GOOGLE_CLIENT_ID
+        value: placeholder
+      - key: GOOGLE_CLIENT_SECRET
+        value: placeholder
+      - key: FRONTEND_URL
+        value: https://arabic-frontend.onrender.com
+      - key: PORT
+        value: 4000
+      - key: NODE_ENV
+        value: production
+
+  - type: web
+    name: arabic-frontend
+    plan: free
+    runtime: static
+    buildCommand: |
+      npm install -g pnpm@8 &&
+      pnpm install &&
+      pnpm --filter=frontend build
+    staticPublishPath: apps/frontend/dist
+    rootDir: .
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        value: https://arabic-backend.onrender.com
+      - key: VITE_WS_URL
+        value: wss://arabic-backend.onrender.com

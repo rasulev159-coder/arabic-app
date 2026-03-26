@@ -1,0 +1,21 @@
+{
+  "title": "Yutuqlar",
+  "unlocked_at": "Olingan {{date}}",
+  "locked": "Olinmagan",
+  "new_achievement": "Yangi yutuq!",
+  "keys": {
+    "first_letter":        "Birinchi qadam",
+    "first_10":            "Birinchi 10",
+    "all_letters":         "Alifbo ustasi",
+    "speed_3min":          "Tezkor",
+    "perfect_quiz":        "Mukammal viktorina",
+    "streak_3":            "3 kun ketma-ket",
+    "streak_7":            "Bir hafta",
+    "streak_30":           "Bir oy",
+    "lightning_master":    "Chaqmoq",
+    "memory_5min":         "Xotira",
+    "night_owl":           "Tungi boyqush",
+    "early_bird":          "Erta qush",
+    "first_challenge_win": "G'olib"
+  }
+}
