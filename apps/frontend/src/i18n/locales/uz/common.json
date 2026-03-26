@@ -36,7 +36,7 @@
   "close": "Yopish",
   "save": "Saqlash",
   "cancel": "Bekor qilish",
-  "next": "Keyingi →",
+  "next": "Keyingi \u2192",
   "start": "Boshlash",
   "restart": "Qayta boshlash",
   "finish": "Tugatish",
@@ -56,5 +56,46 @@
     "speed": "tezlik reytingida",
     "streak": "ketma-ketlik reytingida",
     "not_ranked": "Reytingda yo'q"
+  },
+  "daily": {
+    "title": "Bugungi dars",
+    "completed": "Bajarildi!",
+    "xp_earned": "+{{xp}} XP",
+    "start": "Darsni boshlash",
+    "continue": "Davom ettirish"
+  },
+  "level_up": "Yangi daraja!",
+  "level_reached": "{{level}}-daraja erishildi",
+  "learn_modes": "O'quv rejimlari",
+  "link_copied": "Havola nusxalandi!",
+  "new_challenge": "Yangi chaqiruv",
+  "create_challenge": "Chaqiruv yaratish",
+  "weakness": {
+    "title": "Zaif harflarni mashq qilish",
+    "subtitle": "Eng qiyin harflarni mashq qiling",
+    "dashboard_title": "Zaif harflarni mashq qilish",
+    "no_weakness": "Zaif harflar topilmadi!",
+    "no_weakness_hint": "Mashq qilishda davom eting",
+    "start_training": "Mashqni boshlash"
+  },
+  "session": {
+    "title": "O'quv sessiyasi",
+    "subtitle": "Bugungi maqsadlarni bajaring",
+    "step": "{{current}}-qadam / {{total}}",
+    "mark_done": "Bajarildi deb belgilash",
+    "end_session": "Sessiyani tugatish",
+    "complete": "Sessiya tugadi!",
+    "modes_done": "rejim bajarildi",
+    "cta_title": "O'quv sessiyasi",
+    "cta_subtitle": "Sizning natijalaringizga qarab tanlangan rejimlar"
+  },
+  "quran": {
+    "title": "Qur'on iboralari",
+    "subtitle": "Harfni bosib o'rganing",
+    "mode_name": "Qur'on",
+    "all_phrases": "Barcha iboralar"
+  },
+  "share_card": {
+    "share_title": "Arab alifbosidagi natijalarim"
   }
 }

@@ -17,6 +17,9 @@ import { leaderboardRouter }  from './routes/leaderboard';
 import { challengesRouter }   from './routes/challenges';
 import { adminRouter }        from './routes/admin';
 import { letterRouter }       from './routes/letters';
+import { dailyRouter }        from './routes/daily';
+import { weaknessRouter }     from './routes/weakness';
+import { analyticsRouter }    from './routes/analytics';
 import { errorHandler }       from './middleware/errorHandler';
 import { authLimiter, apiLimiter } from './middleware/rateLimiter';
 import { requireAuth }        from './middleware/requireAuth';
@@ -46,6 +49,9 @@ app.use('/api/leaderboard',  apiLimiter,   leaderboardRouter);
 app.use('/api/challenges',   apiLimiter,   challengesRouter);
 app.use('/api/admin',        apiLimiter,   requireAuth, requireAdmin, adminRouter);
 app.use('/api/letters',      apiLimiter,   letterRouter);
+app.use('/api/daily',        apiLimiter,   dailyRouter);
+app.use('/api/weakness',     apiLimiter,   weaknessRouter);
+app.use('/api/analytics',    apiLimiter,   analyticsRouter);
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
 

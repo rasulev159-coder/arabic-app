@@ -36,7 +36,7 @@
   "close": "Close",
   "save": "Save",
   "cancel": "Cancel",
-  "next": "Next →",
+  "next": "Next \u2192",
   "start": "Start",
   "restart": "Start Over",
   "finish": "Finish",
@@ -56,5 +56,46 @@
     "speed": "in speed ranking",
     "streak": "in streak ranking",
     "not_ranked": "Not ranked"
+  },
+  "daily": {
+    "title": "Today's Lesson",
+    "completed": "Completed!",
+    "xp_earned": "+{{xp}} XP",
+    "start": "Start Lesson",
+    "continue": "Continue"
+  },
+  "level_up": "Level Up!",
+  "level_reached": "Level {{level}} reached",
+  "learn_modes": "Learning Modes",
+  "link_copied": "Link copied!",
+  "new_challenge": "New challenge",
+  "create_challenge": "Create challenge",
+  "weakness": {
+    "title": "Weakness Training",
+    "subtitle": "Train your weakest letters",
+    "dashboard_title": "Train weak letters",
+    "no_weakness": "No weak letters found!",
+    "no_weakness_hint": "Keep practicing to identify areas for improvement",
+    "start_training": "Start Training"
+  },
+  "session": {
+    "title": "Guided Session",
+    "subtitle": "Complete today's learning goals",
+    "step": "Step {{current}} of {{total}}",
+    "mark_done": "Mark as done",
+    "end_session": "End session",
+    "complete": "Session Complete!",
+    "modes_done": "modes done",
+    "cta_title": "Guided Session",
+    "cta_subtitle": "Auto-selected modes based on your progress"
+  },
+  "quran": {
+    "title": "Quran Phrases",
+    "subtitle": "Tap letters to learn them",
+    "mode_name": "Quran",
+    "all_phrases": "All Phrases"
+  },
+  "share_card": {
+    "share_title": "My Arabic Learning Progress"
   }
 }

@@ -4,6 +4,8 @@ import { prisma }           from '../lib/prisma';
 import { requireAuth, AuthRequest } from '../middleware/requireAuth';
 import { checkAndUnlockAchievements } from '../services/achievements';
 import { updateStreak }     from '../services/streak';
+import { awardXp }          from '../services/xp';
+import { updateWeaknessStats } from './weakness';
 import { getLevel }         from '@arabic/shared';
 
 export const progressRouter = Router();
@@ -84,13 +86,23 @@ progressRouter.post('/session', async (req: AuthRequest, res: Response): Promise
   // Update streak
   const streak = await updateStreak(userId);
 
+  // Update weakness stats
+  await updateWeaknessStats(userId, letterResults);
+
+  // Award XP
+  const xpResult = await awardXp(userId, 'session_complete');
+  let perfectXp = null;
+  if (score === totalQ) {
+    perfectXp = await awardXp(userId, 'perfect_session');
+  }
+
   // Check achievements
   const unlocked = await checkAndUnlockAchievements(userId, {
     mode, score, totalQ, durationSec, streak,
     hour: new Date().getHours(),
   });
 
-  res.json({ ok: true, data: { unlocked } });
+  res.json({ ok: true, data: { unlocked, xp: perfectXp ?? xpResult } });
 });
 
 // GET /api/progress/stats

@@ -26,6 +26,8 @@ async function buildPublic(userId: string) {
     createdAt:        user.createdAt.toISOString(),
     level:            getLevel(knownCount),
     role:             user.role,
+    xp:               user.xp,
+    xpLevel:          user.xpLevel,
     knownLettersCount: knownCount,
     streak: {
       current:      user.streak?.current      ?? 0,

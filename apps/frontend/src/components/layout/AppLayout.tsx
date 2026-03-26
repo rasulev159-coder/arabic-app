@@ -2,6 +2,7 @@ import { Outlet, NavLink, Link, useNavigate } from 'react-router-dom';
 import { useTranslation }  from 'react-i18next';
 import { useAuthStore }    from '../../store/authStore';
 import { LevelBadge, StreakBadge, LanguageSwitcher } from '../ui/Badges';
+import { XpBar }           from '../ui/XpBar';
 
 const NAV = [
   { to: '/dashboard',    icon: '🏠', key: 'dashboard' },
@@ -41,6 +42,9 @@ export function AppLayout() {
             <div className="flex flex-wrap gap-1 mt-2">
               <LevelBadge level={user.level} />
               <StreakBadge current={user.streak.current} />
+            </div>
+            <div className="mt-3">
+              <XpBar xp={user.xp} level={user.xpLevel} />
             </div>
           </div>
         )}

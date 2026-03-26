@@ -38,6 +38,9 @@ try {
   const { challengesRouter }   = require('../apps/backend/src/routes/challenges');
   const { adminRouter }        = require('../apps/backend/src/routes/admin');
   const { letterRouter }       = require('../apps/backend/src/routes/letters');
+  const { dailyRouter }        = require('../apps/backend/src/routes/daily');
+  const { weaknessRouter }     = require('../apps/backend/src/routes/weakness');
+  const { analyticsRouter }    = require('../apps/backend/src/routes/analytics');
   const { errorHandler }       = require('../apps/backend/src/middleware/errorHandler');
   const { requireAuth }        = require('../apps/backend/src/middleware/requireAuth');
   const { requireAdmin }       = require('../apps/backend/src/middleware/requireAdmin');
@@ -50,6 +53,9 @@ try {
   app.use('/api/challenges',   challengesRouter);
   app.use('/api/admin',        requireAuth, requireAdmin, adminRouter);
   app.use('/api/letters',      letterRouter);
+  app.use('/api/daily',        dailyRouter);
+  app.use('/api/weakness',     weaknessRouter);
+  app.use('/api/analytics',    analyticsRouter);
   app.use(errorHandler);
 } catch (err) {
   app.use('/api', (_req, res) => {

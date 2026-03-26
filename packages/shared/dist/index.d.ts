@@ -35,6 +35,8 @@ export interface UserPublic {
     createdAt: string;
     level: UserLevel;
     role?: string;
+    xp: number;
+    xpLevel: number;
     streak: StreakInfo;
     knownLettersCount: number;
 }
@@ -152,6 +154,27 @@ export interface CreateChallengeDto {
 export interface ChallengeResultDto {
     score: number;
     durationSec: number;
+}
+export interface XpInfo {
+    xp: number;
+    level: number;
+    currentXp: number;
+    nextLevelXp: number;
+}
+export interface DailyLessonDto {
+    id: string;
+    date: string;
+    modes: string[];
+    completed: boolean;
+    score: number;
+    xpEarned: number;
+}
+export interface WeaknessDto {
+    letterCode: string;
+    totalErrors: number;
+    totalSeen: number;
+    accuracy: number;
+    nextReviewAt: string | null;
 }
 export type WsEvent = {
     type: 'challenge:joined';

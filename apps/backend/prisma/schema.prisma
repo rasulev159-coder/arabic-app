@@ -17,6 +17,8 @@ model User {
   googleId     String?  @unique
   role         String   @default("user")
   language     String   @default("ru")
+  xp           Int      @default(0)
+  xpLevel      Int      @default(1)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
@@ -27,6 +29,8 @@ model User {
   records            SpeedRecord[]
   challengesSent     Challenge[]       @relation("Challenger")
   challengesReceived Challenge[]       @relation("Opponent")
+  dailyLessons       DailyLesson[]
+  weaknessStats      WeaknessStats[]
 
   @@map("users")
 }
@@ -144,4 +148,49 @@ model Challenge {
   opponent   User? @relation("Opponent", fields: [opponentId], references: [id])
 
   @@map("challenges")
+}
+
+model DailyLesson {
+  id          String   @id @default(cuid())
+  userId      String
+  date        String   // YYYY-MM-DD format
+  modes       String   // JSON array of mode names e.g. '["quiz","speed","find"]'
+  completed   Boolean  @default(false)
+  score       Int      @default(0)
+  xpEarned    Int      @default(0)
+  completedAt DateTime?
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+  @@map("daily_lessons")
+}
+
+model WeaknessStats {
+  id           String    @id @default(cuid())
+  userId       String
+  letterCode   String
+  totalErrors  Int       @default(0)
+  totalSeen    Int       @default(0)
+  accuracy     Float     @default(0)
+  lastSeen     DateTime?
+  nextReviewAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, letterCode])
+  @@map("weakness_stats")
+}
+
+model AnalyticsEvent {
+  id        String   @id @default(cuid())
+  userId    String?
+  event     String   // 'lesson_complete', 'mode_start', 'level_up', 'streak_update', etc.
+  data      String?  // JSON payload
+  createdAt DateTime @default(now())
+
+  @@index([event])
+  @@index([userId])
+  @@map("analytics_events")
 }
