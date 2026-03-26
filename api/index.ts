@@ -12,7 +12,10 @@ const app = express();
 
 app.use(helmet());
 app.use(cors({ origin: true, credentials: true }));
-app.use(express.json());
+app.use((req, _res, next) => {
+  if (req.body && typeof req.body === 'object') return next();
+  express.json()(req, _res, next);
+});
 app.use(cookieParser());
 
 // Lazy load routes to catch import errors
