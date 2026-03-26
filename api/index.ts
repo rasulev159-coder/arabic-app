@@ -12,7 +12,14 @@ const app = express();
 
 app.use(helmet());
 app.use(cors({ origin: true, credentials: true }));
-app.use(express.json({ strict: false }));
+// Vercel pre-parses JSON body, so we skip express.json()
+// and just ensure req.body is an object
+app.use((req: any, _res: any, next: any) => {
+  if (!req.body || typeof req.body !== 'object') {
+    req.body = {};
+  }
+  next();
+});
 app.use(cookieParser());
 
 // Lazy load routes to catch import errors
