@@ -4,25 +4,31 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-// Set paths for tsconfig-paths
 process.env.TS_NODE_BASEURL = __dirname + '/..';
 
 const app = express();
 
 app.use(helmet());
 app.use(cors({ origin: true, credentials: true }));
-// Vercel pre-parses JSON body, so we skip express.json()
-// and just ensure req.body is an object
-app.use((req: any, _res: any, next: any) => {
-  if (!req.body || typeof req.body !== 'object') {
-    req.body = {};
-  }
-  next();
-});
 app.use(cookieParser());
 
-// Lazy load routes to catch import errors
+// Parse JSON body - but handle Vercel's pre-parsed body too
+app.use((req, res, next) => {
+  const contentType = req.headers['content-type'] || '';
+  if (contentType.includes('application/json') && typeof req.body === 'string') {
+    try {
+      req.body = JSON.parse(req.body);
+    } catch {}
+  }
+  if (!req.body || typeof req.body !== 'object') {
+    express.json()(req, res, next);
+  } else {
+    next();
+  }
+});
+
 try {
   const { authRouter }         = require('../apps/backend/src/routes/auth');
   const { userRouter }         = require('../apps/backend/src/routes/user');
@@ -47,4 +53,11 @@ try {
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
 
-export default app;
+// Vercel handler wrapper
+export default function handler(req: VercelRequest, res: VercelResponse) {
+  // Ensure body is available to Express
+  if (req.body && typeof req.body === 'object') {
+    (req as any)._body = true;  // Tell express.json() body is already parsed
+  }
+  return app(req as any, res as any);
+}
