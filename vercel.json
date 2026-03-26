@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "framework": "vite",
+  "installCommand": "npm install -g pnpm@8 && pnpm install && pnpm --filter=backend exec prisma generate",
+  "buildCommand": "pnpm --filter=frontend build",
+  "outputDirectory": "apps/frontend/dist",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" }
+  ]
+}
