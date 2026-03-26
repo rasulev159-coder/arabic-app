@@ -7,10 +7,9 @@ import { checkAndUnlockAchievements }  from '../services/achievements';
 import { updateStreak } from '../services/streak';
 
 export const challengesRouter = Router();
-challengesRouter.use(requireAuth);
 
 // POST /api/challenges — create challenge
-challengesRouter.post('/', async (req: AuthRequest, res: Response): Promise<void> => {
+challengesRouter.post('/', requireAuth, async (req: AuthRequest, res: Response): Promise<void> => {
   const parsed = z.object({
     mode: z.enum(['flashcard','quiz','speed','lightning','memory','listen','find','write']),
   }).safeParse(req.body);
@@ -34,7 +33,7 @@ challengesRouter.post('/', async (req: AuthRequest, res: Response): Promise<void
   res.status(201).json({ ok: true, data: formatChallenge(challenge) });
 });
 
-// GET /api/challenges/:token
+// GET /api/challenges/:token (public — no auth required)
 challengesRouter.get('/:token', async (req: AuthRequest, res: Response): Promise<void> => {
   const challenge = await prisma.challenge.findUnique({
     where: { shareToken: req.params.token },
@@ -57,7 +56,7 @@ challengesRouter.get('/:token', async (req: AuthRequest, res: Response): Promise
 });
 
 // POST /api/challenges/:token/accept
-challengesRouter.post('/:token/accept', async (req: AuthRequest, res: Response): Promise<void> => {
+challengesRouter.post('/:token/accept', requireAuth, async (req: AuthRequest, res: Response): Promise<void> => {
   const challenge = await prisma.challenge.findUnique({ where: { shareToken: req.params.token } });
   if (!challenge) {
     res.status(404).json({ ok: false, error: 'Challenge not found' });
@@ -89,7 +88,7 @@ challengesRouter.post('/:token/accept', async (req: AuthRequest, res: Response):
 });
 
 // POST /api/challenges/:token/result
-challengesRouter.post('/:token/result', async (req: AuthRequest, res: Response): Promise<void> => {
+challengesRouter.post('/:token/result', requireAuth, async (req: AuthRequest, res: Response): Promise<void> => {
   const parsed = z.object({
     score:       z.number().int().min(0),
     durationSec: z.number().int().min(0),

@@ -42,6 +42,7 @@ async function buildUserPublic(userId: string) {
     language:         user.language,
     createdAt:        user.createdAt.toISOString(),
     level:            getLevel(knownCount),
+    role:             user.role,
     knownLettersCount: knownCount,
     streak: {
       current:      user.streak?.current      ?? 0,

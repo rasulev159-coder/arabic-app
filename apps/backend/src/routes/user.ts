@@ -3,6 +3,7 @@ import { z }                from 'zod';
 import { prisma }           from '../lib/prisma';
 import { requireAuth, AuthRequest } from '../middleware/requireAuth';
 import { getLevel }         from '@arabic/shared';
+import { comparePassword, hashPassword } from '../lib/auth';
 
 export const userRouter = Router();
 userRouter.use(requireAuth);
@@ -24,6 +25,7 @@ async function buildPublic(userId: string) {
     language:         user.language,
     createdAt:        user.createdAt.toISOString(),
     level:            getLevel(knownCount),
+    role:             user.role,
     knownLettersCount: knownCount,
     streak: {
       current:      user.streak?.current      ?? 0,
@@ -53,6 +55,36 @@ userRouter.patch('/me', async (req: AuthRequest, res: Response): Promise<void> =
   }
   await prisma.user.update({ where: { id: req.userId! }, data: parsed.data });
   res.json({ ok: true, data: await buildPublic(req.userId!) });
+});
+
+// PATCH /api/user/password
+const passwordSchema = z.object({
+  currentPassword: z.string().min(1),
+  newPassword:     z.string().min(6),
+});
+
+userRouter.patch('/password', async (req: AuthRequest, res: Response): Promise<void> => {
+  const parsed = passwordSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ ok: false, error: parsed.error.issues[0].message });
+    return;
+  }
+
+  const user = await prisma.user.findUnique({ where: { id: req.userId! } });
+  if (!user || !user.passwordHash) {
+    res.status(400).json({ ok: false, error: 'Password login not configured' });
+    return;
+  }
+
+  const valid = await comparePassword(parsed.data.currentPassword, user.passwordHash);
+  if (!valid) {
+    res.status(401).json({ ok: false, error: 'Current password is incorrect' });
+    return;
+  }
+
+  const newHash = await hashPassword(parsed.data.newPassword);
+  await prisma.user.update({ where: { id: req.userId! }, data: { passwordHash: newHash } });
+  res.json({ ok: true });
 });
 
 // PATCH /api/user/language

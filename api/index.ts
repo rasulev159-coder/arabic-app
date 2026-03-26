@@ -36,7 +36,11 @@ try {
   const { achievementsRouter } = require('../apps/backend/src/routes/achievements');
   const { leaderboardRouter }  = require('../apps/backend/src/routes/leaderboard');
   const { challengesRouter }   = require('../apps/backend/src/routes/challenges');
+  const { adminRouter }        = require('../apps/backend/src/routes/admin');
+  const { letterRouter }       = require('../apps/backend/src/routes/letters');
   const { errorHandler }       = require('../apps/backend/src/middleware/errorHandler');
+  const { requireAuth }        = require('../apps/backend/src/middleware/requireAuth');
+  const { requireAdmin }       = require('../apps/backend/src/middleware/requireAdmin');
 
   app.use('/api/auth',         authRouter);
   app.use('/api/user',         userRouter);
@@ -44,6 +48,8 @@ try {
   app.use('/api/achievements', achievementsRouter);
   app.use('/api/leaderboard',  leaderboardRouter);
   app.use('/api/challenges',   challengesRouter);
+  app.use('/api/admin',        requireAuth, requireAdmin, adminRouter);
+  app.use('/api/letters',      letterRouter);
   app.use(errorHandler);
 } catch (err) {
   app.use('/api', (_req, res) => {

@@ -11,6 +11,8 @@ import { DashboardPage }    from './pages/Dashboard';
 import { AlphabetPage, ProgressPage, AchievementsPage,
          LeaderboardPage, SettingsPage, ChallengePage } from './pages/AllPages';
 
+import { AdminPage }        from './pages/Admin';
+
 // Learn modes
 import { FlashcardsPage }  from './pages/learn/Flashcards';
 import { QuizPage }        from './pages/learn/Quiz';
@@ -85,6 +87,7 @@ export default function App() {
           <Route path="/learn/listen"       element={<ListenPage />} />
           <Route path="/learn/find"         element={<FindPage />} />
           <Route path="/learn/write"        element={<WritePage />} />
+          <Route path="/admin"             element={<AdminPage />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />

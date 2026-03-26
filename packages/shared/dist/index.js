@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ACHIEVEMENTS_SEED = exports.LETTERS = exports.LEVEL_LABELS = void 0;
 exports.getLevel = getLevel;
 exports.getLetterName = getLetterName;
+exports.getLetterAssociation = getLetterAssociation;
 function getLevel(knownCount) {
     if (knownCount <= 6)
         return 'beginner';
@@ -54,6 +55,13 @@ function getLetterName(letter, lang) {
     if (lang === 'uz')
         return letter.nameUz;
     return letter.nameEn;
+}
+function getLetterAssociation(letter, lang) {
+    if (lang === 'ru')
+        return letter.associationRu;
+    if (lang === 'uz')
+        return letter.associationUz;
+    return letter.associationEn;
 }
 // ─── Seeder data ──────────────────────────────────────────────────────────────
 exports.ACHIEVEMENTS_SEED = [

@@ -34,6 +34,7 @@ export interface UserPublic {
     language: Language;
     createdAt: string;
     level: UserLevel;
+    role?: string;
     streak: StreakInfo;
     knownLettersCount: number;
 }
@@ -61,10 +62,14 @@ export interface ArabicLetter {
     med: string;
     fin: string;
     group?: LetterGroup;
+    associationRu?: string;
+    associationUz?: string;
+    associationEn?: string;
 }
 export type LetterGroup = 'btt' | 'jch' | 'dz' | 'rz' | 'ss' | 'sd' | 'tz' | 'ag' | 'fq';
 export declare const LETTERS: ArabicLetter[];
 export declare function getLetterName(letter: ArabicLetter, lang: Language): string;
+export declare function getLetterAssociation(letter: ArabicLetter, lang: Language): string | undefined;
 export interface LetterProgressDto {
     letterCode: string;
     known: boolean;

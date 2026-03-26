@@ -39,5 +39,22 @@
   "next": "Next →",
   "start": "Start",
   "restart": "Start Over",
-  "finish": "Finish"
+  "finish": "Finish",
+  "settings": {
+    "profile": "Profile",
+    "change_name": "Change name",
+    "change_password": "Change password",
+    "current_password": "Current password",
+    "new_password": "New password",
+    "confirm_password": "Confirm password",
+    "password_changed": "Password changed",
+    "name_updated": "Name updated",
+    "language": "Language",
+    "account": "Account"
+  },
+  "rank": {
+    "speed": "in speed ranking",
+    "streak": "in streak ranking",
+    "not_ranked": "Not ranked"
+  }
 }

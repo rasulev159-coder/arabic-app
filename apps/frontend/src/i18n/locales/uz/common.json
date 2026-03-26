@@ -39,5 +39,22 @@
   "next": "Keyingi →",
   "start": "Boshlash",
   "restart": "Qayta boshlash",
-  "finish": "Tugatish"
+  "finish": "Tugatish",
+  "settings": {
+    "profile": "Profil",
+    "change_name": "Ismni o'zgartirish",
+    "change_password": "Parolni o'zgartirish",
+    "current_password": "Joriy parol",
+    "new_password": "Yangi parol",
+    "confirm_password": "Parolni tasdiqlang",
+    "password_changed": "Parol o'zgartirildi",
+    "name_updated": "Ism yangilandi",
+    "language": "Til",
+    "account": "Hisob"
+  },
+  "rank": {
+    "speed": "tezlik reytingida",
+    "streak": "ketma-ketlik reytingida",
+    "not_ranked": "Reytingda yo'q"
+  }
 }

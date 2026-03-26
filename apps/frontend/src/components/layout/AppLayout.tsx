@@ -1,4 +1,4 @@
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { Outlet, NavLink, Link, useNavigate } from 'react-router-dom';
 import { useTranslation }  from 'react-i18next';
 import { useAuthStore }    from '../../store/authStore';
 import { LevelBadge, StreakBadge, LanguageSwitcher } from '../ui/Badges';
@@ -27,12 +27,12 @@ export function AppLayout() {
       {/* Sidebar */}
       <aside className="hidden md:flex flex-col w-60 bg-[#0d0a07] border-r border-[rgba(201,168,76,0.1)] px-4 py-6 gap-3">
         {/* Logo */}
-        <div className="text-center mb-4">
+        <Link to="/dashboard" className="text-center mb-4 block cursor-pointer hover:opacity-80 transition-opacity">
           <p className="font-scheherazade text-3xl text-gold">الأبجدية</p>
           <p className="font-cinzel text-[0.6rem] tracking-[4px] text-[#9a8a6a] uppercase mt-1">
             {t('app_name')}
           </p>
-        </div>
+        </Link>
 
         {/* User info */}
         {user && (
@@ -61,6 +61,20 @@ export function AppLayout() {
               {t(`nav.${key}`)}
             </NavLink>
           ))}
+          {user?.role === 'admin' && (
+            <NavLink
+              to="/admin"
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2.5 rounded-xl font-cinzel text-xs tracking-widest uppercase transition-all
+                 ${isActive
+                   ? 'bg-[rgba(201,168,76,0.1)] text-gold border border-[rgba(201,168,76,0.2)]'
+                   : 'text-[#9a8a6a] hover:text-gold hover:bg-[rgba(201,168,76,0.05)]'}`
+              }
+            >
+              <span className="text-base">🛠</span>
+              Админ
+            </NavLink>
+          )}
         </nav>
 
         <div className="mt-auto flex flex-col gap-3">

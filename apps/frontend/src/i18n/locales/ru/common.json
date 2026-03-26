@@ -39,5 +39,22 @@
   "next":    "Следующий →",
   "start":   "Начать",
   "restart": "Начать заново",
-  "finish":  "Завершить"
+  "finish":  "Завершить",
+  "settings": {
+    "profile": "Профиль",
+    "change_name": "Изменить имя",
+    "change_password": "Изменить пароль",
+    "current_password": "Текущий пароль",
+    "new_password": "Новый пароль",
+    "confirm_password": "Подтвердите пароль",
+    "password_changed": "Пароль изменен",
+    "name_updated": "Имя обновлено",
+    "language": "Язык",
+    "account": "Аккаунт"
+  },
+  "rank": {
+    "speed": "в рейтинге скорости",
+    "streak": "в рейтинге серий",
+    "not_ranked": "Нет в рейтинге"
+  }
 }

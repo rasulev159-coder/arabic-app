@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { Link }            from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation }  from 'react-i18next';
 import { useAuthStore }    from '../../store/authStore';
@@ -152,6 +153,11 @@ export function QuizPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-8 gap-5">
+      {/* Game header */}
+      <div className="w-full max-w-md flex items-center gap-3 mb-4">
+        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <h1 className="font-cinzel text-sm tracking-widest text-[#9a8a6a] uppercase">{t('quiz.title')}</h1>
+      </div>
       <div className="w-full max-w-md">
         <div className="h-1 bg-[rgba(255,255,255,0.05)] rounded-full overflow-hidden mb-2">
           <div className="h-full bg-gradient-to-r from-gold-dim to-gold-light transition-all"

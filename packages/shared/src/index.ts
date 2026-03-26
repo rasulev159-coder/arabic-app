@@ -48,6 +48,7 @@ export interface UserPublic {
   language: Language;
   createdAt: string;
   level: UserLevel;
+  role?: string;
   streak: StreakInfo;
   knownLettersCount: number;
 }
@@ -94,6 +95,9 @@ export interface ArabicLetter {
   med: string;
   fin: string;
   group?: LetterGroup; // confusable group
+  associationRu?: string;
+  associationUz?: string;
+  associationEn?: string;
 }
 
 export type LetterGroup =
@@ -135,6 +139,12 @@ export function getLetterName(letter: ArabicLetter, lang: Language): string {
   if (lang === 'ru') return letter.nameRu;
   if (lang === 'uz') return letter.nameUz;
   return letter.nameEn;
+}
+
+export function getLetterAssociation(letter: ArabicLetter, lang: Language): string | undefined {
+  if (lang === 'ru') return letter.associationRu;
+  if (lang === 'uz') return letter.associationUz;
+  return letter.associationEn;
 }
 
 // ─── Progress ────────────────────────────────────────────────────────────────

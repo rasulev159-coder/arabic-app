@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Link }            from 'react-router-dom';
 import { motion, AnimatePresence }  from 'framer-motion';
 import { useTranslation }  from 'react-i18next';
 import { useAuthStore }    from '../../store/authStore';
@@ -101,6 +102,11 @@ export function SpeedPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-8 gap-6">
+      {/* Game header */}
+      <div className="w-full max-w-md flex items-center gap-3 mb-4">
+        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <h1 className="font-cinzel text-sm tracking-widest text-[#9a8a6a] uppercase">{t('speed.title')}</h1>
+      </div>
       {/* Timer */}
       <div className="w-full max-w-sm">
         <div className="flex justify-between font-cinzel text-sm mb-2">

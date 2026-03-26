@@ -1,6 +1,7 @@
 // ════ Alphabet.tsx ════════════════════════════════════════════════════════════
 import { useState, useRef }  from 'react';
 import { motion }            from 'framer-motion';
+import { useTranslation }   from 'react-i18next';
 import { useAuthStore }      from '../store/authStore';
 import { useProgress }       from '../hooks/useProgress';
 import { useAchievements }   from '../hooks/useAchievements';
@@ -310,16 +311,87 @@ export function LeaderboardPage() {
 
 // ════ Settings.tsx ════════════════════════════════════════════════════════════
 export function SettingsPage() {
-  const { user, setLanguage, logout } = useAuthStore();
+  const { t } = useTranslation('common');
+  const { user, setLanguage, logout, setUser } = useAuthStore();
   const navigate = useNavigate();
-  const lang = (user?.language ?? 'ru') as Language;
+  const lang = (user?.language ?? 'uz') as Language;
+
+  const [name, setName] = useState(user?.name ?? '');
+  const [nameMsg, setNameMsg] = useState('');
+  const [curPass, setCurPass] = useState('');
+  const [newPass, setNewPass] = useState('');
+  const [confirmPass, setConfirmPass] = useState('');
+  const [passMsg, setPassMsg] = useState('');
+  const [passErr, setPassErr] = useState('');
+
+  const saveName = async () => {
+    try {
+      const { data } = await api.patch('/user/me', { name });
+      if (user) setUser({ ...user, name });
+      setNameMsg(t('settings.name_updated'));
+      setTimeout(() => setNameMsg(''), 3000);
+    } catch (e: any) {
+      setNameMsg(e?.response?.data?.error ?? 'Error');
+    }
+  };
+
+  const changePassword = async () => {
+    setPassErr('');
+    setPassMsg('');
+    if (newPass !== confirmPass) { setPassErr('Passwords do not match'); return; }
+    if (newPass.length < 8) { setPassErr('Min 8 characters'); return; }
+    try {
+      await api.patch('/user/password', { currentPassword: curPass, newPassword: newPass });
+      setCurPass(''); setNewPass(''); setConfirmPass('');
+      setPassMsg(t('settings.password_changed'));
+      setTimeout(() => setPassMsg(''), 3000);
+    } catch (e: any) {
+      setPassErr(e?.response?.data?.error ?? 'Error');
+    }
+  };
+
+  const inputCls = `w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(201,168,76,0.2)]
+                    rounded-xl px-4 py-2.5 text-[#f0e6cc] font-raleway text-sm
+                    outline-none focus:border-gold-dim transition-colors`;
 
   return (
     <div className="max-w-md mx-auto px-4 py-8 pb-24 md:pb-8 flex flex-col gap-5">
-      <h1 className="font-cinzel text-[0.7rem] tracking-[4px] text-[#9a8a6a] uppercase text-center mb-2">Настройки</h1>
+      <h1 className="font-cinzel text-[0.7rem] tracking-[4px] text-[#9a8a6a] uppercase text-center mb-2">
+        {t('nav.settings')}
+      </h1>
 
+      {/* Profile section */}
       <div className="bg-gradient-to-br from-[#201808] to-[#140f05] border border-[#3a2d10] rounded-2xl p-5 flex flex-col gap-4">
-        <p className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase">Язык интерфейса</p>
+        <p className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase">{t('settings.profile')}</p>
+        <p className="font-raleway text-xs text-[#9a8a6a]">{user?.email}</p>
+        <div className="flex gap-2">
+          <input
+            type="text" value={name} onChange={e => setName(e.target.value)}
+            placeholder={t('auth.name')}
+            className={inputCls + ' flex-1'}
+          />
+          <Button size="sm" onClick={saveName}>{t('settings.change_name')}</Button>
+        </div>
+        {nameMsg && <p className="font-cinzel text-xs text-[#4caf78] tracking-widest">{nameMsg}</p>}
+      </div>
+
+      {/* Password section */}
+      <div className="bg-gradient-to-br from-[#201808] to-[#140f05] border border-[#3a2d10] rounded-2xl p-5 flex flex-col gap-3">
+        <p className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase">{t('settings.change_password')}</p>
+        <input type="password" value={curPass} onChange={e => setCurPass(e.target.value)}
+          placeholder={t('settings.current_password')} className={inputCls} />
+        <input type="password" value={newPass} onChange={e => setNewPass(e.target.value)}
+          placeholder={t('settings.new_password')} className={inputCls} />
+        <input type="password" value={confirmPass} onChange={e => setConfirmPass(e.target.value)}
+          placeholder={t('settings.confirm_password')} className={inputCls} />
+        {passErr && <p className="font-cinzel text-xs text-[#c95050] tracking-widest">{passErr}</p>}
+        {passMsg && <p className="font-cinzel text-xs text-[#4caf78] tracking-widest">{passMsg}</p>}
+        <Button size="sm" onClick={changePassword}>{t('settings.change_password')}</Button>
+      </div>
+
+      {/* Language section */}
+      <div className="bg-gradient-to-br from-[#201808] to-[#140f05] border border-[#3a2d10] rounded-2xl p-5 flex flex-col gap-4">
+        <p className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase">{t('settings.language')}</p>
         <div className="flex gap-2">
           {([['ru','🇷🇺 Русский'],['uz','🇺🇿 O\'zbek'],['en','🇬🇧 English']] as const).map(([code, label]) => (
             <button key={code} onClick={() => setLanguage(code as Language)}
@@ -331,15 +403,13 @@ export function SettingsPage() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-br from-[#201808] to-[#140f05] border border-[#3a2d10] rounded-2xl p-5">
-        <p className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase mb-3">Аккаунт</p>
-        <p className="font-raleway text-sm text-[#f0e6cc] mb-1">{user?.name}</p>
-        <p className="font-raleway text-xs text-[#9a8a6a]">{user?.email}</p>
+      {/* Account section */}
+      <div className="bg-gradient-to-br from-[#201808] to-[#140f05] border border-[#3a2d10] rounded-2xl p-5 flex flex-col gap-3">
+        <p className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase">{t('settings.account')}</p>
+        <Button variant="danger" onClick={async () => { await logout(); navigate('/login'); }}>
+          {t('auth.logout')}
+        </Button>
       </div>
-
-      <Button variant="danger" onClick={async () => { await logout(); navigate('/login'); }}>
-        Выйти из аккаунта
-      </Button>
     </div>
   );
 }

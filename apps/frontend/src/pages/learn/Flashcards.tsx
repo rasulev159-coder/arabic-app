@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { Link }            from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation }  from 'react-i18next';
 import { useAuthStore }    from '../../store/authStore';
 import { useSaveSession }  from '../../hooks/useProgress';
 import { SessionResult }   from '../../components/learn/SessionResult';
 import { Button }          from '../../components/ui/Button';
-import { LETTERS, ArabicLetter, getLetterName } from '@arabic/shared';
+import { LETTERS, ArabicLetter, getLetterName, getLetterAssociation } from '@arabic/shared';
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -129,6 +130,11 @@ export function FlashcardsPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-6">
+      {/* Game header */}
+      <div className="w-full max-w-md flex items-center gap-3 mb-4">
+        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <h1 className="font-cinzel text-sm tracking-widest text-[#9a8a6a] uppercase">{t('flashcard.title')}</h1>
+      </div>
       {/* Stats bar */}
       <div className="w-full max-w-md mb-4">
         <div className="flex justify-between font-cinzel text-xs text-[#9a8a6a] mb-2">
@@ -201,6 +207,11 @@ export function FlashcardsPage() {
                 {getLetterName(current, lang)}
               </p>
               <p className="text-sm text-gold-dim">{current.transcription}</p>
+              {getLetterAssociation(current, lang) && (
+                <p className="font-raleway text-xs italic text-[#9a8a6a] mt-1 max-w-[16rem] text-center">
+                  {getLetterAssociation(current, lang)}
+                </p>
+              )}
               <div className="w-14 h-px bg-gradient-to-r from-transparent via-gold-dim to-transparent my-1" />
               <div className="flex gap-4">
                 {(['ini', 'med', 'fin', 'iso'] as const).map((pos) => (

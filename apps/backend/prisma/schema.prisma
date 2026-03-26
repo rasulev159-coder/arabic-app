@@ -15,6 +15,7 @@ model User {
   avatar       String?
   passwordHash String?
   googleId     String?  @unique
+  role         String   @default("user")
   language     String   @default("ru")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
@@ -111,6 +112,19 @@ model SpeedRecord {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("speed_records")
+}
+
+model LetterOverride {
+  letterCode    String   @id
+  nameRu        String?
+  nameUz        String?
+  nameEn        String?
+  associationRu String?
+  associationUz String?
+  associationEn String?
+  updatedAt     DateTime @updatedAt
+
+  @@map("letter_overrides")
 }
 
 model Challenge {

@@ -9,6 +9,8 @@ import { LevelBadge, StreakBadge } from '../components/ui/Badges';
 import { ProgressChart }   from '../components/progress/ProgressChart';
 import { Button }          from '../components/ui/Button';
 import { LETTERS, StudyMode } from '@arabic/shared';
+import { useQuery }        from '@tanstack/react-query';
+import { api }             from '../lib/api';
 
 const LEARN_MODES: { to: string; icon: string; key: StudyMode; color: string }[] = [
   { to: '/learn/flashcards', icon: '📇', key: 'flashcard', color: 'from-[#2a1f08] to-[#1a1005]' },
@@ -28,6 +30,20 @@ export function DashboardPage() {
   const createChallenge = useCreateChallenge();
   const [challengeLink, setChallengeLink] = useState<string | null>(null);
   const [challengeMode, setChallengeMode] = useState<StudyMode>('quiz');
+
+  const { data: speedBoard } = useQuery({
+    queryKey: ['leaderboard', 'speed-rank'],
+    queryFn: async () => (await api.get('/leaderboard/speed?mode=speed')).data.data,
+    staleTime: 60_000,
+  });
+  const { data: streakBoard } = useQuery({
+    queryKey: ['leaderboard', 'streak-rank'],
+    queryFn: async () => (await api.get('/leaderboard/streak')).data.data,
+    staleTime: 60_000,
+  });
+
+  const speedRank = (speedBoard as any[])?.find((e: any) => e.userId === user?.id)?.rank ?? null;
+  const streakRank = (streakBoard as any[])?.find((e: any) => e.userId === user?.id)?.rank ?? null;
 
   const knownCount = stats?.knownCount ?? 0;
   const progress   = Math.round(knownCount / LETTERS.length * 100);
@@ -83,6 +99,41 @@ export function DashboardPage() {
         </div>
         <ProgressChart days={14} />
       </motion.div>
+
+      {/* Leaderboard rank */}
+      {(speedRank || streakRank) && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="flex gap-3 mb-6"
+        >
+          {speedRank && (
+            <div className="flex-1 bg-gradient-to-br from-[#201808] to-[#140f05] border border-[#3a2d10]
+                            rounded-2xl p-4 flex items-center gap-3">
+              <span className="text-2xl">🏆</span>
+              <div>
+                <p className="font-cinzel text-lg text-gold-light font-bold">#{speedRank}</p>
+                <p className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase">
+                  {t('common:rank.speed')}
+                </p>
+              </div>
+            </div>
+          )}
+          {streakRank && (
+            <div className="flex-1 bg-gradient-to-br from-[#201808] to-[#140f05] border border-[#3a2d10]
+                            rounded-2xl p-4 flex items-center gap-3">
+              <span className="text-2xl">🔥</span>
+              <div>
+                <p className="font-cinzel text-lg text-gold-light font-bold">#{streakRank}</p>
+                <p className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase">
+                  {t('common:rank.streak')}
+                </p>
+              </div>
+            </div>
+          )}
+        </motion.div>
+      )}
 
       {/* Learn modes */}
       <h2 className="font-cinzel text-[0.7rem] tracking-[4px] text-[#9a8a6a] uppercase mb-4">

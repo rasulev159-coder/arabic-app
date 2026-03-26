@@ -40,7 +40,7 @@ export const useAuthStore = create<AuthState>()(
         }
       },
 
-      register: async (email, name, password, language = 'ru') => {
+      register: async (email, name, password, language = 'uz') => {
         set({ isLoading: true });
         try {
           const { data } = await api.post('/auth/register', { email, name, password, language });

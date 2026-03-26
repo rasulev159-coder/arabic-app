@@ -15,8 +15,12 @@ import { progressRouter }     from './routes/progress';
 import { achievementsRouter } from './routes/achievements';
 import { leaderboardRouter }  from './routes/leaderboard';
 import { challengesRouter }   from './routes/challenges';
+import { adminRouter }        from './routes/admin';
+import { letterRouter }       from './routes/letters';
 import { errorHandler }       from './middleware/errorHandler';
 import { authLimiter, apiLimiter } from './middleware/rateLimiter';
+import { requireAuth }        from './middleware/requireAuth';
+import { requireAdmin }       from './middleware/requireAdmin';
 import { setupWs }            from './lib/ws';
 
 const app = express();
@@ -40,6 +44,8 @@ app.use('/api/progress',     apiLimiter,   progressRouter);
 app.use('/api/achievements', apiLimiter,   achievementsRouter);
 app.use('/api/leaderboard',  apiLimiter,   leaderboardRouter);
 app.use('/api/challenges',   apiLimiter,   challengesRouter);
+app.use('/api/admin',        apiLimiter,   requireAuth, requireAdmin, adminRouter);
+app.use('/api/letters',      apiLimiter,   letterRouter);
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
 
