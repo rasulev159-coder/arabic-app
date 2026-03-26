@@ -12,7 +12,7 @@ const app = express();
 
 app.use(helmet());
 app.use(cors({ origin: true, credentials: true }));
-// Skip express.json() on Vercel — body is pre-parsed by the platform
+app.use(express.json({ strict: false }));
 app.use(cookieParser());
 
 // Lazy load routes to catch import errors
