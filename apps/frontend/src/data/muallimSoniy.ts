@@ -114,84 +114,589 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch1-q1',
         type: 'identify',
-        questionUz: "Bu harf qanday o'qiladi?",
-        questionRu: "Как читается эта буква?",
-        questionEn: "How is this letter read?",
-        arabic: "بَ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَزْ",
         options: [
-          { text: "ba", isCorrect: true },
-          { text: "bi", isCorrect: false },
-          { text: "bu", isCorrect: false },
-          { text: "ab", isCorrect: false }
+          { text: "az", isCorrect: true },
+          { text: "iz", isCorrect: false },
+          { text: "uz", isCorrect: false },
+          { text: "za", isCorrect: false }
         ]
       },
       {
         id: 'ch1-q2',
         type: 'identify',
-        questionUz: "Bu harf qanday o'qiladi?",
-        questionRu: "Как читается эта буква?",
-        questionEn: "How is this letter read?",
-        arabic: "مُ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اِزْ",
         options: [
-          { text: "ma", isCorrect: false },
-          { text: "mi", isCorrect: false },
-          { text: "mu", isCorrect: true },
-          { text: "um", isCorrect: false }
+          { text: "az", isCorrect: false },
+          { text: "iz", isCorrect: true },
+          { text: "uz", isCorrect: false },
+          { text: "zi", isCorrect: false }
         ]
       },
       {
         id: 'ch1-q3',
         type: 'identify',
-        questionUz: "Bu harfda qanday harakat bor?",
-        questionRu: "Какая огласовка на этой букве?",
-        questionEn: "What vowel mark is on this letter?",
-        arabic: "تِ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اُزْ",
         options: [
-          { text: "Fatha — chiziqcha ustida", isCorrect: false },
-          { text: "Kasra — chiziqcha ostida", isCorrect: true },
-          { text: "Damma — aylancha ustida", isCorrect: false },
-          { text: "Sukun — doiracha ustida", isCorrect: false }
+          { text: "az", isCorrect: false },
+          { text: "uz", isCorrect: true },
+          { text: "iz", isCorrect: false },
+          { text: "zu", isCorrect: false }
         ]
       },
       {
         id: 'ch1-q4',
         type: 'identify',
-        questionUz: "Bu bo'g'in qanday o'qiladi?",
-        questionRu: "Как читается этот слог?",
-        questionEn: "How is this syllable read?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "اَرْ",
         options: [
-          { text: "ar", isCorrect: true },
-          { text: "ra", isCorrect: false },
           { text: "ir", isCorrect: false },
-          { text: "ur", isCorrect: false }
+          { text: "ur", isCorrect: false },
+          { text: "ar", isCorrect: true },
+          { text: "ra", isCorrect: false }
         ]
       },
       {
         id: 'ch1-q5',
         type: 'identify',
-        questionUz: "Bu harf qanday o'qiladi?",
-        questionRu: "Как читается эта буква?",
-        questionEn: "How is this letter read?",
-        arabic: "نِ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اِرْ",
         options: [
-          { text: "na", isCorrect: false },
-          { text: "nu", isCorrect: false },
-          { text: "ni", isCorrect: true },
-          { text: "in", isCorrect: false }
+          { text: "ir", isCorrect: true },
+          { text: "ar", isCorrect: false },
+          { text: "ur", isCorrect: false },
+          { text: "ri", isCorrect: false }
         ]
       },
       {
         id: 'ch1-q6',
-        type: 'multiple_choice',
-        questionUz: "Kasra qanday tovush beradi?",
-        questionRu: "Какой звук даёт касра?",
-        questionEn: "What sound does kasra give?",
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اُرْ",
         options: [
-          { text: "a", isCorrect: false },
-          { text: "i", isCorrect: true },
-          { text: "u", isCorrect: false },
-          { text: "o", isCorrect: false }
+          { text: "ar", isCorrect: false },
+          { text: "ur", isCorrect: true },
+          { text: "ir", isCorrect: false },
+          { text: "ru", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q7',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَمْ",
+        options: [
+          { text: "am", isCorrect: true },
+          { text: "im", isCorrect: false },
+          { text: "um", isCorrect: false },
+          { text: "ma", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q8',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اِمْ",
+        options: [
+          { text: "am", isCorrect: false },
+          { text: "im", isCorrect: true },
+          { text: "um", isCorrect: false },
+          { text: "mi", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q9',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اُمْ",
+        options: [
+          { text: "um", isCorrect: true },
+          { text: "am", isCorrect: false },
+          { text: "im", isCorrect: false },
+          { text: "mu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q10',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مُزْ",
+        options: [
+          { text: "maz", isCorrect: false },
+          { text: "muz", isCorrect: true },
+          { text: "miz", isCorrect: false },
+          { text: "zum", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q11',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "رُمْ",
+        options: [
+          { text: "ram", isCorrect: false },
+          { text: "rim", isCorrect: false },
+          { text: "rum", isCorrect: true },
+          { text: "mur", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q12',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَمَرَ",
+        options: [
+          { text: "amara", isCorrect: true },
+          { text: "umira", isCorrect: false },
+          { text: "amuru", isCorrect: false },
+          { text: "imara", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q13',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اُمِرَ",
+        options: [
+          { text: "amara", isCorrect: false },
+          { text: "umira", isCorrect: true },
+          { text: "amuru", isCorrect: false },
+          { text: "umara", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q14',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَمُرُ",
+        options: [
+          { text: "amara", isCorrect: false },
+          { text: "amuru", isCorrect: true },
+          { text: "umira", isCorrect: false },
+          { text: "amiru", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q15',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مُتْ",
+        options: [
+          { text: "mat", isCorrect: false },
+          { text: "mit", isCorrect: false },
+          { text: "mut", isCorrect: true },
+          { text: "tum", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q16',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مِتْ",
+        options: [
+          { text: "mit", isCorrect: true },
+          { text: "mat", isCorrect: false },
+          { text: "mut", isCorrect: false },
+          { text: "tim", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q17',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "تَمُزْ",
+        options: [
+          { text: "tamiz", isCorrect: false },
+          { text: "tamuz", isCorrect: true },
+          { text: "tumaz", isCorrect: false },
+          { text: "timuz", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q18',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "تَرَزَ",
+        options: [
+          { text: "taraza", isCorrect: true },
+          { text: "turiza", isCorrect: false },
+          { text: "tariza", isCorrect: false },
+          { text: "turaza", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q19',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "ذُرِتْ",
+        options: [
+          { text: "dharit", isCorrect: false },
+          { text: "dhurit", isCorrect: true },
+          { text: "dhurat", isCorrect: false },
+          { text: "dharut", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q20',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَمَرْتْ",
+        options: [
+          { text: "amart", isCorrect: true },
+          { text: "amirt", isCorrect: false },
+          { text: "umurt", isCorrect: false },
+          { text: "amarat", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q21',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مَرَزْتْ",
+        options: [
+          { text: "marizt", isCorrect: false },
+          { text: "marazt", isCorrect: true },
+          { text: "muruzt", isCorrect: false },
+          { text: "mirаzt", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q22',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَنْ",
+        options: [
+          { text: "an", isCorrect: true },
+          { text: "in", isCorrect: false },
+          { text: "un", isCorrect: false },
+          { text: "na", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q23',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اِنْ",
+        options: [
+          { text: "an", isCorrect: false },
+          { text: "in", isCorrect: true },
+          { text: "un", isCorrect: false },
+          { text: "ni", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q24',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "زَنْ",
+        options: [
+          { text: "zan", isCorrect: true },
+          { text: "zin", isCorrect: false },
+          { text: "zun", isCorrect: false },
+          { text: "naz", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q25',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مَنْ",
+        options: [
+          { text: "man", isCorrect: true },
+          { text: "min", isCorrect: false },
+          { text: "mun", isCorrect: false },
+          { text: "nam", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q26',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مِنْ",
+        options: [
+          { text: "man", isCorrect: false },
+          { text: "min", isCorrect: true },
+          { text: "mun", isCorrect: false },
+          { text: "nim", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q27',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "نُمْ",
+        options: [
+          { text: "nam", isCorrect: false },
+          { text: "nim", isCorrect: false },
+          { text: "num", isCorrect: true },
+          { text: "mun", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q28',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَنْتَ",
+        options: [
+          { text: "anta", isCorrect: true },
+          { text: "anti", isCorrect: false },
+          { text: "antu", isCorrect: false },
+          { text: "unta", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q29',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَنْتُمْ",
+        options: [
+          { text: "antim", isCorrect: false },
+          { text: "antum", isCorrect: true },
+          { text: "antam", isCorrect: false },
+          { text: "untum", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q30',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "زَيْتْ",
+        options: [
+          { text: "zayt", isCorrect: true },
+          { text: "ziyt", isCorrect: false },
+          { text: "zuyt", isCorrect: false },
+          { text: "tayz", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q31',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مَيْتْ",
+        options: [
+          { text: "miyt", isCorrect: false },
+          { text: "mayt", isCorrect: true },
+          { text: "muyt", isCorrect: false },
+          { text: "taym", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q32',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "رَمْيْ",
+        options: [
+          { text: "ramy", isCorrect: true },
+          { text: "rami", isCorrect: false },
+          { text: "rumu", isCorrect: false },
+          { text: "rimy", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q33',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "يَمَنَ",
+        options: [
+          { text: "yumina", isCorrect: false },
+          { text: "yamana", isCorrect: true },
+          { text: "yamina", isCorrect: false },
+          { text: "yumana", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q34',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مَرْيَمُ",
+        options: [
+          { text: "maryamu", isCorrect: true },
+          { text: "maryimu", isCorrect: false },
+          { text: "muryamu", isCorrect: false },
+          { text: "marimu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q35',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مَيْمَنَ",
+        options: [
+          { text: "maymina", isCorrect: false },
+          { text: "maymana", isCorrect: true },
+          { text: "muymana", isCorrect: false },
+          { text: "maymuna", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q36',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَيْمَنَ",
+        options: [
+          { text: "aymana", isCorrect: true },
+          { text: "aymina", isCorrect: false },
+          { text: "uymana", isCorrect: false },
+          { text: "aymuna", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q37',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اِبْنْ",
+        options: [
+          { text: "ibn", isCorrect: true },
+          { text: "iban", isCorrect: false },
+          { text: "ibin", isCorrect: false },
+          { text: "abn", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q38',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "بِنْتْ",
+        options: [
+          { text: "bant", isCorrect: false },
+          { text: "bint", isCorrect: true },
+          { text: "bunt", isCorrect: false },
+          { text: "nibt", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q39',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "بَيْنْ",
+        options: [
+          { text: "bayn", isCorrect: true },
+          { text: "biyn", isCorrect: false },
+          { text: "buyn", isCorrect: false },
+          { text: "nayb", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q40',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "زَيْنَبْ",
+        options: [
+          { text: "zaynib", isCorrect: false },
+          { text: "zuynab", isCorrect: false },
+          { text: "zaynab", isCorrect: true },
+          { text: "ziynab", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q41',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "بَيْرَمْ",
+        options: [
+          { text: "bayram", isCorrect: true },
+          { text: "bayrim", isCorrect: false },
+          { text: "buyram", isCorrect: false },
+          { text: "biyram", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q42',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَبْرَمْ",
+        options: [
+          { text: "ibram", isCorrect: false },
+          { text: "abram", isCorrect: true },
+          { text: "ubram", isCorrect: false },
+          { text: "abrim", isCorrect: false }
         ]
       }
     ]
@@ -259,71 +764,547 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch2-q1',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "كَتَبَ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كَمْ",
         options: [
-          { text: "kataba", isCorrect: true },
-          { text: "kutiba", isCorrect: false },
-          { text: "katba", isCorrect: false },
-          { text: "kitaba", isCorrect: false }
+          { text: "kam", isCorrect: true },
+          { text: "kim", isCorrect: false },
+          { text: "kum", isCorrect: false },
+          { text: "mak", isCorrect: false }
         ]
       },
       {
         id: 'ch2-q2',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "قَلَمْ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كُمْ",
         options: [
-          { text: "qulam", isCorrect: false },
-          { text: "qalam", isCorrect: true },
-          { text: "kilam", isCorrect: false },
-          { text: "qalmu", isCorrect: false }
+          { text: "kam", isCorrect: false },
+          { text: "kum", isCorrect: true },
+          { text: "kim", isCorrect: false },
+          { text: "muk", isCorrect: false }
         ]
       },
       {
         id: 'ch2-q3',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "شَرِبَ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كُنْ",
         options: [
-          { text: "sharaba", isCorrect: false },
-          { text: "shurba", isCorrect: false },
-          { text: "shariba", isCorrect: true },
-          { text: "shirba", isCorrect: false }
+          { text: "kun", isCorrect: true },
+          { text: "kan", isCorrect: false },
+          { text: "kin", isCorrect: false },
+          { text: "nuk", isCorrect: false }
         ]
       },
       {
         id: 'ch2-q4',
         type: 'identify',
-        questionUz: "Bu harfda qanday harakat bor?",
-        questionRu: "Какая огласовка на выделенной букве?",
-        questionEn: "What vowel mark is on this letter?",
-        arabic: "هُوَ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كَيْ",
         options: [
-          { text: "hu-wa", isCorrect: true },
-          { text: "ha-wa", isCorrect: false },
-          { text: "hi-ya", isCorrect: false },
-          { text: "ho-wa", isCorrect: false }
+          { text: "kiy", isCorrect: false },
+          { text: "kay", isCorrect: true },
+          { text: "kuy", isCorrect: false },
+          { text: "yak", isCorrect: false }
         ]
       },
       {
         id: 'ch2-q5',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "بَكُرْ",
+        options: [
+          { text: "bakur", isCorrect: true },
+          { text: "bukur", isCorrect: false },
+          { text: "bikur", isCorrect: false },
+          { text: "bakir", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q6',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مَكُرْ",
+        options: [
+          { text: "mukur", isCorrect: false },
+          { text: "makur", isCorrect: true },
+          { text: "mikur", isCorrect: false },
+          { text: "makir", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q7',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كَوْمْ",
+        options: [
+          { text: "kawm", isCorrect: true },
+          { text: "kuwm", isCorrect: false },
+          { text: "kaym", isCorrect: false },
+          { text: "kiwm", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q8',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كَنْزْ",
+        options: [
+          { text: "kinz", isCorrect: false },
+          { text: "kanz", isCorrect: true },
+          { text: "kunz", isCorrect: false },
+          { text: "nazk", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q9',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كَتَبَ",
+        options: [
+          { text: "kataba", isCorrect: true },
+          { text: "kutiba", isCorrect: false },
+          { text: "kitaba", isCorrect: false },
+          { text: "katba", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q10',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "يَكْتُبُ",
+        options: [
+          { text: "yaktabu", isCorrect: false },
+          { text: "yaktubu", isCorrect: true },
+          { text: "yuktibu", isCorrect: false },
+          { text: "yaktibu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q11',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "تَرَكَ",
+        options: [
+          { text: "taraka", isCorrect: true },
+          { text: "turika", isCorrect: false },
+          { text: "taruka", isCorrect: false },
+          { text: "tiraka", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q12',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "لَمْ",
+        options: [
+          { text: "lim", isCorrect: false },
+          { text: "lam", isCorrect: true },
+          { text: "lum", isCorrect: false },
+          { text: "mal", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q13',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "لَنْ",
+        options: [
+          { text: "lan", isCorrect: true },
+          { text: "lin", isCorrect: false },
+          { text: "lun", isCorrect: false },
+          { text: "nal", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q14',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كُلْ",
+        options: [
+          { text: "kal", isCorrect: false },
+          { text: "kul", isCorrect: true },
+          { text: "kil", isCorrect: false },
+          { text: "luk", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q15',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "بَلْ",
+        options: [
+          { text: "bal", isCorrect: true },
+          { text: "bil", isCorrect: false },
+          { text: "bul", isCorrect: false },
+          { text: "lab", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q16',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كَمَلَ",
+        options: [
+          { text: "kumila", isCorrect: false },
+          { text: "kamala", isCorrect: true },
+          { text: "kimala", isCorrect: false },
+          { text: "kamula", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q17',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَنْزَلَ",
+        options: [
+          { text: "anzala", isCorrect: true },
+          { text: "inzala", isCorrect: false },
+          { text: "unzula", isCorrect: false },
+          { text: "anzila", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q18',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَكْمَلَ",
+        options: [
+          { text: "ikmala", isCorrect: false },
+          { text: "akmala", isCorrect: true },
+          { text: "ukmula", isCorrect: false },
+          { text: "akmila", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q19',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "بُلْبُلْ",
         options: [
           { text: "bulbul", isCorrect: true },
           { text: "bilbil", isCorrect: false },
           { text: "balbul", isCorrect: false },
-          { text: "bolbol", isCorrect: false }
+          { text: "bulbal", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q20',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "تَزَلْزَلَ",
+        options: [
+          { text: "tuzulzula", isCorrect: false },
+          { text: "tazalzala", isCorrect: true },
+          { text: "tizilzila", isCorrect: false },
+          { text: "tazulzala", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q21',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "هَلْ",
+        options: [
+          { text: "hal", isCorrect: true },
+          { text: "hil", isCorrect: false },
+          { text: "hul", isCorrect: false },
+          { text: "lah", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q22',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "هُوَ",
+        options: [
+          { text: "hiwa", isCorrect: false },
+          { text: "huwa", isCorrect: true },
+          { text: "hawa", isCorrect: false },
+          { text: "huya", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q23',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "هِيَ",
+        options: [
+          { text: "hiya", isCorrect: true },
+          { text: "huya", isCorrect: false },
+          { text: "hawa", isCorrect: false },
+          { text: "hiyya", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q24',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "هُمْ",
+        options: [
+          { text: "ham", isCorrect: false },
+          { text: "hum", isCorrect: true },
+          { text: "him", isCorrect: false },
+          { text: "muh", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q25',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "وَهَبَ",
+        options: [
+          { text: "wahaba", isCorrect: true },
+          { text: "wahiba", isCorrect: false },
+          { text: "wuhuba", isCorrect: false },
+          { text: "wahuba", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q26',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "لَهَبْ",
+        options: [
+          { text: "luhub", isCorrect: false },
+          { text: "lahab", isCorrect: true },
+          { text: "lahib", isCorrect: false },
+          { text: "lihab", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q27',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "لَهُمْ",
+        options: [
+          { text: "lahum", isCorrect: true },
+          { text: "lahim", isCorrect: false },
+          { text: "luhum", isCorrect: false },
+          { text: "laham", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q28',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "فَمْ",
+        options: [
+          { text: "fim", isCorrect: false },
+          { text: "fam", isCorrect: true },
+          { text: "fum", isCorrect: false },
+          { text: "maf", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q29',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "فَنْ",
+        options: [
+          { text: "fan", isCorrect: true },
+          { text: "fin", isCorrect: false },
+          { text: "fun", isCorrect: false },
+          { text: "naf", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q30',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "قَلَمْ",
+        options: [
+          { text: "qulam", isCorrect: false },
+          { text: "qalam", isCorrect: true },
+          { text: "qilam", isCorrect: false },
+          { text: "qalim", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q31',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "قُمْ",
+        options: [
+          { text: "qum", isCorrect: true },
+          { text: "qam", isCorrect: false },
+          { text: "qim", isCorrect: false },
+          { text: "muq", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q32',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "قَلْبُ",
+        options: [
+          { text: "qulbu", isCorrect: false },
+          { text: "qalbu", isCorrect: true },
+          { text: "qilbu", isCorrect: false },
+          { text: "qalbi", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q33',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "قَمَرْ",
+        options: [
+          { text: "qamar", isCorrect: true },
+          { text: "qumar", isCorrect: false },
+          { text: "qimar", isCorrect: false },
+          { text: "qamir", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q34',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "لَقَبْ",
+        options: [
+          { text: "luqub", isCorrect: false },
+          { text: "laqab", isCorrect: true },
+          { text: "liqab", isCorrect: false },
+          { text: "laqib", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q35',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "شَرِبَ",
+        options: [
+          { text: "shariba", isCorrect: true },
+          { text: "sharaba", isCorrect: false },
+          { text: "shuriba", isCorrect: false },
+          { text: "shirba", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q36',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "شَهْرُ",
+        options: [
+          { text: "shahri", isCorrect: false },
+          { text: "shahru", isCorrect: true },
+          { text: "shuhru", isCorrect: false },
+          { text: "shahru", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q37',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "شُكْرُ",
+        options: [
+          { text: "shukru", isCorrect: true },
+          { text: "shukri", isCorrect: false },
+          { text: "shakru", isCorrect: false },
+          { text: "shikru", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q38',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مَشْرَبْ",
+        options: [
+          { text: "mushrib", isCorrect: false },
+          { text: "mashrab", isCorrect: true },
+          { text: "mashrib", isCorrect: false },
+          { text: "mushrab", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch2-q39',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مُشْتَرَكْ",
+        options: [
+          { text: "mushtarak", isCorrect: true },
+          { text: "mushtirak", isCorrect: false },
+          { text: "mushtarik", isCorrect: false },
+          { text: "mishtarak", isCorrect: false }
         ]
       }
     ]
@@ -363,36 +1344,10 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
     quiz: [
       {
         id: 'ch3-q1',
-        type: 'multiple_choice',
-        questionUz: "Fathatain qanday o'qiladi?",
-        questionRu: "Как читается фатхатайн?",
-        questionEn: "How is fathatain read?",
-        options: [
-          { text: "-an", isCorrect: true },
-          { text: "-in", isCorrect: false },
-          { text: "-un", isCorrect: false },
-          { text: "-a", isCorrect: false }
-        ]
-      },
-      {
-        id: 'ch3-q2',
-        type: 'multiple_choice',
-        questionUz: "Dammatain qanday o'qiladi?",
-        questionRu: "Как читается дамматайн?",
-        questionEn: "How is dammatain read?",
-        options: [
-          { text: "-an", isCorrect: false },
-          { text: "-in", isCorrect: false },
-          { text: "-un", isCorrect: true },
-          { text: "-u", isCorrect: false }
-        ]
-      },
-      {
-        id: 'ch3-q3',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "كِتَابًا",
         options: [
           { text: "kitaaban", isCorrect: true },
@@ -402,31 +1357,157 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
         ]
       },
       {
-        id: 'ch3-q4',
+        id: 'ch3-q2',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "رَجُلٌ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "رَجُلًا",
         options: [
-          { text: "rajulan", isCorrect: false },
-          { text: "rajulun", isCorrect: true },
+          { text: "rajulun", isCorrect: false },
+          { text: "rajulan", isCorrect: true },
           { text: "rajulin", isCorrect: false },
           { text: "rajul", isCorrect: false }
         ]
       },
       {
+        id: 'ch3-q3',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "بَابًا",
+        options: [
+          { text: "baaban", isCorrect: true },
+          { text: "baabun", isCorrect: false },
+          { text: "baabin", isCorrect: false },
+          { text: "baab", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch3-q4',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كِتَابٍ",
+        options: [
+          { text: "kitaabun", isCorrect: false },
+          { text: "kitaabin", isCorrect: true },
+          { text: "kitaaban", isCorrect: false },
+          { text: "kitaab", isCorrect: false }
+        ]
+      },
+      {
         id: 'ch3-q5',
         type: 'identify',
-        questionUz: "Bu so'zning oxiri qanday o'qiladi?",
-        questionRu: "Как читается окончание этого слова?",
-        questionEn: "How is the ending of this word read?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "رَجُلٍ",
+        options: [
+          { text: "rajulin", isCorrect: true },
+          { text: "rajulun", isCorrect: false },
+          { text: "rajulan", isCorrect: false },
+          { text: "rajul", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch3-q6',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "بَابٍ",
         options: [
-          { text: "-ban", isCorrect: false },
-          { text: "-bun", isCorrect: false },
-          { text: "-bin", isCorrect: true },
-          { text: "-ba", isCorrect: false }
+          { text: "baabun", isCorrect: false },
+          { text: "baabin", isCorrect: true },
+          { text: "baaban", isCorrect: false },
+          { text: "baab", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch3-q7',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كِتَابٌ",
+        options: [
+          { text: "kitaabun", isCorrect: true },
+          { text: "kitaabin", isCorrect: false },
+          { text: "kitaaban", isCorrect: false },
+          { text: "kitaab", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch3-q8',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "رَجُلٌ",
+        options: [
+          { text: "rajulin", isCorrect: false },
+          { text: "rajulun", isCorrect: true },
+          { text: "rajulan", isCorrect: false },
+          { text: "rajul", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch3-q9',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "بَابٌ",
+        options: [
+          { text: "baabun", isCorrect: true },
+          { text: "baabin", isCorrect: false },
+          { text: "baaban", isCorrect: false },
+          { text: "baab", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch3-q10',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "رَبًّا",
+        options: [
+          { text: "rabbun", isCorrect: false },
+          { text: "rabbin", isCorrect: false },
+          { text: "rabban", isCorrect: true },
+          { text: "rabb", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch3-q11',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "حَبًّا",
+        options: [
+          { text: "habban", isCorrect: true },
+          { text: "habbun", isCorrect: false },
+          { text: "habbin", isCorrect: false },
+          { text: "habb", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch3-q12',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مَسًّا",
+        options: [
+          { text: "massun", isCorrect: false },
+          { text: "massan", isCorrect: true },
+          { text: "massin", isCorrect: false },
+          { text: "mass", isCorrect: false }
         ]
       }
     ]
@@ -466,70 +1547,156 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
     quiz: [
       {
         id: 'ch4-q1',
-        type: 'multiple_choice',
-        questionUz: "Sukun nimani anglatadi?",
-        questionRu: "Что означает сукун?",
-        questionEn: "What does sukun mean?",
-        options: [
-          { text: "Harf harakatsiz o'qiladi / Буква без гласного / No vowel on letter", isCorrect: true },
-          { text: "Harf ikkilanadi / Буква удваивается / Letter doubled", isCorrect: false },
-          { text: "Tovush cho'ziladi / Звук удлиняется / Sound elongated", isCorrect: false },
-          { text: "Harf o'qilmaydi / Буква не читается / Letter silent", isCorrect: false }
-        ]
-      },
-      {
-        id: 'ch4-q2',
-        type: 'multiple_choice',
-        questionUz: "Shadda qo'yilganda harf necha marta o'qiladi?",
-        questionRu: "Сколько раз читается буква с шаддой?",
-        questionEn: "How many times is a letter with shadda read?",
-        options: [
-          { text: "1", isCorrect: false },
-          { text: "2", isCorrect: true },
-          { text: "3", isCorrect: false },
-          { text: "0", isCorrect: false }
-        ]
-      },
-      {
-        id: 'ch4-q3',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "رَبَّ",
-        options: [
-          { text: "rab-ba", isCorrect: true },
-          { text: "ra-ba", isCorrect: false },
-          { text: "rab", isCorrect: false },
-          { text: "ra-bi", isCorrect: false }
-        ]
-      },
-      {
-        id: 'ch4-q4',
-        type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "اِبْنْ",
         options: [
           { text: "ibn", isCorrect: true },
           { text: "iban", isCorrect: false },
           { text: "ibin", isCorrect: false },
-          { text: "abun", isCorrect: false }
+          { text: "abn", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q2',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "بِنْتْ",
+        options: [
+          { text: "bant", isCorrect: false },
+          { text: "bint", isCorrect: true },
+          { text: "bunt", isCorrect: false },
+          { text: "bnat", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q3',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "رَبَّ",
+        options: [
+          { text: "rabba", isCorrect: true },
+          { text: "raba", isCorrect: false },
+          { text: "rabbi", isCorrect: false },
+          { text: "rubba", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q4',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "حَقَّ",
+        options: [
+          { text: "haqa", isCorrect: false },
+          { text: "haqqa", isCorrect: true },
+          { text: "haqqi", isCorrect: false },
+          { text: "huqqa", isCorrect: false }
         ]
       },
       {
         id: 'ch4-q5',
         type: 'identify',
-        questionUz: "Bu so'zda qaysi harf ikkilangan (shadda)?",
-        questionRu: "Какая буква удвоена (шадда) в этом слове?",
-        questionEn: "Which letter has shadda in this word?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كُلَّ",
+        options: [
+          { text: "kulla", isCorrect: true },
+          { text: "kula", isCorrect: false },
+          { text: "kulli", isCorrect: false },
+          { text: "kalla", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q6',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "ثُمَّ",
+        options: [
+          { text: "thuma", isCorrect: false },
+          { text: "thumma", isCorrect: true },
+          { text: "thummi", isCorrect: false },
+          { text: "thamma", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q7',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اِنَّ",
+        options: [
+          { text: "inna", isCorrect: true },
+          { text: "ina", isCorrect: false },
+          { text: "inni", isCorrect: false },
+          { text: "anna", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q8',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "عَلَّمَ",
         options: [
-          { text: "ل (lam)", isCorrect: true },
-          { text: "ع (ayn)", isCorrect: false },
-          { text: "م (mim)", isCorrect: false },
-          { text: "ا (alif)", isCorrect: false }
+          { text: "alama", isCorrect: false },
+          { text: "allama", isCorrect: true },
+          { text: "allima", isCorrect: false },
+          { text: "ullima", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q9',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "يُعَلِّمُ",
+        options: [
+          { text: "yu'allimu", isCorrect: true },
+          { text: "yu'alimu", isCorrect: false },
+          { text: "ya'llimu", isCorrect: false },
+          { text: "yu'allamu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q10',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مُعَلِّمٌ",
+        options: [
+          { text: "mu'alimun", isCorrect: false },
+          { text: "mu'allimun", isCorrect: true },
+          { text: "ma'llimun", isCorrect: false },
+          { text: "mu'allamun", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q11',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مُكَبِّرٌ",
+        options: [
+          { text: "mukabbirun", isCorrect: true },
+          { text: "mukabirun", isCorrect: false },
+          { text: "mukabbarun", isCorrect: false },
+          { text: "mikabbirun", isCorrect: false }
         ]
       }
     ]
@@ -569,70 +1736,156 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
     quiz: [
       {
         id: 'ch5-q1',
-        type: 'multiple_choice',
-        questionUz: "Fatha + Alif birga kelganda qanday tovush hosil bo'ladi?",
-        questionRu: "Какой звук образуется при фатха + алиф?",
-        questionEn: "What sound is formed by fatha + alif?",
-        options: [
-          { text: "aa (cho'ziq / долгий / long)", isCorrect: true },
-          { text: "a (qisqa / короткий / short)", isCorrect: false },
-          { text: "ii (cho'ziq / долгий / long)", isCorrect: false },
-          { text: "uu (cho'ziq / долгий / long)", isCorrect: false }
-        ]
-      },
-      {
-        id: 'ch5-q2',
-        type: 'multiple_choice',
-        questionUz: "Damma + Vov birga kelganda qanday tovush hosil bo'ladi?",
-        questionRu: "Какой звук образуется при дамма + вав?",
-        questionEn: "What sound is formed by damma + waw?",
-        options: [
-          { text: "aa", isCorrect: false },
-          { text: "ii", isCorrect: false },
-          { text: "uu (cho'ziq / долгий / long)", isCorrect: true },
-          { text: "u (qisqa / короткий / short)", isCorrect: false }
-        ]
-      },
-      {
-        id: 'ch5-q3',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "كِتَابْ",
         options: [
           { text: "kitaab", isCorrect: true },
           { text: "kitab", isCorrect: false },
           { text: "kutub", isCorrect: false },
-          { text: "katab", isCorrect: false }
+          { text: "kataab", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch5-q2',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "بَابْ",
+        options: [
+          { text: "bab", isCorrect: false },
+          { text: "baab", isCorrect: true },
+          { text: "buub", isCorrect: false },
+          { text: "biib", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch5-q3',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "نَارْ",
+        options: [
+          { text: "naar", isCorrect: true },
+          { text: "nar", isCorrect: false },
+          { text: "niir", isCorrect: false },
+          { text: "nuur", isCorrect: false }
         ]
       },
       {
         id: 'ch5-q4',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "نُوْرْ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "قَالَ",
         options: [
-          { text: "nur", isCorrect: false },
-          { text: "nuur", isCorrect: true },
-          { text: "naur", isCorrect: false },
-          { text: "nir", isCorrect: false }
+          { text: "qala", isCorrect: false },
+          { text: "qaala", isCorrect: true },
+          { text: "quula", isCorrect: false },
+          { text: "qiila", isCorrect: false }
         ]
       },
       {
         id: 'ch5-q5',
         type: 'identify',
-        questionUz: "Bu so'zda qaysi madd harfi bor?",
-        questionRu: "Какая буква удлинения в этом слове?",
-        questionEn: "Which elongation letter is in this word?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "نَامَ",
+        options: [
+          { text: "naama", isCorrect: true },
+          { text: "nama", isCorrect: false },
+          { text: "nuuma", isCorrect: false },
+          { text: "niima", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch5-q6',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "نَبِيْ",
         options: [
-          { text: "ي (ya)", isCorrect: true },
-          { text: "ا (alif)", isCorrect: false },
-          { text: "و (waw)", isCorrect: false },
-          { text: "ن (nun)", isCorrect: false }
+          { text: "nabi", isCorrect: false },
+          { text: "nabii", isCorrect: true },
+          { text: "nabuu", isCorrect: false },
+          { text: "nabaa", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch5-q7',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "كَبِيْرْ",
+        options: [
+          { text: "kabiir", isCorrect: true },
+          { text: "kabir", isCorrect: false },
+          { text: "kubiir", isCorrect: false },
+          { text: "kabaar", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch5-q8',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "صَغِيْرْ",
+        options: [
+          { text: "saghir", isCorrect: false },
+          { text: "saghiir", isCorrect: true },
+          { text: "sughuir", isCorrect: false },
+          { text: "saghaar", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch5-q9',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "نُوْرْ",
+        options: [
+          { text: "nuur", isCorrect: true },
+          { text: "nur", isCorrect: false },
+          { text: "naar", isCorrect: false },
+          { text: "niir", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch5-q10',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "رَسُوْلْ",
+        options: [
+          { text: "rasul", isCorrect: false },
+          { text: "rasuul", isCorrect: true },
+          { text: "risuul", isCorrect: false },
+          { text: "rasuul", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch5-q11',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "دُرُوْسْ",
+        options: [
+          { text: "duruus", isCorrect: true },
+          { text: "durus", isCorrect: false },
+          { text: "daruus", isCorrect: false },
+          { text: "diruus", isCorrect: false }
         ]
       }
     ]
@@ -672,70 +1925,128 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
     quiz: [
       {
         id: 'ch6-q1',
-        type: 'multiple_choice',
-        questionUz: "Quyosh harflarida 'al' artiklidagi Lom qanday o'qiladi?",
-        questionRu: "Как читается Лям в артикле 'аль' перед солнечными буквами?",
-        questionEn: "How is Lam read in 'al' before sun letters?",
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَلْكِتَابُ",
         options: [
-          { text: "O'qilmaydi, keyingi harf ikkilanadi / Не читается, следующая удваивается / Silent, next letter doubled", isCorrect: true },
-          { text: "Oddiy o'qiladi / Читается обычно / Read normally", isCorrect: false },
-          { text: "Cho'zib o'qiladi / Читается долго / Read long", isCorrect: false },
-          { text: "Yumshoq o'qiladi / Читается мягко / Read soft", isCorrect: false }
+          { text: "al-kitaabu", isCorrect: true },
+          { text: "al-katabu", isCorrect: false },
+          { text: "al-kutubu", isCorrect: false },
+          { text: "ak-kitaabu", isCorrect: false }
         ]
       },
       {
         id: 'ch6-q2',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "اَلشَّمْسُ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَلْقَمَرُ",
         options: [
-          { text: "ash-shamsu", isCorrect: true },
-          { text: "al-shamsu", isCorrect: false },
-          { text: "a-shamsu", isCorrect: false },
-          { text: "alsh-shamsu", isCorrect: false }
+          { text: "al-qumaru", isCorrect: false },
+          { text: "al-qamaru", isCorrect: true },
+          { text: "aq-qamaru", isCorrect: false },
+          { text: "al-qimaru", isCorrect: false }
         ]
       },
       {
         id: 'ch6-q3',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "اَلْقَمَرُ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَلْمَسْجِدُ",
         options: [
-          { text: "aq-qamaru", isCorrect: false },
-          { text: "al-qamaru", isCorrect: true },
-          { text: "a-qamaru", isCorrect: false },
-          { text: "ar-qamaru", isCorrect: false }
+          { text: "al-masjidu", isCorrect: true },
+          { text: "al-musjidu", isCorrect: false },
+          { text: "am-masjidu", isCorrect: false },
+          { text: "al-masjadu", isCorrect: false }
         ]
       },
       {
         id: 'ch6-q4',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "اَلنَّاسِ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَلتَّمْرُ",
         options: [
-          { text: "al-naasi", isCorrect: false },
-          { text: "an-naasi", isCorrect: true },
-          { text: "a-naasi", isCorrect: false },
-          { text: "aln-naasi", isCorrect: false }
+          { text: "al-tamru", isCorrect: false },
+          { text: "at-tamru", isCorrect: true },
+          { text: "at-timru", isCorrect: false },
+          { text: "at-tumru", isCorrect: false }
         ]
       },
       {
         id: 'ch6-q5',
-        type: 'multiple_choice',
-        questionUz: "Quyidagilardan qaysi biri quyosh harfi?",
-        questionRu: "Какая из следующих — солнечная буква?",
-        questionEn: "Which of these is a sun letter?",
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَلذَّهَبُ",
         options: [
-          { text: "ب (ba)", isCorrect: false },
-          { text: "ت (ta)", isCorrect: true },
-          { text: "ك (kaf)", isCorrect: false },
-          { text: "م (mim)", isCorrect: false }
+          { text: "adh-dhahabu", isCorrect: true },
+          { text: "al-dhahabu", isCorrect: false },
+          { text: "adh-dhahbu", isCorrect: false },
+          { text: "adh-dhihabu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch6-q6',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَلشَّجَرُ",
+        options: [
+          { text: "al-shajaru", isCorrect: false },
+          { text: "ash-shajaru", isCorrect: true },
+          { text: "ash-shijaru", isCorrect: false },
+          { text: "ash-shujaru", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch6-q7',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَلصَّقْرُ",
+        options: [
+          { text: "as-saqru", isCorrect: true },
+          { text: "al-saqru", isCorrect: false },
+          { text: "as-suqru", isCorrect: false },
+          { text: "as-siqru", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch6-q8',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَلنَّسَبُ",
+        options: [
+          { text: "al-nasabu", isCorrect: false },
+          { text: "an-nasabu", isCorrect: true },
+          { text: "an-nusabu", isCorrect: false },
+          { text: "an-nisabu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch6-q9',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَلشَّمْسُ",
+        options: [
+          { text: "ash-shamsu", isCorrect: true },
+          { text: "al-shamsu", isCorrect: false },
+          { text: "ash-shimsu", isCorrect: false },
+          { text: "ash-shumsu", isCorrect: false }
         ]
       }
     ]
@@ -776,57 +2087,141 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch7-q1',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "يَقُوْلُ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "يُقَالُ",
         options: [
-          { text: "yaquulu", isCorrect: true },
-          { text: "yaqulu", isCorrect: false },
-          { text: "yaqul", isCorrect: false },
-          { text: "yuqaalu", isCorrect: false }
+          { text: "yuqaalu", isCorrect: true },
+          { text: "yaqaalu", isCorrect: false },
+          { text: "yuqalu", isCorrect: false },
+          { text: "yuqiilu", isCorrect: false }
         ]
       },
       {
         id: 'ch7-q2',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "يَقُوْلُوْنَ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "يَقُوْلُ",
         options: [
-          { text: "yaquuluuna", isCorrect: true },
-          { text: "yaquluna", isCorrect: false },
-          { text: "yaquulun", isCorrect: false },
-          { text: "yaqaluna", isCorrect: false }
+          { text: "yaqulu", isCorrect: false },
+          { text: "yaquulu", isCorrect: true },
+          { text: "yuquulu", isCorrect: false },
+          { text: "yaqaalu", isCorrect: false }
         ]
       },
       {
         id: 'ch7-q3',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "مُسْلِمٌ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "يَطُوْفُ",
         options: [
-          { text: "muslimun", isCorrect: true },
-          { text: "muslim", isCorrect: false },
-          { text: "musilmun", isCorrect: false },
-          { text: "maslimun", isCorrect: false }
+          { text: "yatuufu", isCorrect: true },
+          { text: "yatufu", isCorrect: false },
+          { text: "yituufu", isCorrect: false },
+          { text: "yatuufi", isCorrect: false }
         ]
       },
       {
         id: 'ch7-q4',
         type: 'identify',
-        questionUz: "'صَابِرٌ' so'zida 'ا' harfi nima uchun qo'yilgan?",
-        questionRu: "Зачем стоит 'ا' в слове 'صَابِرٌ'?",
-        questionEn: "Why is 'ا' in the word 'صَابِرٌ'?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "يَقُوْلُوْنَ",
+        options: [
+          { text: "yaquluna", isCorrect: false },
+          { text: "yaquuluuna", isCorrect: true },
+          { text: "yaquuluna", isCorrect: false },
+          { text: "yaqaluuna", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch7-q5',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "تَقُوْمُوْنَ",
+        options: [
+          { text: "taquumuuna", isCorrect: true },
+          { text: "taqumuna", isCorrect: false },
+          { text: "taquumuna", isCorrect: false },
+          { text: "taqaamuuna", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch7-q6',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مُسْلِمٌ",
+        options: [
+          { text: "muslim", isCorrect: false },
+          { text: "muslimun", isCorrect: true },
+          { text: "musilmun", isCorrect: false },
+          { text: "maslimun", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch7-q7',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "عَالِمٌ",
+        options: [
+          { text: "aalimun", isCorrect: true },
+          { text: "alimun", isCorrect: false },
+          { text: "uulimun", isCorrect: false },
+          { text: "aalamun", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch7-q8',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "طَالِبٌ",
+        options: [
+          { text: "talibun", isCorrect: false },
+          { text: "taalibun", isCorrect: true },
+          { text: "tuulibun", isCorrect: false },
+          { text: "taalabun", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch7-q9',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "صَالِحٌ",
+        options: [
+          { text: "saalihun", isCorrect: true },
+          { text: "salihun", isCorrect: false },
+          { text: "suulihun", isCorrect: false },
+          { text: "saalahun", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch7-q10',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "صَابِرٌ",
         options: [
-          { text: "Cho'zish (madd) uchun / Для удлинения (мадд) / For elongation (madd)", isCorrect: true },
-          { text: "Harakat berish uchun / Для огласовки / For vowel mark", isCorrect: false },
-          { text: "Tanvin uchun / Для танвина / For tanwin", isCorrect: false },
-          { text: "Sukun uchun / Для сукуна / For sukun", isCorrect: false }
+          { text: "sabirun", isCorrect: false },
+          { text: "saabirun", isCorrect: true },
+          { text: "suubirun", isCorrect: false },
+          { text: "saabarun", isCorrect: false }
         ]
       }
     ]
@@ -876,71 +2271,113 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch8-q1',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "اللهُ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "بِسْمِ",
         options: [
-          { text: "Allaahu", isCorrect: true },
-          { text: "Allahu", isCorrect: false },
-          { text: "Ilahu", isCorrect: false },
-          { text: "Allihu", isCorrect: false }
+          { text: "bismi", isCorrect: true },
+          { text: "basmi", isCorrect: false },
+          { text: "busmi", isCorrect: false },
+          { text: "bisma", isCorrect: false }
         ]
       },
       {
         id: 'ch8-q2',
         type: 'identify',
-        questionUz: "Bu ibora qanday o'qiladi?",
-        questionRu: "Как читается эта фраза?",
-        questionEn: "How is this phrase read?",
-        arabic: "بِسْمِ اللهِ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اللهِ",
         options: [
-          { text: "Bismillaahi", isCorrect: true },
-          { text: "Basmilahi", isCorrect: false },
-          { text: "Bismalahi", isCorrect: false },
-          { text: "Bismillhi", isCorrect: false }
+          { text: "allahi", isCorrect: false },
+          { text: "allaahi", isCorrect: true },
+          { text: "illaahi", isCorrect: false },
+          { text: "alluhi", isCorrect: false }
         ]
       },
       {
         id: 'ch8-q3',
         type: 'identify',
-        questionUz: "'لَا اِلَهَ اِلَّا' iborasida shadda qaysi harfda?",
-        questionRu: "На какой букве шадда в 'لَا اِلَهَ اِلَّا'?",
-        questionEn: "Which letter has shadda in 'لَا اِلَهَ اِلَّا'?",
-        arabic: "لَا اِلَهَ اِلَّا",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "الرَّحْمٰنِ",
         options: [
-          { text: "ل (lam) — illaa", isCorrect: true },
-          { text: "ا (alif)", isCorrect: false },
-          { text: "ه (ha)", isCorrect: false },
-          { text: "Shadda yo'q / Нет шадды / No shadda", isCorrect: false }
+          { text: "ar-rahmaani", isCorrect: true },
+          { text: "al-rahmaani", isCorrect: false },
+          { text: "ar-rahmuuni", isCorrect: false },
+          { text: "ar-rihmani", isCorrect: false }
         ]
       },
       {
         id: 'ch8-q4',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "مُحَمَّدٌ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "الرَّحِيْمِ",
         options: [
-          { text: "Muhammadun", isCorrect: true },
-          { text: "Muhamadun", isCorrect: false },
-          { text: "Mahmudun", isCorrect: false },
-          { text: "Muhamidun", isCorrect: false }
+          { text: "al-rahiimi", isCorrect: false },
+          { text: "ar-rahiimi", isCorrect: true },
+          { text: "ar-ruhiimi", isCorrect: false },
+          { text: "ar-rahiima", isCorrect: false }
         ]
       },
       {
         id: 'ch8-q5',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مُحَمَّدٌ",
+        options: [
+          { text: "muhammadun", isCorrect: true },
+          { text: "muhamadun", isCorrect: false },
+          { text: "mahmudun", isCorrect: false },
+          { text: "muhammidun", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch8-q6',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "رَسُوْلُ",
         options: [
-          { text: "rasuulu", isCorrect: true },
           { text: "rasulu", isCorrect: false },
-          { text: "risaalu", isCorrect: false },
-          { text: "rusuulu", isCorrect: false }
+          { text: "rasuulu", isCorrect: true },
+          { text: "rusuulu", isCorrect: false },
+          { text: "risuulu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch8-q7',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَشْهَدُ",
+        options: [
+          { text: "ash-hadu", isCorrect: true },
+          { text: "ash-hudu", isCorrect: false },
+          { text: "ush-hadu", isCorrect: false },
+          { text: "ash-hidu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch8-q8',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "عَبْدُهُ",
+        options: [
+          { text: "abdihu", isCorrect: false },
+          { text: "abduhu", isCorrect: true },
+          { text: "ubduhu", isCorrect: false },
+          { text: "abdahu", isCorrect: false }
         ]
       }
     ]
@@ -999,71 +2436,239 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch9-q1',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
         arabic: "اَلْحَمْدُ",
         options: [
           { text: "al-hamdu", isCorrect: true },
-          { text: "a-hamdu", isCorrect: false },
-          { text: "alha-mdu", isCorrect: false },
-          { text: "el-hamdu", isCorrect: false }
+          { text: "al-himdu", isCorrect: false },
+          { text: "al-humdu", isCorrect: false },
+          { text: "a-hamdu", isCorrect: false }
         ]
       },
       {
         id: 'ch9-q2',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "الرَّحْمٰنِ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "لِلّٰهِ",
         options: [
-          { text: "ar-rahmaani", isCorrect: true },
-          { text: "al-rahmaani", isCorrect: false },
-          { text: "a-rahmaani", isCorrect: false },
-          { text: "ar-rahmani", isCorrect: false }
+          { text: "lillahi", isCorrect: false },
+          { text: "lillaahi", isCorrect: true },
+          { text: "lullaahi", isCorrect: false },
+          { text: "lillaahu", isCorrect: false }
         ]
       },
       {
         id: 'ch9-q3',
         type: 'identify',
-        questionUz: "Bu so'zda qanday qoida qo'llanilgan?",
-        questionRu: "Какое правило применено?",
-        questionEn: "What rule is applied?",
-        arabic: "الرَّحِيْمِ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "رَبِّ",
         options: [
-          { text: "Quyosh harfi (shamsiy) / Солнечная буква / Sun letter", isCorrect: true },
-          { text: "Oy harfi (qamariy) / Лунная буква / Moon letter", isCorrect: false },
-          { text: "Tanvin / Танвин / Tanwin", isCorrect: false },
-          { text: "Sukun / Сукун / Sukun", isCorrect: false }
+          { text: "rabbi", isCorrect: true },
+          { text: "rabi", isCorrect: false },
+          { text: "rubbi", isCorrect: false },
+          { text: "rabba", isCorrect: false }
         ]
       },
       {
         id: 'ch9-q4',
         type: 'identify',
-        questionUz: "Bu so'z qanday o'qiladi?",
-        questionRu: "Как читается это слово?",
-        questionEn: "How is this word read?",
-        arabic: "اَلصَّمَدُ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "الْعَالَمِيْنَ",
         options: [
-          { text: "as-samadu", isCorrect: true },
-          { text: "al-samadu", isCorrect: false },
-          { text: "a-samadu", isCorrect: false },
-          { text: "als-samadu", isCorrect: false }
+          { text: "al-alimiina", isCorrect: false },
+          { text: "al-aalamiina", isCorrect: true },
+          { text: "al-aalumiina", isCorrect: false },
+          { text: "al-aalamina", isCorrect: false }
         ]
       },
       {
         id: 'ch9-q5',
         type: 'identify',
-        questionUz: "'اَلْعَالَمِيْنَ' so'zida 'al' artikli qanday o'qiladi?",
-        questionRu: "Как читается артикль 'аль' в 'اَلْعَالَمِيْنَ'?",
-        questionEn: "How is 'al' article read in 'اَلْعَالَمِيْنَ'?",
-        arabic: "اَلْعَالَمِيْنَ",
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "مَالِكِ",
         options: [
-          { text: "al- (Lom o'qiladi / Лям читается / Lam pronounced)", isCorrect: true },
-          { text: "a'- (Lom o'qilmaydi / Лям не читается / Lam silent)", isCorrect: false },
-          { text: "aw- (Lom vovga aylanadi / Лям в вав / Lam becomes waw)", isCorrect: false },
-          { text: "an- (Lom nunga aylanadi / Лям в нун / Lam becomes nun)", isCorrect: false }
+          { text: "maaliki", isCorrect: true },
+          { text: "maliki", isCorrect: false },
+          { text: "muuliki", isCorrect: false },
+          { text: "maalaki", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q6',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "يَوْمِ",
+        options: [
+          { text: "yuwmi", isCorrect: false },
+          { text: "yawmi", isCorrect: true },
+          { text: "yawma", isCorrect: false },
+          { text: "yiymi", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q7',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "الدِّيْنِ",
+        options: [
+          { text: "ad-diini", isCorrect: true },
+          { text: "al-diini", isCorrect: false },
+          { text: "ad-duuni", isCorrect: false },
+          { text: "ad-dini", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q8',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اِيَّاكَ",
+        options: [
+          { text: "iyaaka", isCorrect: false },
+          { text: "iyyaaka", isCorrect: true },
+          { text: "iyyuuka", isCorrect: false },
+          { text: "iyyaaki", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q9',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "نَعْبُدُ",
+        options: [
+          { text: "na'budu", isCorrect: true },
+          { text: "na'badu", isCorrect: false },
+          { text: "nu'budu", isCorrect: false },
+          { text: "na'bidu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q10',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "نَسْتَعِيْنُ",
+        options: [
+          { text: "nasta'inu", isCorrect: false },
+          { text: "nasta'iinu", isCorrect: true },
+          { text: "nista'iinu", isCorrect: false },
+          { text: "nasta'uunu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q11',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "قُلْ",
+        options: [
+          { text: "qul", isCorrect: true },
+          { text: "qal", isCorrect: false },
+          { text: "qil", isCorrect: false },
+          { text: "luq", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q12',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "هُوَ",
+        options: [
+          { text: "hawa", isCorrect: false },
+          { text: "huwa", isCorrect: true },
+          { text: "hiwa", isCorrect: false },
+          { text: "huya", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q13',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَحَدٌ",
+        options: [
+          { text: "ahadun", isCorrect: true },
+          { text: "ahidun", isCorrect: false },
+          { text: "uhudun", isCorrect: false },
+          { text: "ahadan", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q14',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "الصَّمَدُ",
+        options: [
+          { text: "al-samadu", isCorrect: false },
+          { text: "as-samadu", isCorrect: true },
+          { text: "as-simadu", isCorrect: false },
+          { text: "as-sumadu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q15',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "اَعُوْذُ",
+        options: [
+          { text: "a'uudhu", isCorrect: true },
+          { text: "a'udhu", isCorrect: false },
+          { text: "a'uudha", isCorrect: false },
+          { text: "i'uudhu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q16',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "الْفَلَقِ",
+        options: [
+          { text: "al-fulaqi", isCorrect: false },
+          { text: "al-falaqi", isCorrect: true },
+          { text: "al-faliqi", isCorrect: false },
+          { text: "al-faluqi", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q17',
+        type: 'identify',
+        questionUz: "Bu qanday o'qiladi?",
+        questionRu: "Как это читается?",
+        questionEn: "How is this read?",
+        arabic: "النَّاسِ",
+        options: [
+          { text: "an-naasi", isCorrect: true },
+          { text: "al-naasi", isCorrect: false },
+          { text: "an-nuusi", isCorrect: false },
+          { text: "an-niisi", isCorrect: false }
         ]
       }
     ]
