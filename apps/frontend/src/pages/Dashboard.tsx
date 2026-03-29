@@ -48,7 +48,7 @@ export function DashboardPage() {
     queryKey: ['weakness'],
     queryFn: async () => (await api.get('/weakness')).data.data,
     staleTime: 60_000,
-    retry: 1,
+    retry: false,
   });
 
   const speedRank = (speedBoard as any[])?.find((e: any) => e.userId === user?.id)?.rank ?? null;

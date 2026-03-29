@@ -32,11 +32,11 @@ const MODE_ROUTES: Record<string, string> = {
 export function DailyLesson() {
   const { t } = useTranslation(['common', 'learn']);
 
-  const { data: daily, isLoading } = useQuery<DailyLessonDto>({
+  const { data: daily, isLoading, isError } = useQuery<DailyLessonDto>({
     queryKey: ['daily-lesson'],
     queryFn: async () => (await api.get('/daily')).data.data,
     staleTime: 5 * 60_000,
-    retry: 1,
+    retry: false,
   });
 
   if (isLoading) {
@@ -48,7 +48,7 @@ export function DailyLesson() {
     );
   }
 
-  if (!daily) return null;
+  if (isError || !daily) return null;
 
   const isCompleted = daily.completed;
   const firstModeRoute = daily.modes[0] ? MODE_ROUTES[daily.modes[0]] : '/learn/quiz';

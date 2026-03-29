@@ -52,7 +52,10 @@ api.interceptors.response.use(
     } catch {
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
-      window.location.href = '/login';
+      // Soft redirect — avoid infinite reload loops
+      if (!window.location.pathname.startsWith('/login')) {
+        window.location.href = '/login';
+      }
       return Promise.reject(error);
     } finally {
       refreshing = false;
