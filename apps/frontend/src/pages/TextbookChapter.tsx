@@ -83,6 +83,50 @@ export function TextbookChapterPage() {
         </div>
       </motion.div>
 
+      {/* Chapter Progress Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15 }}
+        className="mb-8 bg-gradient-to-br from-[#201808] to-[#140f05] border border-[rgba(201,168,76,0.1)] rounded-2xl p-5"
+      >
+        <div className="flex items-center justify-between mb-3">
+          <p className="font-cinzel text-[0.6rem] tracking-[3px] text-[#9a8a6a] uppercase">
+            {t('textbook_progress.overall')}
+          </p>
+          <p className="font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a]">
+            {bestScore > 0 ? `${bestScore}%` : '—'}
+          </p>
+        </div>
+        <div className="h-2.5 bg-[rgba(255,255,255,0.06)] rounded-full overflow-hidden border border-[rgba(201,168,76,0.08)]">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${bestScore}%` }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
+            className="h-full rounded-full"
+            style={{
+              background: isPassed
+                ? 'linear-gradient(90deg, #2d6b45 0%, #4caf78 50%, #6dd5a0 100%)'
+                : bestScore > 0
+                  ? 'linear-gradient(90deg, #8a5a1e 0%, #c98a32 50%, #e8b040 100%)'
+                  : 'transparent',
+            }}
+          />
+        </div>
+        <div className="flex items-center justify-between mt-2">
+          <p className="font-cinzel text-[0.5rem] tracking-widest text-[rgba(201,168,76,0.4)]">
+            {isPassed
+              ? `✓ ${t('textbook_progress.passed')}`
+              : bestScore > 0
+                ? t('textbook_progress.not_passed')
+                : t('textbook_progress.new')}
+          </p>
+          <p className="font-cinzel text-[0.5rem] tracking-widest text-[rgba(201,168,76,0.3)]">
+            {t('textbook_progress.pass_threshold')}
+          </p>
+        </div>
+      </motion.div>
+
       {/* Lessons */}
       <div className="flex flex-col gap-6">
         {chapter.lessons.map((lesson, i) => {
@@ -97,10 +141,23 @@ export function TextbookChapterPage() {
               className="bg-gradient-to-br from-[#201808] to-[#140f05]
                          border border-[rgba(201,168,76,0.1)] rounded-2xl p-6"
             >
-              {/* Lesson number */}
-              <p className="font-cinzel text-[0.5rem] tracking-[3px] text-[rgba(201,168,76,0.5)] uppercase mb-3">
-                {t('textbook.lesson')} {i + 1}
-              </p>
+              {/* Lesson header with number and status */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.15)]
+                                  flex items-center justify-center">
+                    <span className="font-cinzel text-[0.5rem] text-gold-dim font-bold">{i + 1}</span>
+                  </div>
+                  <p className="font-cinzel text-[0.5rem] tracking-[3px] text-[rgba(201,168,76,0.5)] uppercase">
+                    {t('textbook.lesson')} {i + 1}
+                  </p>
+                </div>
+                {lessonQCount > 0 && (
+                  <span className="font-cinzel text-[0.45rem] tracking-widest text-[rgba(201,168,76,0.3)] uppercase">
+                    {lessonQCount} {lessonQCount === 1 ? 'Q' : 'Qs'}
+                  </span>
+                )}
+              </div>
 
               {/* Arabic text */}
               <div
