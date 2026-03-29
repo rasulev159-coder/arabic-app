@@ -113,68 +113,85 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
     quiz: [
       {
         id: 'ch1-q1',
-        type: 'multiple_choice',
-        questionUz: "Fatha qanday tovush beradi?",
-        questionRu: "Какой звук даёт фатха?",
-        questionEn: "What sound does fatha give?",
+        type: 'identify',
+        questionUz: "Bu harf qanday o'qiladi?",
+        questionRu: "Как читается эта буква?",
+        questionEn: "How is this letter read?",
+        arabic: "بَ",
         options: [
-          { text: "a", isCorrect: true },
-          { text: "i", isCorrect: false },
-          { text: "u", isCorrect: false },
-          { text: "o", isCorrect: false }
+          { text: "ba", isCorrect: true },
+          { text: "bi", isCorrect: false },
+          { text: "bu", isCorrect: false },
+          { text: "ab", isCorrect: false }
         ]
       },
       {
         id: 'ch1-q2',
-        type: 'multiple_choice',
-        questionUz: "Kasra qanday tovush beradi?",
-        questionRu: "Какой звук даёт касра?",
-        questionEn: "What sound does kasra give?",
+        type: 'identify',
+        questionUz: "Bu harf qanday o'qiladi?",
+        questionRu: "Как читается эта буква?",
+        questionEn: "How is this letter read?",
+        arabic: "مُ",
         options: [
-          { text: "a", isCorrect: false },
-          { text: "i", isCorrect: true },
-          { text: "u", isCorrect: false },
-          { text: "e", isCorrect: false }
+          { text: "ma", isCorrect: false },
+          { text: "mi", isCorrect: false },
+          { text: "mu", isCorrect: true },
+          { text: "um", isCorrect: false }
         ]
       },
       {
         id: 'ch1-q3',
-        type: 'multiple_choice',
-        questionUz: "'بِنْتْ' so'zi nima ma'noni anglatadi?",
-        questionRu: "Что означает слово 'بِنْتْ'?",
-        questionEn: "What does 'بِنْتْ' mean?",
+        type: 'identify',
+        questionUz: "Bu harfda qanday harakat bor?",
+        questionRu: "Какая огласовка на этой букве?",
+        questionEn: "What vowel mark is on this letter?",
+        arabic: "تِ",
         options: [
-          { text: "O'g'il / Сын / Son", isCorrect: false },
-          { text: "Qiz / Дочь / Daughter", isCorrect: true },
-          { text: "Ota / Отец / Father", isCorrect: false },
-          { text: "Ona / Мать / Mother", isCorrect: false }
+          { text: "Fatha (َ)", isCorrect: false },
+          { text: "Kasra (ِ)", isCorrect: true },
+          { text: "Damma (ُ)", isCorrect: false },
+          { text: "Sukun (ْ)", isCorrect: false }
         ]
       },
       {
         id: 'ch1-q4',
-        type: 'multiple_choice',
-        questionUz: "Damma qanday tovush beradi?",
-        questionRu: "Какой звук даёт дамма?",
-        questionEn: "What sound does damma give?",
+        type: 'identify',
+        questionUz: "Bu bo'g'in qanday o'qiladi?",
+        questionRu: "Как читается этот слог?",
+        questionEn: "How is this syllable read?",
+        arabic: "اَرْ",
         options: [
-          { text: "a", isCorrect: false },
-          { text: "i", isCorrect: false },
-          { text: "u", isCorrect: true },
-          { text: "o", isCorrect: false }
+          { text: "ar", isCorrect: true },
+          { text: "ra", isCorrect: false },
+          { text: "ir", isCorrect: false },
+          { text: "ur", isCorrect: false }
         ]
       },
       {
         id: 'ch1-q5',
         type: 'identify',
-        questionUz: "Quyidagi harfda qanday harakat bor?",
-        questionRu: "Какая огласовка на этой букве?",
-        questionEn: "What vowel mark is on this letter?",
-        arabic: "بُ",
+        questionUz: "Bu harf qanday o'qiladi?",
+        questionRu: "Как читается эта буква?",
+        questionEn: "How is this letter read?",
+        arabic: "نِ",
         options: [
-          { text: "Fatha / Фатха", isCorrect: false },
-          { text: "Kasra / Касра", isCorrect: false },
-          { text: "Damma / Дамма", isCorrect: true },
-          { text: "Sukun / Сукун", isCorrect: false }
+          { text: "na", isCorrect: false },
+          { text: "nu", isCorrect: false },
+          { text: "ni", isCorrect: true },
+          { text: "in", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch1-q6',
+        type: 'multiple_choice',
+        questionUz: "Kasra (ِ) qanday tovush beradi?",
+        questionRu: "Какой звук даёт касра (ِ)?",
+        questionEn: "What sound does kasra (ِ) give?",
+        options: [
+          { text: "a", isCorrect: false },
+          { text: "i", isCorrect: true },
+          { text: "u", isCorrect: false },
+          { text: "o", isCorrect: false }
         ]
       }
     ]
@@ -241,67 +258,72 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
     quiz: [
       {
         id: 'ch2-q1',
-        type: 'multiple_choice',
-        questionUz: "'كَتَبَ' so'zi nima ma'noni anglatadi?",
-        questionRu: "Что означает слово 'كَتَبَ'?",
-        questionEn: "What does 'كَتَبَ' mean?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "كَتَبَ",
         options: [
-          { text: "O'qidi / Читал / Read", isCorrect: false },
-          { text: "Yozdi / Написал / Wrote", isCorrect: true },
-          { text: "Bordi / Пошёл / Went", isCorrect: false },
-          { text: "Keldi / Пришёл / Came", isCorrect: false }
+          { text: "kataba", isCorrect: true },
+          { text: "kutiba", isCorrect: false },
+          { text: "katba", isCorrect: false },
+          { text: "kitaba", isCorrect: false }
         ]
       },
       {
         id: 'ch2-q2',
-        type: 'multiple_choice',
-        questionUz: "'قَلَمْ' so'zi nima ma'noni anglatadi?",
-        questionRu: "Что означает 'قَلَمْ'?",
-        questionEn: "What does 'قَلَمْ' mean?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "قَلَمْ",
         options: [
-          { text: "Kitob / Книга / Book", isCorrect: false },
-          { text: "Qalam / Перо / Pen", isCorrect: true },
-          { text: "Oy / Луна / Moon", isCorrect: false },
-          { text: "Yurak / Сердце / Heart", isCorrect: false }
+          { text: "qulam", isCorrect: false },
+          { text: "qalam", isCorrect: true },
+          { text: "kilam", isCorrect: false },
+          { text: "qalmu", isCorrect: false }
         ]
       },
       {
         id: 'ch2-q3',
-        type: 'multiple_choice',
-        questionUz: "'هُوَ' olmoshi kimga ishora qiladi?",
-        questionRu: "На кого указывает местоимение 'هُوَ'?",
-        questionEn: "Who does the pronoun 'هُوَ' refer to?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "شَرِبَ",
         options: [
-          { text: "U (erkak) / Он / He", isCorrect: true },
-          { text: "U (ayol) / Она / She", isCorrect: false },
-          { text: "Ular / Они / They", isCorrect: false },
-          { text: "Sen / Ты / You", isCorrect: false }
+          { text: "sharaba", isCorrect: false },
+          { text: "shurba", isCorrect: false },
+          { text: "shariba", isCorrect: true },
+          { text: "shirba", isCorrect: false }
         ]
       },
       {
         id: 'ch2-q4',
-        type: 'multiple_choice',
-        questionUz: "'قَمَرْ' so'zi nimani anglatadi?",
-        questionRu: "Что означает 'قَمَرْ'?",
-        questionEn: "What does 'قَمَرْ' mean?",
+        type: 'identify',
+        questionUz: "Bu harfda qanday harakat bor?",
+        questionRu: "Какая огласовка на выделенной букве?",
+        questionEn: "What vowel mark is on this letter?",
+        arabic: "هُوَ",
         options: [
-          { text: "Quyosh / Солнце / Sun", isCorrect: false },
-          { text: "Yulduz / Звезда / Star", isCorrect: false },
-          { text: "Oy / Луна / Moon", isCorrect: true },
-          { text: "Osmon / Небо / Sky", isCorrect: false }
+          { text: "hu-wa", isCorrect: true },
+          { text: "ha-wa", isCorrect: false },
+          { text: "hi-ya", isCorrect: false },
+          { text: "ho-wa", isCorrect: false }
         ]
       },
       {
         id: 'ch2-q5',
-        type: 'multiple_choice',
-        questionUz: "'اَلْ' nima?",
-        questionRu: "Что такое 'اَلْ'?",
-        questionEn: "What is 'اَلْ'?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "بُلْبُلْ",
         options: [
-          { text: "Fe'l / Глагол / Verb", isCorrect: false },
-          { text: "Ta'rif artikli / Артикль / Definite article", isCorrect: true },
-          { text: "Olmosh / Местоимение / Pronoun", isCorrect: false },
-          { text: "Sifat / Прилагательное / Adjective", isCorrect: false }
+          { text: "bulbul", isCorrect: true },
+          { text: "bilbil", isCorrect: false },
+          { text: "balbul", isCorrect: false },
+          { text: "bolbol", isCorrect: false }
         ]
       }
     ]
@@ -367,28 +389,44 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       },
       {
         id: 'ch3-q3',
-        type: 'multiple_choice',
-        questionUz: "'كِتَابًا' qanday o'qiladi?",
-        questionRu: "Как читается 'كِتَابًا'?",
-        questionEn: "How is 'كِتَابًا' read?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "كِتَابًا",
         options: [
-          { text: "Kitaaban", isCorrect: true },
-          { text: "Kitaabun", isCorrect: false },
-          { text: "Kitaabin", isCorrect: false },
-          { text: "Kitaab", isCorrect: false }
+          { text: "kitaaban", isCorrect: true },
+          { text: "kitaabun", isCorrect: false },
+          { text: "kitaabin", isCorrect: false },
+          { text: "kitaab", isCorrect: false }
         ]
       },
       {
         id: 'ch3-q4',
-        type: 'multiple_choice',
-        questionUz: "Tanvin nima?",
-        questionRu: "Что такое танвин?",
-        questionEn: "What is tanwin?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "رَجُلٌ",
         options: [
-          { text: "Ikkilangan harakat / Двойная огласовка / Double vowel", isCorrect: true },
-          { text: "Harfni cho'zish / Удлинение / Elongation", isCorrect: false },
-          { text: "Harfni ikkilash / Удвоение буквы / Letter doubling", isCorrect: false },
-          { text: "Pauza / Пауза / Pause", isCorrect: false }
+          { text: "rajulan", isCorrect: false },
+          { text: "rajulun", isCorrect: true },
+          { text: "rajulin", isCorrect: false },
+          { text: "rajul", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch3-q5',
+        type: 'identify',
+        questionUz: "Bu so'zning oxiri qanday o'qiladi?",
+        questionRu: "Как читается окончание этого слова?",
+        questionEn: "How is the ending of this word read?",
+        arabic: "بَابٍ",
+        options: [
+          { text: "-ban", isCorrect: false },
+          { text: "-bun", isCorrect: false },
+          { text: "-bin", isCorrect: true },
+          { text: "-ba", isCorrect: false }
         ]
       }
     ]
@@ -429,40 +467,69 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch4-q1',
         type: 'multiple_choice',
-        questionUz: "Sukun (ْ) nima?",
-        questionRu: "Что такое сукун (ْ)?",
-        questionEn: "What is sukun (ْ)?",
+        questionUz: "Sukun (ْ) nimani anglatadi?",
+        questionRu: "Что означает сукун (ْ)?",
+        questionEn: "What does sukun (ْ) mean?",
         options: [
-          { text: "Harf harakatsiz / Буква без гласного / No vowel", isCorrect: true },
+          { text: "Harf harakatsiz o'qiladi / Буква без гласного / No vowel on letter", isCorrect: true },
           { text: "Harf ikkilanadi / Буква удваивается / Letter doubled", isCorrect: false },
           { text: "Tovush cho'ziladi / Звук удлиняется / Sound elongated", isCorrect: false },
-          { text: "Tovush yo'qoladi / Звук пропадает / Sound disappears", isCorrect: false }
+          { text: "Harf o'qilmaydi / Буква не читается / Letter silent", isCorrect: false }
         ]
       },
       {
         id: 'ch4-q2',
         type: 'multiple_choice',
-        questionUz: "Shadda (ّ) nima qiladi?",
-        questionRu: "Что делает шадда (ّ)?",
-        questionEn: "What does shadda (ّ) do?",
+        questionUz: "Shadda (ّ) qo'yilganda harf necha marta o'qiladi?",
+        questionRu: "Сколько раз читается буква с шаддой (ّ)?",
+        questionEn: "How many times is a letter with shadda (ّ) read?",
         options: [
-          { text: "Harfni cho'zadi / Удлиняет / Elongates", isCorrect: false },
-          { text: "Harfni ikkilaydi / Удваивает букву / Doubles letter", isCorrect: true },
-          { text: "Harfni o'chiradi / Убирает / Removes", isCorrect: false },
-          { text: "Harfni yumshatadi / Смягчает / Softens", isCorrect: false }
+          { text: "1", isCorrect: false },
+          { text: "2", isCorrect: true },
+          { text: "3", isCorrect: false },
+          { text: "0", isCorrect: false }
         ]
       },
       {
         id: 'ch4-q3',
-        type: 'multiple_choice',
-        questionUz: "'مُعَلِّمٌ' so'zi nimani anglatadi?",
-        questionRu: "Что означает 'مُعَلِّمٌ'?",
-        questionEn: "What does 'مُعَلِّمٌ' mean?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "رَبَّ",
         options: [
-          { text: "Talaba / Студент / Student", isCorrect: false },
-          { text: "O'qituvchi / Учитель / Teacher", isCorrect: true },
-          { text: "Kitob / Книга / Book", isCorrect: false },
-          { text: "Maktab / Школа / School", isCorrect: false }
+          { text: "rab-ba", isCorrect: true },
+          { text: "ra-ba", isCorrect: false },
+          { text: "rab", isCorrect: false },
+          { text: "ra-bi", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q4',
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "اِبْنْ",
+        options: [
+          { text: "ibn", isCorrect: true },
+          { text: "iban", isCorrect: false },
+          { text: "ibin", isCorrect: false },
+          { text: "abun", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch4-q5',
+        type: 'identify',
+        questionUz: "Bu so'zda qaysi harf ikkilangan (shadda)?",
+        questionRu: "Какая буква удвоена (шадда) в этом слове?",
+        questionEn: "Which letter has shadda in this word?",
+        arabic: "عَلَّمَ",
+        options: [
+          { text: "ل (lam)", isCorrect: true },
+          { text: "ع (ayn)", isCorrect: false },
+          { text: "م (mim)", isCorrect: false },
+          { text: "ا (alif)", isCorrect: false }
         ]
       }
     ]
@@ -503,40 +570,69 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch5-q1',
         type: 'multiple_choice',
-        questionUz: "Madd nima?",
-        questionRu: "Что такое мадд?",
-        questionEn: "What is madd?",
+        questionUz: "Fatha + Alif birga kelganda qanday tovush hosil bo'ladi?",
+        questionRu: "Какой звук образуется при фатха + алиф?",
+        questionEn: "What sound is formed by fatha + alif?",
         options: [
-          { text: "Tovushni cho'zish / Удлинение звука / Sound elongation", isCorrect: true },
-          { text: "Harfni ikkilash / Удвоение буквы / Letter doubling", isCorrect: false },
-          { text: "To'xtash / Остановка / Stop", isCorrect: false },
-          { text: "Tanvin / Танвин / Tanwin", isCorrect: false }
+          { text: "aa (cho'ziq / долгий / long)", isCorrect: true },
+          { text: "a (qisqa / короткий / short)", isCorrect: false },
+          { text: "ii (cho'ziq / долгий / long)", isCorrect: false },
+          { text: "uu (cho'ziq / долгий / long)", isCorrect: false }
         ]
       },
       {
         id: 'ch5-q2',
         type: 'multiple_choice',
-        questionUz: "Fatha + Alif qanday tovush beradi?",
-        questionRu: "Какой звук даёт фатха + алиф?",
-        questionEn: "What sound does fatha + alif give?",
+        questionUz: "Damma + Vov birga kelganda qanday tovush hosil bo'ladi?",
+        questionRu: "Какой звук образуется при дамма + вав?",
+        questionEn: "What sound is formed by damma + waw?",
         options: [
-          { text: "aa", isCorrect: true },
+          { text: "aa", isCorrect: false },
           { text: "ii", isCorrect: false },
-          { text: "uu", isCorrect: false },
-          { text: "a", isCorrect: false }
+          { text: "uu (cho'ziq / долгий / long)", isCorrect: true },
+          { text: "u (qisqa / короткий / short)", isCorrect: false }
         ]
       },
       {
         id: 'ch5-q3',
-        type: 'multiple_choice',
-        questionUz: "'نُوْرْ' so'zi nimani anglatadi?",
-        questionRu: "Что означает 'نُوْرْ'?",
-        questionEn: "What does 'نُوْرْ' mean?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "كِتَابْ",
         options: [
-          { text: "Tun / Ночь / Night", isCorrect: false },
-          { text: "Nur / Свет / Light", isCorrect: true },
-          { text: "Oy / Луна / Moon", isCorrect: false },
-          { text: "Suv / Вода / Water", isCorrect: false }
+          { text: "kitaab", isCorrect: true },
+          { text: "kitab", isCorrect: false },
+          { text: "kutub", isCorrect: false },
+          { text: "katab", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch5-q4',
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "نُوْرْ",
+        options: [
+          { text: "nur", isCorrect: false },
+          { text: "nuur", isCorrect: true },
+          { text: "naur", isCorrect: false },
+          { text: "nir", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch5-q5',
+        type: 'identify',
+        questionUz: "Bu so'zda qaysi madd harfi bor?",
+        questionRu: "Какая буква удлинения в этом слове?",
+        questionEn: "Which elongation letter is in this word?",
+        arabic: "نَبِيْ",
+        options: [
+          { text: "ي (ya)", isCorrect: true },
+          { text: "ا (alif)", isCorrect: false },
+          { text: "و (waw)", isCorrect: false },
+          { text: "ن (nun)", isCorrect: false }
         ]
       }
     ]
@@ -577,40 +673,69 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch6-q1',
         type: 'multiple_choice',
-        questionUz: "Quyosh harflarida 'al' artikli qanday o'qiladi?",
-        questionRu: "Как читается артикль 'аль' перед солнечными буквами?",
-        questionEn: "How is 'al' read before sun letters?",
+        questionUz: "Quyosh harflarida 'al' artiklidagi Lom qanday o'qiladi?",
+        questionRu: "Как читается Лям в артикле 'аль' перед солнечными буквами?",
+        questionEn: "How is Lam read in 'al' before sun letters?",
         options: [
-          { text: "Lom o'qilmaydi / Лям не читается / Lam silent", isCorrect: true },
-          { text: "Lom o'qiladi / Лям читается / Lam pronounced", isCorrect: false },
-          { text: "Artikl tushadi / Артикль убирается / Article removed", isCorrect: false },
-          { text: "Hech qanday o'zgarish yo'q / Без изменений / No change", isCorrect: false }
+          { text: "O'qilmaydi, keyingi harf ikkilanadi / Не читается, следующая удваивается / Silent, next letter doubled", isCorrect: true },
+          { text: "Oddiy o'qiladi / Читается обычно / Read normally", isCorrect: false },
+          { text: "Cho'zib o'qiladi / Читается долго / Read long", isCorrect: false },
+          { text: "Yumshoq o'qiladi / Читается мягко / Read soft", isCorrect: false }
         ]
       },
       {
         id: 'ch6-q2',
-        type: 'multiple_choice',
-        questionUz: "'اَلشَّمْسُ' qanday o'qiladi?",
-        questionRu: "Как читается 'اَلشَّمْسُ'?",
-        questionEn: "How is 'اَلشَّمْسُ' read?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "اَلشَّمْسُ",
         options: [
-          { text: "Al-shamsu", isCorrect: false },
-          { text: "Ash-shamsu", isCorrect: true },
-          { text: "A-shamsu", isCorrect: false },
-          { text: "El-shamsu", isCorrect: false }
+          { text: "ash-shamsu", isCorrect: true },
+          { text: "al-shamsu", isCorrect: false },
+          { text: "a-shamsu", isCorrect: false },
+          { text: "alsh-shamsu", isCorrect: false }
         ]
       },
       {
         id: 'ch6-q3',
-        type: 'multiple_choice',
-        questionUz: "'اَلْقَمَرُ' qanday o'qiladi?",
-        questionRu: "Как читается 'اَلْقَمَرُ'?",
-        questionEn: "How is 'اَلْقَمَرُ' read?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "اَلْقَمَرُ",
         options: [
-          { text: "Aq-qamaru", isCorrect: false },
-          { text: "Al-qamaru", isCorrect: true },
-          { text: "A-qamaru", isCorrect: false },
-          { text: "Ar-qamaru", isCorrect: false }
+          { text: "aq-qamaru", isCorrect: false },
+          { text: "al-qamaru", isCorrect: true },
+          { text: "a-qamaru", isCorrect: false },
+          { text: "ar-qamaru", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch6-q4',
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "اَلنَّاسِ",
+        options: [
+          { text: "al-naasi", isCorrect: false },
+          { text: "an-naasi", isCorrect: true },
+          { text: "a-naasi", isCorrect: false },
+          { text: "aln-naasi", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch6-q5',
+        type: 'multiple_choice',
+        questionUz: "Quyidagilardan qaysi biri quyosh harfi?",
+        questionRu: "Какая из следующих — солнечная буква?",
+        questionEn: "Which of these is a sun letter?",
+        options: [
+          { text: "ب (ba)", isCorrect: false },
+          { text: "ت (ta)", isCorrect: true },
+          { text: "ك (kaf)", isCorrect: false },
+          { text: "م (mim)", isCorrect: false }
         ]
       }
     ]
@@ -650,28 +775,58 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
     quiz: [
       {
         id: 'ch7-q1',
-        type: 'multiple_choice',
-        questionUz: "'عَالِمٌ' so'zi nimani anglatadi?",
-        questionRu: "Что означает 'عَالِمٌ'?",
-        questionEn: "What does 'عَالِمٌ' mean?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "يَقُوْلُ",
         options: [
-          { text: "Olim / Учёный / Scholar", isCorrect: true },
-          { text: "Talaba / Студент / Student", isCorrect: false },
-          { text: "O'qituvchi / Учитель / Teacher", isCorrect: false },
-          { text: "Shoir / Поэт / Poet", isCorrect: false }
+          { text: "yaquulu", isCorrect: true },
+          { text: "yaqulu", isCorrect: false },
+          { text: "yaqul", isCorrect: false },
+          { text: "yuqaalu", isCorrect: false }
         ]
       },
       {
         id: 'ch7-q2',
-        type: 'multiple_choice',
-        questionUz: "'طَالِبٌ' nimani anglatadi?",
-        questionRu: "Что означает 'طَالِبٌ'?",
-        questionEn: "What does 'طَالِبٌ' mean?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "يَقُوْلُوْنَ",
         options: [
-          { text: "O'qituvchi / Учитель / Teacher", isCorrect: false },
-          { text: "Talaba / Студент / Student", isCorrect: true },
-          { text: "Shifokor / Врач / Doctor", isCorrect: false },
-          { text: "Savdogar / Торговец / Merchant", isCorrect: false }
+          { text: "yaquuluuna", isCorrect: true },
+          { text: "yaquluna", isCorrect: false },
+          { text: "yaquulun", isCorrect: false },
+          { text: "yaqaluna", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch7-q3',
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "مُسْلِمٌ",
+        options: [
+          { text: "muslimun", isCorrect: true },
+          { text: "muslim", isCorrect: false },
+          { text: "musilmun", isCorrect: false },
+          { text: "maslimun", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch7-q4',
+        type: 'identify',
+        questionUz: "'صَابِرٌ' so'zida 'ا' harfi nima uchun qo'yilgan?",
+        questionRu: "Зачем стоит 'ا' в слове 'صَابِرٌ'?",
+        questionEn: "Why is 'ا' in the word 'صَابِرٌ'?",
+        arabic: "صَابِرٌ",
+        options: [
+          { text: "Cho'zish (madd) uchun / Для удлинения (мадд) / For elongation (madd)", isCorrect: true },
+          { text: "Harakat berish uchun / Для огласовки / For vowel mark", isCorrect: false },
+          { text: "Tanvin uchun / Для танвина / For tanwin", isCorrect: false },
+          { text: "Sukun uchun / Для сукуна / For sukun", isCorrect: false }
         ]
       }
     ]
@@ -720,28 +875,72 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
     quiz: [
       {
         id: 'ch8-q1',
-        type: 'multiple_choice',
-        questionUz: "'لَا اِلَهَ اِلَّا اللهُ' nimani anglatadi?",
-        questionRu: "Что означает 'لَا اِلَهَ اِلَّا اللهُ'?",
-        questionEn: "What does 'لَا اِلَهَ اِلَّا اللهُ' mean?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "اللهُ",
         options: [
-          { text: "Allohdan boshqa iloh yo'q / Нет бога кроме Аллаха / No god but Allah", isCorrect: true },
-          { text: "Alloh buyuk / Аллах велик / Allah is great", isCorrect: false },
-          { text: "Hamd Allohga / Хвала Аллаху / Praise to Allah", isCorrect: false },
-          { text: "Alloh rahmatli / Аллах милостив / Allah is merciful", isCorrect: false }
+          { text: "Allaahu", isCorrect: true },
+          { text: "Allahu", isCorrect: false },
+          { text: "Ilahu", isCorrect: false },
+          { text: "Allihu", isCorrect: false }
         ]
       },
       {
         id: 'ch8-q2',
-        type: 'multiple_choice',
-        questionUz: "Kalima Shahodat nima?",
-        questionRu: "Что такое Калима Шахада?",
-        questionEn: "What is Kalima Shahada?",
+        type: 'identify',
+        questionUz: "Bu ibora qanday o'qiladi?",
+        questionRu: "Как читается эта фраза?",
+        questionEn: "How is this phrase read?",
+        arabic: "بِسْمِ اللهِ",
         options: [
-          { text: "Guvohlik kalimasi / Свидетельство / Declaration of faith", isCorrect: true },
-          { text: "Duo / Молитва / Prayer", isCorrect: false },
-          { text: "Sura / Сура / Surah", isCorrect: false },
-          { text: "Oyat / Аят / Verse", isCorrect: false }
+          { text: "Bismillaahi", isCorrect: true },
+          { text: "Basmilahi", isCorrect: false },
+          { text: "Bismalahi", isCorrect: false },
+          { text: "Bismillhi", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch8-q3',
+        type: 'identify',
+        questionUz: "'لَا اِلَهَ اِلَّا' iborasida shadda qaysi harfda?",
+        questionRu: "На какой букве шадда в 'لَا اِلَهَ اِلَّا'?",
+        questionEn: "Which letter has shadda in 'لَا اِلَهَ اِلَّا'?",
+        arabic: "لَا اِلَهَ اِلَّا",
+        options: [
+          { text: "ل (lam) — illaa", isCorrect: true },
+          { text: "ا (alif)", isCorrect: false },
+          { text: "ه (ha)", isCorrect: false },
+          { text: "Shadda yo'q / Нет шадды / No shadda", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch8-q4',
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "مُحَمَّدٌ",
+        options: [
+          { text: "Muhammadun", isCorrect: true },
+          { text: "Muhamadun", isCorrect: false },
+          { text: "Mahmudun", isCorrect: false },
+          { text: "Muhamidun", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch8-q5',
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "رَسُوْلُ",
+        options: [
+          { text: "rasuulu", isCorrect: true },
+          { text: "rasulu", isCorrect: false },
+          { text: "risaalu", isCorrect: false },
+          { text: "rusuulu", isCorrect: false }
         ]
       }
     ]
@@ -799,54 +998,72 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
     quiz: [
       {
         id: 'ch9-q1',
-        type: 'multiple_choice',
-        questionUz: "Qur'onning birinchi surasi qaysi?",
-        questionRu: "Какая первая сура Корана?",
-        questionEn: "What is the first surah of the Quran?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "اَلْحَمْدُ",
         options: [
-          { text: "Al-Fotiha / Аль-Фатиха / Al-Fatiha", isCorrect: true },
-          { text: "Al-Baqara / Аль-Бакара / Al-Baqarah", isCorrect: false },
-          { text: "Al-Ixlos / Аль-Ихлас / Al-Ikhlas", isCorrect: false },
-          { text: "An-Nos / Ан-Нас / An-Nas", isCorrect: false }
+          { text: "al-hamdu", isCorrect: true },
+          { text: "a-hamdu", isCorrect: false },
+          { text: "alha-mdu", isCorrect: false },
+          { text: "el-hamdu", isCorrect: false }
         ]
       },
       {
         id: 'ch9-q2',
-        type: 'multiple_choice',
-        questionUz: "Sura Ixlos nimani ta'kidlaydi?",
-        questionRu: "Что утверждает сура Ихлас?",
-        questionEn: "What does Surah Ikhlas affirm?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "الرَّحْمٰنِ",
         options: [
-          { text: "Allohning birligi / Единство Аллаха / Allah's oneness", isCorrect: true },
-          { text: "Namoz qoidalari / Правила молитвы / Prayer rules", isCorrect: false },
-          { text: "Ro'za / Пост / Fasting", isCorrect: false },
-          { text: "Haj / Хадж / Hajj", isCorrect: false }
+          { text: "ar-rahmaani", isCorrect: true },
+          { text: "al-rahmaani", isCorrect: false },
+          { text: "a-rahmaani", isCorrect: false },
+          { text: "ar-rahmani", isCorrect: false }
         ]
       },
       {
         id: 'ch9-q3',
-        type: 'multiple_choice',
-        questionUz: "Sura Fotihada nechta oyat bor?",
-        questionRu: "Сколько аятов в суре Фатиха?",
-        questionEn: "How many verses in Surah Fatiha?",
+        type: 'identify',
+        questionUz: "Bu so'zda qanday qoida qo'llanilgan?",
+        questionRu: "Какое правило применено?",
+        questionEn: "What rule is applied?",
+        arabic: "الرَّحِيْمِ",
         options: [
-          { text: "5", isCorrect: false },
-          { text: "6", isCorrect: false },
-          { text: "7", isCorrect: true },
-          { text: "8", isCorrect: false }
+          { text: "Quyosh harfi (shamsiy) / Солнечная буква / Sun letter", isCorrect: true },
+          { text: "Oy harfi (qamariy) / Лунная буква / Moon letter", isCorrect: false },
+          { text: "Tanvin / Танвин / Tanwin", isCorrect: false },
+          { text: "Sukun / Сукун / Sukun", isCorrect: false }
         ]
       },
       {
         id: 'ch9-q4',
-        type: 'multiple_choice',
-        questionUz: "'بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ' nimani anglatadi?",
-        questionRu: "Что означает 'بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ'?",
-        questionEn: "What does 'بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ' mean?",
+        type: 'identify',
+        questionUz: "Bu so'z qanday o'qiladi?",
+        questionRu: "Как читается это слово?",
+        questionEn: "How is this word read?",
+        arabic: "اَلصَّمَدُ",
         options: [
-          { text: "Rahmon va Rahiym Alloh nomi bilan / Во имя Аллаха Милостивого Милосердного / In the name of Allah, Most Gracious, Most Merciful", isCorrect: true },
-          { text: "Hamd Allohga / Хвала Аллаху / Praise be to Allah", isCorrect: false },
-          { text: "Alloh buyuk / Аллах велик / Allah is great", isCorrect: false },
-          { text: "Allohga shukr / Благодарность Аллаху / Thanks to Allah", isCorrect: false }
+          { text: "as-samadu", isCorrect: true },
+          { text: "al-samadu", isCorrect: false },
+          { text: "a-samadu", isCorrect: false },
+          { text: "als-samadu", isCorrect: false }
+        ]
+      },
+      {
+        id: 'ch9-q5',
+        type: 'identify',
+        questionUz: "'اَلْعَالَمِيْنَ' so'zida 'al' artikli qanday o'qiladi?",
+        questionRu: "Как читается артикль 'аль' в 'اَلْعَالَمِيْنَ'?",
+        questionEn: "How is 'al' article read in 'اَلْعَالَمِيْنَ'?",
+        arabic: "اَلْعَالَمِيْنَ",
+        options: [
+          { text: "al- (Lom o'qiladi / Лям читается / Lam pronounced)", isCorrect: true },
+          { text: "a'- (Lom o'qilmaydi / Лям не читается / Lam silent)", isCorrect: false },
+          { text: "aw- (Lom vovga aylanadi / Лям в вав / Lam becomes waw)", isCorrect: false },
+          { text: "an- (Lom nunga aylanadi / Лям в нун / Lam becomes nun)", isCorrect: false }
         ]
       }
     ]
