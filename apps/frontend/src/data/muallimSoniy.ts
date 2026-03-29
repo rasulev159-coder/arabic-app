@@ -147,10 +147,10 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
         questionEn: "What vowel mark is on this letter?",
         arabic: "تِ",
         options: [
-          { text: "Fatha (َ)", isCorrect: false },
-          { text: "Kasra (ِ)", isCorrect: true },
-          { text: "Damma (ُ)", isCorrect: false },
-          { text: "Sukun (ْ)", isCorrect: false }
+          { text: "Fatha — chiziqcha ustida", isCorrect: false },
+          { text: "Kasra — chiziqcha ostida", isCorrect: true },
+          { text: "Damma — aylancha ustida", isCorrect: false },
+          { text: "Sukun — doiracha ustida", isCorrect: false }
         ]
       },
       {
@@ -184,9 +184,9 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch1-q6',
         type: 'multiple_choice',
-        questionUz: "Kasra (ِ) qanday tovush beradi?",
-        questionRu: "Какой звук даёт касра (ِ)?",
-        questionEn: "What sound does kasra (ِ) give?",
+        questionUz: "Kasra qanday tovush beradi?",
+        questionRu: "Какой звук даёт касра?",
+        questionEn: "What sound does kasra give?",
         options: [
           { text: "a", isCorrect: false },
           { text: "i", isCorrect: true },
@@ -364,9 +364,9 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch3-q1',
         type: 'multiple_choice',
-        questionUz: "Fathatain (ً) qanday o'qiladi?",
-        questionRu: "Как читается фатхатайн (ً)?",
-        questionEn: "How is fathatain (ً) read?",
+        questionUz: "Fathatain qanday o'qiladi?",
+        questionRu: "Как читается фатхатайн?",
+        questionEn: "How is fathatain read?",
         options: [
           { text: "-an", isCorrect: true },
           { text: "-in", isCorrect: false },
@@ -377,9 +377,9 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch3-q2',
         type: 'multiple_choice',
-        questionUz: "Dammatain (ٌ) qanday o'qiladi?",
-        questionRu: "Как читается дамматайн (ٌ)?",
-        questionEn: "How is dammatain (ٌ) read?",
+        questionUz: "Dammatain qanday o'qiladi?",
+        questionRu: "Как читается дамматайн?",
+        questionEn: "How is dammatain read?",
         options: [
           { text: "-an", isCorrect: false },
           { text: "-in", isCorrect: false },
@@ -467,9 +467,9 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch4-q1',
         type: 'multiple_choice',
-        questionUz: "Sukun (ْ) nimani anglatadi?",
-        questionRu: "Что означает сукун (ْ)?",
-        questionEn: "What does sukun (ْ) mean?",
+        questionUz: "Sukun nimani anglatadi?",
+        questionRu: "Что означает сукун?",
+        questionEn: "What does sukun mean?",
         options: [
           { text: "Harf harakatsiz o'qiladi / Буква без гласного / No vowel on letter", isCorrect: true },
           { text: "Harf ikkilanadi / Буква удваивается / Letter doubled", isCorrect: false },
@@ -480,9 +480,9 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
       {
         id: 'ch4-q2',
         type: 'multiple_choice',
-        questionUz: "Shadda (ّ) qo'yilganda harf necha marta o'qiladi?",
-        questionRu: "Сколько раз читается буква с шаддой (ّ)?",
-        questionEn: "How many times is a letter with shadda (ّ) read?",
+        questionUz: "Shadda qo'yilganda harf necha marta o'qiladi?",
+        questionRu: "Сколько раз читается буква с шаддой?",
+        questionEn: "How many times is a letter with shadda read?",
         options: [
           { text: "1", isCorrect: false },
           { text: "2", isCorrect: true },
