@@ -110,5 +110,19 @@
     "back_to_textbook": "Darslikka qaytish",
     "score": "Natija: {{score}} / {{total}}",
     "retry": "Qayta urinish"
+  },
+  "textbook_progress": {
+    "overall": "Umumiy natija",
+    "chapters_done": "{{done}} / {{total}} bob yakunlangan",
+    "avg_score": "O'rtacha ball: {{score}}%",
+    "best_score": "Eng yaxshi: {{score}}%",
+    "new": "Yangi",
+    "passed": "O'tilgan",
+    "not_passed": "O'tilmagan",
+    "pass_threshold": "O'tish uchun 70% kerak",
+    "all_questions": "Barcha savollar",
+    "lesson_quiz": "{{n}}-dars testi",
+    "test_yourself": "O'zingizni sinang",
+    "questions_count": "{{n}} ta savol"
   }
 }

@@ -110,5 +110,19 @@
     "back_to_textbook": "Back to Textbook",
     "score": "Score: {{score}} of {{total}}",
     "retry": "Retry"
+  },
+  "textbook_progress": {
+    "overall": "Overall Progress",
+    "chapters_done": "{{done}} of {{total}} chapters completed",
+    "avg_score": "Average score: {{score}}%",
+    "best_score": "Best: {{score}}%",
+    "new": "New",
+    "passed": "Passed",
+    "not_passed": "Not passed",
+    "pass_threshold": "Need 70% to pass",
+    "all_questions": "All questions",
+    "lesson_quiz": "Lesson {{n}} quiz",
+    "test_yourself": "Test yourself",
+    "questions_count": "{{n}} questions"
   }
 }
