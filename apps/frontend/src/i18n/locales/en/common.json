@@ -6,6 +6,7 @@
     "progress":     "Progress",
     "achievements": "Achievements",
     "leaderboard":  "Leaderboard",
+    "textbook":     "Textbook",
     "settings":     "Settings"
   },
   "auth": {
@@ -97,5 +98,17 @@
   },
   "share_card": {
     "share_title": "My Arabic Learning Progress"
+  },
+  "textbook": {
+    "title": "Muallim Soniy Textbook",
+    "subtitle": "Classic Arabic reading textbook",
+    "chapter": "Chapter",
+    "lesson": "Lesson",
+    "take_quiz": "Take Quiz",
+    "quiz_complete": "Quiz Complete",
+    "back_to_chapter": "Back to Chapter",
+    "back_to_textbook": "Back to Textbook",
+    "score": "Score: {{score}} of {{total}}",
+    "retry": "Retry"
   }
 }

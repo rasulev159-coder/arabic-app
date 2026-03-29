@@ -10,7 +10,8 @@ const NAV = [
   { to: '/progress',     icon: '📈', key: 'progress' },
   { to: '/achievements', icon: '🏆', key: 'achievements' },
   { to: '/leaderboard',  icon: '🥇', key: 'leaderboard' },
-  { to: '/settings',     icon: '⚙️',  key: 'settings' },
+  { to: '/textbook',     icon: '\uD83D\uDCD6', key: 'textbook' },
+  { to: '/settings',     icon: '\u2699\uFE0F',  key: 'settings' },
 ];
 
 export function AppLayout() {

@@ -238,6 +238,31 @@ export function DashboardPage() {
         </motion.div>
       </div>
 
+      {/* Muallim Soniy Textbook CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.45 }}
+        className="mb-6"
+      >
+        <Link to="/textbook" className="block">
+          <div className="bg-gradient-to-r from-[#0f1a08] to-[#1a2008] border border-[rgba(76,175,120,0.15)]
+                          rounded-2xl p-4 flex items-center gap-4
+                          hover:border-[rgba(76,175,120,0.35)] hover:shadow-[0_0_20px_rgba(76,175,120,0.1)] transition-all">
+            <span className="text-3xl">{'\uD83D\uDCD6'}</span>
+            <div className="flex-1">
+              <p className="font-cinzel text-sm text-[#f0e6cc] tracking-wide">
+                {t('common:textbook.title')}
+              </p>
+              <p className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase">
+                {t('common:textbook.subtitle')}
+              </p>
+            </div>
+            <span className="font-cinzel text-gold-light text-lg">{'\u2192'}</span>
+          </div>
+        </Link>
+      </motion.div>
+
       {/* Session flow CTA */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

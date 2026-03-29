@@ -6,6 +6,7 @@
     "progress":     "Natijalar",
     "achievements": "Yutuqlar",
     "leaderboard":  "Reyting",
+    "textbook":     "Darslik",
     "settings":     "Sozlamalar"
   },
   "auth": {
@@ -97,5 +98,17 @@
   },
   "share_card": {
     "share_title": "Arab alifbosidagi natijalarim"
+  },
+  "textbook": {
+    "title": "\u00abMuallim soniy\u00bb darsligi",
+    "subtitle": "Arab o\u2018qishining klassik darsligi",
+    "chapter": "Bob",
+    "lesson": "Dars",
+    "take_quiz": "Testni boshlash",
+    "quiz_complete": "Test yakunlandi",
+    "back_to_chapter": "Bobga qaytish",
+    "back_to_textbook": "Darslikka qaytish",
+    "score": "Natija: {{score}} / {{total}}",
+    "retry": "Qayta urinish"
   }
 }

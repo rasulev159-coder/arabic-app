@@ -22,6 +22,9 @@ import { LightningPage, MemoryPage, ListenPage, FindPage } from './pages/learn/M
 import { WeaknessTrainingPage } from './pages/learn/WeaknessTraining';
 import { SessionFlowPage }      from './pages/learn/SessionFlow';
 import { QuranModePage }         from './pages/learn/QuranMode';
+import { TextbookPage }          from './pages/Textbook';
+import { TextbookChapterPage }   from './pages/TextbookChapter';
+import { TextbookQuizPage }      from './pages/TextbookQuiz';
 
 function SplashScreen() {
   return (
@@ -109,6 +112,9 @@ export default function App() {
           <Route path="/learn/weakness"    element={<WeaknessTrainingPage />} />
           <Route path="/learn/session"     element={<SessionFlowPage />} />
           <Route path="/learn/quran"       element={<QuranModePage />} />
+          <Route path="/textbook"                  element={<TextbookPage />} />
+          <Route path="/textbook/:chapterId"       element={<TextbookChapterPage />} />
+          <Route path="/textbook/:chapterId/quiz"  element={<TextbookQuizPage />} />
           <Route path="/admin"             element={<AdminPage />} />
         </Route>
 
