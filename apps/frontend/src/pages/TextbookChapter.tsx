@@ -11,7 +11,7 @@ export function TextbookChapterPage() {
   const { chapterId } = useParams<{ chapterId: string }>();
   const user         = useAuthStore((s) => s.user);
   const lang         = (user?.language ?? 'uz') as Language;
-  const { progress } = useTextbookStore();
+  const { progress, getLessonProgress } = useTextbookStore();
 
   const chapter = MUALLIM_SONIY.find((ch) => ch.id === chapterId);
 
@@ -131,6 +131,9 @@ export function TextbookChapterPage() {
       <div className="flex flex-col gap-6">
         {chapter.lessons.map((lesson, i) => {
           const lessonQCount = Math.min(perLesson, totalQ - i * perLesson);
+          const lp = getLessonProgress(chapter.id, i);
+          const lessonPassed = !!lp?.completedAt;
+          const lessonScore = lp?.bestScore ?? 0;
 
           return (
             <motion.div
@@ -138,25 +141,37 @@ export function TextbookChapterPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 * i + 0.1 }}
-              className="bg-gradient-to-br from-[#201808] to-[#140f05]
-                         border border-[rgba(201,168,76,0.1)] rounded-2xl p-6"
+              className={`bg-gradient-to-br from-[#201808] to-[#140f05] rounded-2xl p-6
+                         border ${lessonPassed ? 'border-[rgba(76,175,120,0.25)]' : 'border-[rgba(201,168,76,0.1)]'}`}
             >
               {/* Lesson header with number and status */}
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.15)]
-                                  flex items-center justify-center">
-                    <span className="font-cinzel text-[0.5rem] text-gold-dim font-bold">{i + 1}</span>
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center border
+                    ${lessonPassed
+                      ? 'bg-[rgba(76,175,120,0.15)] border-[rgba(76,175,120,0.3)]'
+                      : 'bg-[rgba(201,168,76,0.1)] border-[rgba(201,168,76,0.15)]'}`}>
+                    {lessonPassed
+                      ? <span className="text-[#4caf78] text-xs">✓</span>
+                      : <span className="font-cinzel text-[0.5rem] text-gold-dim font-bold">{i + 1}</span>}
                   </div>
                   <p className="font-cinzel text-[0.5rem] tracking-[3px] text-[rgba(201,168,76,0.5)] uppercase">
                     {t('textbook.lesson')} {i + 1}
                   </p>
                 </div>
-                {lessonQCount > 0 && (
-                  <span className="font-cinzel text-[0.45rem] tracking-widest text-[rgba(201,168,76,0.3)] uppercase">
-                    {lessonQCount} {lessonQCount === 1 ? 'Q' : 'Qs'}
-                  </span>
-                )}
+                <div className="flex items-center gap-2">
+                  {lessonScore > 0 && (
+                    <span className={`font-cinzel text-[0.5rem] tracking-widest font-bold
+                      ${lessonPassed ? 'text-[#4caf78]' : 'text-[#c98a32]'}`}>
+                      {lessonScore}%
+                    </span>
+                  )}
+                  {lessonQCount > 0 && !lp && (
+                    <span className="font-cinzel text-[0.45rem] tracking-widest text-[rgba(201,168,76,0.3)] uppercase">
+                      {lessonQCount} {lessonQCount === 1 ? 'Q' : 'Qs'}
+                    </span>
+                  )}
+                </div>
               </div>
 
               {/* Arabic text */}
@@ -181,16 +196,19 @@ export function TextbookChapterPage() {
               {lessonQCount > 0 && (
                 <div className="mt-4 pt-3 border-t border-[rgba(201,168,76,0.06)] flex items-center justify-between">
                   <span className="font-cinzel text-[0.5rem] tracking-widest text-[rgba(201,168,76,0.4)] uppercase">
-                    {t('textbook_progress.questions_count', { n: lessonQCount })}
+                    {lessonPassed
+                      ? `✓ ${t('textbook_progress.passed')} — ${lessonScore}%`
+                      : t('textbook_progress.questions_count', { n: lessonQCount })}
                   </span>
                   <Link
                     to={`/textbook/${chapter.id}/quiz?lesson=${i}`}
-                    className="font-cinzel text-[0.6rem] tracking-widest uppercase px-5 py-2
-                               rounded-full border border-[rgba(201,168,76,0.15)] text-[#9a8a6a]
-                               hover:text-gold-light hover:border-[rgba(201,168,76,0.35)]
-                               hover:bg-[rgba(201,168,76,0.05)] transition-all"
+                    className={`font-cinzel text-[0.6rem] tracking-widest uppercase px-5 py-2
+                               rounded-full border transition-all
+                               ${lessonPassed
+                                 ? 'border-[rgba(76,175,120,0.2)] text-[#4caf78] hover:border-[rgba(76,175,120,0.4)] hover:bg-[rgba(76,175,120,0.05)]'
+                                 : 'border-[rgba(201,168,76,0.15)] text-[#9a8a6a] hover:text-gold-light hover:border-[rgba(201,168,76,0.35)] hover:bg-[rgba(201,168,76,0.05)]'}`}
                   >
-                    {t('textbook_progress.test_yourself')}
+                    {lessonPassed ? t('textbook.retry') : t('textbook_progress.test_yourself')}
                   </Link>
                 </div>
               )}

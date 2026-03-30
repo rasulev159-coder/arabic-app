@@ -33,7 +33,7 @@ export function TextbookQuizPage() {
   const [searchParams] = useSearchParams();
   const user         = useAuthStore((s) => s.user);
   const lang         = (user?.language ?? 'uz') as Language;
-  const { saveQuizResult } = useTextbookStore();
+  const { saveQuizResult, saveLessonResult, getLessonProgress } = useTextbookStore();
 
   const chapter = MUALLIM_SONIY.find((ch) => ch.id === chapterId);
 
@@ -125,8 +125,9 @@ export function TextbookQuizPage() {
         // Save progress
         const finalScore = score + (isCorrect ? 1 : 0);
         if (selectedLesson === null) {
-          // Full chapter quiz
           saveQuizResult(chapter.id, total, finalScore);
+        } else {
+          saveLessonResult(chapter.id, selectedLesson, total, finalScore);
         }
       }
     }, 1200);
@@ -183,6 +184,8 @@ export function TextbookQuizPage() {
           {chapter.lessons.map((lesson, i) => {
             const chunk = lessonChunks[i] ?? [];
             const previewArabic = lesson.arabic.split('\n')[0]?.slice(0, 30) ?? '';
+            const lp = chapterId ? getLessonProgress(chapterId, i) : undefined;
+            const lessonDone = !!lp?.completedAt;
             return (
               <motion.button
                 key={lesson.id}
@@ -190,15 +193,23 @@ export function TextbookQuizPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.04 * i }}
                 onClick={() => handleSelectLesson(i)}
-                className="w-full text-left bg-gradient-to-br from-[#201808] to-[#140f05]
-                           border border-[rgba(201,168,76,0.1)] hover:border-[rgba(201,168,76,0.3)]
-                           rounded-2xl p-4 transition-all group"
+                className={`w-full text-left bg-gradient-to-br from-[#201808] to-[#140f05]
+                           border rounded-2xl p-4 transition-all group
+                           ${lessonDone ? 'border-[rgba(76,175,120,0.25)] hover:border-[rgba(76,175,120,0.4)]' : 'border-[rgba(201,168,76,0.1)] hover:border-[rgba(201,168,76,0.3)]'}`}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex-1 min-w-0">
-                    <p className="font-cinzel text-[0.5rem] tracking-[3px] text-[#9a8a6a] uppercase">
-                      {t('textbook_progress.lesson_quiz', { n: i + 1 })}
-                    </p>
+                    <div className="flex items-center gap-2">
+                      {lessonDone && <span className="text-[#4caf78] text-sm">✓</span>}
+                      <p className="font-cinzel text-[0.5rem] tracking-[3px] text-[#9a8a6a] uppercase">
+                        {t('textbook_progress.lesson_quiz', { n: i + 1 })}
+                      </p>
+                      {lp && (
+                        <span className={`font-cinzel text-[0.5rem] font-bold ${lessonDone ? 'text-[#4caf78]' : 'text-[#c98a32]'}`}>
+                          {lp.bestScore}%
+                        </span>
+                      )}
+                    </div>
                     <p
                       dir="rtl"
                       className="text-lg text-gold-light mt-1 truncate"
@@ -210,9 +221,10 @@ export function TextbookQuizPage() {
                       {t('textbook_progress.questions_count', { n: chunk.length })}
                     </p>
                   </div>
-                  <span className="font-cinzel text-gold-light text-lg opacity-40 group-hover:opacity-100
-                                   group-hover:translate-x-1 transition-all ml-3 flex-shrink-0">
-                    &rarr;
+                  <span className={`font-cinzel text-lg opacity-40 group-hover:opacity-100
+                                   group-hover:translate-x-1 transition-all ml-3 flex-shrink-0
+                                   ${lessonDone ? 'text-[#4caf78]' : 'text-gold-light'}`}>
+                    {lessonDone ? '✓' : '→'}
                   </span>
                 </div>
               </motion.button>
