@@ -27,6 +27,9 @@
     "master":   "Usta"
   },
   "streak": "kun ketma-ket",
+  "streak_text": "kun ketma-ket",
+  "weakness_empty": "Zaif harflarni ko'rish uchun bir necha mashq bajaring",
+  "data_load_error": "Ma'lumotlarni yuklab bo'lmadi",
   "letters_known": "O'rganilgan harflar",
   "share": "Ulashish",
   "copy_link": "Havolani nusxalash",
@@ -110,6 +113,47 @@
     "back_to_textbook": "Darslikka qaytish",
     "score": "Natija: {{score}} / {{total}}",
     "retry": "Qayta urinish"
+  },
+  "alphabet_page": {
+    "title": "Arab alifbosi",
+    "flip_all": "Hammasini aylantirish",
+    "hide_all": "Hammasini yashirish",
+    "auto_hide": "Avto-yashirish",
+    "seconds": "s"
+  },
+  "progress_page": {
+    "title": "Natijalar",
+    "letters_learned": "O'rganilgan harflar",
+    "total_sessions": "Jami sessiyalar",
+    "accuracy": "Aniqlik",
+    "time_min": "Vaqt (min)",
+    "activity": "Faollik",
+    "letter_status": "Harflar holati",
+    "empty": "Natijalaringizni ko'rish uchun mashq qilishni boshlang",
+    "attempts": "Urinishlar",
+    "accuracy_pct": "Aniqlik",
+    "last_practiced": "Oxirgi mashq",
+    "never": "Hech qachon"
+  },
+  "achievements_page": {
+    "title": "Yutuqlar",
+    "unlocked": "Olingan",
+    "locked": "Olinmagan",
+    "received": "olingan",
+    "empty": "Yutuqlarni qo'lga kiritish uchun birinchi darsni bajaring!"
+  },
+  "leaderboard_page": {
+    "title": "Reyting",
+    "speed": "Tezlik",
+    "lightning": "Chaqmoq",
+    "memory": "Xotira",
+    "streak": "Ketma-ketlik",
+    "no_results": "Hali natijalar yo'q",
+    "you": "Siz"
+  },
+  "textbook_nav": {
+    "prev_chapter": "Oldingi bob",
+    "next_chapter": "Keyingi bob"
   },
   "textbook_progress": {
     "overall": "Umumiy natija",

@@ -27,6 +27,8 @@ export function useSaveSession() {
     onSuccess: (data) => {
       qc.invalidateQueries({ queryKey: ['progress'] });
       qc.invalidateQueries({ queryKey: ['achievements'] });
+      qc.invalidateQueries({ queryKey: ['weakness'] });
+      qc.invalidateQueries({ queryKey: ['daily-lesson'] });
       // Show achievement toasts
       for (const ach of data.unlocked ?? []) push(ach);
     },

@@ -48,7 +48,18 @@ export function DailyLesson() {
     );
   }
 
-  if (isError || !daily) return null;
+  if (isError) {
+    return (
+      <div className="bg-gradient-to-br from-[#201808] to-[#140f05] border border-[#3a2d10]
+                      rounded-3xl p-6 text-center">
+        <p className="font-cinzel text-[0.65rem] tracking-widest text-[#9a8a6a] uppercase">
+          {t('common:data_load_error', { defaultValue: "Couldn't load data" })}
+        </p>
+      </div>
+    );
+  }
+
+  if (!daily) return null;
 
   const isCompleted = daily.completed;
   const firstModeRoute = daily.modes[0] ? MODE_ROUTES[daily.modes[0]] : '/learn/quiz';

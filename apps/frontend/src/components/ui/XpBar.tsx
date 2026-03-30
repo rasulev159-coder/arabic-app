@@ -9,12 +9,21 @@ function xpForLevel(level: number): number {
   return Math.floor(100 * Math.pow(1.5, level - 1));
 }
 
+function calculateProgress(totalXp: number, level: number) {
+  let accumulated = 0;
+  for (let i = 1; i < level; i++) {
+    accumulated += xpForLevel(i);
+  }
+  const currentLevelXp = Math.max(0, totalXp - accumulated);
+  const nextLevelXp = xpForLevel(level);
+  return { currentLevelXp, nextLevelXp };
+}
+
 export function XpBar({ xp, level }: XpBarProps) {
-  const currentLevelXp = xpForLevel(level);
-  const nextLevelXp = xpForLevel(level + 1);
-  const xpIntoLevel = xp - currentLevelXp;
-  const xpNeeded = nextLevelXp - currentLevelXp;
-  const progress = Math.min(Math.max((xpIntoLevel / xpNeeded) * 100, 0), 100);
+  const { currentLevelXp, nextLevelXp } = calculateProgress(xp, level);
+  const progress = nextLevelXp > 0
+    ? Math.min(Math.max((currentLevelXp / nextLevelXp) * 100, 0), 100)
+    : 0;
 
   return (
     <div className="flex items-center gap-3 w-full">
@@ -54,9 +63,9 @@ export function XpBar({ xp, level }: XpBarProps) {
 
       {/* XP text */}
       <p className="flex-shrink-0 font-cinzel text-[0.6rem] tracking-wider text-[#9a8a6a] whitespace-nowrap">
-        <span className="text-gold-light font-bold">{xpIntoLevel}</span>
+        <span className="text-gold-light font-bold">{currentLevelXp}</span>
         {' / '}
-        <span>{xpNeeded}</span>
+        <span>{nextLevelXp}</span>
         {' '}
         <span className="tracking-widest uppercase">XP</span>
       </p>

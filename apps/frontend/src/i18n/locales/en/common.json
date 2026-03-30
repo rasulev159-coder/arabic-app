@@ -27,6 +27,10 @@
     "master":   "Master"
   },
   "streak": "day streak",
+  "streak_one": "day streak",
+  "streak_many": "days streak",
+  "weakness_empty": "Complete some exercises to see your weak letters",
+  "data_load_error": "Couldn't load data",
   "letters_known": "Letters learned",
   "share": "Share",
   "copy_link": "Copy link",
@@ -110,6 +114,47 @@
     "back_to_textbook": "Back to Textbook",
     "score": "Score: {{score}} of {{total}}",
     "retry": "Retry"
+  },
+  "alphabet_page": {
+    "title": "Arabic Alphabet",
+    "flip_all": "Flip all",
+    "hide_all": "Hide all",
+    "auto_hide": "Auto-hide",
+    "seconds": "s"
+  },
+  "progress_page": {
+    "title": "Progress",
+    "letters_learned": "Letters learned",
+    "total_sessions": "Total sessions",
+    "accuracy": "Accuracy",
+    "time_min": "Time (min)",
+    "activity": "Activity",
+    "letter_status": "Letter status",
+    "empty": "Start practicing to see your progress",
+    "attempts": "Attempts",
+    "accuracy_pct": "Accuracy",
+    "last_practiced": "Last practiced",
+    "never": "Never"
+  },
+  "achievements_page": {
+    "title": "Achievements",
+    "unlocked": "Unlocked",
+    "locked": "Locked",
+    "received": "received",
+    "empty": "Complete your first lesson to start earning achievements!"
+  },
+  "leaderboard_page": {
+    "title": "Leaderboard",
+    "speed": "Speed",
+    "lightning": "Lightning",
+    "memory": "Memory",
+    "streak": "Streak",
+    "no_results": "No results yet",
+    "you": "You"
+  },
+  "textbook_nav": {
+    "prev_chapter": "Previous chapter",
+    "next_chapter": "Next chapter"
   },
   "textbook_progress": {
     "overall": "Overall Progress",

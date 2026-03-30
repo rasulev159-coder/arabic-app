@@ -75,7 +75,13 @@ export default function App() {
   useEffect(() => {
     if (accessToken && !user) {
       fetchMe()
-        .catch(() => {})
+        .catch(() => {
+          // Token is invalid/expired — clear stored auth so user sees login page
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken');
+          localStorage.removeItem('auth');
+          useAuthStore.setState({ accessToken: null, refreshToken: null, user: null });
+        })
         .finally(() => setHydrating(false));
     } else {
       setHydrating(false);

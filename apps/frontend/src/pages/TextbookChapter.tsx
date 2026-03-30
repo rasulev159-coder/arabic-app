@@ -1,3 +1,4 @@
+import { useEffect }        from 'react';
 import { Link, useParams }  from 'react-router-dom';
 import { useTranslation }   from 'react-i18next';
 import { motion }           from 'framer-motion';
@@ -12,6 +13,11 @@ export function TextbookChapterPage() {
   const user         = useAuthStore((s) => s.user);
   const lang         = (user?.language ?? 'uz') as Language;
   const { progress, getLessonProgress } = useTextbookStore();
+
+  // Scroll to top on chapter entry
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [chapterId]);
 
   const chapter = MUALLIM_SONIY.find((ch) => ch.id === chapterId);
 
@@ -237,6 +243,54 @@ export function TextbookChapterPage() {
           </Link>
         </motion.div>
       )}
+
+      {/* Previous / Next chapter navigation */}
+      {(() => {
+        const currentIdx = MUALLIM_SONIY.findIndex(ch => ch.id === chapter.id);
+        const prevChapter = currentIdx > 0 ? MUALLIM_SONIY[currentIdx - 1] : null;
+        const nextChapter = currentIdx < MUALLIM_SONIY.length - 1 ? MUALLIM_SONIY[currentIdx + 1] : null;
+        const getTitle = (ch: typeof MUALLIM_SONIY[0]) =>
+          lang === 'ru' ? ch.titleRu : lang === 'en' ? ch.titleEn : ch.titleUz;
+
+        return (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="mt-10 pt-6 border-t border-[rgba(201,168,76,0.1)] flex items-center justify-between gap-4"
+          >
+            {prevChapter ? (
+              <Link
+                to={`/textbook/${prevChapter.id}`}
+                className="flex-1 flex flex-col items-start gap-1 p-4 rounded-2xl border border-[rgba(201,168,76,0.1)]
+                           bg-[rgba(255,255,255,0.02)] hover:border-[rgba(201,168,76,0.25)] hover:bg-[rgba(201,168,76,0.03)] transition-all"
+              >
+                <span className="font-cinzel text-[0.5rem] tracking-widest text-[#9a8a6a] uppercase">
+                  {t('textbook_nav.prev_chapter')}
+                </span>
+                <span className="font-cinzel text-xs text-[#f0e6cc] truncate max-w-full">
+                  {prevChapter.icon} {getTitle(prevChapter)}
+                </span>
+              </Link>
+            ) : <div className="flex-1" />}
+
+            {nextChapter ? (
+              <Link
+                to={`/textbook/${nextChapter.id}`}
+                className="flex-1 flex flex-col items-end gap-1 p-4 rounded-2xl border border-[rgba(201,168,76,0.1)]
+                           bg-[rgba(255,255,255,0.02)] hover:border-[rgba(201,168,76,0.25)] hover:bg-[rgba(201,168,76,0.03)] transition-all"
+              >
+                <span className="font-cinzel text-[0.5rem] tracking-widest text-[#9a8a6a] uppercase">
+                  {t('textbook_nav.next_chapter')}
+                </span>
+                <span className="font-cinzel text-xs text-[#f0e6cc] truncate max-w-full">
+                  {getTitle(nextChapter)} {nextChapter.icon}
+                </span>
+              </Link>
+            ) : <div className="flex-1" />}
+          </motion.div>
+        );
+      })()}
     </div>
   );
 }

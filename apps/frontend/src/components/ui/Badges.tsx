@@ -2,6 +2,27 @@ import { useTranslation }  from 'react-i18next';
 import { useAuthStore }     from '../../store/authStore';
 import { Language, UserLevel } from '@arabic/shared';
 
+// ── Pluralization helper ─────────────────────────────────────────────────────
+function pluralizeRu(n: number, one: string, few: string, many: string): string {
+  const abs = Math.abs(n) % 100;
+  const lastDigit = abs % 10;
+  if (abs > 10 && abs < 20) return many;
+  if (lastDigit > 1 && lastDigit < 5) return few;
+  if (lastDigit === 1) return one;
+  return many;
+}
+
+export function getStreakText(n: number, lang: Language, t: (key: string) => string): string {
+  if (lang === 'ru') {
+    return pluralizeRu(n, t('common:streak_one'), t('common:streak_few'), t('common:streak_many'));
+  }
+  if (lang === 'uz') {
+    return t('common:streak_text');
+  }
+  // English
+  return n === 1 ? t('common:streak_one') : t('common:streak_many');
+}
+
 // ── Level Badge ───────────────────────────────────────────────────────────────
 const LEVEL_COLORS: Record<UserLevel, string> = {
   beginner: 'bg-[rgba(154,138,106,0.15)] text-[#9a8a6a] border-[rgba(154,138,106,0.3)]',
@@ -28,11 +49,17 @@ export function LevelBadge({ level, size = 'sm' }: { level: UserLevel; size?: 's
 // ── Streak Badge ──────────────────────────────────────────────────────────────
 export function StreakBadge({ current }: { current: number }) {
   const { t } = useTranslation('common');
+  const user = useAuthStore((s) => s.user);
+  const lang = (user?.language ?? 'en') as Language;
+
   if (current === 0) return null;
+
+  const streakLabel = getStreakText(current, lang, t);
+
   return (
     <span className="inline-flex items-center gap-1 bg-[rgba(255,100,0,0.1)] border border-[rgba(255,100,0,0.3)]
                      text-[#ff8c42] rounded-full font-cinzel text-[0.65rem] tracking-wide uppercase px-3 py-1">
-      🔥 {current} {t('streak')}
+      🔥 {current} {streakLabel}
     </span>
   );
 }
@@ -57,8 +84,8 @@ export function LanguageSwitcher() {
           onClick={() => (user ? setLanguage(code) : i18n.changeLanguage(code))}
           className={`font-cinzel text-[0.6rem] tracking-widest uppercase px-2 py-1 rounded-lg border transition-all
             ${current === code
-              ? 'border-gold-dim text-gold-light bg-[rgba(201,168,76,0.1)]'
-              : 'border-transparent text-[#9a8a6a] hover:text-gold-dim'}`}
+              ? 'border-gold-dim text-gold-light bg-[rgba(201,168,76,0.1)] font-bold shadow-[0_2px_0_0_rgba(201,168,76,0.5)]'
+              : 'border-transparent text-[#9a8a6a] opacity-60 hover:text-gold-dim hover:opacity-100'}`}
         >
           {flag} {label}
         </button>

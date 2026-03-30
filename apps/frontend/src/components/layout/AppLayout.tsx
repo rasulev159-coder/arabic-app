@@ -1,4 +1,4 @@
-import { Outlet, NavLink, Link, useNavigate } from 'react-router-dom';
+import { Outlet, NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation }  from 'react-i18next';
 import { useAuthStore }    from '../../store/authStore';
 import { LevelBadge, StreakBadge, LanguageSwitcher } from '../ui/Badges';
@@ -18,6 +18,10 @@ export function AppLayout() {
   const { t }    = useTranslation('common');
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isActive = (path: string) =>
+    location.pathname === path || location.pathname.startsWith(path + '/');
 
   const handleLogout = async () => {
     await logout();
@@ -52,32 +56,35 @@ export function AppLayout() {
 
         {/* Nav links */}
         <nav className="flex flex-col gap-1 flex-1">
-          {NAV.map(({ to, icon, key }) => (
-            <NavLink
-              key={to} to={to}
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-2.5 rounded-xl font-cinzel text-xs tracking-widest uppercase transition-all
-                 ${isActive
-                   ? 'bg-[rgba(201,168,76,0.1)] text-gold border border-[rgba(201,168,76,0.2)]'
-                   : 'text-[#9a8a6a] hover:text-gold hover:bg-[rgba(201,168,76,0.05)]'}`
-              }
-            >
-              <span className="text-base">{icon}</span>
-              {t(`nav.${key}`)}
-            </NavLink>
-          ))}
+          {NAV.map(({ to, icon, key }) => {
+            const active = isActive(to);
+            return (
+              <NavLink
+                key={to} to={to}
+                className={
+                  `flex items-center gap-3 px-3 py-2.5 rounded-xl font-cinzel text-xs tracking-widest uppercase transition-all
+                   ${active
+                     ? 'bg-[rgba(201,168,76,0.12)] text-[#e8c96d] border border-[rgba(201,168,76,0.25)] border-l-[3px] border-l-[#c9a84c] shadow-[0_0_8px_rgba(201,168,76,0.08)]'
+                     : 'text-[#9a8a6a] hover:text-gold hover:bg-[rgba(201,168,76,0.05)] border border-transparent'}`
+                }
+              >
+                <span className="text-base">{icon}</span>
+                {t(`nav.${key}`)}
+              </NavLink>
+            );
+          })}
           {user?.role === 'admin' && (
             <NavLink
               to="/admin"
-              className={({ isActive }) =>
+              className={
                 `flex items-center gap-3 px-3 py-2.5 rounded-xl font-cinzel text-xs tracking-widest uppercase transition-all
-                 ${isActive
-                   ? 'bg-[rgba(201,168,76,0.1)] text-gold border border-[rgba(201,168,76,0.2)]'
-                   : 'text-[#9a8a6a] hover:text-gold hover:bg-[rgba(201,168,76,0.05)]'}`
+                 ${isActive('/admin')
+                   ? 'bg-[rgba(201,168,76,0.12)] text-[#e8c96d] border border-[rgba(201,168,76,0.25)] border-l-[3px] border-l-[#c9a84c] shadow-[0_0_8px_rgba(201,168,76,0.08)]'
+                   : 'text-[#9a8a6a] hover:text-gold hover:bg-[rgba(201,168,76,0.05)] border border-transparent'}`
               }
             >
               <span className="text-base">🛠</span>
-              Админ
+              {t('nav.admin', { defaultValue: 'Админ' })}
             </NavLink>
           )}
         </nav>
@@ -102,17 +109,22 @@ export function AppLayout() {
       {/* Mobile bottom nav */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0d0a07] border-t border-[rgba(201,168,76,0.1)]
                       flex justify-around py-2 z-40">
-        {NAV.slice(0, 5).map(({ to, icon }) => (
-          <NavLink
-            key={to} to={to}
-            className={({ isActive }) =>
-              `flex flex-col items-center p-2 rounded-xl transition-all
-               ${isActive ? 'text-gold' : 'text-[#9a8a6a]'}`
-            }
-          >
-            <span className="text-xl">{icon}</span>
-          </NavLink>
-        ))}
+        {NAV.slice(0, 5).map(({ to, icon }) => {
+          const active = isActive(to);
+          return (
+            <NavLink
+              key={to} to={to}
+              className={
+                `flex flex-col items-center p-2 rounded-xl transition-all
+                 ${active
+                   ? 'text-[#e8c96d] bg-[rgba(201,168,76,0.08)] shadow-[0_-2px_0_0_#c9a84c_inset]'
+                   : 'text-[#9a8a6a]'}`
+              }
+            >
+              <span className="text-xl">{icon}</span>
+            </NavLink>
+          );
+        })}
       </nav>
     </div>
   );
