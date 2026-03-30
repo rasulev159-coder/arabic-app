@@ -1,4 +1,4 @@
-import { useState, useMemo }  from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation }    from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,6 +8,24 @@ import { MUALLIM_SONIY, QuizQuestion } from '../data/muallimSoniy';
 import { Language }           from '@arabic/shared';
 
 type Phase = 'select' | 'quiz' | 'result';
+
+// Shuffle array (Fisher-Yates)
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Shuffle questions AND their options
+function shuffleQuiz(questions: QuizQuestion[]): QuizQuestion[] {
+  return shuffle(questions).map(q => ({
+    ...q,
+    options: q.options ? shuffle(q.options) : q.options,
+  }));
+}
 
 export function TextbookQuizPage() {
   const { t }        = useTranslation('common');
@@ -39,6 +57,14 @@ export function TextbookQuizPage() {
   const initialLesson = lessonParam !== null ? parseInt(lessonParam, 10) : null;
   const [phase, setPhase]           = useState<Phase>(initialLesson !== null ? 'quiz' : 'select');
   const [selectedLesson, setSelectedLesson] = useState<number | null>(initialLesson);
+  const [activeQuestions, setActiveQuestions] = useState<QuizQuestion[]>(() => {
+    if (initialLesson !== null && chapter) {
+      const perLesson = Math.ceil(chapter.quiz.length / chapter.lessons.length);
+      const chunk = chapter.quiz.slice(initialLesson * perLesson, (initialLesson + 1) * perLesson);
+      return shuffleQuiz(chunk);
+    }
+    return [];
+  });
   const [current, setCurrent]       = useState(0);
   const [score, setScore]           = useState(0);
   const [selected, setSelected]     = useState<number | null>(null);
@@ -57,7 +83,7 @@ export function TextbookQuizPage() {
   }
 
   // Get the active question set
-  const questions = selectedLesson !== null ? (lessonChunks[selectedLesson] ?? []) : chapter.quiz;
+  const questions = activeQuestions;
   const question  = questions[current] as QuizQuestion | undefined;
   const total     = questions.length;
   const progress  = total > 0 ? ((current) / total) * 100 : 0;
@@ -69,6 +95,9 @@ export function TextbookQuizPage() {
 
   const handleSelectLesson = (lessonIdx: number | null) => {
     setSelectedLesson(lessonIdx);
+    // Shuffle questions and options for fresh experience each time
+    const qs = lessonIdx !== null ? (lessonChunks[lessonIdx] ?? []) : chapter.quiz;
+    setActiveQuestions(shuffleQuiz(qs));
     setCurrent(0);
     setScore(0);
     setSelected(null);
@@ -104,6 +133,9 @@ export function TextbookQuizPage() {
   };
 
   const handleRetry = () => {
+    // Reshuffle for a fresh experience
+    const qs = selectedLesson !== null ? (lessonChunks[selectedLesson] ?? []) : chapter.quiz;
+    setActiveQuestions(shuffleQuiz(qs));
     setCurrent(0);
     setScore(0);
     setSelected(null);
