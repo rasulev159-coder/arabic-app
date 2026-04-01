@@ -301,6 +301,22 @@ export type WsEvent =
   | { type: 'challenge:complete'; data: { winnerId: string; challengerScore: number; opponentScore: number } }
   | { type: 'achievement:unlock'; data: AchievementDto };
 
+// ─── Donate ──────────────────────────────────────────────────────────────────
+
+export interface DonateLink {
+  name: string;
+  url: string;
+}
+
+export interface DonateConfigDto {
+  enabled: boolean;
+  title: string;
+  description: string;
+  cardNumber: string | null;
+  cardHolder: string | null;
+  links: DonateLink[];
+}
+
 // ─── Seeder data ──────────────────────────────────────────────────────────────
 
 export const ACHIEVEMENTS_SEED: Array<{

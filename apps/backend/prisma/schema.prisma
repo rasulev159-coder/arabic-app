@@ -194,3 +194,16 @@ model AnalyticsEvent {
   @@index([userId])
   @@map("analytics_events")
 }
+
+model DonateConfig {
+  id          String   @id @default("singleton")
+  enabled     Boolean  @default(false)
+  title       String   @default("Loyihani qo'llab-quvvatlang")
+  description String   @default("")
+  cardNumber  String?
+  cardHolder  String?
+  links       String   @default("[]") // JSON array: [{name, url}]
+  updatedAt   DateTime @updatedAt
+
+  @@map("donate_config")
+}

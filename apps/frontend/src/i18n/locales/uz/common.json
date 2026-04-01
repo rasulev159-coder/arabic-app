@@ -155,6 +155,22 @@
     "prev_chapter": "Oldingi bob",
     "next_chapter": "Keyingi bob"
   },
+  "donate": {
+    "admin_title": "Donat sozlamalari",
+    "enabled": "Donat blokini ko'rsatish",
+    "title_label": "Sarlavha",
+    "description_label": "Tavsif",
+    "card_number": "Karta raqami",
+    "card_holder": "Karta egasi",
+    "links": "To'lov havolalari",
+    "add_link": "Havola qo'shish",
+    "link_name": "Nomi",
+    "link_url": "URL",
+    "save": "Saqlash",
+    "saved": "Saqlandi!",
+    "copy_card": "Raqamni nusxalash",
+    "copied": "Nusxalandi!"
+  },
   "textbook_progress": {
     "overall": "Umumiy natija",
     "chapters_done": "{{done}} / {{total}} bob yakunlangan",

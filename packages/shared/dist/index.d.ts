@@ -198,6 +198,18 @@ export type WsEvent = {
     type: 'achievement:unlock';
     data: AchievementDto;
 };
+export interface DonateLink {
+    name: string;
+    url: string;
+}
+export interface DonateConfigDto {
+    enabled: boolean;
+    title: string;
+    description: string;
+    cardNumber: string | null;
+    cardHolder: string | null;
+    links: DonateLink[];
+}
 export declare const ACHIEVEMENTS_SEED: Array<{
     key: AchievementKey;
     nameRu: string;

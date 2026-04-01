@@ -41,6 +41,7 @@ try {
   const { dailyRouter }        = require('../apps/backend/src/routes/daily');
   const { weaknessRouter }     = require('../apps/backend/src/routes/weakness');
   const { analyticsRouter }    = require('../apps/backend/src/routes/analytics');
+  const { donateRouter }       = require('../apps/backend/src/routes/donate');
   const { errorHandler }       = require('../apps/backend/src/middleware/errorHandler');
   const { requireAuth }        = require('../apps/backend/src/middleware/requireAuth');
   const { requireAdmin }       = require('../apps/backend/src/middleware/requireAdmin');
@@ -56,6 +57,7 @@ try {
   app.use('/api/daily',        dailyRouter);
   app.use('/api/weakness',     weaknessRouter);
   app.use('/api/analytics',    analyticsRouter);
+  app.use('/api/donate',       donateRouter);
   app.use(errorHandler);
 } catch (err) {
   app.use('/api', (_req, res) => {

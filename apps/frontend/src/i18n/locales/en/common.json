@@ -156,6 +156,22 @@
     "prev_chapter": "Previous chapter",
     "next_chapter": "Next chapter"
   },
+  "donate": {
+    "admin_title": "Donation Settings",
+    "enabled": "Show donation block",
+    "title_label": "Title",
+    "description_label": "Description",
+    "card_number": "Card Number",
+    "card_holder": "Card Holder",
+    "links": "Payment Links",
+    "add_link": "Add Link",
+    "link_name": "Name",
+    "link_url": "URL",
+    "save": "Save",
+    "saved": "Saved!",
+    "copy_card": "Copy number",
+    "copied": "Copied!"
+  },
   "textbook_progress": {
     "overall": "Overall Progress",
     "chapters_done": "{{done}} of {{total}} chapters completed",

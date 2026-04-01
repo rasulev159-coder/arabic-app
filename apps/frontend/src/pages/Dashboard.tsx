@@ -9,7 +9,7 @@ import { LevelBadge, StreakBadge, getStreakText } from '../components/ui/Badges'
 import { XpBar }           from '../components/ui/XpBar';
 import { DailyLesson }     from '../components/learn/DailyLesson';
 import { Button }          from '../components/ui/Button';
-import { LETTERS, StudyMode, WeaknessDto, Language } from '@arabic/shared';
+import { LETTERS, StudyMode, WeaknessDto, Language, DonateConfigDto } from '@arabic/shared';
 import { useQuery }        from '@tanstack/react-query';
 import { api }             from '../lib/api';
 
@@ -42,6 +42,13 @@ export function DashboardPage() {
     queryKey: ['leaderboard', 'streak-rank'],
     queryFn: async () => (await api.get('/leaderboard/streak')).data.data,
     staleTime: 60_000,
+  });
+
+  const { data: donateConfig } = useQuery<DonateConfigDto>({
+    queryKey: ['donate-config'],
+    queryFn: async () => (await api.get('/donate')).data.data,
+    staleTime: 5 * 60_000,
+    retry: false,
   });
 
   const { data: weaknessData, isError: weaknessError } = useQuery<WeaknessDto[]>({
@@ -371,6 +378,99 @@ export function DashboardPage() {
           </Button>
         )}
       </motion.div>
+
+      {/* 7. DONATE BLOCK */}
+      {donateConfig?.enabled && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="mt-6 bg-gradient-to-br from-[#1a0f10] via-[#1a1012] to-[#140a0c]
+                     border border-[rgba(220,120,140,0.15)] rounded-3xl p-5 overflow-hidden relative"
+        >
+          {/* Soft decorative glow */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[rgba(220,120,140,0.05)] rounded-full blur-3xl" />
+
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xl">{'\u2764\ufe0f'}</span>
+              <h3 className="font-cinzel text-lg text-[#f0e6cc] tracking-wide">
+                {donateConfig.title}
+              </h3>
+            </div>
+
+            {donateConfig.description && (
+              <p className="font-raleway text-sm text-[#c9a08a] leading-relaxed mb-4">
+                {donateConfig.description}
+              </p>
+            )}
+
+            {donateConfig.cardNumber && (
+              <div className="mb-4">
+                <div className="flex items-center gap-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(220,120,140,0.12)]
+                                rounded-2xl px-4 py-3">
+                  <div className="flex-1">
+                    <p className="font-mono text-base text-[#f0e6cc] tracking-wider select-all">
+                      {donateConfig.cardNumber}
+                    </p>
+                    {donateConfig.cardHolder && (
+                      <p className="font-raleway text-[0.65rem] text-[#9a8a6a] mt-0.5 uppercase tracking-wider">
+                        {donateConfig.cardHolder}
+                      </p>
+                    )}
+                  </div>
+                  <CopyButton text={donateConfig.cardNumber} />
+                </div>
+              </div>
+            )}
+
+            {donateConfig.links && donateConfig.links.length > 0 && (
+              <div className="flex gap-2 flex-wrap">
+                {donateConfig.links.map((link, i) => (
+                  <a
+                    key={i}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full
+                               bg-[rgba(220,120,140,0.08)] border border-[rgba(220,120,140,0.2)]
+                               font-cinzel text-[0.6rem] tracking-widest text-[#e0a0b0] uppercase
+                               hover:bg-[rgba(220,120,140,0.15)] hover:border-[rgba(220,120,140,0.35)]
+                               transition-all"
+                  >
+                    {link.name}
+                    <span className="text-xs">{'\u2197'}</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </motion.div>
+      )}
     </div>
+  );
+}
+
+function CopyButton({ text }: { text: string }) {
+  const { t } = useTranslation('common');
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }).catch(() => {});
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="shrink-0 font-cinzel text-[0.55rem] tracking-widest uppercase px-3 py-1.5
+                 rounded-xl border transition-all
+                 border-[rgba(220,120,140,0.2)] text-[#e0a0b0]
+                 hover:bg-[rgba(220,120,140,0.08)] active:scale-95"
+    >
+      {copied ? t('donate.copied') : t('donate.copy_card')}
+    </button>
   );
 }

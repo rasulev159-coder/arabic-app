@@ -20,6 +20,7 @@ import { letterRouter }       from './routes/letters';
 import { dailyRouter }        from './routes/daily';
 import { weaknessRouter }     from './routes/weakness';
 import { analyticsRouter }    from './routes/analytics';
+import { donateRouter }       from './routes/donate';
 import { errorHandler }       from './middleware/errorHandler';
 import { authLimiter, apiLimiter } from './middleware/rateLimiter';
 import { requireAuth }        from './middleware/requireAuth';
@@ -52,6 +53,7 @@ app.use('/api/letters',      apiLimiter,   letterRouter);
 app.use('/api/daily',        apiLimiter,   dailyRouter);
 app.use('/api/weakness',     apiLimiter,   weaknessRouter);
 app.use('/api/analytics',    apiLimiter,   analyticsRouter);
+app.use('/api/donate',       apiLimiter,   donateRouter);
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
 

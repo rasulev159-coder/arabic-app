@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation }  from 'react-i18next';
 import { useAuthStore }    from '../store/authStore';
 import { api }             from '../lib/api';
 import { Button }          from '../components/ui/Button';
@@ -15,7 +16,22 @@ interface LetterRow {
   associationEn: string;
 }
 
+interface DonateLink {
+  name: string;
+  url: string;
+}
+
+interface DonateForm {
+  enabled: boolean;
+  title: string;
+  description: string;
+  cardNumber: string;
+  cardHolder: string;
+  links: DonateLink[];
+}
+
 export function AdminPage() {
+  const { t } = useTranslation('common');
   const user = useAuthStore(s => s.user);
   const [letters, setLetters] = useState<LetterRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -24,11 +40,39 @@ export function AdminPage() {
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState('');
 
+  // Donate state
+  const [activeTab, setActiveTab] = useState<'letters' | 'donate'>('letters');
+  const [donateForm, setDonateForm] = useState<DonateForm>({
+    enabled: false,
+    title: '',
+    description: '',
+    cardNumber: '',
+    cardHolder: '',
+    links: [],
+  });
+  const [donateLoading, setDonateLoading] = useState(true);
+  const [donateSaving, setDonateSaving] = useState(false);
+  const [donateMsg, setDonateMsg] = useState('');
+
   useEffect(() => {
     api.get('/admin/letters')
       .then(res => setLetters(res.data.data ?? res.data))
       .catch(() => {})
       .finally(() => setLoading(false));
+    api.get('/donate')
+      .then(res => {
+        const d = res.data.data ?? res.data;
+        setDonateForm({
+          enabled: d.enabled ?? false,
+          title: d.title ?? '',
+          description: d.description ?? '',
+          cardNumber: d.cardNumber ?? '',
+          cardHolder: d.cardHolder ?? '',
+          links: d.links ?? [],
+        });
+      })
+      .catch(() => {})
+      .finally(() => setDonateLoading(false));
   }, []);
 
   if (!user || user.role !== 'admin') {
@@ -70,96 +114,294 @@ export function AdminPage() {
     }
   };
 
+  const saveDonate = async () => {
+    setDonateSaving(true);
+    setDonateMsg('');
+    try {
+      await api.patch('/admin/donate', {
+        enabled: donateForm.enabled,
+        title: donateForm.title,
+        description: donateForm.description,
+        cardNumber: donateForm.cardNumber,
+        cardHolder: donateForm.cardHolder,
+        links: donateForm.links,
+      });
+      setDonateMsg(t('donate.saved'));
+      setTimeout(() => setDonateMsg(''), 2000);
+    } catch (e: any) {
+      setDonateMsg(e?.response?.data?.error ?? 'Error saving');
+    } finally {
+      setDonateSaving(false);
+    }
+  };
+
+  const addDonateLink = () => {
+    setDonateForm(prev => ({
+      ...prev,
+      links: [...prev.links, { name: '', url: '' }],
+    }));
+  };
+
+  const removeDonateLink = (index: number) => {
+    setDonateForm(prev => ({
+      ...prev,
+      links: prev.links.filter((_, i) => i !== index),
+    }));
+  };
+
+  const updateDonateLink = (index: number, field: 'name' | 'url', value: string) => {
+    setDonateForm(prev => ({
+      ...prev,
+      links: prev.links.map((link, i) => i === index ? { ...link, [field]: value } : link),
+    }));
+  };
+
   const inputCls = `w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(201,168,76,0.2)]
                     rounded-lg px-3 py-1.5 text-[#f0e6cc] font-raleway text-xs
                     outline-none focus:border-gold-dim transition-colors`;
 
+  const tabCls = (active: boolean) =>
+    `font-cinzel text-[0.65rem] tracking-[3px] uppercase px-4 py-2 rounded-xl border transition-all cursor-pointer ${
+      active
+        ? 'border-[rgba(201,168,76,0.4)] text-gold-light bg-[rgba(201,168,76,0.08)]'
+        : 'border-[rgba(255,255,255,0.08)] text-[#9a8a6a] hover:text-gold-light'
+    }`;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 pb-24 md:pb-8">
-      <h1 className="font-cinzel text-[0.7rem] tracking-[4px] text-[#9a8a6a] uppercase text-center mb-6">
-        Admin — Letters Management
-      </h1>
+      {/* Tab switcher */}
+      <div className="flex gap-3 justify-center mb-6">
+        <button className={tabCls(activeTab === 'letters')} onClick={() => setActiveTab('letters')}>
+          Letters
+        </button>
+        <button className={tabCls(activeTab === 'donate')} onClick={() => setActiveTab('donate')}>
+          {t('donate.admin_title')}
+        </button>
+      </div>
 
-      {msg && (
-        <p className="font-cinzel text-xs text-[#4caf78] tracking-widest text-center mb-4">{msg}</p>
+      {activeTab === 'letters' && (
+        <>
+          <h1 className="font-cinzel text-[0.7rem] tracking-[4px] text-[#9a8a6a] uppercase text-center mb-6">
+            Admin — Letters Management
+          </h1>
+
+          {msg && (
+            <p className="font-cinzel text-xs text-[#4caf78] tracking-widest text-center mb-4">{msg}</p>
+          )}
+
+          {loading ? (
+            <p className="font-cinzel text-xs text-[#9a8a6a] text-center tracking-widest py-10">Loading...</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b border-[rgba(201,168,76,0.15)]">
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">#</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-center">Letter</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Name RU</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Name UZ</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Name EN</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Assoc RU</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Assoc UZ</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Assoc EN</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {letters.map(letter => (
+                    <tr key={letter.code}
+                        className="border-b border-[rgba(201,168,76,0.08)] hover:bg-[rgba(201,168,76,0.03)] transition-colors">
+                      {editing === letter.code ? (
+                        <>
+                          <td className="py-2 px-2 font-cinzel text-xs text-[#9a8a6a]">{letter.index}</td>
+                          <td className="py-2 px-2 text-center">
+                            <span className="font-scheherazade text-2xl text-gold-light">{letter.code}</span>
+                          </td>
+                          <td className="py-2 px-2">
+                            <input className={inputCls} value={form.nameRu ?? ''} onChange={e => setForm({...form, nameRu: e.target.value})} />
+                          </td>
+                          <td className="py-2 px-2">
+                            <input className={inputCls} value={form.nameUz ?? ''} onChange={e => setForm({...form, nameUz: e.target.value})} />
+                          </td>
+                          <td className="py-2 px-2">
+                            <input className={inputCls} value={form.nameEn ?? ''} onChange={e => setForm({...form, nameEn: e.target.value})} />
+                          </td>
+                          <td className="py-2 px-2">
+                            <input className={inputCls} value={form.associationRu ?? ''} onChange={e => setForm({...form, associationRu: e.target.value})} />
+                          </td>
+                          <td className="py-2 px-2">
+                            <input className={inputCls} value={form.associationUz ?? ''} onChange={e => setForm({...form, associationUz: e.target.value})} />
+                          </td>
+                          <td className="py-2 px-2">
+                            <input className={inputCls} value={form.associationEn ?? ''} onChange={e => setForm({...form, associationEn: e.target.value})} />
+                          </td>
+                          <td className="py-2 px-2 text-center">
+                            <div className="flex gap-1 justify-center">
+                              <Button size="sm" onClick={() => saveEdit(letter.code)} disabled={saving}>
+                                {saving ? '...' : 'Save'}
+                              </Button>
+                              <Button size="sm" variant="ghost" onClick={cancelEdit}>Cancel</Button>
+                            </div>
+                          </td>
+                        </>
+                      ) : (
+                        <>
+                          <td className="py-2 px-2 font-cinzel text-xs text-[#9a8a6a]">{letter.index}</td>
+                          <td className="py-2 px-2 text-center">
+                            <span className="font-scheherazade text-2xl text-gold-light">{letter.code}</span>
+                          </td>
+                          <td className="py-2 px-2 font-raleway text-xs text-[#f0e6cc]">{letter.nameRu}</td>
+                          <td className="py-2 px-2 font-raleway text-xs text-[#f0e6cc]">{letter.nameUz}</td>
+                          <td className="py-2 px-2 font-raleway text-xs text-[#f0e6cc]">{letter.nameEn}</td>
+                          <td className="py-2 px-2 font-raleway text-xs text-[#9a8a6a]">{letter.associationRu}</td>
+                          <td className="py-2 px-2 font-raleway text-xs text-[#9a8a6a]">{letter.associationUz}</td>
+                          <td className="py-2 px-2 font-raleway text-xs text-[#9a8a6a]">{letter.associationEn}</td>
+                          <td className="py-2 px-2 text-center">
+                            <Button size="sm" variant="outline" onClick={() => startEdit(letter)}>Edit</Button>
+                          </td>
+                        </>
+                      )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
       )}
 
-      {loading ? (
-        <p className="font-cinzel text-xs text-[#9a8a6a] text-center tracking-widest py-10">Loading...</p>
-      ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="border-b border-[rgba(201,168,76,0.15)]">
-                <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">#</th>
-                <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-center">Letter</th>
-                <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Name RU</th>
-                <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Name UZ</th>
-                <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Name EN</th>
-                <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Assoc RU</th>
-                <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Assoc UZ</th>
-                <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Assoc EN</th>
-                <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {letters.map(letter => (
-                <tr key={letter.code}
-                    className="border-b border-[rgba(201,168,76,0.08)] hover:bg-[rgba(201,168,76,0.03)] transition-colors">
-                  {editing === letter.code ? (
-                    <>
-                      <td className="py-2 px-2 font-cinzel text-xs text-[#9a8a6a]">{letter.index}</td>
-                      <td className="py-2 px-2 text-center">
-                        <span className="font-scheherazade text-2xl text-gold-light">{letter.code}</span>
-                      </td>
-                      <td className="py-2 px-2">
-                        <input className={inputCls} value={form.nameRu ?? ''} onChange={e => setForm({...form, nameRu: e.target.value})} />
-                      </td>
-                      <td className="py-2 px-2">
-                        <input className={inputCls} value={form.nameUz ?? ''} onChange={e => setForm({...form, nameUz: e.target.value})} />
-                      </td>
-                      <td className="py-2 px-2">
-                        <input className={inputCls} value={form.nameEn ?? ''} onChange={e => setForm({...form, nameEn: e.target.value})} />
-                      </td>
-                      <td className="py-2 px-2">
-                        <input className={inputCls} value={form.associationRu ?? ''} onChange={e => setForm({...form, associationRu: e.target.value})} />
-                      </td>
-                      <td className="py-2 px-2">
-                        <input className={inputCls} value={form.associationUz ?? ''} onChange={e => setForm({...form, associationUz: e.target.value})} />
-                      </td>
-                      <td className="py-2 px-2">
-                        <input className={inputCls} value={form.associationEn ?? ''} onChange={e => setForm({...form, associationEn: e.target.value})} />
-                      </td>
-                      <td className="py-2 px-2 text-center">
-                        <div className="flex gap-1 justify-center">
-                          <Button size="sm" onClick={() => saveEdit(letter.code)} disabled={saving}>
-                            {saving ? '...' : 'Save'}
-                          </Button>
-                          <Button size="sm" variant="ghost" onClick={cancelEdit}>Cancel</Button>
-                        </div>
-                      </td>
-                    </>
-                  ) : (
-                    <>
-                      <td className="py-2 px-2 font-cinzel text-xs text-[#9a8a6a]">{letter.index}</td>
-                      <td className="py-2 px-2 text-center">
-                        <span className="font-scheherazade text-2xl text-gold-light">{letter.code}</span>
-                      </td>
-                      <td className="py-2 px-2 font-raleway text-xs text-[#f0e6cc]">{letter.nameRu}</td>
-                      <td className="py-2 px-2 font-raleway text-xs text-[#f0e6cc]">{letter.nameUz}</td>
-                      <td className="py-2 px-2 font-raleway text-xs text-[#f0e6cc]">{letter.nameEn}</td>
-                      <td className="py-2 px-2 font-raleway text-xs text-[#9a8a6a]">{letter.associationRu}</td>
-                      <td className="py-2 px-2 font-raleway text-xs text-[#9a8a6a]">{letter.associationUz}</td>
-                      <td className="py-2 px-2 font-raleway text-xs text-[#9a8a6a]">{letter.associationEn}</td>
-                      <td className="py-2 px-2 text-center">
-                        <Button size="sm" variant="outline" onClick={() => startEdit(letter)}>Edit</Button>
-                      </td>
-                    </>
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {activeTab === 'donate' && (
+        <div className="max-w-xl mx-auto">
+          <h1 className="font-cinzel text-[0.7rem] tracking-[4px] text-[#9a8a6a] uppercase text-center mb-6">
+            {t('donate.admin_title')}
+          </h1>
+
+          {donateMsg && (
+            <p className={`font-cinzel text-xs tracking-widest text-center mb-4 ${
+              donateMsg === t('donate.saved') ? 'text-[#4caf78]' : 'text-[#c95050]'
+            }`}>{donateMsg}</p>
+          )}
+
+          {donateLoading ? (
+            <p className="font-cinzel text-xs text-[#9a8a6a] text-center tracking-widest py-10">Loading...</p>
+          ) : (
+            <div className="space-y-5">
+              {/* Enabled toggle */}
+              <label className="flex items-center gap-3 cursor-pointer group">
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    checked={donateForm.enabled}
+                    onChange={e => setDonateForm(prev => ({ ...prev, enabled: e.target.checked }))}
+                    className="sr-only peer"
+                  />
+                  <div className="w-11 h-6 bg-[rgba(255,255,255,0.08)] border border-[rgba(201,168,76,0.2)]
+                                  rounded-full peer-checked:bg-[rgba(201,168,76,0.3)]
+                                  peer-checked:border-[rgba(201,168,76,0.5)] transition-all" />
+                  <div className="absolute left-[2px] top-[2px] w-5 h-5 bg-[#9a8a6a] rounded-full
+                                  peer-checked:translate-x-5 peer-checked:bg-gold-light transition-all" />
+                </div>
+                <span className="font-cinzel text-xs tracking-widest text-[#f0e6cc] uppercase">
+                  {t('donate.enabled')}
+                </span>
+              </label>
+
+              {/* Title */}
+              <div>
+                <label className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase block mb-1">
+                  {t('donate.title_label')}
+                </label>
+                <input
+                  className={inputCls}
+                  value={donateForm.title}
+                  onChange={e => setDonateForm(prev => ({ ...prev, title: e.target.value }))}
+                />
+              </div>
+
+              {/* Description */}
+              <div>
+                <label className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase block mb-1">
+                  {t('donate.description_label')}
+                </label>
+                <textarea
+                  className={`${inputCls} min-h-[80px] resize-y`}
+                  value={donateForm.description}
+                  onChange={e => setDonateForm(prev => ({ ...prev, description: e.target.value }))}
+                />
+              </div>
+
+              {/* Card Number */}
+              <div>
+                <label className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase block mb-1">
+                  {t('donate.card_number')}
+                </label>
+                <input
+                  className={inputCls}
+                  value={donateForm.cardNumber}
+                  onChange={e => setDonateForm(prev => ({ ...prev, cardNumber: e.target.value }))}
+                  placeholder="8600 1234 5678 9012"
+                />
+              </div>
+
+              {/* Card Holder */}
+              <div>
+                <label className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase block mb-1">
+                  {t('donate.card_holder')}
+                </label>
+                <input
+                  className={inputCls}
+                  value={donateForm.cardHolder}
+                  onChange={e => setDonateForm(prev => ({ ...prev, cardHolder: e.target.value }))}
+                />
+              </div>
+
+              {/* Links */}
+              <div>
+                <label className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase block mb-2">
+                  {t('donate.links')}
+                </label>
+                <div className="space-y-2">
+                  {donateForm.links.map((link, i) => (
+                    <div key={i} className="flex gap-2 items-center">
+                      <input
+                        className={`${inputCls} flex-1`}
+                        value={link.name}
+                        onChange={e => updateDonateLink(i, 'name', e.target.value)}
+                        placeholder={t('donate.link_name')}
+                      />
+                      <input
+                        className={`${inputCls} flex-1`}
+                        value={link.url}
+                        onChange={e => updateDonateLink(i, 'url', e.target.value)}
+                        placeholder={t('donate.link_url')}
+                      />
+                      <button
+                        onClick={() => removeDonateLink(i)}
+                        className="text-[#c95050] hover:text-[#ff6666] transition-colors text-lg px-2 shrink-0"
+                        title="Remove"
+                      >
+                        &times;
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  onClick={addDonateLink}
+                  className="mt-2 font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a]
+                             hover:text-gold-light uppercase transition-colors"
+                >
+                  + {t('donate.add_link')}
+                </button>
+              </div>
+
+              {/* Save */}
+              <div className="pt-2">
+                <Button onClick={saveDonate} disabled={donateSaving}>
+                  {donateSaving ? '...' : t('donate.save')}
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

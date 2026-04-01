@@ -78,6 +78,37 @@ adminRouter.get('/users', async (_req: AuthRequest, res: Response): Promise<void
   res.json({ ok: true, data: users });
 });
 
+// PATCH /api/admin/donate — update donate config
+adminRouter.patch('/donate', async (req: AuthRequest, res: Response): Promise<void> => {
+  const { enabled, title, description, cardNumber, cardHolder, links } = req.body;
+
+  const data: Record<string, unknown> = {};
+  if (typeof enabled === 'boolean') data.enabled = enabled;
+  if (typeof title === 'string') data.title = title;
+  if (typeof description === 'string') data.description = description;
+  if (typeof cardNumber === 'string') data.cardNumber = cardNumber;
+  if (typeof cardHolder === 'string') data.cardHolder = cardHolder;
+  if (Array.isArray(links)) data.links = JSON.stringify(links);
+
+  const config = await prisma.donateConfig.upsert({
+    where: { id: 'singleton' },
+    create: { id: 'singleton', ...data },
+    update: data,
+  });
+
+  res.json({
+    ok: true,
+    data: {
+      enabled: config.enabled,
+      title: config.title,
+      description: config.description,
+      cardNumber: config.cardNumber,
+      cardHolder: config.cardHolder,
+      links: JSON.parse(config.links || '[]'),
+    },
+  });
+});
+
 // PATCH /api/admin/users/:id/role — change user role
 const roleSchema = z.object({
   role: z.enum(['user', 'admin']),
