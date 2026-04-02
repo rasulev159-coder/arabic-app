@@ -25,6 +25,8 @@ import { QuranModePage }         from './pages/learn/QuranMode';
 import { TextbookPage }          from './pages/Textbook';
 import { TextbookChapterPage }   from './pages/TextbookChapter';
 import { TextbookQuizPage }      from './pages/TextbookQuiz';
+import { TextbookRoadmapPath }   from './pages/TextbookRoadmapPath';
+import { TextbookRoadmapIsland } from './pages/TextbookRoadmapIsland';
 
 function SplashScreen() {
   return (
@@ -119,6 +121,8 @@ export default function App() {
           <Route path="/learn/session"     element={<SessionFlowPage />} />
           <Route path="/learn/quran"       element={<QuranModePage />} />
           <Route path="/textbook"                  element={<TextbookPage />} />
+          <Route path="/textbook/roadmap-path"     element={<TextbookRoadmapPath />} />
+          <Route path="/textbook/roadmap-island"   element={<TextbookRoadmapIsland />} />
           <Route path="/textbook/:chapterId"       element={<TextbookChapterPage />} />
           <Route path="/textbook/:chapterId/quiz"  element={<TextbookQuizPage />} />
           <Route path="/admin"             element={<AdminPage />} />

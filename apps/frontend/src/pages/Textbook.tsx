@@ -47,6 +47,37 @@ export function TextbookPage() {
         </p>
       </motion.div>
 
+      {/* Roadmap variants */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.03 }}
+        className="flex gap-3 mb-6"
+      >
+        <Link
+          to="/textbook/roadmap-path"
+          className="flex-1 text-center bg-gradient-to-br from-[#201808] to-[#140f05]
+                     border border-[rgba(201,168,76,0.15)] hover:border-[rgba(201,168,76,0.35)]
+                     rounded-2xl p-4 transition-all group"
+        >
+          <span className="text-2xl block mb-1">🛤️</span>
+          <span className="font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a] group-hover:text-gold-light uppercase">
+            Roadmap: Path
+          </span>
+        </Link>
+        <Link
+          to="/textbook/roadmap-island"
+          className="flex-1 text-center bg-gradient-to-br from-[#201808] to-[#140f05]
+                     border border-[rgba(201,168,76,0.15)] hover:border-[rgba(201,168,76,0.35)]
+                     rounded-2xl p-4 transition-all group"
+        >
+          <span className="text-2xl block mb-1">🏝️</span>
+          <span className="font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a] group-hover:text-gold-light uppercase">
+            Roadmap: Islands
+          </span>
+        </Link>
+      </motion.div>
+
       {/* Overall progress */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
