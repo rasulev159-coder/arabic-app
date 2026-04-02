@@ -405,21 +405,23 @@ export function DashboardPage() {
               </p>
             )}
 
-            {donateConfig.cardNumber && (
+            {(donateConfig.cardNumber || donateConfig.cardHolder) && (
               <div className="mb-4">
                 <div className="flex items-center gap-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(220,120,140,0.12)]
                                 rounded-2xl px-4 py-3">
                   <div className="flex-1">
-                    <p className="font-mono text-base text-[#f0e6cc] tracking-wider select-all">
-                      {donateConfig.cardNumber}
-                    </p>
+                    {donateConfig.cardNumber && (
+                      <p className="font-mono text-base text-[#f0e6cc] tracking-wider select-all">
+                        {donateConfig.cardNumber}
+                      </p>
+                    )}
                     {donateConfig.cardHolder && (
                       <p className="font-raleway text-[0.65rem] text-[#9a8a6a] mt-0.5 uppercase tracking-wider">
                         {donateConfig.cardHolder}
                       </p>
                     )}
                   </div>
-                  <CopyButton text={donateConfig.cardNumber} />
+                  {donateConfig.cardNumber && <CopyButton text={donateConfig.cardNumber} />}
                 </div>
               </div>
             )}

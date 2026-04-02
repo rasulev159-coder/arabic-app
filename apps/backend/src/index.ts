@@ -34,7 +34,9 @@ const wss = new WebSocketServer({ server: httpServer });
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(helmet());
 app.use(cors({
-  origin: true,
+  origin: (process.env.FRONTEND_URL && process.env.FRONTEND_URL !== '*')
+    ? [process.env.FRONTEND_URL, 'http://localhost:5173']
+    : true,
   credentials: true,
 }));
 app.use(morgan('dev'));

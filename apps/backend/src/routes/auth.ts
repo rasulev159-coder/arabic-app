@@ -5,6 +5,7 @@ import { prisma }          from '../lib/prisma';
 import { redis }           from '../lib/redis';
 import { hashPassword, comparePassword, signAccess, signRefresh, verifyRefresh } from '../lib/auth';
 import { requireAuth, AuthRequest } from '../middleware/requireAuth';
+import { registerLimiter }  from '../middleware/rateLimiter';
 import { getLevel }        from '@arabic/shared';
 
 export const authRouter = Router();
@@ -12,9 +13,13 @@ export const authRouter = Router();
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // ── Schemas ───────────────────────────────────────────────────────────────────
+function sanitize(str: string): string {
+  return str.replace(/[<>]/g, '').trim();
+}
+
 const registerSchema = z.object({
   email:    z.string().email(),
-  name:     z.string().min(2).max(50),
+  name:     z.string().min(2).max(50).transform(sanitize),
   password: z.string().min(8).max(100),
   language: z.enum(['ru', 'uz', 'en']).optional(),
 });
@@ -64,7 +69,7 @@ function setRefreshCookie(res: Response, token: string): void {
 }
 
 // ── POST /api/auth/register ───────────────────────────────────────────────────
-authRouter.post('/register', async (req: Request, res: Response): Promise<void> => {
+authRouter.post('/register', registerLimiter, async (req: Request, res: Response): Promise<void> => {
   const parsed = registerSchema.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ ok: false, error: parsed.error.issues[0].message });

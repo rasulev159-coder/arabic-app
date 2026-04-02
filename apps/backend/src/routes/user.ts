@@ -44,8 +44,12 @@ userRouter.get('/me', async (req: AuthRequest, res: Response): Promise<void> => 
 });
 
 // PATCH /api/user/me
+function sanitize(str: string): string {
+  return str.replace(/[<>]/g, '').trim();
+}
+
 const updateSchema = z.object({
-  name:   z.string().min(2).max(50).optional(),
+  name:   z.string().min(2).max(50).transform(sanitize).optional(),
   avatar: z.string().url().optional(),
 });
 

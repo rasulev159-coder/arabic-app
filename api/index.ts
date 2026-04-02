@@ -11,7 +11,17 @@ process.env.TS_NODE_BASEURL = __dirname + '/..';
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: true, credentials: true }));
+const ALLOWED_ORIGINS = ['https://arabic-app-ruddy.vercel.app', 'http://localhost:5173'];
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || ALLOWED_ORIGINS.some(o => origin.startsWith(o.replace(/\/$/, '')))) {
+      callback(null, true);
+    } else {
+      callback(null, false);
+    }
+  },
+  credentials: true,
+}));
 app.use(cookieParser());
 
 // Parse JSON body - but handle Vercel's pre-parsed body too
