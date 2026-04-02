@@ -55,13 +55,14 @@ try {
   const { errorHandler }       = require('../apps/backend/src/middleware/errorHandler');
   const { requireAuth }        = require('../apps/backend/src/middleware/requireAuth');
   const { requireAdmin }       = require('../apps/backend/src/middleware/requireAdmin');
+  const { authLimiter, apiLimiter } = require('../apps/backend/src/middleware/rateLimiter');
 
-  app.use('/api/auth',         authRouter);
-  app.use('/api/user',         userRouter);
-  app.use('/api/progress',     progressRouter);
-  app.use('/api/achievements', achievementsRouter);
-  app.use('/api/leaderboard',  leaderboardRouter);
-  app.use('/api/challenges',   challengesRouter);
+  app.use('/api/auth',         authLimiter, authRouter);
+  app.use('/api/user',         apiLimiter, userRouter);
+  app.use('/api/progress',     apiLimiter, progressRouter);
+  app.use('/api/achievements', apiLimiter, achievementsRouter);
+  app.use('/api/leaderboard',  apiLimiter, leaderboardRouter);
+  app.use('/api/challenges',   apiLimiter, challengesRouter);
   app.use('/api/admin',        requireAuth, requireAdmin, adminRouter);
   app.use('/api/letters',      letterRouter);
   app.use('/api/daily',        dailyRouter);
