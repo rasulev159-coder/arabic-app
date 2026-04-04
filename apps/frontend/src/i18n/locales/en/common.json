@@ -185,5 +185,11 @@
     "lesson_quiz": "Lesson {{n}} quiz",
     "test_yourself": "Test yourself",
     "questions_count": "{{n}} questions"
+  },
+  "feedback": {
+    "title": "Feedback",
+    "description": "Have feedback or a complaint? Write to our Telegram group!",
+    "telegram_button": "Write in Telegram",
+    "close": "Close"
   }
 }

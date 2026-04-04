@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useLocation, Link } from 'react-router-dom';
 import { useAuthStore }       from './store/authStore';
 import { AchievementToast }   from './components/ui/AchievementToast';
+import { FeedbackButton }    from './components/ui/FeedbackButton';
 import { AppLayout }          from './components/layout/AppLayout';
 
 // Pages
@@ -96,6 +97,7 @@ export default function App() {
   return (
     <>
       <AchievementToast />
+      <FeedbackButton />
       <Routes>
         {/* Public */}
         <Route path="/"      element={<LandingPage />} />
