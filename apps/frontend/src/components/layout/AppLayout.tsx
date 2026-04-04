@@ -108,14 +108,15 @@ export function AppLayout() {
 
       {/* Mobile bottom nav */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0d0a07] border-t border-[rgba(201,168,76,0.1)]
-                      flex justify-around py-2 z-40">
+                      flex justify-around py-2 z-40"
+           style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom, 0px))' }}>
         {NAV.slice(0, 5).map(({ to, icon }) => {
           const active = isActive(to);
           return (
             <NavLink
               key={to} to={to}
               className={
-                `flex flex-col items-center p-2 rounded-xl transition-all
+                `flex flex-col items-center p-2 min-w-[44px] min-h-[44px] justify-center rounded-xl transition-all
                  ${active
                    ? 'text-[#e8c96d] bg-[rgba(201,168,76,0.08)] shadow-[0_-2px_0_0_#c9a84c_inset]'
                    : 'text-[#9a8a6a]'}`

@@ -2,24 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Safe area padding for iOS notch/home indicator */
 :root {
   --gold: #c9a84c;
   --gold-light: #e8c96d;
   --gold-dim: #8a6f2e;
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+  --sar: env(safe-area-inset-right);
 }
 
 * { box-sizing: border-box; }
+
+html, body, #root {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  background-color: #0d0a07;
+  overscroll-behavior: none;
+}
 
 body {
   background: #0d0a07;
   color: #f0e6cc;
   font-family: 'Raleway', sans-serif;
-  min-height: 100vh;
   background-image:
     radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,168,76,.12) 0%, transparent 70%);
+  -webkit-overflow-scrolling: touch;
 }
 
-.arabic { font-family: 'Scheherazade New', serif; }
+/* PWA standalone mode adjustments */
+@media (display-mode: standalone) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Fix for iOS input zoom */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+.arabic {
+  font-family: 'Scheherazade New', serif;
+  line-height: 1.8;
+  word-break: normal;
+  overflow-wrap: normal;
+}
 .cinzel { font-family: 'Cinzel', serif; }
 
 /* 3D card flip */

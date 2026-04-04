@@ -380,7 +380,7 @@ export function LeaderboardPage() {
       <div className="flex gap-1 bg-[rgba(255,255,255,0.03)] border border-[rgba(201,168,76,0.1)] rounded-full p-1 mb-5">
         {TABS.map(({ key, label, icon }) => (
           <button key={key} onClick={() => setTab(key)}
-            className={`flex-1 font-cinzel text-[0.6rem] tracking-widest uppercase py-2 rounded-full transition-all
+            className={`flex-1 font-cinzel text-[0.6rem] tracking-widest uppercase py-2 min-h-[44px] rounded-full transition-all
               ${tab === key
                 ? 'bg-[rgba(201,168,76,0.12)] text-gold border border-[rgba(201,168,76,0.2)]'
                 : 'text-[#9a8a6a] hover:text-gold'}`}>
@@ -551,7 +551,7 @@ export function SettingsPage() {
         <div className="flex gap-2">
           {([['ru','🇷🇺 Русский'],['uz','🇺🇿 O\'zbek'],['en','🇬🇧 English']] as const).map(([code, label]) => (
             <button key={code} onClick={() => setLanguage(code as Language)}
-              className={`flex-1 font-cinzel text-[0.65rem] tracking-wide uppercase py-2.5 rounded-xl border transition-all
+              className={`flex-1 font-cinzel text-[0.65rem] tracking-wide uppercase py-2.5 min-h-[44px] rounded-xl border transition-all
                 ${lang===code?'border-gold-dim text-gold-light bg-[rgba(201,168,76,0.1)]':'border-[rgba(201,168,76,0.1)] text-[#9a8a6a] hover:text-gold'}`}>
               {label}
             </button>

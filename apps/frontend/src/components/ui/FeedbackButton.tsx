@@ -13,7 +13,7 @@ export function FeedbackButton() {
       {/* Floating button */}
       <motion.button
         onClick={() => setOpen(true)}
-        className="fixed right-4 bottom-20 md:bottom-6 z-50
+        className="fixed right-4 bottom-[calc(5rem+env(safe-area-inset-bottom,0px))] md:bottom-6 z-50
                    w-12 h-12 rounded-full
                    bg-[rgba(30,22,10,0.85)] border border-[rgba(201,168,76,0.2)]
                    backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.4)]
@@ -46,7 +46,7 @@ export function FeedbackButton() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              className="fixed bottom-24 md:bottom-20 right-4 z-50
+              className="fixed bottom-[calc(8rem+env(safe-area-inset-bottom,0px))] md:bottom-20 right-4 z-50
                          w-[280px] bg-gradient-to-br from-[#1e160a] to-[#140f05]
                          border border-[rgba(201,168,76,0.2)] rounded-2xl
                          shadow-[0_8px_40px_rgba(0,0,0,0.6)] p-5"

@@ -231,7 +231,7 @@ export function DashboardPage() {
           >
             <Link
               to={to}
-              className={`flex flex-col items-center gap-2 p-4 rounded-2xl
+              className={`flex flex-col items-center gap-2 p-4 min-h-[80px] rounded-2xl
                 bg-gradient-to-br ${color} border border-[rgba(201,168,76,0.1)]
                 hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-1
                 transition-all duration-200 group`}
@@ -333,7 +333,7 @@ export function DashboardPage() {
             <button
               key={mode}
               onClick={() => { setChallengeMode(mode); setChallengeLink(null); }}
-              className={`font-cinzel text-[0.6rem] tracking-widest uppercase px-3 py-1.5
+              className={`font-cinzel text-[0.6rem] tracking-widest uppercase px-3 py-2.5 min-h-[44px]
                 rounded-full border transition-all
                 ${challengeMode === mode
                   ? 'border-[rgba(180,120,255,0.4)] text-[#c8a0ff] bg-[rgba(180,120,255,0.1)]'

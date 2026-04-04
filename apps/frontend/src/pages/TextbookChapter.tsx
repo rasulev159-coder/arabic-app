@@ -184,9 +184,9 @@ export function TextbookChapterPage() {
               <div
                 dir="rtl"
                 className="text-center py-4 px-2"
-                style={{ fontFamily: "'Scheherazade New', serif" }}
+                style={{ fontFamily: "'Scheherazade New', serif", wordBreak: 'normal', overflowWrap: 'normal' }}
               >
-                <p className="text-4xl md:text-5xl leading-[1.8] text-gold-light">
+                <p className="text-3xl sm:text-4xl md:text-5xl leading-[1.8] text-gold-light">
                   {lesson.arabic}
                 </p>
               </div>
@@ -208,7 +208,7 @@ export function TextbookChapterPage() {
                   </span>
                   <Link
                     to={`/textbook/${chapter.id}/quiz?lesson=${i}`}
-                    className={`font-cinzel text-[0.6rem] tracking-widest uppercase px-5 py-2
+                    className={`font-cinzel text-[0.6rem] tracking-widest uppercase px-5 py-2 min-h-[44px] inline-flex items-center
                                rounded-full border transition-all
                                ${lessonPassed
                                  ? 'border-[rgba(76,175,120,0.2)] text-[#4caf78] hover:border-[rgba(76,175,120,0.4)] hover:bg-[rgba(76,175,120,0.05)]'

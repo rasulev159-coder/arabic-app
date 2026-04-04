@@ -329,7 +329,7 @@ export function TextbookQuizPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={handleBackToSelect}
-              className="font-cinzel text-xs tracking-widest uppercase px-8 py-3
+              className="font-cinzel text-xs tracking-widest uppercase px-8 py-3 min-h-[44px]
                          rounded-full border border-[rgba(201,168,76,0.2)] text-[#9a8a6a]
                          hover:text-gold hover:border-gold-dim transition-all"
             >
@@ -337,7 +337,7 @@ export function TextbookQuizPage() {
             </button>
             <button
               onClick={handleRetry}
-              className="font-cinzel text-xs tracking-widest uppercase px-8 py-3
+              className="font-cinzel text-xs tracking-widest uppercase px-8 py-3 min-h-[44px]
                          rounded-full border border-gold-dim text-gold-light
                          bg-[rgba(201,168,76,0.08)] hover:bg-[rgba(201,168,76,0.18)]
                          transition-all"
@@ -364,7 +364,8 @@ export function TextbookQuizPage() {
         <button
           onClick={handleBackToSelect}
           className="font-cinzel text-[0.6rem] tracking-widest uppercase text-[#9a8a6a]
-                     hover:text-gold transition-colors bg-transparent border-none cursor-pointer"
+                     hover:text-gold transition-colors bg-transparent border-none cursor-pointer
+                     min-h-[44px] py-2"
         >
           &larr; {t('textbook.back_to_chapter')}
         </button>
@@ -409,9 +410,9 @@ export function TextbookQuizPage() {
             <div
               dir="rtl"
               className="text-center py-3 mb-4"
-              style={{ fontFamily: "'Scheherazade New', serif" }}
+              style={{ fontFamily: "'Scheherazade New', serif", wordBreak: 'normal', overflowWrap: 'normal' }}
             >
-              <p className="text-4xl md:text-5xl leading-[1.8] text-gold-light">
+              <p className="text-3xl sm:text-4xl md:text-5xl leading-[1.8] text-gold-light">
                 {question.arabic}
               </p>
             </div>
@@ -451,7 +452,7 @@ export function TextbookQuizPage() {
                   onClick={() => handleSelect(idx)}
                   disabled={showResult}
                   whileTap={!showResult ? { scale: 0.98 } : undefined}
-                  className={`w-full text-left px-5 py-3.5 rounded-xl border
+                  className={`w-full text-left px-5 py-3.5 min-h-[44px] rounded-xl border
                               ${borderColor} ${bgColor} ${textColor}
                               font-cinzel text-sm tracking-wide
                               hover:border-[rgba(201,168,76,0.3)] transition-all
