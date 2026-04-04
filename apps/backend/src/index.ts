@@ -21,6 +21,7 @@ import { dailyRouter }        from './routes/daily';
 import { weaknessRouter }     from './routes/weakness';
 import { analyticsRouter }    from './routes/analytics';
 import { donateRouter }       from './routes/donate';
+import { settingsRouter }     from './routes/settings';
 import { errorHandler }       from './middleware/errorHandler';
 import { authLimiter, apiLimiter } from './middleware/rateLimiter';
 import { requireAuth }        from './middleware/requireAuth';
@@ -56,6 +57,7 @@ app.use('/api/daily',        apiLimiter,   dailyRouter);
 app.use('/api/weakness',     apiLimiter,   weaknessRouter);
 app.use('/api/analytics',    apiLimiter,   analyticsRouter);
 app.use('/api/donate',       apiLimiter,   donateRouter);
+app.use('/api/settings',     apiLimiter,   settingsRouter);
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
 

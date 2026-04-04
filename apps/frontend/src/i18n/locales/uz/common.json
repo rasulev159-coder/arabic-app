@@ -185,6 +185,8 @@
     "test_yourself": "O'zingizni sinang",
     "questions_count": "{{n}} ta savol"
   },
+  "admin_sections": "Bo'limlar",
+  "sections_saved": "Bo'limlar sozlamalari saqlandi",
   "feedback": {
     "title": "Fikr-mulohaza",
     "description": "Fikr-mulohaza yoki shikoyatingiz bormi? Telegram guruhimizga yozing!",

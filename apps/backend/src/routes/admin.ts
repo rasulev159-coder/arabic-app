@@ -109,6 +109,21 @@ adminRouter.patch('/donate', async (req: AuthRequest, res: Response): Promise<vo
   });
 });
 
+// PATCH /api/admin/sections
+adminRouter.patch('/sections', async (req: AuthRequest, res: Response): Promise<void> => {
+  const { sections } = req.body;
+  if (!sections || typeof sections !== 'object') {
+    res.status(400).json({ ok: false, error: 'Invalid sections object' });
+    return;
+  }
+  const settings = await prisma.siteSettings.upsert({
+    where: { id: 'singleton' },
+    create: { id: 'singleton', sections: JSON.stringify(sections) },
+    update: { sections: JSON.stringify(sections) },
+  });
+  res.json({ ok: true, data: JSON.parse(settings.sections || '{}') });
+});
+
 // PATCH /api/admin/users/:id/role — change user role
 const roleSchema = z.object({
   role: z.enum(['user', 'admin']),

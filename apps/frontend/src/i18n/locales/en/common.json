@@ -186,6 +186,8 @@
     "test_yourself": "Test yourself",
     "questions_count": "{{n}} questions"
   },
+  "admin_sections": "Sections",
+  "sections_saved": "Section settings saved",
   "feedback": {
     "title": "Feedback",
     "description": "Have feedback or a complaint? Write to our Telegram group!",

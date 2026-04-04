@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useLocation, Link } from 'react-router-dom';
 import { useAuthStore }       from './store/authStore';
+import { useSectionsStore }   from './store/sectionsStore';
 import { AchievementToast }   from './components/ui/AchievementToast';
 import { FeedbackButton }    from './components/ui/FeedbackButton';
 import { AppLayout }          from './components/layout/AppLayout';
@@ -74,7 +75,10 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   const { user, fetchMe, accessToken } = useAuthStore();
+  const fetchSections = useSectionsStore(s => s.fetchSections);
   const [hydrating, setHydrating]      = useState(!!accessToken && !user);
+
+  useEffect(() => { fetchSections(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (accessToken && !user) {

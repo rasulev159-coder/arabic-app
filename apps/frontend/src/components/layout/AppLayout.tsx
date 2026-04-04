@@ -1,6 +1,7 @@
 import { Outlet, NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation }  from 'react-i18next';
 import { useAuthStore }    from '../../store/authStore';
+import { useSectionsStore } from '../../store/sectionsStore';
 import { LevelBadge, StreakBadge, LanguageSwitcher } from '../ui/Badges';
 import { XpBar }           from '../ui/XpBar';
 
@@ -17,8 +18,21 @@ const NAV = [
 export function AppLayout() {
   const { t }    = useTranslation('common');
   const { user, logout } = useAuthStore();
+  const isEnabled = useSectionsStore(s => s.isEnabled);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const SECTION_NAV_MAP: Record<string, string> = {
+    leaderboard: 'leaderboard',
+    achievements: 'achievements',
+    textbook: 'textbook',
+  };
+
+  const filteredNav = NAV.filter(({ key }) => {
+    const sectionKey = SECTION_NAV_MAP[key];
+    if (sectionKey && !isEnabled(sectionKey)) return false;
+    return true;
+  });
 
   const isActive = (path: string) =>
     location.pathname === path || location.pathname.startsWith(path + '/');
@@ -56,7 +70,7 @@ export function AppLayout() {
 
         {/* Nav links */}
         <nav className="flex flex-col gap-1 flex-1">
-          {NAV.map(({ to, icon, key }) => {
+          {filteredNav.map(({ to, icon, key }) => {
             const active = isActive(to);
             return (
               <NavLink
@@ -110,7 +124,7 @@ export function AppLayout() {
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0d0a07] border-t border-[rgba(201,168,76,0.1)]
                       flex justify-around py-2 z-40"
            style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom, 0px))' }}>
-        {NAV.slice(0, 5).map(({ to, icon }) => {
+        {filteredNav.slice(0, 5).map(({ to, icon }) => {
           const active = isActive(to);
           return (
             <NavLink

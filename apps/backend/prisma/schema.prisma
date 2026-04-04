@@ -207,3 +207,11 @@ model DonateConfig {
 
   @@map("donate_config")
 }
+
+model SiteSettings {
+  id       String @id @default("singleton")
+  sections String @default("{}")  // JSON: { games: true, textbook: true, ... }
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
