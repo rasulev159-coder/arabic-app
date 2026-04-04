@@ -294,7 +294,7 @@ export function InvitePage() {
               lineHeight: 1.6,
             }}
           >
-            15 daqiqa vaqtingiz — mening 3 oylik ishim
+            Ilova butunlay bepul
           </p>
 
           {/* ---- Decorative divider ---- */}
