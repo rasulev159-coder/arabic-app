@@ -12,6 +12,7 @@ import { AlphabetPage, ProgressPage, AchievementsPage,
          LeaderboardPage, SettingsPage, ChallengePage } from './pages/AllPages';
 
 import { AdminPage }        from './pages/Admin';
+import { InvitePage }       from './pages/Invite';
 
 // Learn modes
 import { FlashcardsPage }  from './pages/learn/Flashcards';
@@ -99,6 +100,7 @@ export default function App() {
         {/* Public */}
         <Route path="/"      element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/invite" element={<InvitePage />} />
         <Route path="/challenge/:token" element={<ChallengePage />} />
 
         {/* Protected */}
