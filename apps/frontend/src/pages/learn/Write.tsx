@@ -186,7 +186,7 @@ export function WritePage() {
       {current && (
         <div className="text-center">
           <p className="font-cinzel text-[0.65rem] tracking-widest text-[#9a8a6a] uppercase mb-2">
-            {lang === 'ru' ? 'Напиши букву' : lang === 'uz' ? 'Harfni yozing' : 'Write the letter'}
+            {t('write.subtitle')}
           </p>
           <p className="font-cinzel text-4xl text-gold-light drop-shadow-[0_0_40px_rgba(201,168,76,0.5)]">
             {getLetterName(current, lang)}
@@ -236,21 +236,21 @@ export function WritePage() {
       {compared && similarity !== null && (
         <div className="text-center">
           <p className="font-cinzel text-sm text-gold tracking-widest">
-            {lang === 'ru' ? 'Сходство' : lang === 'uz' ? "O'xshashlik" : 'Similarity'}: {similarity}%
+            {t('result.accuracy', { n: similarity })}
           </p>
           {autoResult === 'correct' && (
             <p className="font-cinzel text-xs text-[#4caf78] tracking-widest mt-1">
-              {lang === 'ru' ? 'Отлично!' : lang === 'uz' ? "A'lo!" : 'Excellent!'}
+              {t('result.title_great')}
             </p>
           )}
           {autoResult === 'incorrect' && (
             <p className="font-cinzel text-xs text-[#c95050] tracking-widest mt-1">
-              {lang === 'ru' ? 'Попробуй ещё' : lang === 'uz' ? "Yana urinib ko'ring" : 'Try again'}
+              {t('write.try_again')}
             </p>
           )}
           {autoResult === 'manual' && (
             <p className="font-cinzel text-xs text-[#9a8a6a] tracking-widest mt-1">
-              {lang === 'ru' ? 'Похоже? Нажми ✓ или ✗' : lang === 'uz' ? "O'xshaydimi? ✓ yoki ✗ bosing" : 'Similar? Press ✓ or ✗'}
+              {t('write.compare')} ✓ / ✗
             </p>
           )}
         </div>

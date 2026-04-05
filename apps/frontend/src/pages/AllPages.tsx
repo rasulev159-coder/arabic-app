@@ -772,7 +772,7 @@ export function ChallengePage() {
       {/* State: submitted, waiting for other player */}
       {done && (
         <p className="font-cinzel text-xs text-[#9a8a6a] text-center">
-          Результат записан. Ожидаем соперника...
+          {t('loading')}
         </p>
       )}
 

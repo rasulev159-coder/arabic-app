@@ -125,7 +125,7 @@ export function LetterDetail({ letter, visible, onClose, originRect }: LetterDet
                 transition={{ delay: 0.3 }}
               >
                 <p className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase mb-1">
-                  {t('donate.description_label', { defaultValue: lang === 'ru' ? 'Ассоциация' : lang === 'uz' ? 'Assotsiatsiya' : 'Association' })}
+                  {t('common:textbook.lesson', { defaultValue: 'Association' })}
                 </p>
                 <p className="font-raleway text-sm text-[#f0e6cc]">{association}</p>
               </motion.div>
@@ -144,7 +144,7 @@ export function LetterDetail({ letter, visible, onClose, originRect }: LetterDet
                 <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.08"
                       fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              {lang === 'ru' ? 'Прослушать' : lang === 'uz' ? 'Eshitish' : 'Play sound'}
+              {t('learn:listen.play')}
             </motion.button>
           </motion.div>
         </>

@@ -255,7 +255,7 @@ export function MemoryPage() {
       </div>
       <button onClick={() => setPhase('start')}
         className="font-cinzel text-xs tracking-widest text-[#9a8a6a] hover:text-[#f0e6cc] transition-colors">
-        {lang === 'ru' ? 'Назад' : lang === 'uz' ? 'Orqaga' : 'Back'}
+        {t('back', { ns: 'common', defaultValue: '←' })}
       </button>
     </div>
   );
@@ -408,7 +408,7 @@ export function ListenPage() {
                       rounded-3xl w-full max-w-sm h-44 flex flex-col items-center justify-center gap-4">
         {ttsAvailable ? (
           <>
-            <p className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase">🔊 {lang === 'ru' ? 'Послушай букву' : lang === 'uz' ? 'Harfni tinglang' : 'Listen to the letter'}</p>
+            <p className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase">🔊 {t('listen.subtitle')}</p>
             <button onClick={() => current && speak(current)}
               className="font-cinzel text-sm tracking-widest text-gold border border-gold-dim
                          rounded-full px-5 py-2 hover:bg-[rgba(201,168,76,0.1)] transition-all">
@@ -418,7 +418,7 @@ export function ListenPage() {
         ) : (
           <>
             <p className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase">
-              {lang === 'ru' ? 'Аудио недоступно' : lang === 'uz' ? 'Audio mavjud emas' : 'Audio unavailable'}
+              {t('listen.play')}
             </p>
             {current && (
               <p className="font-cinzel text-2xl text-gold-light">{getLetterName(current, lang)}</p>
