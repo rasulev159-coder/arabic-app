@@ -163,7 +163,7 @@ export function AppLayout() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="md:hidden fixed inset-0 bg-black/60 z-30"
+              className="md:hidden fixed inset-0 bg-black/60 z-[42]"
               onClick={() => setMobileMenuOpen(false)}
             />
             <motion.div
@@ -171,7 +171,7 @@ export function AppLayout() {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="md:hidden fixed bottom-16 left-0 right-0 z-35
+              className="md:hidden fixed bottom-16 left-0 right-0 z-[45]
                          bg-[#0d0a07] border-t border-[rgba(201,168,76,0.15)]
                          rounded-t-3xl px-4 pt-6 pb-4 max-h-[70vh] overflow-y-auto"
               style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))' }}
