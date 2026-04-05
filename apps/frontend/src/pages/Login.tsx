@@ -67,7 +67,7 @@ export function LoginPage() {
       await login(data.email, data.password);
       navigate('/dashboard');
     } catch (e: any) {
-      setError(e?.response?.data?.error ?? 'Ошибка входа');
+      setError(e?.response?.data?.error ?? t('error'));
     }
   };
 
@@ -77,7 +77,7 @@ export function LoginPage() {
       await register(data.email, data.name, data.password);
       navigate('/dashboard');
     } catch (e: any) {
-      setError(e?.response?.data?.error ?? 'Ошибка регистрации');
+      setError(e?.response?.data?.error ?? t('error'));
     }
   };
 

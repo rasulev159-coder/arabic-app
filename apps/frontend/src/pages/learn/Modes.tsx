@@ -235,7 +235,7 @@ export function MemoryPage() {
     <div className="min-h-screen flex flex-col items-center justify-center gap-8 px-4 text-center">
       <p className="font-scheherazade text-5xl text-gold">🧠</p>
       <h2 className="font-cinzel text-lg tracking-widest text-[#f0e6cc]">
-        {lang === 'ru' ? 'Выбери уровень' : lang === 'uz' ? 'Darajani tanlang' : 'Choose level'}
+        {t('memory.subtitle')}
       </h2>
       <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
         {MEMORY_LEVELS.map((lvl, idx) => (
@@ -245,13 +245,10 @@ export function MemoryPage() {
                        hover:border-[rgba(201,168,76,0.4)] hover:-translate-y-px transition-all">
             <span className="font-cinzel text-2xl text-gold-light">{lvl.level}</span>
             <span className="font-cinzel text-xs tracking-widest text-[#f0e6cc]">
-              {lvl.pairs} {lang === 'ru' ? 'пар' : lang === 'uz' ? 'juft' : 'pairs'}
+              {lvl.pairs} {t('memory.pairs', { found: lvl.pairs, total: lvl.pairs }).split(':')[0]}
             </span>
             <span className="font-cinzel text-[0.55rem] text-[#9a8a6a]">
-              {lvl.level === 1 ? (lang === 'ru' ? 'Легкий' : lang === 'uz' ? 'Oson' : 'Easy') :
-               lvl.level === 2 ? (lang === 'ru' ? 'Средний' : lang === 'uz' ? "O'rta" : 'Medium') :
-               lvl.level === 3 ? (lang === 'ru' ? 'Сложный' : lang === 'uz' ? 'Qiyin' : 'Hard') :
-               (lang === 'ru' ? 'Все буквы' : lang === 'uz' ? 'Barcha harflar' : 'All letters')}
+              {lvl.level === 1 ? '⭐' : lvl.level === 2 ? '⭐⭐' : lvl.level === 3 ? '⭐⭐⭐' : '🏆'}
             </span>
           </button>
         ))}
@@ -272,12 +269,12 @@ export function MemoryPage() {
           level={user?.level ?? 'beginner'} durationSec={elapsed} onRestart={() => startWithLevel(memoryLevel)} />
         {hasNextLevel && (
           <Button size="lg" onClick={() => startWithLevel(memoryLevel + 1)}>
-            {lang === 'ru' ? 'Следующий уровень' : lang === 'uz' ? 'Keyingi daraja' : 'Next level'} →
+            {t('next', { ns: 'common' })} →
           </Button>
         )}
         <button onClick={() => setPhase('level-select')}
           className="font-cinzel text-xs tracking-widest text-[#9a8a6a] hover:text-[#f0e6cc] transition-colors mt-2">
-          {lang === 'ru' ? 'Выбрать уровень' : lang === 'uz' ? 'Darajani tanlash' : 'Choose level'}
+          {t('restart', { ns: 'common' })}
         </button>
       </div>
     );

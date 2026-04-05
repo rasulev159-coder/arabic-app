@@ -741,13 +741,13 @@ export function ChallengePage() {
           </p>
           <Link to={`/learn/${challenge.mode}`} className="w-full">
             <Button size="lg" className="w-full">
-              Начать {challenge.mode}
+              {t('start', { ns: 'common' })}
             </Button>
           </Link>
 
           {!showInput ? (
             <Button variant="outline" onClick={() => setShowInput(true)}>
-              Записать результат
+              {t('save', { ns: 'common' })}
             </Button>
           ) : (
             <div className="flex flex-col gap-3">

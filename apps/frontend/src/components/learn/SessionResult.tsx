@@ -32,7 +32,7 @@ export function SessionResult({ score, total, mode, level, durationSec, attempts
                       bg-gradient-to-br from-[#201808] to-[#0d0a07]
                       shadow-[0_0_60px_rgba(201,168,76,0.2)]">
         <p className="font-cinzel text-4xl font-bold text-gold-light">{pct}%</p>
-        <p className="font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a] uppercase">результат</p>
+        <p className="font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a] uppercase">{t('result.accuracy', { n: pct }).split(':')[0]}</p>
       </div>
 
       <div>
@@ -49,7 +49,7 @@ export function SessionResult({ score, total, mode, level, durationSec, attempts
 
       <ShareResultCard score={score} total={total} mode={mode} level={level} durationSec={durationSec} />
 
-      <Button size="lg" onClick={onRestart}>Начать заново</Button>
+      <Button size="lg" onClick={onRestart}>{t('restart', { ns: 'common' })}</Button>
     </motion.div>
   );
 }

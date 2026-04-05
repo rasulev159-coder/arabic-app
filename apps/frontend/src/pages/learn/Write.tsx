@@ -163,9 +163,9 @@ export function WritePage() {
       <div className="text-center mb-8">
         <p className="font-scheherazade text-7xl text-gold mb-2">✍️</p>
         <p className="font-cinzel text-2xl text-[#f0e6cc]">{score} / {TOTAL}</p>
-        <p className="font-cinzel text-xs text-[#9a8a6a] mt-2 tracking-widest">НАПИСАНО ВЕРНО</p>
+        <p className="font-cinzel text-xs text-[#9a8a6a] mt-2 tracking-widest uppercase">{t('result.score', { score, total: TOTAL })}</p>
       </div>
-      <Button size="lg" onClick={() => setPhase('start')}>Начать заново</Button>
+      <Button size="lg" onClick={() => setPhase('start')}>{t('restart', { ns: 'common' })}</Button>
     </div>
   );
 
@@ -229,7 +229,7 @@ export function WritePage() {
           </>
         ) : (
           <Button size="sm" className="flex-1" onClick={() => markResult(autoResult === 'correct')}>
-            {lang === 'ru' ? 'Далее' : lang === 'uz' ? 'Keyingi' : 'Next'}
+            {t('next', { ns: 'common' })}
           </Button>
         )}
       </div>

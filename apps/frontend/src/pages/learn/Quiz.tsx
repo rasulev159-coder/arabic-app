@@ -215,7 +215,7 @@ export function QuizPage() {
         className={`font-cinzel text-xs tracking-widest uppercase px-8 py-3 rounded-full border transition-all
           ${answered ? 'border-gold-dim text-gold-light bg-[rgba(201,168,76,0.08)] hover:bg-[rgba(201,168,76,0.15)]'
                      : 'border-transparent text-[#3a2d10] cursor-default'}`}>
-        {qi+1 >= QUIZ_LEN ? t('result.title_good', { defaultValue: '✓' }) : t('next', { ns: 'common', defaultValue: '→' })}
+        {qi+1 >= QUIZ_LEN ? t('finish', { ns: 'common' }) : t('next', { ns: 'common' })}
       </button>
     </div>
   );

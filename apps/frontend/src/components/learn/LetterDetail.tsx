@@ -125,7 +125,7 @@ export function LetterDetail({ letter, visible, onClose, originRect }: LetterDet
                 transition={{ delay: 0.3 }}
               >
                 <p className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase mb-1">
-                  {lang === 'ru' ? 'Ассоциация' : lang === 'uz' ? 'Assotsiatsiya' : 'Association'}
+                  {t('donate.description_label', { defaultValue: lang === 'ru' ? 'Ассоциация' : lang === 'uz' ? 'Assotsiatsiya' : 'Association' })}
                 </p>
                 <p className="font-raleway text-sm text-[#f0e6cc]">{association}</p>
               </motion.div>
