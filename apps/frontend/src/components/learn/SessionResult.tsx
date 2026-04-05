@@ -16,7 +16,7 @@ interface SessionResultProps {
 }
 
 export function SessionResult({ score, total, mode, level, durationSec, attempts, onRestart }: SessionResultProps) {
-  const { t }    = useTranslation('learn');
+  const { t }    = useTranslation(['learn', 'common']);
   const pct      = total > 0 ? Math.round(score / total * 100) : 0;
   const time     = `${Math.floor(durationSec / 60)}:${String(durationSec % 60).padStart(2, '0')}`;
   const titleKey = pct === 100 ? 'title_perfect' : pct >= 75 ? 'title_great' : pct >= 50 ? 'title_good' : 'title_keep';
@@ -32,7 +32,7 @@ export function SessionResult({ score, total, mode, level, durationSec, attempts
                       bg-gradient-to-br from-[#201808] to-[#0d0a07]
                       shadow-[0_0_60px_rgba(201,168,76,0.2)]">
         <p className="font-cinzel text-4xl font-bold text-gold-light">{pct}%</p>
-        <p className="font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a] uppercase">{t('result.accuracy', { n: pct }).split(':')[0]}</p>
+        <p className="font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a] uppercase">{t('learn:result.score', { score, total })}</p>
       </div>
 
       <div>
@@ -49,7 +49,7 @@ export function SessionResult({ score, total, mode, level, durationSec, attempts
 
       <ShareResultCard score={score} total={total} mode={mode} level={level} durationSec={durationSec} />
 
-      <Button size="lg" onClick={onRestart}>{t('restart', { ns: 'common' })}</Button>
+      <Button size="lg" onClick={onRestart}>{t('common:restart')}</Button>
     </motion.div>
   );
 }

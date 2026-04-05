@@ -124,7 +124,7 @@ export function AppLayout() {
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0d0a07] border-t border-[rgba(201,168,76,0.1)]
                       flex justify-around py-2 z-40"
            style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom, 0px))' }}>
-        {filteredNav.slice(0, 5).map(({ to, icon }) => {
+        {filteredNav.filter(n => ['dashboard','alphabet','textbook','progress','settings'].includes(n.key)).map(({ to, icon }) => {
           const active = isActive(to);
           return (
             <NavLink
