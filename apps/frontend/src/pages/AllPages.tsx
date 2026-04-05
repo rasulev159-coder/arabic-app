@@ -572,6 +572,7 @@ export function SettingsPage() {
 
 // ════ Challenge.tsx ═══════════════════════════════════════════════════════════
 export function ChallengePage() {
+  const { t }    = useTranslation('common');
   const { token }  = useParams<{ token: string }>();
   const { data: challenge, isLoading, refetch } = useChallenge(token ?? '');
   const accept  = useAcceptChallenge();
