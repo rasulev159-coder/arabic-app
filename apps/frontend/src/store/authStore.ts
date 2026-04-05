@@ -35,6 +35,14 @@ export const useAuthStore = create<AuthState>()(
           localStorage.setItem('refreshToken', data.data.refreshToken);
           i18n.changeLanguage(data.data.user.language);
           set({ user: data.data.user, accessToken: data.data.accessToken, refreshToken: data.data.refreshToken });
+          // Send SPIN quiz answers if available
+          const spinAnswers = localStorage.getItem('spin_answers');
+          if (spinAnswers) {
+            try {
+              await api.patch('/user/spin', { answers: JSON.parse(spinAnswers) });
+              localStorage.removeItem('spin_answers');
+            } catch { /* ignore */ }
+          }
         } finally {
           set({ isLoading: false });
         }
@@ -48,6 +56,14 @@ export const useAuthStore = create<AuthState>()(
           localStorage.setItem('refreshToken', data.data.refreshToken);
           i18n.changeLanguage(data.data.user.language);
           set({ user: data.data.user, accessToken: data.data.accessToken, refreshToken: data.data.refreshToken });
+          // Send SPIN quiz answers if available
+          const spinAnswers = localStorage.getItem('spin_answers');
+          if (spinAnswers) {
+            try {
+              await api.patch('/user/spin', { answers: JSON.parse(spinAnswers) });
+              localStorage.removeItem('spin_answers');
+            } catch { /* ignore */ }
+          }
         } finally {
           set({ isLoading: false });
         }
@@ -61,6 +77,14 @@ export const useAuthStore = create<AuthState>()(
           localStorage.setItem('refreshToken', data.data.refreshToken);
           i18n.changeLanguage(data.data.user.language);
           set({ user: data.data.user, accessToken: data.data.accessToken, refreshToken: data.data.refreshToken });
+          // Send SPIN quiz answers if available
+          const spinAnswers = localStorage.getItem('spin_answers');
+          if (spinAnswers) {
+            try {
+              await api.patch('/user/spin', { answers: JSON.parse(spinAnswers) });
+              localStorage.removeItem('spin_answers');
+            } catch { /* ignore */ }
+          }
         } finally {
           set({ isLoading: false });
         }

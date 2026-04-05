@@ -93,6 +93,20 @@ userRouter.patch('/password', async (req: AuthRequest, res: Response): Promise<v
   res.json({ ok: true });
 });
 
+// PATCH /api/user/spin — save SPIN quiz answers
+userRouter.patch('/spin', async (req: AuthRequest, res: Response): Promise<void> => {
+  const { answers } = req.body;
+  if (!answers || typeof answers !== 'object') {
+    res.status(400).json({ ok: false, error: 'Invalid answers' });
+    return;
+  }
+  await prisma.user.update({
+    where: { id: req.userId! },
+    data: { spinAnswers: JSON.stringify(answers) },
+  });
+  res.json({ ok: true });
+});
+
 // PATCH /api/user/language
 userRouter.patch('/language', async (req: AuthRequest, res: Response): Promise<void> => {
   const parsed = z.object({ language: z.enum(['ru', 'uz', 'en']) }).safeParse(req.body);

@@ -26,12 +26,37 @@ const LEARN_MODES: { to: string; icon: string; key: StudyMode; color: string }[]
   { to: '/learn/write',      icon: '\u270d\ufe0f', key: 'write',     color: 'from-[#1a0a1a] to-[#100510]' },
 ];
 
+function useSpinMotivation() {
+  const [message, setMessage] = useState<string | null>(null);
+  const [dismissed, setDismissed] = useState(false);
+
+  useState(() => {
+    try {
+      const raw = localStorage.getItem('spin_answers');
+      if (!raw) return;
+      const answers = JSON.parse(raw);
+      if (answers.motivation === 'quran') {
+        setMessage("Siz Qur'on o'qish uchun keldingiz — birinchi qadamni tashlang! \uD83D\uDD4C");
+      } else if (answers.problem === 'similar_letters') {
+        setMessage("O'xshash harflarni mashq qiling — bugungi dars aynan shu haqida! \u2728");
+      } else if (answers.impact === 'gave_up') {
+        setMessage("Bu safar tashlab qo'ymaysiz — biz siz bilan birgamiz! \uD83D\uDCAA");
+      } else if (answers.urgency === 'very_high') {
+        setMessage("Ko'p yillar kutdingiz — endi boshlash vaqti! \uD83D\uDE80");
+      }
+    } catch { /* ignore */ }
+  });
+
+  return { message: dismissed ? null : message, dismiss: () => setDismissed(true) };
+}
+
 export function DashboardPage() {
   const { t }  = useTranslation(['common', 'learn']);
   const user   = useAuthStore((s) => s.user);
   const isEnabled = useSectionsStore(s => s.isEnabled);
   const lang   = (user?.language ?? 'uz') as Language;
   const { data: stats } = useProgress();
+  const spinMotivation = useSpinMotivation();
   const createChallenge = useCreateChallenge();
   const [challengeLink, setChallengeLink] = useState<string | null>(null);
   const [challengeMode, setChallengeMode] = useState<StudyMode>('quiz');
@@ -88,6 +113,28 @@ export function DashboardPage() {
 
       {/* Notification permission prompt */}
       <NotificationPrompt />
+
+      {/* SPIN motivation banner */}
+      {spinMotivation.message && (
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-4 relative bg-gradient-to-r from-[#1a1808] to-[#201f08]
+                     border border-[rgba(201,168,76,0.15)] rounded-2xl px-4 py-3"
+        >
+          <button
+            onClick={spinMotivation.dismiss}
+            className="absolute top-2 right-3 text-[#706040] hover:text-[#9a8a6a] transition-colors
+                       text-lg leading-none min-w-[28px] min-h-[28px] flex items-center justify-center"
+            aria-label="Dismiss"
+          >
+            {'\u00d7'}
+          </button>
+          <p className="font-raleway text-sm text-[#b8a880] leading-relaxed pr-6">
+            {spinMotivation.message}
+          </p>
+        </motion.div>
+      )}
 
       {/* 1. HEADER: Greeting + Level + XP Bar (single consolidated block) */}
       <motion.div

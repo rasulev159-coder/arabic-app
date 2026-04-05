@@ -235,6 +235,28 @@ export function LandingPage() {
               </Button>
             </a>
           </motion.div>
+
+          {/* SPIN Quiz CTA */}
+          <motion.div
+            className="mt-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: prefersReduced ? 0 : 0.5, delay: 0.7 }}
+          >
+            <Link to="/spin-quiz"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full
+                         border border-[rgba(201,168,76,0.15)] bg-[rgba(201,168,76,0.04)]
+                         hover:border-[rgba(201,168,76,0.3)] hover:bg-[rgba(201,168,76,0.08)]
+                         transition-all duration-200 group cursor-pointer">
+              <span className="font-scheherazade text-lg text-gold group-hover:text-gold-light transition-colors">
+                {''}
+              </span>
+              <span className="font-cinzel text-[0.6rem] tracking-[0.15em] text-[#9a8a6a] group-hover:text-[#b8a880] transition-colors">
+                O'zingizni sinab ko'ring — 1 daqiqalik test
+              </span>
+              <ArrowRight size={14} className="text-gold-dim group-hover:text-gold transition-colors" />
+            </Link>
+          </motion.div>
         </div>
 
         {/* Stats row */}

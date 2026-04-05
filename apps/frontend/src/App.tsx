@@ -15,6 +15,7 @@ import { AlphabetPage, ProgressPage, AchievementsPage,
 
 import { AdminPage }        from './pages/Admin';
 import { InvitePage }       from './pages/Invite';
+import { SpinQuizPage }    from './pages/SpinQuiz';
 
 // Learn modes
 import { FlashcardsPage }  from './pages/learn/Flashcards';
@@ -107,6 +108,7 @@ export default function App() {
         <Route path="/"      element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/invite" element={<InvitePage />} />
+        <Route path="/spin-quiz" element={<SpinQuizPage />} />
         <Route path="/challenge/:token" element={<ChallengePage />} />
 
         {/* Protected */}

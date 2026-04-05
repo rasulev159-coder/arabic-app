@@ -24,6 +24,7 @@ model User {
 
   pushSubscription String?  // JSON Web Push subscription
   lastNotifiedAt   DateTime?
+  spinAnswers      String?  // JSON string of SPIN quiz answers
 
   progress           LetterProgress[]
   sessions           StudySession[]
