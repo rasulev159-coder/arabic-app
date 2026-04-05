@@ -22,6 +22,9 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
+  pushSubscription String?  // JSON Web Push subscription
+  lastNotifiedAt   DateTime?
+
   progress           LetterProgress[]
   sessions           StudySession[]
   achievements       UserAchievement[]
@@ -31,6 +34,7 @@ model User {
   challengesReceived Challenge[]       @relation("Opponent")
   dailyLessons       DailyLesson[]
   weaknessStats      WeaknessStats[]
+  notifications      NotificationLog[]
 
   @@map("users")
 }
@@ -206,6 +210,19 @@ model DonateConfig {
   updatedAt   DateTime @updatedAt
 
   @@map("donate_config")
+}
+
+model NotificationLog {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String   // 'push' | 'email'
+  template  String   // key from NOTIFICATION_TEMPLATES
+  sentAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("notification_logs")
 }
 
 model SiteSettings {

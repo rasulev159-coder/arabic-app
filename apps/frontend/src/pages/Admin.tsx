@@ -62,7 +62,13 @@ export function AdminPage() {
   const lang = user?.language ?? 'uz';
 
   // Donate state
-  const [activeTab, setActiveTab] = useState<'letters' | 'donate' | 'sections'>('letters');
+  // Notifications state
+  const [notifSending, setNotifSending] = useState(false);
+  const [notifResult, setNotifResult] = useState<string>('');
+  const [notifLogs, setNotifLogs] = useState<any[]>([]);
+  const [notifLogsLoading, setNotifLogsLoading] = useState(false);
+
+  const [activeTab, setActiveTab] = useState<'letters' | 'donate' | 'sections' | 'notifications'>('letters');
   const [donateForm, setDonateForm] = useState<DonateForm>({
     enabled: false,
     title: '',
@@ -74,6 +80,29 @@ export function AdminPage() {
   const [donateLoading, setDonateLoading] = useState(true);
   const [donateSaving, setDonateSaving] = useState(false);
   const [donateMsg, setDonateMsg] = useState('');
+
+  const loadNotifLogs = () => {
+    setNotifLogsLoading(true);
+    api.get('/notifications/log')
+      .then(res => setNotifLogs((res.data.data ?? []).slice(0, 50)))
+      .catch(() => {})
+      .finally(() => setNotifLogsLoading(false));
+  };
+
+  const sendNotifications = async () => {
+    setNotifSending(true);
+    setNotifResult('');
+    try {
+      const res = await api.post('/notifications/send');
+      const count = res.data.data?.sent ?? 0;
+      setNotifResult(t('notifications.sent_count', { count }));
+      loadNotifLogs();
+    } catch (e: any) {
+      setNotifResult(e?.response?.data?.error ?? 'Error');
+    } finally {
+      setNotifSending(false);
+    }
+  };
 
   useEffect(() => {
     api.get('/admin/letters')
@@ -222,6 +251,9 @@ export function AdminPage() {
         <button className={tabCls(activeTab === 'sections')} onClick={() => setActiveTab('sections')}>
           {t('admin_sections')}
         </button>
+        <button className={tabCls(activeTab === 'notifications')} onClick={() => { setActiveTab('notifications'); loadNotifLogs(); }}>
+          {t('notifications.admin_title')}
+        </button>
       </div>
 
       {activeTab === 'letters' && (
@@ -369,6 +401,58 @@ export function AdminPage() {
                   {sectionsSaving ? '...' : t('save')}
                 </Button>
               </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {activeTab === 'notifications' && (
+        <div className="max-w-3xl mx-auto">
+          <h1 className="font-cinzel text-[0.7rem] tracking-[4px] text-[#9a8a6a] uppercase text-center mb-6">
+            {t('notifications.admin_title')}
+          </h1>
+
+          <div className="mb-6 text-center">
+            <Button onClick={sendNotifications} disabled={notifSending}>
+              {notifSending ? t('notifications.sending') : t('notifications.send_now')}
+            </Button>
+            {notifResult && (
+              <p className="font-cinzel text-xs text-[#4caf78] tracking-widest mt-3">{notifResult}</p>
+            )}
+          </div>
+
+          <h2 className="font-cinzel text-[0.6rem] tracking-[3px] text-[#9a8a6a] uppercase mb-3">
+            {t('notifications.log_title')}
+          </h2>
+
+          {notifLogsLoading ? (
+            <p className="font-cinzel text-xs text-[#9a8a6a] text-center tracking-widest py-10">Loading...</p>
+          ) : notifLogs.length === 0 ? (
+            <p className="font-cinzel text-xs text-[#9a8a6a] text-center tracking-widest py-6">—</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b border-[rgba(201,168,76,0.15)]">
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">User</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Email</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Template</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Type</th>
+                    <th className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase py-3 px-2 text-left">Sent</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {notifLogs.map((log: any) => (
+                    <tr key={log.id} className="border-b border-[rgba(201,168,76,0.08)] hover:bg-[rgba(201,168,76,0.03)] transition-colors">
+                      <td className="py-2 px-2 font-raleway text-xs text-[#f0e6cc]">{log.user?.name ?? '—'}</td>
+                      <td className="py-2 px-2 font-raleway text-xs text-[#9a8a6a]">{log.user?.email ?? '—'}</td>
+                      <td className="py-2 px-2 font-cinzel text-[0.6rem] tracking-widest text-gold-light uppercase">{log.template}</td>
+                      <td className="py-2 px-2 font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a] uppercase">{log.type}</td>
+                      <td className="py-2 px-2 font-raleway text-xs text-[#9a8a6a]">{new Date(log.sentAt).toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>

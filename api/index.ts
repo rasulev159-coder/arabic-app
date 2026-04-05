@@ -53,6 +53,7 @@ try {
   const { analyticsRouter }    = require('../apps/backend/src/routes/analytics');
   const { donateRouter }       = require('../apps/backend/src/routes/donate');
   const { settingsRouter }     = require('../apps/backend/src/routes/settings');
+  const { notificationsRouter } = require('../apps/backend/src/routes/notifications');
   const { errorHandler }       = require('../apps/backend/src/middleware/errorHandler');
   const { requireAuth }        = require('../apps/backend/src/middleware/requireAuth');
   const { requireAdmin }       = require('../apps/backend/src/middleware/requireAdmin');
@@ -71,6 +72,7 @@ try {
   app.use('/api/analytics',    analyticsRouter);
   app.use('/api/donate',       donateRouter);
   app.use('/api/settings',     settingsRouter);
+  app.use('/api/notifications', notificationsRouter);
   app.use(errorHandler);
 } catch (err) {
   app.use('/api', (_req, res) => {

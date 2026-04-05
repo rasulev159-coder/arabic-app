@@ -187,6 +187,17 @@
   },
   "admin_sections": "Bo'limlar",
   "sections_saved": "Bo'limlar sozlamalari saqlandi",
+  "notifications": {
+    "enable": "Bildirishnomalarni yoqish",
+    "enable_desc": "Kunlik eslatmalar va motivatsion xabarlar oling",
+    "dismiss": "Keyinroq",
+    "enabled": "Bildirishnomalar yoqildi!",
+    "admin_title": "Bildirishnomalar",
+    "send_now": "Hozir yuborish",
+    "sending": "Yuborilmoqda...",
+    "sent_count": "{{count}} ta bildirishnoma yuborildi",
+    "log_title": "Yuborish tarixi"
+  },
   "feedback": {
     "title": "Fikr-mulohaza",
     "description": "Fikr-mulohaza yoki shikoyatingiz bormi? Telegram guruhimizga yozing!",

@@ -13,6 +13,7 @@ import { LETTERS, StudyMode, WeaknessDto, Language, DonateConfigDto } from '@ara
 import { useQuery }        from '@tanstack/react-query';
 import { api }             from '../lib/api';
 import { useSectionsStore } from '../store/sectionsStore';
+import { NotificationPrompt } from '../components/ui/NotificationPrompt';
 
 const LEARN_MODES: { to: string; icon: string; key: StudyMode; color: string }[] = [
   { to: '/learn/flashcards', icon: '\ud83d\udcc7', key: 'flashcard', color: 'from-[#2a1f08] to-[#1a1005]' },
@@ -84,6 +85,9 @@ export function DashboardPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8 pb-24 md:pb-8">
+
+      {/* Notification permission prompt */}
+      <NotificationPrompt />
 
       {/* 1. HEADER: Greeting + Level + XP Bar (single consolidated block) */}
       <motion.div
