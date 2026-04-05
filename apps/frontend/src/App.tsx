@@ -105,7 +105,8 @@ export default function App() {
       <FeedbackButton />
       <Routes>
         {/* Public */}
-        <Route path="/"      element={<LandingPage />} />
+        <Route path="/"      element={<SpinQuizPage />} />
+        <Route path="/landing" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/invite" element={<InvitePage />} />
         <Route path="/spin-quiz" element={<SpinQuizPage />} />
