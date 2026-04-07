@@ -106,7 +106,7 @@ export interface ChartDataPoint {
     attempts: number;
 }
 export type StudyMode = 'flashcard' | 'quiz' | 'speed' | 'lightning' | 'memory' | 'listen' | 'find' | 'write';
-export type AchievementKey = 'first_letter' | 'first_10' | 'all_letters' | 'speed_3min' | 'perfect_quiz' | 'streak_3' | 'streak_7' | 'streak_30' | 'lightning_master' | 'memory_5min' | 'night_owl' | 'early_bird' | 'first_challenge_win';
+export type AchievementKey = 'first_letter' | 'first_10' | 'half_letters' | 'almost_master' | 'all_letters' | 'streak_3' | 'streak_7' | 'streak_14' | 'streak_30' | 'streak_100' | 'speed_5min' | 'speed_4min' | 'speed_3min' | 'speed_2min' | 'perfect_quiz' | 'perfect_quiz_5' | 'perfect_quiz_10' | 'lightning_50' | 'lightning_75' | 'lightning_100' | 'lightning_200' | 'memory_5min' | 'memory_4min' | 'memory_3min' | 'first_challenge_win' | 'challenge_5' | 'challenge_10' | 'challenge_25' | 'night_owl' | 'early_bird' | 'textbook_1' | 'textbook_5' | 'textbook_all' | 'sessions_50' | 'sessions_200';
 export interface AchievementDto {
     id: string;
     key: AchievementKey;
@@ -118,6 +118,15 @@ export interface AchievementDto {
     descEn: string;
     icon: string;
     unlockedAt: string | null;
+}
+export interface AchievementProgressDto {
+    key: string;
+    current: number | null;
+    target: number;
+    percentage: number;
+    unlocked: boolean;
+    unlockedAt: string | null;
+    category: string;
 }
 export interface LeaderboardEntry {
     rank: number;
@@ -220,5 +229,6 @@ export declare const ACHIEVEMENTS_SEED: Array<{
     descEn: string;
     icon: string;
     condition: Record<string, unknown>;
+    category: string;
 }>;
 //# sourceMappingURL=index.d.ts.map

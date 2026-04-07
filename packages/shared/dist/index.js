@@ -65,96 +65,50 @@ function getLetterAssociation(letter, lang) {
 }
 // ─── Seeder data ──────────────────────────────────────────────────────────────
 exports.ACHIEVEMENTS_SEED = [
-    {
-        key: 'first_letter',
-        nameRu: 'Первый шаг', nameUz: 'Birinchi qadam', nameEn: 'First Step',
-        descRu: 'Выучи первую букву', descUz: "Birinchi harfni o'rganing", descEn: 'Learn your first letter',
-        icon: '🌱',
-        condition: { type: 'letters_known', value: 1 },
-    },
-    {
-        key: 'first_10',
-        nameRu: 'Первые 10', nameUz: 'Birinchi 10', nameEn: 'First 10',
-        descRu: 'Выучи 10 букв', descUz: "10 ta harfni o'rganing", descEn: 'Learn 10 letters',
-        icon: '🔟',
-        condition: { type: 'letters_known', value: 10 },
-    },
-    {
-        key: 'all_letters',
-        nameRu: 'Мастер алфавита', nameUz: 'Alifbo ustasi', nameEn: 'Alphabet Master',
-        descRu: 'Выучи все 28 букв', descUz: "Barcha 28 harfni o'rganing", descEn: 'Learn all 28 letters',
-        icon: '🏆',
-        condition: { type: 'letters_known', value: 28 },
-    },
-    {
-        key: 'speed_3min',
-        nameRu: 'Скоростной', nameUz: 'Tezkor', nameEn: 'Speedster',
-        descRu: 'Пройди все карточки за 3 минуты', descUz: "3 daqiqa ichida barcha kartalarni o'ting", descEn: 'Complete all flashcards in 3 minutes',
-        icon: '⚡',
-        condition: { type: 'session_speed', mode: 'flashcard', maxSec: 180, minScore: 28 },
-    },
-    {
-        key: 'perfect_quiz',
-        nameRu: 'Идеальный квиз', nameUz: 'Mukammal viktorina', nameEn: 'Perfect Quiz',
-        descRu: 'Пройди квиз без ошибок', descUz: "Xatosiz viktorinani o'ting", descEn: 'Complete a quiz with no mistakes',
-        icon: '💯',
-        condition: { type: 'perfect_session', mode: 'quiz' },
-    },
-    {
-        key: 'streak_3',
-        nameRu: '3 дня подряд', nameUz: '3 kun ketma-ket', nameEn: '3 Days Streak',
-        descRu: 'Занимайся 3 дня подряд', descUz: "3 kun ketma-ket mashq qiling", descEn: 'Study 3 days in a row',
-        icon: '🔥',
-        condition: { type: 'streak', value: 3 },
-    },
-    {
-        key: 'streak_7',
-        nameRu: 'Неделя', nameUz: 'Bir hafta', nameEn: 'One Week',
-        descRu: '7 дней подряд', descUz: "7 kun ketma-ket", descEn: '7 days in a row',
-        icon: '🗓️',
-        condition: { type: 'streak', value: 7 },
-    },
-    {
-        key: 'streak_30',
-        nameRu: 'Месяц', nameUz: 'Bir oy', nameEn: 'One Month',
-        descRu: '30 дней подряд', descUz: "30 kun ketma-ket", descEn: '30 days in a row',
-        icon: '📅',
-        condition: { type: 'streak', value: 30 },
-    },
-    {
-        key: 'lightning_master',
-        nameRu: 'Молния', nameUz: 'Chaqmoq', nameEn: 'Lightning',
-        descRu: 'Ответь на 50 вопросов в молниеносном режиме', descUz: "Chaqmoq rejimida 50 ta savolga javob bering", descEn: 'Answer 50 questions in lightning mode',
-        icon: '⚡',
-        condition: { type: 'total_correct_mode', mode: 'lightning', value: 50 },
-    },
-    {
-        key: 'memory_5min',
-        nameRu: 'Память', nameUz: 'Xotira', nameEn: 'Memory',
-        descRu: 'Пройди Memory за 5 минут', descUz: "5 daqiqa ichida Memory o'yinini o'ting", descEn: 'Complete Memory game in 5 minutes',
-        icon: '🧠',
-        condition: { type: 'session_speed', mode: 'memory', maxSec: 300, minScore: 28 },
-    },
-    {
-        key: 'night_owl',
-        nameRu: 'Ночная сова', nameUz: 'Tungi boyqush', nameEn: 'Night Owl',
-        descRu: 'Занимайся после 23:00', descUz: "23:00 dan keyin mashq qiling", descEn: 'Study after 23:00',
-        icon: '🦉',
-        condition: { type: 'time_of_day', after: 23 },
-    },
-    {
-        key: 'early_bird',
-        nameRu: 'Ранняя пташка', nameUz: 'Erta qush', nameEn: 'Early Bird',
-        descRu: 'Занимайся до 7:00', descUz: "7:00 dan oldin mashq qiling", descEn: 'Study before 7:00',
-        icon: '🐦',
-        condition: { type: 'time_of_day', before: 7 },
-    },
-    {
-        key: 'first_challenge_win',
-        nameRu: 'Победитель', nameUz: 'G\'olib', nameEn: 'Winner',
-        descRu: 'Выиграй первое соревнование', descUz: "Birinchi musobaqada g'olib bo'ling", descEn: 'Win your first challenge',
-        icon: '🥇',
-        condition: { type: 'challenge_win', value: 1 },
-    },
+    // LETTERS (5)
+    { key: 'first_letter', nameRu: 'Первый шаг', nameUz: 'Birinchi qadam', nameEn: 'First Step', descRu: 'Выучи первую букву', descUz: "Birinchi harfni o'rganing", descEn: 'Learn your first letter', icon: '🌱', condition: { type: 'letters_known', value: 1 }, category: 'letters' },
+    { key: 'first_10', nameRu: 'Первые 10', nameUz: 'Birinchi 10', nameEn: 'First 10', descRu: 'Выучи 10 букв', descUz: "10 ta harfni o'rganing", descEn: 'Learn 10 letters', icon: '🔟', condition: { type: 'letters_known', value: 10 }, category: 'letters' },
+    { key: 'half_letters', nameRu: 'Половина пути', nameUz: "Yarim yo'l", nameEn: 'Halfway There', descRu: 'Выучи 14 букв', descUz: "14 ta harfni o'rganing", descEn: 'Learn 14 letters', icon: '⚡', condition: { type: 'letters_known', value: 14 }, category: 'letters' },
+    { key: 'almost_master', nameRu: 'Почти мастер', nameUz: 'Deyarli usta', nameEn: 'Almost Master', descRu: 'Выучи 21 букву', descUz: "21 ta harfni o'rganing", descEn: 'Learn 21 letters', icon: '🎯', condition: { type: 'letters_known', value: 21 }, category: 'letters' },
+    { key: 'all_letters', nameRu: 'Мастер алфавита', nameUz: 'Alifbo ustasi', nameEn: 'Alphabet Master', descRu: 'Выучи все 28 букв', descUz: "Barcha 28 harfni o'rganing", descEn: 'Learn all 28 letters', icon: '🏆', condition: { type: 'letters_known', value: 28 }, category: 'letters' },
+    // STREAKS (5)
+    { key: 'streak_3', nameRu: '3 дня подряд', nameUz: '3 kun ketma-ket', nameEn: '3 Day Streak', descRu: 'Занимайся 3 дня подряд', descUz: '3 kun ketma-ket mashq qiling', descEn: 'Study 3 days in a row', icon: '🔥', condition: { type: 'streak', value: 3 }, category: 'streaks' },
+    { key: 'streak_7', nameRu: 'Неделя', nameUz: 'Bir hafta', nameEn: 'One Week', descRu: '7 дней подряд', descUz: '7 kun ketma-ket', descEn: '7 days in a row', icon: '🗓️', condition: { type: 'streak', value: 7 }, category: 'streaks' },
+    { key: 'streak_14', nameRu: 'Две недели', nameUz: 'Ikki hafta', nameEn: 'Two Weeks', descRu: '14 дней подряд', descUz: '14 kun ketma-ket', descEn: '14 days in a row', icon: '💪', condition: { type: 'streak', value: 14 }, category: 'streaks' },
+    { key: 'streak_30', nameRu: 'Месяц', nameUz: 'Bir oy', nameEn: 'One Month', descRu: '30 дней подряд', descUz: '30 kun ketma-ket', descEn: '30 days in a row', icon: '📅', condition: { type: 'streak', value: 30 }, category: 'streaks' },
+    { key: 'streak_100', nameRu: '100 дней', nameUz: '100 kun', nameEn: '100 Days', descRu: '100 дней подряд', descUz: '100 kun ketma-ket', descEn: '100 days in a row', icon: '💎', condition: { type: 'streak', value: 100 }, category: 'streaks' },
+    // SPEED - Flashcards (4)
+    { key: 'speed_5min', nameRu: 'Скоростной', nameUz: 'Tezkor', nameEn: 'Speedster', descRu: 'Все карточки за 5 минут', descUz: '5 daqiqada barcha kartochkalar', descEn: 'All flashcards in 5 minutes', icon: '⏱️', condition: { type: 'session_speed', mode: 'flashcard', maxSec: 300, minScore: 28 }, category: 'speed' },
+    { key: 'speed_4min', nameRu: 'Быстрый', nameUz: 'Tez', nameEn: 'Fast', descRu: 'Все карточки за 4 минуты', descUz: '4 daqiqada barcha kartochkalar', descEn: 'All flashcards in 4 minutes', icon: '⚡', condition: { type: 'session_speed', mode: 'flashcard', maxSec: 240, minScore: 28 }, category: 'speed' },
+    { key: 'speed_3min', nameRu: 'Молниеносный', nameUz: 'Chaqmoqdek', nameEn: 'Lightning Fast', descRu: 'Все карточки за 3 минуты', descUz: '3 daqiqada barcha kartochkalar', descEn: 'All flashcards in 3 minutes', icon: '🚀', condition: { type: 'session_speed', mode: 'flashcard', maxSec: 180, minScore: 28 }, category: 'speed' },
+    { key: 'speed_2min', nameRu: 'Легенда скорости', nameUz: 'Tezlik afsonasi', nameEn: 'Speed Legend', descRu: 'Все карточки за 2 минуты', descUz: '2 daqiqada barcha kartochkalar', descEn: 'All flashcards in 2 minutes', icon: '👑', condition: { type: 'session_speed', mode: 'flashcard', maxSec: 120, minScore: 28 }, category: 'speed' },
+    // QUIZ (3)
+    { key: 'perfect_quiz', nameRu: 'Идеальный квиз', nameUz: 'Mukammal viktorina', nameEn: 'Perfect Quiz', descRu: 'Квиз без ошибок', descUz: 'Xatosiz viktorina', descEn: 'Quiz with no mistakes', icon: '💯', condition: { type: 'perfect_session', mode: 'quiz' }, category: 'quiz' },
+    { key: 'perfect_quiz_5', nameRu: '5 идеальных', nameUz: '5 ta mukammal', nameEn: '5 Perfect', descRu: '5 квизов со 100%', descUz: '5 ta xatosiz viktorina', descEn: '5 quizzes at 100%', icon: '🌟', condition: { type: 'perfect_count', mode: 'quiz', value: 5 }, category: 'quiz' },
+    { key: 'perfect_quiz_10', nameRu: '10 идеальных', nameUz: '10 ta mukammal', nameEn: '10 Perfect', descRu: '10 квизов со 100%', descUz: '10 ta xatosiz viktorina', descEn: '10 quizzes at 100%', icon: '✨', condition: { type: 'perfect_count', mode: 'quiz', value: 10 }, category: 'quiz' },
+    // LIGHTNING (4)
+    { key: 'lightning_50', nameRu: 'Молния', nameUz: 'Chaqmoq', nameEn: 'Lightning', descRu: '50 правильных в молнии', descUz: "Chaqmoqda 50 ta to'g'ri javob", descEn: '50 correct in lightning', icon: '⚡', condition: { type: 'total_correct_mode', mode: 'lightning', value: 50 }, category: 'lightning' },
+    { key: 'lightning_75', nameRu: 'Гром', nameUz: 'Momaqaldiroq', nameEn: 'Thunder', descRu: '75 правильных в молнии', descUz: "Chaqmoqda 75 ta to'g'ri javob", descEn: '75 correct in lightning', icon: '🌩️', condition: { type: 'total_correct_mode', mode: 'lightning', value: 75 }, category: 'lightning' },
+    { key: 'lightning_100', nameRu: 'Шторм', nameUz: "Bo'ron", nameEn: 'Storm', descRu: '100 правильных в молнии', descUz: "Chaqmoqda 100 ta to'g'ri javob", descEn: '100 correct in lightning', icon: '🌪️', condition: { type: 'total_correct_mode', mode: 'lightning', value: 100 }, category: 'lightning' },
+    { key: 'lightning_200', nameRu: 'Ураган', nameUz: "To'fon", nameEn: 'Hurricane', descRu: '200 правильных в молнии', descUz: "Chaqmoqda 200 ta to'g'ri javob", descEn: '200 correct in lightning', icon: '🌊', condition: { type: 'total_correct_mode', mode: 'lightning', value: 200 }, category: 'lightning' },
+    // MEMORY (3)
+    { key: 'memory_5min', nameRu: 'Хорошая память', nameUz: 'Yaxshi xotira', nameEn: 'Good Memory', descRu: 'Memory за 5 минут', descUz: "5 daqiqada Memory o'yini", descEn: 'Memory in 5 minutes', icon: '🧠', condition: { type: 'session_speed', mode: 'memory', maxSec: 300, minScore: 28 }, category: 'memory' },
+    { key: 'memory_4min', nameRu: 'Отличная память', nameUz: "A'lo xotira", nameEn: 'Great Memory', descRu: 'Memory за 4 минуты', descUz: "4 daqiqada Memory o'yini", descEn: 'Memory in 4 minutes', icon: '🎓', condition: { type: 'session_speed', mode: 'memory', maxSec: 240, minScore: 28 }, category: 'memory' },
+    { key: 'memory_3min', nameRu: 'Фотографическая', nameUz: 'Fotografik xotira', nameEn: 'Photographic', descRu: 'Memory за 3 минуты', descUz: "3 daqiqada Memory o'yini", descEn: 'Memory in 3 minutes', icon: '📸', condition: { type: 'session_speed', mode: 'memory', maxSec: 180, minScore: 28 }, category: 'memory' },
+    // CHALLENGES (4)
+    { key: 'first_challenge_win', nameRu: 'Победитель', nameUz: "G'olib", nameEn: 'Winner', descRu: 'Выиграй первый челлендж', descUz: "Birinchi musobaqada g'olib bo'ling", descEn: 'Win your first challenge', icon: '🥇', condition: { type: 'challenge_win', value: 1 }, category: 'challenges' },
+    { key: 'challenge_5', nameRu: 'Боец', nameUz: 'Jangchi', nameEn: 'Fighter', descRu: '5 побед в челленджах', descUz: "5 ta g'alaba", descEn: '5 challenge wins', icon: '🥊', condition: { type: 'challenge_win', value: 5 }, category: 'challenges' },
+    { key: 'challenge_10', nameRu: 'Чемпион', nameUz: 'Chempion', nameEn: 'Champion', descRu: '10 побед в челленджах', descUz: "10 ta g'alaba", descEn: '10 challenge wins', icon: '🏅', condition: { type: 'challenge_win', value: 10 }, category: 'challenges' },
+    { key: 'challenge_25', nameRu: 'Легенда', nameUz: 'Afsona', nameEn: 'Legend', descRu: '25 побед в челленджах', descUz: "25 ta g'alaba", descEn: '25 challenge wins', icon: '👑', condition: { type: 'challenge_win', value: 25 }, category: 'challenges' },
+    // TIME OF DAY (2)
+    { key: 'night_owl', nameRu: 'Ночная сова', nameUz: 'Tungi boyqush', nameEn: 'Night Owl', descRu: 'Занятие после 23:00', descUz: "23:00 dan keyin mashq qiling", descEn: 'Study after 23:00', icon: '🦉', condition: { type: 'time_of_day', after: 23 }, category: 'time' },
+    { key: 'early_bird', nameRu: 'Ранняя пташка', nameUz: 'Erta qush', nameEn: 'Early Bird', descRu: 'Занятие до 7:00', descUz: "7:00 dan oldin mashq qiling", descEn: 'Study before 7:00', icon: '🐦', condition: { type: 'time_of_day', before: 7 }, category: 'time' },
+    // TEXTBOOK (3)
+    { key: 'textbook_1', nameRu: 'Первая глава', nameUz: 'Birinchi bob', nameEn: 'First Chapter', descRu: 'Пройди 1 главу учебника', descUz: 'Darslikning 1 bobini yakunlang', descEn: 'Complete 1 textbook chapter', icon: '📖', condition: { type: 'textbook_chapters', value: 1 }, category: 'textbook' },
+    { key: 'textbook_5', nameRu: 'Половина книги', nameUz: 'Kitobning yarmi', nameEn: 'Half the Book', descRu: 'Пройди 5 глав', descUz: '5 ta bobni yakunlang', descEn: 'Complete 5 chapters', icon: '📚', condition: { type: 'textbook_chapters', value: 5 }, category: 'textbook' },
+    { key: 'textbook_all', nameRu: 'Муаллим Сони', nameUz: 'Muallim Soniy', nameEn: 'Muallim Soniy', descRu: 'Пройди все 9 глав', descUz: 'Barcha 9 bobni yakunlang', descEn: 'Complete all 9 chapters', icon: '🎓', condition: { type: 'textbook_chapters', value: 9 }, category: 'textbook' },
+    // SESSIONS (2)
+    { key: 'sessions_50', nameRu: 'Трудяга', nameUz: 'Mehnatkash', nameEn: 'Hard Worker', descRu: '50 завершённых сессий', descUz: "50 ta yakunlangan mashg'ulot", descEn: '50 completed sessions', icon: '💼', condition: { type: 'total_sessions', value: 50 }, category: 'sessions' },
+    { key: 'sessions_200', nameRu: 'Мастер практики', nameUz: 'Mashq ustasi', nameEn: 'Practice Master', descRu: '200 завершённых сессий', descUz: "200 ta yakunlangan mashg'ulot", descEn: '200 completed sessions', icon: '🏋️', condition: { type: 'total_sessions', value: 200 }, category: 'sessions' },
 ];
 //# sourceMappingURL=index.js.map

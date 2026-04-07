@@ -9,7 +9,7 @@ import { LevelBadge, StreakBadge, getStreakText } from '../components/ui/Badges'
 import { XpBar }           from '../components/ui/XpBar';
 import { DailyLesson }     from '../components/learn/DailyLesson';
 import { Button }          from '../components/ui/Button';
-import { LETTERS, StudyMode, WeaknessDto, Language, DonateConfigDto } from '@arabic/shared';
+import { LETTERS, StudyMode, WeaknessDto, Language, DonateConfigDto, AchievementProgressDto } from '@arabic/shared';
 import { useQuery }        from '@tanstack/react-query';
 import { api }             from '../lib/api';
 import { useSectionsStore } from '../store/sectionsStore';
@@ -85,6 +85,33 @@ export function DashboardPage() {
     staleTime: 60_000,
     retry: false,
   });
+
+  const { data: achievementProgress } = useQuery<AchievementProgressDto[]>({
+    queryKey: ['achievements-progress'],
+    queryFn: async () => (await api.get('/achievements/progress')).data.data,
+    staleTime: 60_000,
+    retry: false,
+  });
+
+  const { data: allAchievements } = useQuery({
+    queryKey: ['achievements'],
+    queryFn: async () => (await api.get('/achievements')).data.data,
+    staleTime: 60_000,
+  });
+
+  // Find the nearest achievement (highest % but not unlocked)
+  const nearestAchievement = (() => {
+    if (!achievementProgress || !allAchievements) return null;
+    const locked = achievementProgress.filter(p => !p.unlocked && p.percentage > 0);
+    if (locked.length === 0) return null;
+    // Prefer >=50%, otherwise pick highest
+    const candidates = locked.filter(p => p.percentage >= 50);
+    const best = (candidates.length > 0 ? candidates : locked)
+      .sort((a, b) => b.percentage - a.percentage)[0];
+    if (!best) return null;
+    const achData = (allAchievements as any[]).find((a: any) => a.key === best.key);
+    return achData ? { ...best, ach: achData } : null;
+  })();
 
   const speedRank = (speedBoard as any[])?.find((e: any) => e.userId === user?.id)?.rank ?? null;
   const streakRank = (streakBoard as any[])?.find((e: any) => e.userId === user?.id)?.rank ?? null;
@@ -271,6 +298,54 @@ export function DashboardPage() {
               {t('common:weakness.no_weakness')}
             </p>
           )}
+        </motion.div>
+      )}
+
+      {/* 4a. NEAREST ACHIEVEMENT */}
+      {nearestAchievement && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.21 }}
+          className="mb-6"
+        >
+          <Link to="/achievements" className="block">
+            <div className="bg-gradient-to-br from-[#1a1508] to-[#140f05] border border-[rgba(201,168,76,0.15)]
+                            rounded-2xl p-4 hover:border-[rgba(201,168,76,0.3)] transition-all">
+              <p className="font-cinzel text-[0.6rem] tracking-[3px] text-[#9a8a6a] uppercase mb-3">
+                {t('common:achievement_progress.nearest')}
+              </p>
+              <div className="flex items-center gap-3">
+                <span className="text-3xl">{nearestAchievement.ach.icon}</span>
+                <div className="flex-1 min-w-0">
+                  <p className="font-cinzel text-sm text-[#f0e6cc] truncate">
+                    {lang === 'ru' ? nearestAchievement.ach.nameRu
+                      : lang === 'uz' ? nearestAchievement.ach.nameUz
+                      : nearestAchievement.ach.nameEn}
+                  </p>
+                  <div className="mt-1.5">
+                    <div className="w-full h-1.5 bg-[rgba(255,255,255,0.06)] rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          nearestAchievement.percentage >= 80 ? 'bg-[#c9a84c]' : 'bg-[rgba(201,168,76,0.4)]'
+                        }`}
+                        style={{ width: `${nearestAchievement.percentage}%` }}
+                      />
+                    </div>
+                    <p className="font-cinzel text-[0.5rem] text-[#706040] mt-1">
+                      {nearestAchievement.current ?? 0} / {nearestAchievement.target}
+                      {nearestAchievement.percentage >= 80 && (
+                        <span className="ml-2 text-[#c9a84c]">{t('common:achievement_progress.almost')}</span>
+                      )}
+                      {nearestAchievement.percentage < 80 && (
+                        <span className="ml-2 text-[#9a8a6a]">{t('common:achievement_progress.keep_going')}</span>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
         </motion.div>
       )}
 

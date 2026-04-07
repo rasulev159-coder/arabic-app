@@ -255,12 +255,50 @@ function achDesc(a: AchievementDto, lang: Language) {
   if (lang==='ru') return a.descRu; if (lang==='uz') return a.descUz; return a.descEn;
 }
 
+const CATEGORY_ORDER = ['letters','streaks','speed','quiz','lightning','memory','challenges','time','textbook','sessions'];
+const CATEGORY_LABELS: Record<string, Record<string, string>> = {
+  letters:    { ru:'Буквы',       uz:'Harflar',     en:'Letters' },
+  streaks:    { ru:'Серии',       uz:'Ketma-ketlik',en:'Streaks' },
+  speed:      { ru:'Скорость',    uz:'Tezlik',      en:'Speed' },
+  quiz:       { ru:'Квиз',        uz:'Viktorina',   en:'Quiz' },
+  lightning:  { ru:'Молния',      uz:'Chaqmoq',     en:'Lightning' },
+  memory:     { ru:'Память',      uz:'Xotira',      en:'Memory' },
+  challenges: { ru:'Челленджи',   uz:'Musobaqalar', en:'Challenges' },
+  time:       { ru:'Время',       uz:'Vaqt',        en:'Time' },
+  textbook:   { ru:'Учебник',     uz:'Darslik',     en:'Textbook' },
+  sessions:   { ru:'Сессии',      uz:"Mashg'ulotlar",en:'Sessions' },
+};
+
+function formatTime(sec: number): string {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+interface ProgressItem {
+  key: string;
+  current: number | null;
+  target: number;
+  percentage: number;
+  unlocked: boolean;
+  unlockedAt: string | null;
+  category: string;
+}
+
 export function AchievementsPage() {
   const { t } = useTranslation('common');
   const { data, isLoading } = useAchievements();
   const lang = (useAuthStore(s=>s.user?.language) ?? 'ru') as Language;
 
-  if (isLoading) return <div className="flex justify-center py-20"><Spinner /></div>;
+  const { data: progressData, isLoading: progressLoading } = useQuery<ProgressItem[]>({
+    queryKey: ['achievements-progress'],
+    queryFn: async () => (await api.get('/achievements/progress')).data.data,
+    staleTime: 30_000,
+  });
+
+  if (isLoading || progressLoading) return <div className="flex justify-center py-20"><Spinner /></div>;
+
+  const progressMap = new Map((progressData ?? []).map(p => [p.key, p]));
 
   const unlocked = data?.filter(a => a.unlockedAt) ?? [];
   const locked   = data?.filter(a => !a.unlockedAt) ?? [];
@@ -297,6 +335,33 @@ export function AchievementsPage() {
     );
   }
 
+  // Group all achievements by category, sorted by category order
+  const allItems = [...dedupedUnlocked, ...dedupedLocked];
+  const byCategory = new Map<string, AchievementDto[]>();
+  for (const a of allItems) {
+    const prog = progressMap.get(a.key);
+    const cat = prog?.category ?? 'other';
+    if (!byCategory.has(cat)) byCategory.set(cat, []);
+    byCategory.get(cat)!.push(a);
+  }
+
+  // Sort within each category: closest to completion first (highest %), then unlocked
+  for (const [, items] of byCategory) {
+    items.sort((a, b) => {
+      const pa = progressMap.get(a.key);
+      const pb = progressMap.get(b.key);
+      if (pa?.unlocked && !pb?.unlocked) return 1;
+      if (!pa?.unlocked && pb?.unlocked) return -1;
+      return (pb?.percentage ?? 0) - (pa?.percentage ?? 0);
+    });
+  }
+
+  const isSpeedType = (key: string) => {
+    const cond = progressMap.get(key);
+    if (!cond) return false;
+    return key.startsWith('speed_') || key.startsWith('memory_');
+  };
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 pb-24 md:pb-8">
       <h1 className="font-cinzel text-[0.7rem] tracking-[4px] text-[#9a8a6a] uppercase text-center mb-6">
@@ -315,36 +380,65 @@ export function AchievementsPage() {
         </div>
       )}
 
-      {[
-        { label: t('achievements_page.unlocked'), items: dedupedUnlocked },
-        { label: t('achievements_page.locked'), items: dedupedLocked },
-      ].map(({ label, items }) => (
-        items.length > 0 && (
-          <div key={label} className="mb-6">
-            <p className="font-cinzel text-[0.6rem] tracking-[3px] text-[#9a8a6a] uppercase mb-3">{label}</p>
+      {CATEGORY_ORDER.map(cat => {
+        const items = byCategory.get(cat);
+        if (!items || items.length === 0) return null;
+        const catLabel = CATEGORY_LABELS[cat]?.[lang] ?? cat;
+
+        return (
+          <div key={cat} className="mb-6">
+            <p className="font-cinzel text-[0.6rem] tracking-[3px] text-[#9a8a6a] uppercase mb-3">{catLabel}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {items.map(a => (
-                <div key={a.id}
-                  className={`flex items-center gap-4 p-4 rounded-2xl border transition-all
-                    ${a.unlockedAt
-                      ? 'border-[rgba(201,168,76,0.25)] bg-gradient-to-br from-[#201808] to-[#140f05]'
-                      : 'border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.02)] opacity-60'}`}>
-                  <span className="text-3xl">{a.icon}</span>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-cinzel text-sm text-[#f0e6cc] truncate">{achName(a, lang)}</p>
-                    <p className="font-raleway text-xs text-[#9a8a6a] mt-0.5 leading-tight">{achDesc(a, lang)}</p>
-                    {a.unlockedAt && (
-                      <p className="font-cinzel text-[0.5rem] text-gold-dim tracking-wide mt-1">
-                        {new Date(a.unlockedAt).toLocaleDateString()}
-                      </p>
-                    )}
+              {items.map(a => {
+                const prog = progressMap.get(a.key);
+                const pct = prog?.percentage ?? 0;
+                const isSpeed = isSpeedType(a.key);
+
+                return (
+                  <div key={a.id}
+                    className={`flex items-center gap-4 p-4 rounded-2xl border transition-all
+                      ${a.unlockedAt
+                        ? 'border-[rgba(201,168,76,0.25)] bg-gradient-to-br from-[#201808] to-[#140f05]'
+                        : 'border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.02)] opacity-80'}`}>
+                    <span className="text-3xl">{a.icon}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-cinzel text-sm text-[#f0e6cc] truncate">{achName(a, lang)}</p>
+                      <p className="font-raleway text-xs text-[#9a8a6a] mt-0.5 leading-tight">{achDesc(a, lang)}</p>
+                      {a.unlockedAt && (
+                        <p className="font-cinzel text-[0.5rem] text-gold-dim tracking-wide mt-1">
+                          {new Date(a.unlockedAt).toLocaleDateString()}
+                        </p>
+                      )}
+                      {!a.unlockedAt && prog && (
+                        <div className="mt-2">
+                          {/* Progress bar */}
+                          <div className="w-full h-1.5 bg-[rgba(255,255,255,0.06)] rounded-full overflow-hidden">
+                            <div
+                              className={`h-full rounded-full transition-all duration-500 ${
+                                pct >= 80 ? 'bg-[#c9a84c]' : 'bg-[rgba(201,168,76,0.4)]'
+                              }`}
+                              style={{ width: `${pct}%` }}
+                            />
+                          </div>
+                          <p className="font-cinzel text-[0.5rem] text-[#706040] mt-1">
+                            {isSpeed && prog.current !== null
+                              ? `${t('achievement_progress.best_time', { time: formatTime(prog.current) })} / ${t('achievement_progress.goal_time', { time: formatTime(prog.target) })}`
+                              : `${prog.current ?? 0} / ${prog.target}`
+                            }
+                            {pct >= 80 && !a.unlockedAt && (
+                              <span className="ml-2 text-[#c9a84c]">{t('achievement_progress.almost')}</span>
+                            )}
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
-        )
-      ))}
+        );
+      })}
     </div>
   );
 }

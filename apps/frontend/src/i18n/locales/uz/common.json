@@ -204,6 +204,14 @@
     "telegram_button": "Telegram guruhga yozish",
     "close": "Yopish"
   },
+  "achievement_progress": {
+    "nearest": "Eng yaqin yutuq",
+    "progress": "{{current}} / {{target}}",
+    "best_time": "Eng yaxshi: {{time}}",
+    "goal_time": "Maqsad: {{time}}",
+    "almost": "Deyarli tayyor!",
+    "keep_going": "Davom eting!"
+  },
   "forms": {
     "connections_title": "Harflar bog'lanishi",
     "connections_desc": "Qaysi harflar bog'lanadi, qaysilari yo'q?",

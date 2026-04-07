@@ -8,7 +8,16 @@ async function main() {
   for (const ach of ACHIEVEMENTS_SEED) {
     await prisma.achievement.upsert({
       where: { key: ach.key },
-      update: {},
+      update: {
+        nameRu: ach.nameRu,
+        nameUz: ach.nameUz,
+        nameEn: ach.nameEn,
+        descRu: ach.descRu,
+        descUz: ach.descUz,
+        descEn: ach.descEn,
+        icon: ach.icon,
+        condition: ach.condition,
+      },
       create: {
         key: ach.key,
         nameRu: ach.nameRu,

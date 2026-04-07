@@ -205,6 +205,14 @@
     "telegram_button": "Write in Telegram",
     "close": "Close"
   },
+  "achievement_progress": {
+    "nearest": "Nearest Achievement",
+    "progress": "{{current}} / {{target}}",
+    "best_time": "Best: {{time}}",
+    "goal_time": "Goal: {{time}}",
+    "almost": "Almost there!",
+    "keep_going": "Keep going!"
+  },
   "forms": {
     "connections_title": "Letter Connections",
     "connections_desc": "Which letters connect and which don't?",
