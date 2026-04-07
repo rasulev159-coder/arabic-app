@@ -26,6 +26,8 @@ import { LightningPage, MemoryPage, ListenPage, FindPage } from './pages/learn/M
 import { WeaknessTrainingPage } from './pages/learn/WeaknessTraining';
 import { SessionFlowPage }      from './pages/learn/SessionFlow';
 import { QuranModePage }         from './pages/learn/QuranMode';
+import { ConnectionsPage }      from './pages/learn/Connections';
+import { FormsPage }             from './pages/learn/Forms';
 import { TextbookPage }          from './pages/Textbook';
 import { TextbookChapterPage }   from './pages/TextbookChapter';
 import { TextbookQuizPage }      from './pages/TextbookQuiz';
@@ -131,6 +133,8 @@ export default function App() {
           <Route path="/learn/weakness"    element={<WeaknessTrainingPage />} />
           <Route path="/learn/session"     element={<SessionFlowPage />} />
           <Route path="/learn/quran"       element={<QuranModePage />} />
+          <Route path="/learn/connections" element={<ConnectionsPage />} />
+          <Route path="/learn/forms"       element={<FormsPage />} />
           <Route path="/textbook"                  element={<TextbookPage />} />
           <Route path="/textbook/roadmap-path"     element={<TextbookRoadmapPath />} />
           <Route path="/textbook/roadmap-island"   element={<TextbookRoadmapIsland />} />

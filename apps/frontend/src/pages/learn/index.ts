@@ -5,4 +5,6 @@ export { FindPage }      from './Modes';
 export { SpeedPage }     from './Speed';
 export { FlashcardsPage } from './Flashcards';
 export { QuizPage }      from './Quiz';
-export { WritePage }     from './Write';
+export { WritePage }       from './Write';
+export { ConnectionsPage } from './Connections';
+export { FormsPage }       from './Forms';

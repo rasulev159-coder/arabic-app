@@ -204,5 +204,28 @@
     "description": "Have feedback or a complaint? Write to our Telegram group!",
     "telegram_button": "Write in Telegram",
     "close": "Close"
+  },
+  "forms": {
+    "connections_title": "Letter Connections",
+    "connections_desc": "Which letters connect and which don't?",
+    "non_connecting": "Non-connecting",
+    "connecting": "Connecting",
+    "forms_title": "Letter Forms",
+    "forms_desc": "Learn letter forms in different positions",
+    "isolated": "Isolated",
+    "initial": "Initial",
+    "medial": "Medial",
+    "final": "Final",
+    "sort_game": "Sorting Game",
+    "recognize_game": "Recognize Form",
+    "match_game": "Match Forms",
+    "level_easy": "Easy",
+    "level_medium": "Medium",
+    "level_hard": "Hard",
+    "combo": "Combo",
+    "time_up": "Time's up!",
+    "find_non_connector": "Find the non-connecting letter",
+    "find_letter_in_word": "Find the letter in the word",
+    "which_form": "Which form is this?"
   }
 }

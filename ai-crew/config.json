@@ -1,0 +1,16 @@
+{
+  "project": {
+    "name": "Arabic Alphabet Learning Platform",
+    "description": "Бесплатная веб-платформа для изучения арабского алфавита. 8 игровых режимов, учебник 'Муаллим Сони' с 159 тестами, XP-система, стрики, мультиплеер-челленджи.",
+    "audience": "Узбекистанцы 16-45 лет, хотят научиться читать арабский с нуля — для Корана и общего развития. Главная боль: путают похожие буквы (ب ت ث).",
+    "url": "https://arabic-app.vercel.app",
+    "telegram_group": "https://t.me/+qWPbfngZX1YxZmRi",
+    "languages": ["uz", "ru"],
+    "code_path": "/Users/boxodirrasulev/arabic-app"
+  },
+  "channels": {
+    "telegram": { "enabled": true, "type": "channel + group" },
+    "instagram": { "enabled": true, "type": "reels + stories" },
+    "tiktok": { "enabled": false }
+  }
+}

@@ -203,5 +203,28 @@
     "description": "Fikr-mulohaza yoki shikoyatingiz bormi? Telegram guruhimizga yozing!",
     "telegram_button": "Telegram guruhga yozish",
     "close": "Yopish"
+  },
+  "forms": {
+    "connections_title": "Harflar bog'lanishi",
+    "connections_desc": "Qaysi harflar bog'lanadi, qaysilari yo'q?",
+    "non_connecting": "Bog'lanmaydigan harflar",
+    "connecting": "Bog'lanadigan harflar",
+    "forms_title": "Harf shakllari",
+    "forms_desc": "Harflarning turli ko'rinishlarini o'rganing",
+    "isolated": "Alohida",
+    "initial": "Boshida",
+    "medial": "O'rtada",
+    "final": "Oxirida",
+    "sort_game": "Saralash o'yini",
+    "recognize_game": "Shaklni aniqlang",
+    "match_game": "Shakllarni moslang",
+    "level_easy": "Oson",
+    "level_medium": "O'rta",
+    "level_hard": "Qiyin",
+    "combo": "Combo",
+    "time_up": "Vaqt tugadi!",
+    "find_non_connector": "Bog'lanmaydigan harfni toping",
+    "find_letter_in_word": "So'zda harfni toping",
+    "which_form": "Bu qaysi shakl?"
   }
 }

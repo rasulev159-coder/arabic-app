@@ -274,6 +274,44 @@ export function DashboardPage() {
         </motion.div>
       )}
 
+      {/* 4b. LETTER FORMS — Connections & Forms */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.22 }}
+        className="mb-6"
+      >
+        <h2 className="font-cinzel text-[0.7rem] tracking-[4px] text-[#9a8a6a] uppercase mb-3">
+          {t('common:forms.forms_title')}
+        </h2>
+        <div className="grid grid-cols-2 gap-3">
+          <Link
+            to="/learn/connections"
+            className="flex flex-col items-center gap-2 p-4 rounded-2xl
+              bg-gradient-to-br from-[#1a0f08] to-[#120a05] border border-[rgba(201,168,76,0.1)]
+              hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-1
+              transition-all duration-200 group"
+          >
+            <span className="text-2xl group-hover:scale-110 transition-transform">{'\u26d3\ufe0f'}</span>
+            <span className="font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a] uppercase text-center">
+              {t('common:forms.connections_title')}
+            </span>
+          </Link>
+          <Link
+            to="/learn/forms"
+            className="flex flex-col items-center gap-2 p-4 rounded-2xl
+              bg-gradient-to-br from-[#0f0f1a] to-[#080810] border border-[rgba(201,168,76,0.1)]
+              hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-1
+              transition-all duration-200 group"
+          >
+            <span className="text-2xl group-hover:scale-110 transition-transform">{'\ud83d\udd24'}</span>
+            <span className="font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a] uppercase text-center">
+              {t('common:forms.forms_title')}
+            </span>
+          </Link>
+        </div>
+      </motion.div>
+
       {/* 5. GAME MODES GRID (2x4) */}
       {isEnabled('games') && (
         <>
