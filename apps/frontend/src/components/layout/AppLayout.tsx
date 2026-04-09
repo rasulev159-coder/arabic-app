@@ -6,6 +6,7 @@ import { useAuthStore }    from '../../store/authStore';
 import { useSectionsStore } from '../../store/sectionsStore';
 import { LevelBadge, StreakBadge, LanguageSwitcher } from '../ui/Badges';
 import { XpBar }           from '../ui/XpBar';
+import { TeacherChat }     from '../ui/TeacherChat';
 
 const NAV = [
   { to: '/dashboard',    icon: '🏠', key: 'dashboard' },
@@ -239,6 +240,9 @@ export function AppLayout() {
           </>
         )}
       </AnimatePresence>
+
+      {/* AI Teacher Chat */}
+      <TeacherChat />
     </div>
   );
 }

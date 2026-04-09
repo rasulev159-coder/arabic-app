@@ -213,6 +213,12 @@
     "almost": "Almost there!",
     "keep_going": "Keep going!"
   },
+  "teacher": {
+    "title": "AI Teacher",
+    "greeting": "Assalamu alaikum! I'll help you learn the Arabic alphabet. What would you like to know?",
+    "placeholder": "Type your question...",
+    "typing": "Typing..."
+  },
   "forms": {
     "connections_title": "Letter Connections",
     "connections_desc": "Which letters connect and which don't?",

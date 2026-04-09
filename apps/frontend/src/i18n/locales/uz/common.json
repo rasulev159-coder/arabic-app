@@ -212,6 +212,12 @@
     "almost": "Deyarli tayyor!",
     "keep_going": "Davom eting!"
   },
+  "teacher": {
+    "title": "AI O'qituvchi",
+    "greeting": "Assalomu alaykum! Men sizga arab alifbosini o'rganishda yordam beraman. Nimani bilmoqchisiz?",
+    "placeholder": "Savolingizni yozing...",
+    "typing": "Yozmoqda..."
+  },
   "forms": {
     "connections_title": "Harflar bog'lanishi",
     "connections_desc": "Qaysi harflar bog'lanadi, qaysilari yo'q?",
