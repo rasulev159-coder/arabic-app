@@ -84,12 +84,15 @@ chatRouter.post('/', requireAuth, async (req: AuthRequest, res: Response): Promi
   const streakDays = user?.streak?.current ?? 0;
   const knownCount = user?.progress.length ?? 0;
 
+  const langName = user?.language === 'ru' ? 'Russian' : user?.language === 'en' ? 'English' : 'Uzbek Latin';
   const contextPrompt = `${SYSTEM_PROMPT}
+
+MANDATORY: You MUST answer in ${langName}. Do NOT use any other language.
+${user?.language === 'uz' ? 'Write in Uzbek LATIN script (like: Salom, harflar, o\'rganing). Do NOT use Cyrillic for Uzbek.' : ''}
 
 USER CONTEXT:
 - Known letters (${knownCount}/28): ${knownLetters}
-- Current streak: ${streakDays} days
-- User language preference: ${user?.language || 'uz'}`;
+- Current streak: ${streakDays} days`;
 
   // Build messages array
   const messages: { role: string; content: string }[] = [
