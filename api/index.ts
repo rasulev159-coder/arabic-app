@@ -54,6 +54,7 @@ try {
   const { donateRouter }       = require('../apps/backend/src/routes/donate');
   const { settingsRouter }     = require('../apps/backend/src/routes/settings');
   const { notificationsRouter } = require('../apps/backend/src/routes/notifications');
+  const { chatRouter }          = require('../apps/backend/src/routes/chat');
   const { errorHandler }       = require('../apps/backend/src/middleware/errorHandler');
   const { requireAuth }        = require('../apps/backend/src/middleware/requireAuth');
   const { requireAdmin }       = require('../apps/backend/src/middleware/requireAdmin');
@@ -73,6 +74,7 @@ try {
   app.use('/api/donate',       donateRouter);
   app.use('/api/settings',     settingsRouter);
   app.use('/api/notifications', notificationsRouter);
+  app.use('/api/chat',          chatRouter);
   app.use(errorHandler);
 } catch (err) {
   app.use('/api', (_req, res) => {

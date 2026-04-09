@@ -1,13 +1,9 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { useQuery } from '@tanstack/react-query';
-import { Language, WeaknessDto } from '@arabic/shared';
+import { Language } from '@arabic/shared';
 import { api } from '../../lib/api';
-import { useProgress } from '../../hooks/useProgress';
 import { useAuthStore } from '../../store/authStore';
-import { findAnswer } from '../../data/teacherBot';
-
 interface ChatMessage {
   id: number;
   role: 'bot' | 'user';
@@ -33,27 +29,6 @@ export function TeacherChat() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Fetch progress data
-  const { data: progressStats } = useProgress();
-
-  // Fetch weakness data
-  const { data: weaknessData } = useQuery<WeaknessDto[]>({
-    queryKey: ['weakness'],
-    queryFn: async () => (await api.get('/api/weakness')).data.data,
-    enabled: open,
-  });
-
-  // Build progress context for bot
-  const getProgressData = useCallback(() => {
-    if (!progressStats && !user) return undefined;
-    return {
-      knownCount: progressStats?.knownCount ?? user?.knownLettersCount ?? 0,
-      streakDays: user?.streak.current ?? 0,
-      weakLetters: weaknessData?.map(w => w.letterCode) ?? [],
-      totalSessions: progressStats?.totalSessions ?? 0,
-    };
-  }, [progressStats, user, weaknessData]);
-
   // Add greeting when chat opens for the first time
   useEffect(() => {
     if (open && messages.length === 0) {
@@ -78,7 +53,7 @@ export function TeacherChat() {
     }
   }, [open]);
 
-  const sendMessage = useCallback((text: string) => {
+  const sendMessage = useCallback(async (text: string) => {
     if (!text.trim() || typing) return;
 
     const trimmed = text.trim();
@@ -92,15 +67,27 @@ export function TeacherChat() {
     // Show typing indicator
     setTyping(true);
 
-    // Get bot response after fake delay
-    setTimeout(() => {
-      const answer = findAnswer(trimmed, lang, getProgressData());
+    // Build history for context
+    const history = messages.slice(-6).map(m => ({
+      role: m.role === 'bot' ? 'assistant' : 'user',
+      content: m.text,
+    }));
+
+    // Call AI API
+    try {
+      const { data } = await api.post('/chat', { message: trimmed, history });
       const botMsgId = userMsgId + 1;
-      setMessages(prev => [...prev, { id: botMsgId, role: 'bot', text: answer }]);
+      const reply = data?.data?.reply || (lang === 'uz' ? 'Kechirasiz, hozir javob bera olmayapman.' : lang === 'ru' ? 'Извините, не могу ответить сейчас.' : 'Sorry, I cannot respond right now.');
+      setMessages(prev => [...prev, { id: botMsgId, role: 'bot', text: reply }]);
       setMsgId(botMsgId);
+    } catch {
+      const botMsgId = userMsgId + 1;
+      setMessages(prev => [...prev, { id: botMsgId, role: 'bot', text: lang === 'uz' ? 'Xatolik yuz berdi. Qaytadan urinib ko\'ring.' : lang === 'ru' ? 'Произошла ошибка. Попробуйте ещё раз.' : 'An error occurred. Please try again.' }]);
+      setMsgId(botMsgId);
+    } finally {
       setTyping(false);
-    }, 500);
-  }, [msgId, typing, lang, getProgressData]);
+    }
+  }, [msgId, typing, lang, messages]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
