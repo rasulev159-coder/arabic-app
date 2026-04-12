@@ -12,7 +12,7 @@ export function QuranWordsPage() {
   const { getStats, getWordStatus, lessonScores } = useQuranWordsStore();
   const stats = getStats();
 
-  const progressPct = Math.round((stats.mastered / stats.total) * 100);
+  const progressPct = Math.round(((stats.mastered + stats.learning) / stats.total) * 100);
 
   const getLessonTitle = (lesson: typeof QURAN_WORDS_LESSONS[0]) => {
     if (lang === 'ru') return lesson.titleRu;
@@ -92,7 +92,12 @@ export function QuranWordsPage() {
           const masteredInLesson = lesson.words.filter(
             (w) => getWordStatus(w.id) === 'mastered'
           ).length;
+          const learningInLesson = lesson.words.filter(
+            (w) => getWordStatus(w.id) === 'learning'
+          ).length;
+          const progressInLesson = masteredInLesson + learningInLesson;
           const allMastered = masteredInLesson === lesson.words.length;
+          const started = progressInLesson > 0;
           const score = lessonScores[lesson.id];
 
           return (
@@ -132,23 +137,26 @@ export function QuranWordsPage() {
 
                   <div className="text-right shrink-0">
                     <p className="font-cinzel text-xs text-[#9a8a6a]">
-                      {masteredInLesson}/{lesson.words.length}
+                      {masteredInLesson > 0 ? `✅${masteredInLesson}` : ''}{learningInLesson > 0 ? ` 📖${learningInLesson}` : ''}{!started ? `🆕${lesson.words.length}` : ''} / {lesson.words.length}
                     </p>
                     {score && (
                       <p className="font-cinzel text-[0.5rem] text-[#706040] mt-0.5">
-                        {score.bestPct}%
+                        {t('quran_words.take_quiz')}: {score.bestPct}%
                       </p>
                     )}
                   </div>
                 </div>
 
                 {/* Mini progress bar */}
-                <div className="mt-3 w-full h-1.5 bg-[rgba(255,255,255,0.06)] rounded-full overflow-hidden">
+                <div className="mt-3 w-full h-1.5 bg-[rgba(255,255,255,0.06)] rounded-full overflow-hidden flex">
                   <div
-                    className={`h-full rounded-full transition-all duration-300 ${
-                      allMastered ? 'bg-[#4caf78]' : 'bg-[rgba(201,168,76,0.4)]'
-                    }`}
+                    className="h-full rounded-l-full bg-[#4caf78] transition-all duration-300"
                     style={{ width: `${(masteredInLesson / lesson.words.length) * 100}%` }}
+                  />
+                  <div
+                    className={`h-full transition-all duration-300 ${
+                      masteredInLesson === 0 ? 'rounded-l-full' : ''} ${learningInLesson > 0 ? 'bg-[rgba(232,201,109,0.5)]' : ''}`}
+                    style={{ width: `${(learningInLesson / lesson.words.length) * 100}%` }}
                   />
                 </div>
               </Link>
