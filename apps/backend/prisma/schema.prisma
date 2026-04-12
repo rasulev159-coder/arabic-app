@@ -22,11 +22,17 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
+  plan              String    @default("free")
+  planExpiresAt     DateTime?
+  dailyAiRequests   Int       @default(0)
+  lastAiRequestDate DateTime?
+
   pushSubscription String?  // JSON Web Push subscription
   lastNotifiedAt   DateTime?
   spinAnswers      String?  // JSON string of SPIN quiz answers
 
   progress           LetterProgress[]
+  payments           Payment[]
   sessions           StudySession[]
   achievements       UserAchievement[]
   streak             Streak?
@@ -232,4 +238,21 @@ model SiteSettings {
   updatedAt DateTime @updatedAt
 
   @@map("site_settings")
+}
+
+model Payment {
+  id          String    @id @default(cuid())
+  userId      String
+  amount      Int
+  currency    String    @default("UZS")
+  provider    String
+  status      String    @default("pending")
+  externalId  String?
+  planDays    Int       @default(30)
+  createdAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
 }

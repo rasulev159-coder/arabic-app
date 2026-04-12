@@ -232,6 +232,28 @@
     "pick_arabic": "Arabcha so'zni tanlang",
     "word_mastered": "So'z o'rganildi! \u2705"
   },
+  "pro": {
+    "badge": "PRO",
+    "title": "Arab Alifbosi Pro",
+    "monthly": "Oylik",
+    "yearly": "Yillik",
+    "per_month": "/oy",
+    "per_year": "/yil",
+    "savings": "{{percent}}% tejamkor",
+    "features_unlimited": "Cheksiz AI o'qituvchi",
+    "features_model": "Eng zo'r AI model",
+    "features_detailed": "Batafsil tushuntirishlar",
+    "features_no_ads": "Reklama yo'q",
+    "features_support": "Ustuvor qo'llab-quvvatlash",
+    "limit_reached": "Bugungi limit tugadi",
+    "upgrade": "Pro ga o'tish",
+    "wait_tomorrow": "Yoki ertaga qaytadan",
+    "requests_left": "{{used}}/{{limit}}",
+    "unlimited": "Cheksiz",
+    "current_plan": "Joriy reja",
+    "contact_telegram": "Telegram orqali bog'lanish",
+    "coming_soon": "Tez kunda"
+  },
   "forms": {
     "connections_title": "Harflar bog'lanishi",
     "connections_desc": "Qaysi harflar bog'lanadi, qaysilari yo'q?",

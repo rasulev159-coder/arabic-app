@@ -62,7 +62,16 @@ export function AppLayout() {
         {/* User info */}
         {user && (
           <div className="bg-[rgba(201,168,76,0.05)] border border-[rgba(201,168,76,0.1)] rounded-2xl p-3 mb-2">
-            <p className="font-cinzel text-sm text-[#f0e6cc] truncate">{user.name}</p>
+            <div className="flex items-center gap-1.5">
+              <p className="font-cinzel text-sm text-[#f0e6cc] truncate">{user.name}</p>
+              {user.plan === 'pro' && (
+                <span className="px-1.5 py-0.5 rounded text-[0.55rem] font-bold uppercase
+                                 bg-gradient-to-r from-[#c9a84c] to-[#e8c96d] text-[#1a1408]
+                                 leading-none tracking-wider">
+                  {t('pro.badge', { defaultValue: 'PRO' })}
+                </span>
+              )}
+            </div>
             <div className="flex flex-wrap gap-1 mt-2">
               <LevelBadge level={user.level} />
               <StreakBadge current={user.streak.current} />
@@ -181,7 +190,16 @@ export function AppLayout() {
               {user && (
                 <div className="flex items-center gap-3 mb-4 pb-4 border-b border-[rgba(201,168,76,0.1)]">
                   <div className="flex-1">
-                    <p className="font-cinzel text-sm text-[#f0e6cc]">{user.name}</p>
+                    <div className="flex items-center gap-1.5">
+                      <p className="font-cinzel text-sm text-[#f0e6cc]">{user.name}</p>
+                      {user.plan === 'pro' && (
+                        <span className="px-1.5 py-0.5 rounded text-[0.55rem] font-bold uppercase
+                                         bg-gradient-to-r from-[#c9a84c] to-[#e8c96d] text-[#1a1408]
+                                         leading-none tracking-wider">
+                          {t('pro.badge', { defaultValue: 'PRO' })}
+                        </span>
+                      )}
+                    </div>
                     <div className="flex gap-1 mt-1">
                       <LevelBadge level={user.level} />
                       <StreakBadge current={user.streak.current} />

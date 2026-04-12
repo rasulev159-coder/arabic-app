@@ -48,6 +48,7 @@ async function buildUserPublic(userId: string) {
     createdAt:        user.createdAt.toISOString(),
     level:            getLevel(knownCount),
     role:             user.role,
+    plan:             user.plan,
     xp:               user.xp,
     xpLevel:          user.xpLevel,
     knownLettersCount: knownCount,

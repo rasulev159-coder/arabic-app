@@ -1,11 +1,14 @@
 import { Router, Response } from 'express';
 import { requireAuth, AuthRequest } from '../middleware/requireAuth';
+import { aiRateLimit } from '../middleware/aiRateLimit';
 import { prisma } from '../lib/prisma';
+import { AI_LIMITS } from '../config/aiLimits';
 
 export const chatRouter = Router();
 
 const GEMINI_KEY = process.env.GEMINI_API_KEY || '';
 const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY || '';
+const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || '';
 
 const SYSTEM_PROMPT = `You are an Arabic alphabet teacher. You help Uzbekistani students learn to read Arabic from scratch.
 
@@ -47,7 +50,7 @@ MOON LETTERS (lam pronounced): ا ب ج ح خ ع غ ف ق ك م ه و ي → ا�
 MADD: Fatha+Alif = "aa", Kasra+Ya = "ii", Damma+Waw = "uu"`;
 
 // Try Gemini first, fallback to OpenRouter
-async function callGemini(systemPrompt: string, chatMessages: { role: string; content: string }[]): Promise<string | null> {
+async function callGemini(systemPrompt: string, chatMessages: { role: string; content: string }[], maxTokens: number = 300): Promise<string | null> {
   if (!GEMINI_KEY) return null;
 
   const contents = chatMessages
@@ -66,7 +69,7 @@ async function callGemini(systemPrompt: string, chatMessages: { role: string; co
         body: JSON.stringify({
           system_instruction: { parts: [{ text: systemPrompt }] },
           contents,
-          generationConfig: { maxOutputTokens: 300 },
+          generationConfig: { maxOutputTokens: maxTokens },
         }),
       }
     );
@@ -77,7 +80,7 @@ async function callGemini(systemPrompt: string, chatMessages: { role: string; co
   }
 }
 
-async function callOpenRouter(systemPrompt: string, chatMessages: { role: string; content: string }[]): Promise<string | null> {
+async function callOpenRouter(systemPrompt: string, chatMessages: { role: string; content: string }[], maxTokens: number = 300): Promise<string | null> {
   if (!OPENROUTER_KEY) return null;
 
   const messages = [{ role: 'system', content: systemPrompt }, ...chatMessages];
@@ -90,7 +93,7 @@ async function callOpenRouter(systemPrompt: string, chatMessages: { role: string
         'Content-Type': 'application/json',
         'HTTP-Referer': 'https://arabic-app-ruddy.vercel.app',
       },
-      body: JSON.stringify({ model: 'openrouter/free', messages, max_tokens: 300 }),
+      body: JSON.stringify({ model: 'openrouter/free', messages, max_tokens: maxTokens }),
     });
     const data = await response.json() as any;
     return data?.choices?.[0]?.message?.content || null;
@@ -99,14 +102,75 @@ async function callOpenRouter(systemPrompt: string, chatMessages: { role: string
   }
 }
 
-chatRouter.post('/', requireAuth, async (req: AuthRequest, res: Response): Promise<void> => {
+async function callAnthropic(systemPrompt: string, chatMessages: { role: string; content: string }[], maxTokens: number = 1000): Promise<string | null> {
+  if (!ANTHROPIC_KEY) return null;
+
+  const messages = chatMessages.map(m => ({
+    role: m.role === 'assistant' ? 'assistant' as const : 'user' as const,
+    content: m.content,
+  }));
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key': ANTHROPIC_KEY,
+        'anthropic-version': '2023-06-01',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: maxTokens,
+        system: systemPrompt,
+        messages,
+      }),
+    });
+    const data = await response.json() as any;
+    return data?.content?.[0]?.text || null;
+  } catch {
+    return null;
+  }
+}
+
+// GET /api/chat/status
+chatRouter.get('/status', requireAuth, async (req: AuthRequest, res: Response): Promise<void> => {
+  const user = await prisma.user.findUnique({ where: { id: req.userId } });
+  if (!user) { res.status(401).json({ ok: false }); return; }
+
+  let plan = user.plan;
+  if (plan === 'pro' && user.planExpiresAt && user.planExpiresAt < new Date()) plan = 'free';
+
+  const today = new Date().toISOString().slice(0, 10);
+  const lastDate = user.lastAiRequestDate?.toISOString().slice(0, 10);
+  const dailyUsed = lastDate === today ? user.dailyAiRequests : 0;
+  const limits = AI_LIMITS[plan as 'free' | 'pro'];
+
+  res.json({
+    ok: true,
+    data: {
+      plan,
+      dailyUsed,
+      dailyLimit: plan === 'free' ? limits.dailyRequests : null,
+      model: limits.model,
+      planExpiresAt: user.planExpiresAt,
+    },
+  });
+});
+
+chatRouter.post('/', requireAuth, aiRateLimit, async (req: AuthRequest, res: Response): Promise<void> => {
   const { message, history } = req.body;
   if (!message || typeof message !== 'string') {
     res.status(400).json({ ok: false, error: 'Missing message' });
     return;
   }
 
-  if (!GEMINI_KEY && !OPENROUTER_KEY) {
+  const aiModel = (req as any).aiModel as string;
+  const aiMaxTokens = (req as any).aiMaxTokens as number;
+  const aiPlan = (req as any).aiPlan as string;
+  const aiDailyUsed = (req as any).aiDailyUsed as number;
+  const aiDailyLimit = (req as any).aiDailyLimit as number | null;
+
+  if (!GEMINI_KEY && !OPENROUTER_KEY && !ANTHROPIC_KEY) {
     res.status(503).json({ ok: false, error: 'Chat not configured' });
     return;
   }
@@ -142,10 +206,21 @@ USER PROGRESS: ${knownCount}/28 letters known. Streak: ${streakDays} days.`;
   }
   chatMessages.push({ role: 'user', content: message });
 
-  // Try Gemini first, then OpenRouter
-  let reply = await callGemini(fullPrompt, chatMessages);
+  let reply: string | null = null;
+
+  // For pro users with Anthropic key, try Anthropic first
+  if (aiModel === 'anthropic' && ANTHROPIC_KEY) {
+    reply = await callAnthropic(fullPrompt, chatMessages, aiMaxTokens);
+  }
+
+  // Fallback to Gemini (with appropriate token limit)
   if (!reply) {
-    reply = await callOpenRouter(fullPrompt, chatMessages);
+    reply = await callGemini(fullPrompt, chatMessages, aiMaxTokens);
+  }
+
+  // Fallback to OpenRouter
+  if (!reply) {
+    reply = await callOpenRouter(fullPrompt, chatMessages, aiMaxTokens);
   }
 
   if (!reply) {
@@ -153,5 +228,15 @@ USER PROGRESS: ${knownCount}/28 letters known. Streak: ${streakDays} days.`;
     return;
   }
 
-  res.json({ ok: true, data: { reply } });
+  res.json({
+    ok: true,
+    data: {
+      reply,
+      usage: {
+        dailyUsed: aiDailyUsed,
+        dailyLimit: aiDailyLimit,
+        plan: aiPlan,
+      },
+    },
+  });
 });

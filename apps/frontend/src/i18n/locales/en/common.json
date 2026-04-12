@@ -233,6 +233,28 @@
     "pick_arabic": "Pick the Arabic word",
     "word_mastered": "Word mastered! \u2705"
   },
+  "pro": {
+    "badge": "PRO",
+    "title": "Arab Alifbosi Pro",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "per_month": "/mo",
+    "per_year": "/yr",
+    "savings": "save {{percent}}%",
+    "features_unlimited": "Unlimited AI teacher",
+    "features_model": "Top AI model",
+    "features_detailed": "Detailed explanations",
+    "features_no_ads": "No ads",
+    "features_support": "Priority support",
+    "limit_reached": "Daily limit reached",
+    "upgrade": "Upgrade to Pro",
+    "wait_tomorrow": "Or wait until tomorrow",
+    "requests_left": "{{used}}/{{limit}}",
+    "unlimited": "Unlimited",
+    "current_plan": "Current plan",
+    "contact_telegram": "Contact via Telegram",
+    "coming_soon": "Coming soon"
+  },
   "forms": {
     "connections_title": "Letter Connections",
     "connections_desc": "Which letters connect and which don't?",

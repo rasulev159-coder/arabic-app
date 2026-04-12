@@ -14,6 +14,7 @@ import { AlphabetPage, ProgressPage, AchievementsPage,
          LeaderboardPage, SettingsPage, ChallengePage } from './pages/AllPages';
 
 import { AdminPage }        from './pages/Admin';
+import { ProPage }          from './pages/ProPage';
 import { InvitePage }       from './pages/Invite';
 import { SpinQuizPage }    from './pages/SpinQuiz';
 
@@ -146,6 +147,7 @@ export default function App() {
           <Route path="/textbook/roadmap-island"   element={<TextbookRoadmapIsland />} />
           <Route path="/textbook/:chapterId"       element={<TextbookChapterPage />} />
           <Route path="/textbook/:chapterId/quiz"  element={<TextbookQuizPage />} />
+          <Route path="/pro"               element={<ProPage />} />
           <Route path="/admin"             element={<AdminPage />} />
         </Route>
 

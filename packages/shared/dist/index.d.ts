@@ -35,6 +35,7 @@ export interface UserPublic {
     createdAt: string;
     level: UserLevel;
     role?: string;
+    plan?: string;
     xp: number;
     xpLevel: number;
     streak: StreakInfo;

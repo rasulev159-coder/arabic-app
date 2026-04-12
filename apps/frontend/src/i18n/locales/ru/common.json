@@ -234,6 +234,28 @@
     "pick_arabic": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0430\u0440\u0430\u0431\u0441\u043a\u043e\u0435 \u0441\u043b\u043e\u0432\u043e",
     "word_mastered": "\u0421\u043b\u043e\u0432\u043e \u0432\u044b\u0443\u0447\u0435\u043d\u043e! \u2705"
   },
+  "pro": {
+    "badge": "PRO",
+    "title": "Arab Alifbosi Pro",
+    "monthly": "Ежемесячно",
+    "yearly": "Ежегодно",
+    "per_month": "/мес",
+    "per_year": "/год",
+    "savings": "экономия {{percent}}%",
+    "features_unlimited": "Безлимитный ИИ-учитель",
+    "features_model": "Топовая ИИ-модель",
+    "features_detailed": "Подробные объяснения",
+    "features_no_ads": "Без рекламы",
+    "features_support": "Приоритетная поддержка",
+    "limit_reached": "Лимит на сегодня исчерпан",
+    "upgrade": "Перейти на Pro",
+    "wait_tomorrow": "Или подождите до завтра",
+    "requests_left": "{{used}}/{{limit}}",
+    "unlimited": "Безлимит",
+    "current_plan": "Текущий план",
+    "contact_telegram": "Связаться в Telegram",
+    "coming_soon": "Скоро"
+  },
   "forms": {
     "connections_title": "Соединение букв",
     "connections_desc": "Какие буквы соединяются, а какие нет?",
