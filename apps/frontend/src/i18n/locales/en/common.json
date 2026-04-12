@@ -219,6 +219,20 @@
     "placeholder": "Type your question...",
     "typing": "Typing..."
   },
+  "quran_words": {
+    "title": "300 Quran Words",
+    "subtitle": "Most common words in the Quran",
+    "lesson": "Lesson {{n}}",
+    "words_mastered": "{{n}} / {{total}} words learned",
+    "mastered": "Mastered",
+    "learning": "Learning",
+    "new_word": "New",
+    "take_quiz": "Take Quiz",
+    "next_lesson": "Next Lesson",
+    "pick_translation": "Pick the translation",
+    "pick_arabic": "Pick the Arabic word",
+    "word_mastered": "Word mastered! \u2705"
+  },
   "forms": {
     "connections_title": "Letter Connections",
     "connections_desc": "Which letters connect and which don't?",

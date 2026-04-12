@@ -218,6 +218,20 @@
     "placeholder": "Savolingizni yozing...",
     "typing": "Yozmoqda..."
   },
+  "quran_words": {
+    "title": "300 ta Qur'on so'zlari",
+    "subtitle": "Qur'onda eng ko'p uchraydigan so'zlar",
+    "lesson": "{{n}}-dars",
+    "words_mastered": "{{n}} / {{total}} so'z o'rganildi",
+    "mastered": "O'rganildi",
+    "learning": "O'rganilmoqda",
+    "new_word": "Yangi",
+    "take_quiz": "Testni boshlash",
+    "next_lesson": "Keyingi dars",
+    "pick_translation": "Tarjimasini tanlang",
+    "pick_arabic": "Arabcha so'zni tanlang",
+    "word_mastered": "So'z o'rganildi! \u2705"
+  },
   "forms": {
     "connections_title": "Harflar bog'lanishi",
     "connections_desc": "Qaysi harflar bog'lanadi, qaysilari yo'q?",

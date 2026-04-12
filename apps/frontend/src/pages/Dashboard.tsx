@@ -13,6 +13,7 @@ import { LETTERS, StudyMode, WeaknessDto, Language, DonateConfigDto, Achievement
 import { useQuery }        from '@tanstack/react-query';
 import { api }             from '../lib/api';
 import { useSectionsStore } from '../store/sectionsStore';
+import { useQuranWordsStore } from '../store/quranWordsStore';
 import { NotificationPrompt } from '../components/ui/NotificationPrompt';
 
 const LEARN_MODES: { to: string; icon: string; key: StudyMode; color: string }[] = [
@@ -468,6 +469,9 @@ export function DashboardPage() {
         </motion.div>
       )}
 
+      {/* 300 Quran Words CTA */}
+      <QuranWordsDashboardCard />
+
       {/* Session flow CTA */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -630,6 +634,44 @@ export function DashboardPage() {
         </motion.div>
       )}
     </div>
+  );
+}
+
+function QuranWordsDashboardCard() {
+  const { t } = useTranslation('common');
+  const stats = useQuranWordsStore((s) => s.getStats)();
+  const pct = Math.round((stats.mastered / stats.total) * 100);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.47 }}
+      className="mb-6"
+    >
+      <Link to="/learn/quran-words" className="block">
+        <div className="bg-gradient-to-r from-[#1a1808] to-[#201a08] border border-[rgba(201,168,76,0.15)]
+                        rounded-2xl p-4 flex items-center gap-4
+                        hover:border-[rgba(201,168,76,0.35)] hover:shadow-[0_0_20px_rgba(201,168,76,0.1)] transition-all">
+          <span className="text-3xl">{'\uD83D\uDCD6'}</span>
+          <div className="flex-1 min-w-0">
+            <p className="font-cinzel text-sm text-[#f0e6cc] tracking-wide">
+              {t('quran_words.title')}
+            </p>
+            <p className="font-cinzel text-[0.55rem] tracking-widest text-[#9a8a6a] uppercase">
+              {stats.mastered}/{stats.total} {t('quran_words.mastered').toLowerCase()}
+            </p>
+            <div className="mt-2 w-full h-1.5 bg-[rgba(255,255,255,0.06)] rounded-full overflow-hidden">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-[#c9a84c] to-[#e8c96d] transition-all duration-500"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+          </div>
+          <span className="font-cinzel text-gold-light text-lg">{'\u2192'}</span>
+        </div>
+      </Link>
+    </motion.div>
   );
 }
 
