@@ -138,7 +138,7 @@ export function ProPage() {
       {/* Back link */}
       <div className="text-center mt-8">
         <Link
-          to="/dashboard"
+          to="/learn"
           className="text-[#6a5a3a] text-xs hover:text-[#9a8a6a] transition-colors"
         >
           {'\u2190'} {t('nav.dashboard', { defaultValue: 'Dashboard' })}

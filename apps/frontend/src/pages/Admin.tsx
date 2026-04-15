@@ -132,7 +132,7 @@ export function AdminPage() {
   }, []);
 
   if (!user || user.role !== 'admin') {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/learn" replace />;
   }
 
   const startEdit = (letter: LetterRow) => {

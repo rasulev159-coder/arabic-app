@@ -174,7 +174,7 @@ export function TextbookRoadmapPath() {
       >
         <div className="max-w-lg mx-auto flex items-center justify-between">
           <Link
-            to="/dashboard"
+            to="/learn"
             className="font-cinzel text-[0.6rem] tracking-widest uppercase text-[#9a8a6a]
                        hover:text-gold transition-colors"
           >

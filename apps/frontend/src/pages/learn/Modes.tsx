@@ -99,7 +99,7 @@ export function LightningPage() {
     <div className="min-h-screen flex flex-col items-center px-4 py-10 gap-6">
       {/* Game header */}
       <div className="w-full max-w-md flex items-center gap-3 mb-4">
-        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <Link to="/learn" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
         <h1 className="font-cinzel text-sm tracking-widest text-[#9a8a6a] uppercase">{t('lightning.title')}</h1>
       </div>
       <div className="w-full max-w-sm flex justify-between font-cinzel text-xs text-[#9a8a6a]">
@@ -287,7 +287,7 @@ export function MemoryPage() {
     <div className="max-w-2xl mx-auto px-2 py-4">
       {/* Game header */}
       <div className="w-full max-w-md flex items-center gap-3 mb-4 px-2">
-        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <Link to="/learn" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
         <h1 className="font-cinzel text-sm tracking-widest text-[#9a8a6a] uppercase">{t('memory.title')}</h1>
       </div>
       <div className="flex justify-between font-cinzel text-xs text-[#9a8a6a] mb-4 px-2">
@@ -397,7 +397,7 @@ export function ListenPage() {
     <div className="min-h-screen flex flex-col items-center px-4 py-10 gap-6">
       {/* Game header */}
       <div className="w-full max-w-md flex items-center gap-3 mb-4">
-        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <Link to="/learn" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
         <h1 className="font-cinzel text-sm tracking-widest text-[#9a8a6a] uppercase">{t('listen.title')}</h1>
       </div>
       <div className="w-full max-w-sm h-1 bg-[rgba(255,255,255,0.05)] rounded-full overflow-hidden">
@@ -529,7 +529,7 @@ export function FindPage() {
     <div className="min-h-screen flex flex-col items-center px-4 py-10 gap-8">
       {/* Game header */}
       <div className="w-full max-w-md flex items-center gap-3 mb-4">
-        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <Link to="/learn" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
         <h1 className="font-cinzel text-sm tracking-widest text-[#9a8a6a] uppercase">{t('find.title')}</h1>
       </div>
       <div className="w-full max-w-sm h-1 bg-[rgba(255,255,255,0.05)] rounded-full overflow-hidden">

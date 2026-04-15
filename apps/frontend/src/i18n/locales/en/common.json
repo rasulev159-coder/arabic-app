@@ -1,6 +1,11 @@
 {
   "app_name": "Arabic Alphabet",
   "nav": {
+    "learn":        "Learn",
+    "practice":     "Practice",
+    "community":    "Community",
+    "chat":         "AI Teacher",
+    "profile":      "Profile",
     "dashboard":    "Home",
     "alphabet":     "Alphabet",
     "progress":     "Progress",
@@ -277,5 +282,65 @@
     "find_non_connector": "Find the non-connecting letter",
     "find_letter_in_word": "Find the letter in the word",
     "which_form": "Which form is this?"
+  },
+  "stages": {
+    "alphabet": {
+      "title": "Alphabet",
+      "description": "Learn the 28 letters of the Arabic alphabet",
+      "l1": "Letters 1-7: ا ب ت ث ج ح خ",
+      "l2": "Letters 8-14: د ذ ر ز س ش ص",
+      "l3": "Letters 15-21: ض ط ظ ع غ ف ق",
+      "l4": "Letters 22-28: ك ل م ن ه و ي",
+      "l5": "Quiz: all 28 letters",
+      "l6": "Similar letters: ب ت ث"
+    },
+    "forms": {
+      "title": "Letter Forms",
+      "description": "Letters change form at the beginning, middle, and end of a word",
+      "l1": "Letter forms: initial",
+      "l2": "Letter forms: medial",
+      "l3": "Letter forms: final",
+      "l4": "Quiz: all forms"
+    },
+    "harakat": {
+      "title": "Vowel Marks (Harakat)",
+      "description": "Fatha, kasra, damma, sukun, tanwin, shadda",
+      "l1": "Letters and vowels",
+      "l2": "Tanwin",
+      "l3": "Sukun and Shadda",
+      "l4": "Madd (elongation)"
+    },
+    "words": {
+      "title": "Reading Words",
+      "description": "300 most frequent Quran words",
+      "l1": "300 Quran words",
+      "l2": "Composing words",
+      "l3": "Lam rules",
+      "l4": "Reading practice"
+    },
+    "ayat": {
+      "title": "Reading Ayat",
+      "description": "Short surahs of the Quran",
+      "l1": "Kalimas and duas",
+      "l2": "Short surahs",
+      "l3": "Quran phrases"
+    },
+    "fluency": {
+      "title": "Fluent Reading",
+      "description": "Reading the Quran with tajweed"
+    }
+  },
+  "practice": {
+    "subtitle": "Practice what you have learned"
+  },
+  "learn_path": {
+    "welcome": "Welcome, {{name}}!",
+    "continue": "Continue learning",
+    "continue_btn": "Continue",
+    "locked": "Unlocks after the previous stage",
+    "completed": "Completed",
+    "stage": "Stage {{n}}",
+    "roadmap_title": "Learning Path",
+    "overall_progress": "Overall: {{percent}}%"
   }
 }

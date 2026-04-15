@@ -276,7 +276,7 @@ export function SessionFlowPage() {
         </div>
 
         <div className="flex gap-3 mt-4">
-          <Link to="/dashboard">
+          <Link to="/learn">
             <Button size="lg">{t('common:nav.dashboard')}</Button>
           </Link>
         </div>

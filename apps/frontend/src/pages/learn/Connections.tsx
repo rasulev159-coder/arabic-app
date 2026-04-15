@@ -42,7 +42,7 @@ function InteractiveTable({ lang, onStartGame }: { lang: Language; onStartGame: 
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 pb-24">
       <div className="flex items-center gap-3 mb-6">
-        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <Link to="/learn" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
         <h1 className="font-cinzel text-sm tracking-widest text-[#9a8a6a] uppercase">
           {t('forms.connections_title')}
         </h1>
@@ -359,7 +359,7 @@ function SwipeSortGame({
     >
       {/* Header */}
       <div className="w-full max-w-md flex items-center gap-3 mb-2">
-        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <Link to="/learn" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
         <h1 className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase flex-1">
           {t('forms.sort_game')}
         </h1>
@@ -571,7 +571,7 @@ function FindNonConnectorQuiz({ lang, onFinish }: { lang: Language; onFinish: ()
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-6">
       <div className="w-full max-w-md flex items-center gap-3 mb-6">
-        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <Link to="/learn" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
         <h1 className="font-cinzel text-xs tracking-widest text-[#9a8a6a] uppercase flex-1">
           {t('forms.find_non_connector')}
         </h1>

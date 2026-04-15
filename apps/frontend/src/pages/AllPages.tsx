@@ -739,7 +739,7 @@ export function ChallengePage() {
             {challenge.challenger.name} vs {challenge.opponent?.name ?? '???'}
           </p>
         </motion.div>
-        <Link to="/dashboard"><Button size="lg">На главную</Button></Link>
+        <Link to="/learn"><Button size="lg">На главную</Button></Link>
       </div>
     );
   }

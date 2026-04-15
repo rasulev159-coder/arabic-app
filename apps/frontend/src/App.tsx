@@ -37,6 +37,11 @@ import { TextbookRoadmapIsland } from './pages/TextbookRoadmapIsland';
 import { QuranWordsPage }        from './pages/learn/QuranWords';
 import { QuranWordsLessonPage }  from './pages/learn/QuranWordsLesson';
 import { QuranWordsQuizPage }    from './pages/learn/QuranWordsQuiz';
+import { LearnPathPage }         from './pages/LearnPath';
+import { PracticePage }          from './pages/Practice';
+import { CommunityPage }         from './pages/Community';
+import { ProfilePage }           from './pages/Profile';
+import { ChatPage }              from './pages/Chat';
 
 function SplashScreen() {
   return (
@@ -63,11 +68,11 @@ function NotFoundPage() {
       <p className="font-scheherazade text-6xl text-gold">٤٠٤</p>
       <h1 className="font-cinzel text-xl tracking-widest text-[#f0e6cc]">Page not found</h1>
       <p className="text-[#9a8a6a] text-sm text-center">The page you're looking for doesn't exist.</p>
-      <Link to="/dashboard"
+      <Link to="/learn"
         className="font-cinzel text-xs tracking-widest uppercase px-8 py-3 rounded-full border
                    border-gold-dim text-gold-light bg-[rgba(201,168,76,0.08)]
                    hover:bg-[rgba(201,168,76,0.15)] transition-all">
-        ← Go to Dashboard
+        ← Go to Home
       </Link>
     </div>
   );
@@ -120,12 +125,22 @@ export default function App() {
 
         {/* Protected */}
         <Route element={<RequireAuth><AppLayout /></RequireAuth>}>
-          <Route path="/dashboard"          element={<DashboardPage />} />
+          {/* New structure */}
+          <Route path="/learn"              element={<LearnPathPage />} />
+          <Route path="/practice"           element={<PracticePage />} />
+          <Route path="/community"          element={<CommunityPage />} />
+          <Route path="/chat"               element={<ChatPage />} />
+          <Route path="/profile"            element={<ProfilePage />} />
+
+          {/* Redirects from old URLs */}
+          <Route path="/dashboard"          element={<Navigate to="/learn" replace />} />
+          <Route path="/achievements"       element={<Navigate to="/community" replace />} />
+          <Route path="/leaderboard"        element={<Navigate to="/community?tab=leaderboard" replace />} />
+          <Route path="/progress"           element={<Navigate to="/profile" replace />} />
+          <Route path="/settings"           element={<Navigate to="/profile?tab=settings" replace />} />
+
+          {/* Kept for direct access */}
           <Route path="/alphabet"           element={<AlphabetPage />} />
-          <Route path="/progress"           element={<ProgressPage />} />
-          <Route path="/achievements"       element={<AchievementsPage />} />
-          <Route path="/leaderboard"        element={<LeaderboardPage />} />
-          <Route path="/settings"           element={<SettingsPage />} />
           <Route path="/learn/flashcards"   element={<FlashcardsPage />} />
           <Route path="/learn/quiz"         element={<QuizPage />} />
           <Route path="/learn/speed"        element={<SpeedPage />} />

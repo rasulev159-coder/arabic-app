@@ -135,7 +135,7 @@ export function FlashcardsPage() {
     <div className="min-h-screen flex flex-col items-center px-4 py-6">
       {/* Game header */}
       <div className="w-full max-w-md flex items-center gap-3 mb-4">
-        <Link to="/dashboard" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
+        <Link to="/learn" className="text-[#9a8a6a] hover:text-gold transition-colors text-lg">&larr;</Link>
         <h1 className="font-cinzel text-sm tracking-widest text-[#9a8a6a] uppercase">{t('flashcard.title')}</h1>
       </div>
       {/* Stats bar */}

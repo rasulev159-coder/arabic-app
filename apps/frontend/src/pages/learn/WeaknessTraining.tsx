@@ -148,7 +148,7 @@ export function WeaknessTrainingPage() {
               <p className="font-cinzel text-xs text-[#9a8a6a] mb-6">
                 {t('common:weakness.no_weakness_hint')}
               </p>
-              <Link to="/dashboard">
+              <Link to="/learn">
                 <Button>{t('common:nav.dashboard')}</Button>
               </Link>
             </div>
@@ -306,7 +306,7 @@ export function WeaknessTrainingPage() {
 
         <div className="flex gap-3">
           <Button onClick={startSession}>{t('common:restart')}</Button>
-          <Link to="/dashboard">
+          <Link to="/learn">
             <Button variant="outline">{t('common:nav.dashboard')}</Button>
           </Link>
         </div>

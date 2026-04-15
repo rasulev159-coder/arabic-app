@@ -257,7 +257,7 @@ export function TextbookRoadmapIsland() {
         className="px-4 pt-6 pb-3"
       >
         <Link
-          to="/dashboard"
+          to="/learn"
           className="font-cinzel text-[0.6rem] tracking-widest uppercase text-[#9a8a6a]
                      hover:text-gold transition-colors"
         >

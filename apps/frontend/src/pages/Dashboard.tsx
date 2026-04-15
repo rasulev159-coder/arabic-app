@@ -310,7 +310,7 @@ export function DashboardPage() {
           transition={{ delay: 0.21 }}
           className="mb-6"
         >
-          <Link to="/achievements" className="block">
+          <Link to="/community" className="block">
             <div className="bg-gradient-to-br from-[#1a1508] to-[#140f05] border border-[rgba(201,168,76,0.15)]
                             rounded-2xl p-4 hover:border-[rgba(201,168,76,0.3)] transition-all">
               <p className="font-cinzel text-[0.6rem] tracking-[3px] text-[#9a8a6a] uppercase mb-3">

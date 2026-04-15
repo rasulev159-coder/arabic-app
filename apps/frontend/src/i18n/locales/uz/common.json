@@ -1,6 +1,11 @@
 {
   "app_name": "Arab alifbosi",
   "nav": {
+    "learn":        "O'rganish",
+    "practice":     "Mashqlar",
+    "community":    "Jamoa",
+    "chat":         "AI O'qituvchi",
+    "profile":      "Profil",
     "dashboard":    "Bosh sahifa",
     "alphabet":     "Alifbo",
     "progress":     "Natijalar",
@@ -276,5 +281,65 @@
     "find_non_connector": "Bog'lanmaydigan harfni toping",
     "find_letter_in_word": "So'zda harfni toping",
     "which_form": "Bu qaysi shakl?"
+  },
+  "stages": {
+    "alphabet": {
+      "title": "Alifbo",
+      "description": "Arab alifbosining 28 ta harfini o'rganing",
+      "l1": "Harflar 1-7: ا ب ت ث ج ح خ",
+      "l2": "Harflar 8-14: د ذ ر ز س ش ص",
+      "l3": "Harflar 15-21: ض ط ظ ع غ ف ق",
+      "l4": "Harflar 22-28: ك ل م ن ه و ي",
+      "l5": "Test: barcha 28 harf",
+      "l6": "O'xshash harflar: ب ت ث"
+    },
+    "forms": {
+      "title": "Harf shakllari",
+      "description": "Harflar so'z boshida, o'rtasida va oxirida shaklini o'zgartiradi",
+      "l1": "Harf shakllari: boshida",
+      "l2": "Harf shakllari: o'rtada",
+      "l3": "Harf shakllari: oxirida",
+      "l4": "Test: barcha shakllar"
+    },
+    "harakat": {
+      "title": "Harakat (unlilar)",
+      "description": "Fat'ha, kasra, damma, sukun, tanvin, shadda",
+      "l1": "Harflar va harakatlar",
+      "l2": "Tanvin",
+      "l3": "Sukun va Shadda",
+      "l4": "Madd (cho'zish)"
+    },
+    "words": {
+      "title": "So'zlarni o'qish",
+      "description": "Qur'ondagi 300 ta eng ko'p uchraydigan so'z",
+      "l1": "300 ta Qur'on so'zlari",
+      "l2": "So'zlar tuzish",
+      "l3": "Lom qoidalari",
+      "l4": "O'qish mashqi"
+    },
+    "ayat": {
+      "title": "Oyatlarni o'qish",
+      "description": "Qur'onning qisqa suralari",
+      "l1": "Kalimalar va duolar",
+      "l2": "Qisqa suralar",
+      "l3": "Qur'on iboralari"
+    },
+    "fluency": {
+      "title": "Erkin o'qish",
+      "description": "Tajvid bilan Qur'on o'qish"
+    }
+  },
+  "practice": {
+    "subtitle": "O'rganganlaringni mashq qil"
+  },
+  "learn_path": {
+    "welcome": "Xush kelibsiz, {{name}}!",
+    "continue": "O'rganishni davom ettirish",
+    "continue_btn": "Davom etish",
+    "locked": "Oldingi bosqichdan keyin ochiladi",
+    "completed": "Yakunlangan",
+    "stage": "{{n}}-bosqich",
+    "roadmap_title": "O'rganish yo'li",
+    "overall_progress": "Umumiy: {{percent}}%"
   }
 }

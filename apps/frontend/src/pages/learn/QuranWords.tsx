@@ -29,7 +29,7 @@ export function QuranWordsPage() {
         className="mb-6"
       >
         <Link
-          to="/dashboard"
+          to="/learn"
           className="font-cinzel text-[0.6rem] tracking-widest text-[#9a8a6a] uppercase
                      hover:text-gold transition-colors inline-block mb-4"
         >

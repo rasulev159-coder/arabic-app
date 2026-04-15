@@ -35,7 +35,7 @@ export function TextbookPage() {
         className="mb-8"
       >
         <Link
-          to="/dashboard"
+          to="/learn"
           className="font-cinzel text-[0.6rem] tracking-widest uppercase text-[#9a8a6a]
                      hover:text-gold transition-colors"
         >
