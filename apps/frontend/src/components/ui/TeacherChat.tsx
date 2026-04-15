@@ -4,21 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { Language } from '@arabic/shared';
 import { api } from '../../lib/api';
 import { useAuthStore } from '../../store/authStore';
+import { useChatStore } from '../../store/chatStore';
 import { Link } from 'react-router-dom';
-
-interface ChatMessage {
-  id: number;
-  role: 'bot' | 'user';
-  text: string;
-}
-
-interface ChatStatus {
-  plan: string;
-  dailyUsed: number;
-  dailyLimit: number | null;
-  model: string;
-  planExpiresAt: string | null;
-}
 
 const SUGGESTION_CHIPS: Record<Language, string[]> = {
   uz: ['Maslahat', "O'xshash harflar", 'Harakat nima?', 'Nima qilishim kerak?'],
@@ -31,13 +18,17 @@ export function TeacherChat() {
   const lang = (i18n.language || 'uz') as Language;
   const user = useAuthStore(s => s.user);
 
+  const messages = useChatStore(s => s.messages);
+  const addMessage = useChatStore(s => s.addMessage);
+  const status = useChatStore(s => s.status);
+  const setStatus = useChatStore(s => s.setStatus);
+  const updateStatus = useChatStore(s => s.updateStatus);
+  const limitReached = useChatStore(s => s.limitReached);
+  const setLimitReached = useChatStore(s => s.setLimitReached);
+
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
-  const [msgId, setMsgId] = useState(0);
-  const [status, setStatus] = useState<ChatStatus | null>(null);
-  const [limitReached, setLimitReached] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -48,15 +39,12 @@ export function TeacherChat() {
         if (data?.ok) setStatus(data.data);
       }).catch(() => {});
     }
-  }, [open]);
+  }, [open, setStatus]);
 
   // Add greeting when chat opens for the first time
   useEffect(() => {
     if (open && messages.length === 0) {
-      const greeting = t('teacher.greeting');
-      setMsgId(prev => prev + 1);
-      setMessages([{ id: 1, role: 'bot', text: greeting }]);
-      setMsgId(1);
+      addMessage('bot', t('teacher.greeting'));
     }
   }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -80,50 +68,37 @@ export function TeacherChat() {
     const trimmed = text.trim();
     setInput('');
 
-    // Add user message
-    const userMsgId = msgId + 1;
-    setMessages(prev => [...prev, { id: userMsgId, role: 'user', text: trimmed }]);
-    setMsgId(userMsgId);
-
-    // Show typing indicator
+    addMessage('user', trimmed);
     setTyping(true);
 
-    // Build history for context
     const history = messages.slice(-6).map(m => ({
       role: m.role === 'bot' ? 'assistant' : 'user',
       content: m.text,
     }));
 
-    // Call AI API
     try {
       const { data } = await api.post('/chat', { message: trimmed, history });
-      const botMsgId = userMsgId + 1;
       const reply = data?.data?.reply || (lang === 'uz' ? 'Kechirasiz, hozir javob bera olmayapman.' : lang === 'ru' ? 'Извините, не могу ответить сейчас.' : 'Sorry, I cannot respond right now.');
-      setMessages(prev => [...prev, { id: botMsgId, role: 'bot', text: reply }]);
-      setMsgId(botMsgId);
+      addMessage('bot', reply);
 
-      // Update usage from response
       if (data?.data?.usage) {
-        setStatus(prev => prev ? {
-          ...prev,
+        updateStatus({
           dailyUsed: data.data.usage.dailyUsed,
           dailyLimit: data.data.usage.dailyLimit,
           plan: data.data.usage.plan,
-        } : prev);
+        });
       }
     } catch (err: any) {
-      const botMsgId = userMsgId + 1;
       if (err?.response?.status === 429) {
         setLimitReached(true);
-        setMessages(prev => [...prev, { id: botMsgId, role: 'bot', text: t('pro.limit_reached', { defaultValue: lang === 'uz' ? 'Bugungi limit tugadi' : lang === 'ru' ? 'Лимит на сегодня исчерпан' : 'Daily limit reached' }) }]);
+        addMessage('bot', t('pro.limit_reached', { defaultValue: lang === 'uz' ? 'Bugungi limit tugadi' : lang === 'ru' ? 'Лимит на сегодня исчерпан' : 'Daily limit reached' }));
       } else {
-        setMessages(prev => [...prev, { id: botMsgId, role: 'bot', text: lang === 'uz' ? 'Xatolik yuz berdi. Qaytadan urinib ko\'ring.' : lang === 'ru' ? 'Произошла ошибка. Попробуйте ещё раз.' : 'An error occurred. Please try again.' }]);
+        addMessage('bot', lang === 'uz' ? 'Xatolik yuz berdi. Qaytadan urinib ko\'ring.' : lang === 'ru' ? 'Произошла ошибка. Попробуйте ещё раз.' : 'An error occurred. Please try again.');
       }
-      setMsgId(botMsgId);
     } finally {
       setTyping(false);
     }
-  }, [msgId, typing, lang, messages, limitReached, t]);
+  }, [typing, lang, messages, limitReached, t, addMessage, updateStatus, setLimitReached]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
