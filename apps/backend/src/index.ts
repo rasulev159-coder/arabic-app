@@ -24,6 +24,7 @@ import { donateRouter }       from './routes/donate';
 import { settingsRouter }     from './routes/settings';
 import { notificationsRouter } from './routes/notifications';
 import { chatRouter }          from './routes/chat';
+import { subscriptionRouter }  from './routes/subscription';
 import { errorHandler }       from './middleware/errorHandler';
 import { authLimiter, apiLimiter } from './middleware/rateLimiter';
 import { requireAuth }        from './middleware/requireAuth';
@@ -62,6 +63,7 @@ app.use('/api/donate',       apiLimiter,   donateRouter);
 app.use('/api/settings',       apiLimiter,   settingsRouter);
 app.use('/api/notifications',  apiLimiter,   notificationsRouter);
 app.use('/api/chat',           apiLimiter,   chatRouter);
+app.use('/api',                subscriptionRouter);
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
 
