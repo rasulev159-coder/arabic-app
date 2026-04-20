@@ -1,4 +1,5 @@
 {
+  "video_lesson": "Video dars",
   "modes": {
     "flashcard": "Kartochkalar",
     "quiz":      "Viktorina",
@@ -87,7 +88,7 @@
   "groups": {
     "btt": "ب ت ث — nuqtalar",
     "jch": "ج ح خ — guruh",
-    "dz":  "د ذ — Dol/Zol",
+    "dz":  "د ذ — Dal/Zal",
     "rz":  "ر ز — Ra/Zay",
     "ss":  "س ش — Sin/Shin",
     "sd":  "ص ض — Sod/Zod",

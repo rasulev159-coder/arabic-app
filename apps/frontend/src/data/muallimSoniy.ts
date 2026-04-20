@@ -19,6 +19,13 @@ export interface QuizQuestion {
   correctAnswer?: string;
 }
 
+export interface ChapterVideo {
+  videoId: string;
+  titleUz: string;
+  titleRu: string;
+  titleEn: string;
+}
+
 export interface TextbookChapter {
   id: string;
   order: number;
@@ -31,6 +38,7 @@ export interface TextbookChapter {
   icon: string;
   lessons: TextbookLesson[];
   quiz: QuizQuestion[];
+  videos?: ChapterVideo[];
 }
 
 export const MUALLIM_SONIY: TextbookChapter[] = [
@@ -699,6 +707,11 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
           { text: "abrim", isCorrect: false }
         ]
       }
+    ],
+    videos: [
+      { videoId: 'bBWaxNasua4', titleUz: '1-dars: Alifbo', titleRu: 'Урок 1: Алфавит', titleEn: 'Lesson 1: Alphabet' },
+      { videoId: 'UWUtA7P0xCE', titleUz: '2-dars: Mahrajlar', titleRu: 'Урок 2: Махрадж', titleEn: 'Lesson 2: Articulation Points' },
+      { videoId: 'DhbimE6IrSE', titleUz: '3-dars: Harakatlar', titleRu: 'Урок 3: Огласовки', titleEn: 'Lesson 3: Vowel Marks' },
     ]
   },
 
@@ -1307,6 +1320,14 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
           { text: "mishtarak", isCorrect: false }
         ]
       }
+    ],
+    videos: [
+      { videoId: 'FZzftaWQTyI', titleUz: '4-dars: ز harfi', titleRu: 'Урок 4: Буква Зай', titleEn: 'Lesson 4: Letter Zay' },
+      { videoId: '2QmOIb2ccsQ', titleUz: '5-dars: م harfi', titleRu: 'Урок 5: Буква Мим', titleEn: 'Lesson 5: Letter Mim' },
+      { videoId: 'KyO6eXGA6R8', titleUz: '6-dars: ت harfi', titleRu: 'Урок 6: Буква Та', titleEn: 'Lesson 6: Letter Ta' },
+      { videoId: 'XLjL7clkdHQ', titleUz: '7-dars: ن harfi', titleRu: 'Урок 7: Буква Нун', titleEn: 'Lesson 7: Letter Nun' },
+      { videoId: '8W6RCdU2Gic', titleUz: '8-dars: ي harfi', titleRu: 'Урок 8: Буква Йа', titleEn: 'Lesson 8: Letter Ya' },
+      { videoId: 'Zt3sm6OVVKA', titleUz: '9-dars: ب harfi', titleRu: 'Урок 9: Буква Ба', titleEn: 'Lesson 9: Letter Ba' },
     ]
   },
 
@@ -1510,6 +1531,10 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
           { text: "mass", isCorrect: false }
         ]
       }
+    ],
+    videos: [
+      { videoId: 'PXcdBw2Ycx4', titleUz: '31-dars: Tashdidli harfi', titleRu: 'Урок 31: Буквы с ташдидом', titleEn: 'Lesson 31: Letters with Tashdid' },
+      { videoId: '3Xqv9Lo0h88', titleUz: '32-dars: Tanvinli tashdid', titleRu: 'Урок 32: Танвин с ташдидом', titleEn: 'Lesson 32: Tanwin with Tashdid' },
     ]
   },
 
@@ -1699,6 +1724,9 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
           { text: "mikabbirun", isCorrect: false }
         ]
       }
+    ],
+    videos: [
+      { videoId: 'PXcdBw2Ycx4', titleUz: '31-dars: Tashdidli harfi', titleRu: 'Урок 31: Ташдид', titleEn: 'Lesson 31: Tashdid' },
     ]
   },
 
@@ -1888,6 +1916,11 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
           { text: "diruus", isCorrect: false }
         ]
       }
+    ],
+    videos: [
+      { videoId: '1i1LRB6ixr4', titleUz: '30-dars: Mad tabiiy', titleRu: 'Урок 30: Естественный мадд', titleEn: 'Lesson 30: Natural Madd' },
+      { videoId: '2XYApww_2Rc', titleUz: '35-dars: Muqaddar alif', titleRu: 'Урок 35: Мукаддар алиф', titleEn: 'Lesson 35: Hidden Alif' },
+      { videoId: '9PaZg6TDoxY', titleUz: '36-dars: Muqaddar ي va و', titleRu: 'Урок 36: Мукаддар Йа и Вав', titleEn: 'Lesson 36: Hidden Ya and Waw' },
     ]
   },
 
@@ -2049,6 +2082,12 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
           { text: "ash-shumsu", isCorrect: false }
         ]
       }
+    ],
+    videos: [
+      { videoId: '53UiqNRUuHs', titleUz: '39-dars: Qamariyya harflari', titleRu: 'Урок 39: Камария', titleEn: 'Lesson 39: Moon Letters' },
+      { videoId: '15M6Z7zcEXI', titleUz: '40-dars: Shamsiya harflari', titleRu: 'Урок 40: Шамсия', titleEn: 'Lesson 40: Sun Letters' },
+      { videoId: 'Vlms7i490M0', titleUz: '41-dars: Qamariya va shamsiya', titleRu: 'Урок 41: Камария и Шамсия', titleEn: 'Lesson 41: Moon & Sun Letters' },
+      { videoId: 'iATPBMSWfe4', titleUz: "38-dars: O'qilmaydigan harflar", titleRu: 'Урок 38: Непроизносимые буквы', titleEn: 'Lesson 38: Silent Letters' },
     ]
   },
 
@@ -2224,6 +2263,12 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
           { text: "saabarun", isCorrect: false }
         ]
       }
+    ],
+    videos: [
+      { videoId: 'YQrroHDxPKc', titleUz: "43-dars: So'z so'ngida madlik", titleRu: 'Урок 43: Мадд в конце слова', titleEn: 'Lesson 43: Madd at End of Word' },
+      { videoId: 'ZGvFRcB5g1M', titleUz: "44-dars: Idg'om qoidasi", titleRu: 'Урок 44: Правило идгам', titleEn: 'Lesson 44: Idgham Rule' },
+      { videoId: 'xLK-lvetVlg', titleUz: '45-dars: Iqlob qoidasi', titleRu: 'Урок 45: Правило иклаб', titleEn: 'Lesson 45: Iqlab Rule' },
+      { videoId: 'HDtdqQkJNn8', titleUz: '46-dars: Alloh lafzi', titleRu: 'Урок 46: Слово Аллах', titleEn: 'Lesson 46: Word Allah' },
     ]
   },
 
@@ -2380,6 +2425,10 @@ export const MUALLIM_SONIY: TextbookChapter[] = [
           { text: "abdahu", isCorrect: false }
         ]
       }
+    ],
+    videos: [
+      { videoId: 'gP4bbsDG1C8', titleUz: '33-dars: Hamza', titleRu: 'Урок 33: Хамза', titleEn: 'Lesson 33: Hamza' },
+      { videoId: '39lT-YwueM4', titleUz: '34-dars: Ta marbuta (ة)', titleRu: 'Урок 34: Та марбута', titleEn: 'Lesson 34: Ta Marbuta' },
     ]
   },
 

@@ -133,6 +133,42 @@ export function TextbookChapterPage() {
         </div>
       </motion.div>
 
+      {/* Video Lessons */}
+      {chapter.videos && chapter.videos.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mb-8 bg-gradient-to-br from-[#1a0808] to-[#140505] border border-[rgba(255,0,0,0.12)] rounded-2xl p-5"
+        >
+          <p className="font-cinzel text-[0.6rem] tracking-[3px] text-[rgba(255,100,100,0.8)] uppercase mb-3">
+            {t('learn:video_lesson', { defaultValue: lang === 'ru' ? 'Видеоуроки' : lang === 'uz' ? 'Video darslar' : 'Video Lessons' })}
+          </p>
+          <div className="flex flex-col gap-2">
+            {chapter.videos.map((v) => {
+              const vTitle = lang === 'ru' ? v.titleRu : lang === 'en' ? v.titleEn : v.titleUz;
+              return (
+                <a
+                  key={v.videoId}
+                  href={`https://www.youtube.com/watch?v=${v.videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl
+                             bg-[rgba(255,0,0,0.05)] border border-[rgba(255,0,0,0.1)]
+                             hover:bg-[rgba(255,0,0,0.1)] transition-all cursor-pointer"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b"
+                       strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                  <span className="font-raleway text-sm text-[#f0e6cc]">{vTitle}</span>
+                </a>
+              );
+            })}
+          </div>
+        </motion.div>
+      )}
+
       {/* Lessons */}
       <div className="flex flex-col gap-6">
         {chapter.lessons.map((lesson, i) => {

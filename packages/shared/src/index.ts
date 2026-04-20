@@ -98,6 +98,7 @@ export interface ArabicLetter {
   med: string;
   fin: string;
   group?: LetterGroup; // confusable group
+  videoId?: string;    // YouTube video ID for this letter's lesson
   associationRu?: string;
   associationUz?: string;
   associationEn?: string;
@@ -108,34 +109,34 @@ export type LetterGroup =
   | 'sd' | 'tz' | 'ag' | 'fq';
 
 export const LETTERS: ArabicLetter[] = [
-  { code:'ا', index:1,  nameRu:'Алиф',       nameUz:'Alif',   nameEn:'Alif',       transcription:'[alif] — долгий «а»',    iso:'ا', ini:'ا',  med:'ـا', fin:'ـا' },
-  { code:'ب', index:2,  nameRu:'Ба',          nameUz:'Bo',     nameEn:'Ba',         transcription:'[bā] — «б»',             iso:'ب', ini:'بـ', med:'ـبـ',fin:'ـب', group:'btt' },
-  { code:'ت', index:3,  nameRu:'Та',          nameUz:'To',     nameEn:'Ta',         transcription:'[tā] — «т»',             iso:'ت', ini:'تـ', med:'ـتـ',fin:'ـت', group:'btt' },
-  { code:'ث', index:4,  nameRu:'Са',          nameUz:'Sa',     nameEn:'Tha',        transcription:'[ṯā] — межзуб. «с»',     iso:'ث', ini:'ثـ', med:'ـثـ',fin:'ـث', group:'btt' },
-  { code:'ج', index:5,  nameRu:'Джим',        nameUz:'Jim',    nameEn:'Jim',        transcription:'[ǧīm] — «дж»',           iso:'ج', ini:'جـ', med:'ـجـ',fin:'ـج', group:'jch' },
-  { code:'ح', index:6,  nameRu:'Ха',          nameUz:'Ho',     nameEn:'Ha',         transcription:'[ḥā] — гортанный «х»',   iso:'ح', ini:'حـ', med:'ـحـ',fin:'ـح', group:'jch' },
-  { code:'خ', index:7,  nameRu:'Хя',          nameUz:'Xa',     nameEn:'Kha',        transcription:'[ḫā] — «х» (хаша)',      iso:'خ', ini:'خـ', med:'ـخـ',fin:'ـخ', group:'jch' },
-  { code:'د', index:8,  nameRu:'Даль',        nameUz:'Dol',    nameEn:'Dal',        transcription:'[dāl] — «д»',            iso:'د', ini:'د',  med:'ـد', fin:'ـد', group:'dz'  },
-  { code:'ذ', index:9,  nameRu:'Заль',        nameUz:'Zol',    nameEn:'Dhal',       transcription:'[ḏāl] — межзуб. «з»',    iso:'ذ', ini:'ذ',  med:'ـذ', fin:'ـذ', group:'dz'  },
+  { code:'ا', index:1,  nameRu:'Алиф',       nameUz:'Alif',   nameEn:'Alif',       transcription:'[alif] — долгий «а»',    iso:'ا', ini:'ا',  med:'ـا', fin:'ـا', videoId:'bBWaxNasua4' },
+  { code:'ب', index:2,  nameRu:'Ба',          nameUz:'Ba',     nameEn:'Ba',         transcription:'[bā] — «б»',             iso:'ب', ini:'بـ', med:'ـبـ',fin:'ـب', group:'btt', videoId:'Zt3sm6OVVKA' },
+  { code:'ت', index:3,  nameRu:'Та',          nameUz:'Ta',     nameEn:'Ta',         transcription:'[tā] — «т»',             iso:'ت', ini:'تـ', med:'ـتـ',fin:'ـت', group:'btt', videoId:'KyO6eXGA6R8' },
+  { code:'ث', index:4,  nameRu:'Са',          nameUz:'Sa',     nameEn:'Tha',        transcription:'[ṯā] — межзуб. «с»',     iso:'ث', ini:'ثـ', med:'ـثـ',fin:'ـث', group:'btt', videoId:'7AaBhJZBvWw' },
+  { code:'ج', index:5,  nameRu:'Джим',        nameUz:'Jim',    nameEn:'Jim',        transcription:'[ǧīm] — «дж»',           iso:'ج', ini:'جـ', med:'ـجـ',fin:'ـج', group:'jch', videoId:'x9N8mj2y2WA' },
+  { code:'ح', index:6,  nameRu:'Ха',          nameUz:'Ha',     nameEn:'Ha',         transcription:'[ḥā] — гортанный «х»',   iso:'ح', ini:'حـ', med:'ـحـ',fin:'ـح', group:'jch', videoId:'7yC9HbSjatQ' },
+  { code:'خ', index:7,  nameRu:'Хя',          nameUz:'Xa',     nameEn:'Kha',        transcription:'[ḫā] — «х» (хаша)',      iso:'خ', ini:'خـ', med:'ـخـ',fin:'ـخ', group:'jch', videoId:'-BLPANWCGS0' },
+  { code:'د', index:8,  nameRu:'Даль',        nameUz:'Dal',    nameEn:'Dal',        transcription:'[dāl] — «д»',            iso:'د', ini:'د',  med:'ـد', fin:'ـد', group:'dz',  videoId:'eyE2G0zbg_Y' },
+  { code:'ذ', index:9,  nameRu:'Заль',        nameUz:'Zal',    nameEn:'Dhal',       transcription:'[ḏāl] — межзуб. «з»',    iso:'ذ', ini:'ذ',  med:'ـذ', fin:'ـذ', group:'dz',  videoId:'qcUSKykCKBE' },
   { code:'ر', index:10, nameRu:'Ра',          nameUz:'Ra',     nameEn:'Ra',         transcription:'[rā] — «р»',             iso:'ر', ini:'ر',  med:'ـر', fin:'ـر', group:'rz'  },
-  { code:'ز', index:11, nameRu:'Зай',         nameUz:'Zay',    nameEn:'Zay',        transcription:'[zāy] — «з»',            iso:'ز', ini:'ز',  med:'ـز', fin:'ـز', group:'rz'  },
-  { code:'س', index:12, nameRu:'Син',         nameUz:'Sin',    nameEn:'Sin',        transcription:'[sīn] — «с»',            iso:'س', ini:'سـ', med:'ـسـ',fin:'ـس', group:'ss'  },
-  { code:'ش', index:13, nameRu:'Шин',         nameUz:'Shin',   nameEn:'Shin',       transcription:'[šīn] — «ш»',            iso:'ش', ini:'شـ', med:'ـشـ',fin:'ـش', group:'ss'  },
-  { code:'ص', index:14, nameRu:'Сад',         nameUz:'Sod',    nameEn:'Sad',        transcription:'[ṣād] — эмф. «с»',       iso:'ص', ini:'صـ', med:'ـصـ',fin:'ـص', group:'sd'  },
-  { code:'ض', index:15, nameRu:'Дад',         nameUz:'Zod',    nameEn:'Dad',        transcription:'[ḍād] — эмф. «д»',       iso:'ض', ini:'ضـ', med:'ـضـ',fin:'ـض', group:'sd'  },
-  { code:'ط', index:16, nameRu:'Та (эмф.)',   nameUz:"To'",    nameEn:'Ta (emph.)', transcription:'[ṭā] — эмф. «т»',        iso:'ط', ini:'طـ', med:'ـطـ',fin:'ـط', group:'tz'  },
-  { code:'ظ', index:17, nameRu:'Зха',         nameUz:"Zo'",    nameEn:'Zha',        transcription:'[ẓā] — эмф. «з»',        iso:'ظ', ini:'ظـ', med:'ـظـ',fin:'ـظ', group:'tz'  },
-  { code:'ع', index:18, nameRu:'Айн',         nameUz:"Ayn",    nameEn:'Ayn',        transcription:"[ʿayn] — гортанный",     iso:'ع', ini:'عـ', med:'ـعـ',fin:'ـع', group:'ag'  },
-  { code:'غ', index:19, nameRu:'Гайн',        nameUz:'Gayn',   nameEn:'Ghain',      transcription:'[ġayn] — гортанный «г»', iso:'غ', ini:'غـ', med:'ـغـ',fin:'ـغ', group:'ag'  },
-  { code:'ف', index:20, nameRu:'Фа',          nameUz:'Fa',     nameEn:'Fa',         transcription:'[fā] — «ф»',             iso:'ف', ini:'فـ', med:'ـفـ',fin:'ـف', group:'fq'  },
-  { code:'ق', index:21, nameRu:'Каф',         nameUz:'Qof',    nameEn:'Qaf',        transcription:'[qāf] — глуб. «к»',      iso:'ق', ini:'قـ', med:'ـقـ',fin:'ـق', group:'fq'  },
-  { code:'ك', index:22, nameRu:'Кяф',         nameUz:'Kof',    nameEn:'Kaf',        transcription:'[kāf] — «к»',            iso:'ك', ini:'كـ', med:'ـكـ',fin:'ـك' },
-  { code:'ل', index:23, nameRu:'Лям',         nameUz:'Lom',    nameEn:'Lam',        transcription:'[lām] — «л»',            iso:'ل', ini:'لـ', med:'ـلـ',fin:'ـل' },
-  { code:'م', index:24, nameRu:'Мим',         nameUz:'Mim',    nameEn:'Mim',        transcription:'[mīm] — «м»',            iso:'م', ini:'مـ', med:'ـمـ',fin:'ـم' },
-  { code:'ن', index:25, nameRu:'Нун',         nameUz:'Nun',    nameEn:'Nun',        transcription:'[nūn] — «н»',            iso:'ن', ini:'نـ', med:'ـنـ',fin:'ـن' },
-  { code:'ه', index:26, nameRu:'Ха (мягк.)',  nameUz:'Ha',     nameEn:'Ha (soft)',  transcription:'[hā] — мягкий «х»',      iso:'ه', ini:'هـ', med:'ـهـ',fin:'ـه' },
-  { code:'و', index:27, nameRu:'Вав',         nameUz:'Vov',    nameEn:'Waw',        transcription:'[wāw] — «в»/«у»',        iso:'و', ini:'و',  med:'ـو', fin:'ـو' },
-  { code:'ي', index:28, nameRu:'Йа',          nameUz:'Ya',     nameEn:'Ya',         transcription:'[yā] — «й»/«и»',         iso:'ي', ini:'يـ', med:'ـيـ',fin:'ـي' },
+  { code:'ز', index:11, nameRu:'Зай',         nameUz:'Zay',    nameEn:'Zay',        transcription:'[zāy] — «з»',            iso:'ز', ini:'ز',  med:'ـز', fin:'ـز', group:'rz',  videoId:'FZzftaWQTyI' },
+  { code:'س', index:12, nameRu:'Син',         nameUz:'Sin',    nameEn:'Sin',        transcription:'[sīn] — «с»',            iso:'س', ini:'سـ', med:'ـسـ',fin:'ـس', group:'ss',  videoId:'1XXwwlnkWrg' },
+  { code:'ش', index:13, nameRu:'Шин',         nameUz:'Shin',   nameEn:'Shin',       transcription:'[šīn] — «ш»',            iso:'ش', ini:'شـ', med:'ـشـ',fin:'ـش', group:'ss',  videoId:'VNGn5wk3elg' },
+  { code:'ص', index:14, nameRu:'Сад',         nameUz:'Sod',    nameEn:'Sad',        transcription:'[ṣād] — эмф. «с»',       iso:'ص', ini:'صـ', med:'ـصـ',fin:'ـص', group:'sd',  videoId:'4B1yxXu9hN4' },
+  { code:'ض', index:15, nameRu:'Дад',         nameUz:'Zod',    nameEn:'Dad',        transcription:'[ḍād] — эмф. «д»',       iso:'ض', ini:'ضـ', med:'ـضـ',fin:'ـض', group:'sd',  videoId:'79aOWJrV3Mc' },
+  { code:'ط', index:16, nameRu:'Та (эмф.)',   nameUz:"To'",    nameEn:'Ta (emph.)', transcription:'[ṭā] — эмф. «т»',        iso:'ط', ini:'طـ', med:'ـطـ',fin:'ـط', group:'tz',  videoId:'jqOX4E9syoY' },
+  { code:'ظ', index:17, nameRu:'Зха',         nameUz:"Zo'",    nameEn:'Zha',        transcription:'[ẓā] — эмф. «з»',        iso:'ظ', ini:'ظـ', med:'ـظـ',fin:'ـظ', group:'tz',  videoId:'aFHmynG8vQ0' },
+  { code:'ع', index:18, nameRu:'Айн',         nameUz:"Ayn",    nameEn:'Ayn',        transcription:"[ʿayn] — гортанный",     iso:'ع', ini:'عـ', med:'ـعـ',fin:'ـع', group:'ag',  videoId:'he4ARple3Ik' },
+  { code:'غ', index:19, nameRu:'Гайн',        nameUz:'Gayn',   nameEn:'Ghain',      transcription:'[ġayn] — гортанный «г»', iso:'غ', ini:'غـ', med:'ـغـ',fin:'ـغ', group:'ag',  videoId:'mHQlHvVJqJk' },
+  { code:'ف', index:20, nameRu:'Фа',          nameUz:'Fa',     nameEn:'Fa',         transcription:'[fā] — «ф»',             iso:'ف', ini:'فـ', med:'ـفـ',fin:'ـف', group:'fq',  videoId:'3Xlmtj-EWIU' },
+  { code:'ق', index:21, nameRu:'Каф',         nameUz:'Qof',    nameEn:'Qaf',        transcription:'[qāf] — глуб. «к»',      iso:'ق', ini:'قـ', med:'ـقـ',fin:'ـق', group:'fq',  videoId:'DsDgGa_2wAc' },
+  { code:'ك', index:22, nameRu:'Кяф',         nameUz:'Kaf',    nameEn:'Kaf',        transcription:'[kāf] — «к»',            iso:'ك', ini:'كـ', med:'ـكـ',fin:'ـك', videoId:'U9rvJqgDNdo' },
+  { code:'ل', index:23, nameRu:'Лям',         nameUz:'Lam',    nameEn:'Lam',        transcription:'[lām] — «л»',            iso:'ل', ini:'لـ', med:'ـلـ',fin:'ـل', videoId:'sqixgyn0Gwg' },
+  { code:'م', index:24, nameRu:'Мим',         nameUz:'Mim',    nameEn:'Mim',        transcription:'[mīm] — «м»',            iso:'م', ini:'مـ', med:'ـمـ',fin:'ـم', videoId:'2QmOIb2ccsQ' },
+  { code:'ن', index:25, nameRu:'Нун',         nameUz:'Nun',    nameEn:'Nun',        transcription:'[nūn] — «н»',            iso:'ن', ini:'نـ', med:'ـنـ',fin:'ـن', videoId:'XLjL7clkdHQ' },
+  { code:'ه', index:26, nameRu:'Ха (мягк.)',  nameUz:'Ha',     nameEn:'Ha (soft)',  transcription:'[hā] — мягкий «х»',      iso:'ه', ini:'هـ', med:'ـهـ',fin:'ـه', videoId:'Tokv5xaAlv8' },
+  { code:'و', index:27, nameRu:'Вав',         nameUz:'Vav',    nameEn:'Waw',        transcription:'[wāw] — «в»/«у»',        iso:'و', ini:'و',  med:'ـو', fin:'ـو', videoId:'L4VMO_quJpw' },
+  { code:'ي', index:28, nameRu:'Йа',          nameUz:'Ya',     nameEn:'Ya',         transcription:'[yā] — «й»/«и»',         iso:'ي', ini:'يـ', med:'ـيـ',fin:'ـي', videoId:'8W6RCdU2Gic' },
 ];
 
 export function getLetterName(letter: ArabicLetter, lang: Language): string {

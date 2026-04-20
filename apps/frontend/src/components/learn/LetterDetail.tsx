@@ -131,21 +131,44 @@ export function LetterDetail({ letter, visible, onClose, originRect }: LetterDet
               </motion.div>
             )}
 
-            {/* Play sound */}
-            <motion.button
-              onClick={() => playSound(letter.code)}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-full
-                         border border-gold-dim bg-[rgba(201,168,76,0.08)]
-                         text-gold-light font-cinzel text-xs tracking-widest uppercase
-                         hover:bg-[rgba(201,168,76,0.15)] transition-all"
-              whileTap={{ scale: 0.97 }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.08"
-                      fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              {t('learn:listen.play')}
-            </motion.button>
+            {/* Action buttons */}
+            <div className="flex gap-2">
+              {/* Play sound */}
+              <motion.button
+                onClick={() => playSound(letter.code)}
+                className={`${letter.videoId ? 'flex-1' : 'w-full'} flex items-center justify-center gap-2 py-3 rounded-full
+                           border border-gold-dim bg-[rgba(201,168,76,0.08)]
+                           text-gold-light font-cinzel text-xs tracking-widest uppercase
+                           hover:bg-[rgba(201,168,76,0.15)] transition-all`}
+                whileTap={{ scale: 0.97 }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.08"
+                        fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                {t('learn:listen.play')}
+              </motion.button>
+
+              {/* Video lesson */}
+              {letter.videoId && (
+                <motion.a
+                  href={`https://www.youtube.com/watch?v=${letter.videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-full
+                             border border-[rgba(255,0,0,0.3)] bg-[rgba(255,0,0,0.08)]
+                             text-[#ff6b6b] font-cinzel text-xs tracking-widest uppercase
+                             hover:bg-[rgba(255,0,0,0.15)] transition-all cursor-pointer"
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23 7l-7 5 7 5V7z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" fill="none" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                  {t('learn:video_lesson', { defaultValue: 'Video' })}
+                </motion.a>
+              )}
+            </div>
           </motion.div>
         </>
       )}
