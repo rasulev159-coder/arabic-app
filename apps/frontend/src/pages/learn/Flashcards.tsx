@@ -226,6 +226,28 @@ export function FlashcardsPage() {
                   </div>
                 ))}
               </div>
+              {/* Sound + Video buttons */}
+              <div className="flex gap-2 mt-2">
+                <button
+                  onClick={(e) => { e.stopPropagation(); if ('speechSynthesis' in window) { const u = new SpeechSynthesisUtterance(current.code); u.lang = 'ar-SA'; u.rate = 0.7; window.speechSynthesis.cancel(); window.speechSynthesis.speak(u); } }}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gold-dim bg-[rgba(201,168,76,0.08)] text-gold-light text-[0.6rem] font-cinzel tracking-wider uppercase hover:bg-[rgba(201,168,76,0.15)] transition-all"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.08"/></svg>
+                  {t('listen.play')}
+                </button>
+                {current.videoId && (
+                  <a
+                    href={`https://www.youtube.com/watch?v=${current.videoId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[rgba(255,0,0,0.3)] bg-[rgba(255,0,0,0.08)] text-[#ff6b6b] text-[0.6rem] font-cinzel tracking-wider uppercase hover:bg-[rgba(255,0,0,0.15)] transition-all"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Video
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </motion.div>
